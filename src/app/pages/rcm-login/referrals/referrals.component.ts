@@ -12,6 +12,7 @@ import { ClaimsvspaidComponent } from '../patients/claimsvspaid/claimsvspaid.com
 import { VisitsvsclaimsComponent } from '../patients/visitsvsclaims/visitsvsclaims.component';
 import { ReferralvsvisitsComponent } from '../patients/referralvsvisits/referralvsvisits.component';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { ReferralsfilterComponent } from './referralsfilter/referralsfilter.component';
 
 
 @Component({
@@ -147,6 +148,22 @@ export class ReferralsComponent {
     this.dialog.open(PerspectivesComponent, {
       height: 'auto',
       width: '450px'
+    });
+  }
+
+
+  referralsFilter(event: MouseEvent): void {
+    const buttonRect = (event.target as HTMLElement).getBoundingClientRect();
+    const marginRight = -400; // Adjust this value as needed for the left margin
+    const dialogPosition = {
+      top: `${buttonRect.bottom}px`,
+      left: `${buttonRect.left + marginRight}px`, // Add margin to the left
+    };
+
+    this.dialog.open(ReferralsfilterComponent, {
+      height: 'auto',
+      width: '450px',
+      position: dialogPosition,
     });
   }
 

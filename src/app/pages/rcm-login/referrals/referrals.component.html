@@ -169,7 +169,9 @@
               width: 35px;
               height: 35px;
               padding: 18px 15px 12px 15px;
-            ">
+            "
+            (click)="referralsFilter($event)"
+            >
             filter_list
           </mat-icon>
         </div>
@@ -224,7 +226,7 @@
     </div>
   </div>
 
-  <div *ngIf="showTable2" @slideIn style="margin-left: 64%" class="dropdown-content">
+  <div *ngIf="showTable2" @slideIn style="margin-left: 66%" class="dropdown-content">
     <div id="grid-table-container" class="table-responsive">
       <h4>Gap Analysis - Claims vs. Paid</h4>
       <table matSort class="table table-bordered table-hover">

@@ -1,4 +1,7 @@
-<div class="nav-container" [ngClass]="{'nav-open': isNavOpen, 'nav-closed': !isNavOpen}">
+
+<div class="nav-container mt-4" [ngClass]="{'nav-open': isNavOpen, 'nav-closed': !isNavOpen}">
+
+
     <!-- Toggle Button with Hamburger Icon -->
     <button (click)="toggleNav()" class="toggle-button">
         <mat-icon class="toggle-icon">menu</mat-icon>
@@ -28,8 +31,195 @@
 </div>
 
 <div [ngClass]="{'full-width': !isNavOpen}" class="col-sm-10">
+
+    <div style="display: flex; align-items: center; margin-top: -4%">
+        <!-- Image Container -->
+        <div class="col-sm-2" style="margin-left: 14%;  cursor: pointer" (click)="toggleCard()">
+            <img src="../../../../assets/rbg.png" class="top-left-image"
+                style="width: 35px; height: 35px; margin-top: -18%; margin-left: 40px" />
+        </div>
+    
+    
+        <mat-card class="col-sm-10 pull-right" style="
+                height: 35px;
+                background-color: black;
+                margin-top: -2.5%;
+                margin-left: -20px;
+                margin-right: -10px;
+              " *ngIf="showCard">
+            <div fxLayout="row" fxLayoutAlign="start center"
+                style="gap: 30px; padding: 0 10px; display: flex; align-items: center">
+                <div style="display: flex; align-items: center; gap: 10px">
+                    <span style="color: white; line-height: 35px; gap: 30px">Referrals</span>
+                    <span style="
+                      color: white;
+                      line-height: 35px;
+                      gap: 30px;
+                      margin-right: 10px;
+                    ">120,000</span>
+                    <mat-icon style="
+                      cursor: pointer;
+                      margin-right: 10px;
+                      background-color: lightgray;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      width: 35px;
+                      height: 35px;
+                      padding: 18px 15px 12px 15px;
+                    " (click)="toggleTable('table')">
+                        {{ showTable ? "expand_less" : "add" }}
+                    </mat-icon>
+                </div>
+    
+                <div style="display: flex; align-items: center; gap: 10px">
+                    <span style="color: white; line-height: 35px">Visits </span>
+                    <span style="
+                      color: white;
+                      line-height: 35px;
+                      gap: 30px;
+                      margin-right: 10px;
+                    ">105,991</span>
+                    <mat-icon style="
+                      cursor: pointer;
+                      margin-right: 10px;
+                      background-color: lightgray;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      width: 35px;
+                      height: 35px;
+                      padding: 18px 15px 12px 15px;
+                    " (click)="toggleTable('table1')">
+                        {{ showTable1 ? "expand_less" : "add" }}
+                    </mat-icon>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px">
+                    <span style="color: white; line-height: 35px">Claims </span>
+                    <span style="
+                      color: white;
+                      line-height: 35px;
+                      gap: 30px;
+                      margin-right: 10px;
+                    ">65,001</span>
+                    <mat-icon style="
+                      cursor: pointer;
+                      margin-right: 10px;
+                      background-color: lightgray;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      width: 35px;
+                      height: 35px;
+                      padding: 18px 15px 12px 15px;
+                    " (click)="toggleTable('table2')">
+                        {{ showTable2 ? "expand_less" : "add" }}
+                    </mat-icon>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px">
+                    <span style="color: white; line-height: 35px">Paid</span>
+                    <span style="
+                      color: white;
+                      line-height: 35px;
+                      gap: 30px;
+                      margin-right: 10px;
+                    ">45,962</span>
+                </div>
+    
+                <div style="display: flex; align-items: center; gap: 7px">
+    
+                    <mat-icon style="
+                      cursor: pointer;
+                      margin-right: 7px;
+                      background-color: lightgray;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      width: 35px;
+                      height: 35px;
+                      padding: 18px 15px 12px 15px;
+                    " (click)="referralsFilter($event)">
+                        filter_list
+                    </mat-icon>
+                </div>
+    
+            </div>
+        </mat-card>
+    
+    </div>
+    
+    
+    <div *ngIf="showTable" @slideIn style="margin-left: 25.4%" class="dropdown-content">
+        <div id="grid-table-container" class="table-responsive">
+            <h4>Gap Analysis - Referral vs. Visits</h4>
+            <table matSort class="table table-bordered table-hover">
+                <tbody>
+                    <tr *ngFor="let user of dataSource; let i = index">
+                        <td [ngStyle]="{
+                        'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
+                      }">
+                            {{ user.workList }}
+                        </td>
+                        <td [ngStyle]="{
+                        'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
+                      }" style="color: blue; cursor: pointer" [routerLink]="['/rcm-login/referrals']">
+                            {{ user.volume }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div *ngIf="showTable1" @slideIn style="margin-left: 45%" class="dropdown-content">
+        <div id="grid-table-container" class="table-responsive">
+            <h4>Gap Analysis - Visits vs. Claims</h4>
+            <table matSort class="table table-bordered table-hover">
+                <tbody>
+                    <tr *ngFor="let user of dataSource1; let i = index">
+                        <td [ngStyle]="{
+                        'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
+                      }">
+                            {{ user.workList }}
+                        </td>
+                        <td [ngStyle]="{
+                        'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
+                      }" style="color: blue; cursor: pointer" [routerLink]="['/rcm-login/visits']">
+                            {{ user.volume }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div *ngIf="showTable2" @slideIn style="margin-left: 66%" class="dropdown-content">
+        <div id="grid-table-container" class="table-responsive">
+            <h4>Gap Analysis - Claims vs. Paid</h4>
+            <table matSort class="table table-bordered table-hover">
+                <tbody>
+                    <tr *ngFor="let user of dataSource2; let i = index">
+                        <td [ngStyle]="{
+                        'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
+                      }">
+                            {{ user.workList }}
+                        </td>
+                        <td [ngStyle]="{
+                        'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
+                      }" style="color: blue; cursor: pointer" [routerLink]="['/rcm-login/claims']">
+                            {{ user.volume }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    
+    
+
     <div class="row">
-        <div class="col-sm-12" fxLayout="row wrap" #resizedDiv>
+        <div class="col-sm-12 mt-5" fxLayout="row wrap" #resizedDiv>
             <div class="w-100 flex-p" style="margin-top: -10px; margin-bottom: 10px;">
                 <button mat-raised-button class="pull-right margin-right-10" (click)="filterToggle = !filterToggle"
                     style="background-color: black; color:white;">

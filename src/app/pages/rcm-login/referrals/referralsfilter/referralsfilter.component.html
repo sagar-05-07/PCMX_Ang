@@ -1,0 +1,23 @@
+<h1 style="background-color: rgb(73, 128, 150); color: white; text-align: center;" mat-dialog-title>
+  Select Global Filter Criteria
+</h1>
+
+<div class="button-container mt-3">
+  <button mat-raised-button class="custom-button" *ngFor="let button of buttons; let i = index"
+      [ngClass]="{'clicked': button.clicked}" (click)="changeColor(i)">
+      {{button.name}}
+  </button>
+</div>
+
+<mat-dialog-actions align="end">
+  <div style="margin-right: 10px; margin-bottom: 10px; margin-top: 10px;">
+      <button mat-raised-button style="background-color: green; color: white;" (click)="close()">
+          <span>{{ data ? 'Update' : 'Save'}}</span>
+      </button>
+      <button mat-raised-button style="background-color: lightgray; color: red;" class="add-dark-hover btn-default"
+          (click)="close()">Clear
+      </button>
+      <button mat-stroked-button style="color: red; border: 1px solid ;" (click)="close()">Close
+      </button>
+  </div>
+</mat-dialog-actions>
