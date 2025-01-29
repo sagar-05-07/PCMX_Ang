@@ -1,7 +1,4 @@
-<div
-  class="nav-container"
-  [ngClass]="{ 'nav-open': isNavOpen, 'nav-closed': !isNavOpen }"
->
+<div class="nav-container" [ngClass]="{ 'nav-open': isNavOpen, 'nav-closed': !isNavOpen }">
   <!-- Toggle Button with Hamburger Icon -->
   <button (click)="toggleNav()" class="toggle-button">
     <mat-icon class="toggle-icon">menu</mat-icon>
@@ -42,9 +39,7 @@
               <mat-icon style="color: #8a81f2">work</mat-icon>
             </div>
             <div class="subtitle-container">
-              <mat-card-subtitle class="subtitle" style="white-space: nowrap"
-                >Worker Comp</mat-card-subtitle
-              >
+              <mat-card-subtitle class="subtitle" style="white-space: nowrap">Worker Comp</mat-card-subtitle>
               <mat-card-subtitle class="count">80</mat-card-subtitle>
             </div>
           </div>
@@ -64,64 +59,38 @@
   </div>
 </div>
 
-<div
-  [ngClass]="{ 'full-width': !isNavOpen }"
-  class="col-sm-10 container-fluid"
-  style="margin-bottom: 10px; padding-right: 25px"
->
+<div [ngClass]="{ 'full-width': !isNavOpen }" class="col-sm-10 container-fluid"
+  style="margin-bottom: 10px; padding-right: 25px">
+  <!-- Rainbow images  -->
 
-
-<!-- Rainbow images  -->
-
-
-
-<div style="display: flex; align-items: center; margin-top: -4%">
+  <div style="display: flex; align-items: center; margin-top: -4.5%">
     <!-- Image Container -->
-    <div
-      class="col-sm-2"
-      style="margin-left: 14%; position: relative; cursor: pointer"
-      (click)="toggleCard()"
-    >
-      <img
-        src="../../../../assets/rbg.png"
-        class="top-left-image"
-        style="width: 35px; height: 35px; margin-top: -18%; margin-left: 40px"
-      />
+    <div class="col-sm-2" style="margin-left: 14%;  cursor: pointer" (click)="toggleCard()">
+      <img src="../../../../assets/rbg.png" class="top-left-image"
+        style="width: 35px; height: 35px; margin-top: -18%; margin-left: 40px" />
     </div>
 
-    <mat-card
-      class="col-sm-10"
-      style="
+
+    <mat-card class="col-sm-10 pull-right" style="
         height: 35px;
         background-color: black;
         margin-top: -2.5%;
         margin-left: -30px;
         margin-right: -10px;
-      "
-      *ngIf="showCard"
-    >
-      <div
-        fxLayout="row"
-        fxLayoutAlign="start center"
-        style="gap: 30px; padding: 0 10px; display: flex; align-items: center"
-      >
+      " *ngIf="showCard">
+      <div fxLayout="row" fxLayoutAlign="start center"
+        style="gap: 30px; padding: 0 10px; display: flex; align-items: center">
         <div style="display: flex; align-items: center; gap: 10px">
-          <span style="color: white; line-height: 35px; gap: 30px"
-            >Referrals</span
-          >
-          <span
-            style="
+          <span style="color: white; line-height: 35px; gap: 30px">Referrals</span>
+          <span style="
               color: white;
               line-height: 35px;
               gap: 30px;
-              margin-right: 40px;
-            "
-            >120,000</span
-          >
-          <mat-icon
-            style="
+              margin-right: 10px;
+            ">120,000</span>
+          <mat-icon style="
               cursor: pointer;
-              margin-right: 32px;
+              margin-right: 10px;
               background-color: lightgray;
               display: flex;
               align-items: center;
@@ -129,28 +98,22 @@
               width: 35px;
               height: 35px;
               padding: 18px 15px 12px 15px;
-            "
-            (click)="toggleTable('table')">   {{ showTable ? 'expand_less' : 'add' }}
-            
+            " (click)="toggleTable('table')">
+            {{ showTable ? "expand_less" : "add" }}
           </mat-icon>
-        </div>      
-
+        </div>
 
         <div style="display: flex; align-items: center; gap: 10px">
           <span style="color: white; line-height: 35px">Visits </span>
-          <span
-            style="
+          <span style="
               color: white;
               line-height: 35px;
               gap: 30px;
-              margin-right: 40px;
-            "
-            >105,991</span
-          >
-          <mat-icon
-            style="
+              margin-right: 10px;
+            ">105,991</span>
+          <mat-icon style="
               cursor: pointer;
-              margin-right: 32px;
+              margin-right: 10px;
               background-color: lightgray;
               display: flex;
               align-items: center;
@@ -158,27 +121,21 @@
               width: 35px;
               height: 35px;
               padding: 18px 15px 12px 15px;
-            "
-            (click)="toggleTable('table1')"
-          >
-          {{ showTable1 ? 'expand_less' : 'add' }}
+            " (click)="toggleTable('table1')">
+            {{ showTable1 ? "expand_less" : "add" }}
           </mat-icon>
         </div>
         <div style="display: flex; align-items: center; gap: 10px">
           <span style="color: white; line-height: 35px">Claims </span>
-          <span
-            style="
+          <span style="
               color: white;
               line-height: 35px;
               gap: 30px;
-              margin-right: 40px;
-            "
-            >65,001</span
-          >
-          <mat-icon
-            style="
+              margin-right: 10px;
+            ">65,001</span>
+          <mat-icon style="
               cursor: pointer;
-              margin-right: 32px;
+              margin-right: 10px;
               background-color: lightgray;
               display: flex;
               align-items: center;
@@ -186,73 +143,109 @@
               width: 35px;
               height: 35px;
               padding: 18px 15px 12px 15px;
-            "
-            (click)="toggleTable('table2')"
-          >
-          {{ showTable2 ? 'expand_less' : 'add' }}
+            " (click)="toggleTable('table2')">
+            {{ showTable2 ? "expand_less" : "add" }}
           </mat-icon>
         </div>
         <div style="display: flex; align-items: center; gap: 10px">
           <span style="color: white; line-height: 35px">Paid</span>
-          <span
-            style="
+          <span style="
               color: white;
               line-height: 35px;
               gap: 30px;
-              margin-right: 30px;
-            "
-            >45,962</span
-          >
+              margin-right: 10px;
+            ">45,962</span>
         </div>
+
+        <div style="display: flex; align-items: center; gap: 7px">
+
+          <mat-icon style="
+              cursor: pointer;
+              margin-right: 7px;
+              background-color: lightgray;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 35px;
+              height: 35px;
+              padding: 18px 15px 12px 15px;
+            ">
+            filter_list
+          </mat-icon>
+        </div>
+
       </div>
     </mat-card>
+
   </div>
 
-  <div *ngIf="showTable"  @slideIn  style="margin-left: 25%;" class="dropdown-content">
+
+  <div *ngIf="showTable" @slideIn style="margin-left: 25.4%" class="dropdown-content">
     <div id="grid-table-container" class="table-responsive">
       <h4>Gap Analysis - Referral vs. Visits</h4>
       <table matSort class="table table-bordered table-hover">
         <tbody>
           <tr *ngFor="let user of dataSource; let i = index">
-            <td [ngStyle]="{'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'}">{{user.workList}}</td>
-            <td [ngStyle]="{'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'}" style="color: blue; cursor: pointer;" [routerLink]="['/rcm-login/referrals']">{{user.volume}}</td>
+            <td [ngStyle]="{
+                'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
+              }">
+              {{ user.workList }}
+            </td>
+            <td [ngStyle]="{
+                'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
+              }" style="color: blue; cursor: pointer" [routerLink]="['/rcm-login/referrals']">
+              {{ user.volume }}
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-
-  <div *ngIf="showTable1"  @slideIn style="margin-left: 45%;" class="dropdown-content">
+  <div *ngIf="showTable1" @slideIn style="margin-left: 45%" class="dropdown-content">
     <div id="grid-table-container" class="table-responsive">
       <h4>Gap Analysis - Visits vs. Claims</h4>
       <table matSort class="table table-bordered table-hover">
         <tbody>
           <tr *ngFor="let user of dataSource1; let i = index">
-            <td [ngStyle]="{'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'}">{{user.workList}}</td>
-            <td [ngStyle]="{'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'}" style="color: blue; cursor: pointer;" [routerLink]="['/rcm-login/visits']">{{user.volume}}</td>
+            <td [ngStyle]="{
+                'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
+              }">
+              {{ user.workList }}
+            </td>
+            <td [ngStyle]="{
+                'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
+              }" style="color: blue; cursor: pointer" [routerLink]="['/rcm-login/visits']">
+              {{ user.volume }}
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-
-  <div *ngIf="showTable2" @slideIn  style="margin-left: 65%;" class="dropdown-content">
+  <div *ngIf="showTable2" @slideIn style="margin-left: 64%" class="dropdown-content">
     <div id="grid-table-container" class="table-responsive">
       <h4>Gap Analysis - Claims vs. Paid</h4>
       <table matSort class="table table-bordered table-hover">
         <tbody>
           <tr *ngFor="let user of dataSource2; let i = index">
-            <td [ngStyle]="{'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'}">{{user.workList}}</td>
-            <td [ngStyle]="{'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'}" style="color: blue; cursor: pointer;" [routerLink]="['/rcm-login/claims']">{{user.volume}}</td>
+            <td [ngStyle]="{
+                'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
+              }">
+              {{ user.workList }}
+            </td>
+            <td [ngStyle]="{
+                'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
+              }" style="color: blue; cursor: pointer" [routerLink]="['/rcm-login/claims']">
+              {{ user.volume }}
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  
   <!-- Perspective Mat-Icons -->
   <div class="col-sm-12 mb-3" style="width: 103.6%">
     <div class="col-sm-4"></div>
@@ -262,27 +255,20 @@
       </p>
     </div>
     <div class="col-sm-5">
-      <mat-card
-        style="
+      <mat-card style="
           background-color: rgb(230, 228, 228);
           height: 35px;
           display: flex;
           justify-content: center;
           align-items: center;
-        "
-      >
-        <div
-          style="
+        ">
+        <div style="
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-          "
-        >
-          <mat-icon
-            *ngFor="let icon of icons; let i = index"
-            matTooltip="{{ icon.tooltip }}"
-            class="animated-icon1"
+          ">
+          <mat-icon *ngFor="let icon of icons; let i = index" matTooltip="{{ icon.tooltip }}" class="animated-icon1"
             [ngStyle]="{
               'background-color': selectedIcon === i ? 'yellow' : 'transparent',
               padding: selectedIcon === i ? '15px 15px 12px 15px' : '0px',
@@ -293,23 +279,13 @@
               'align-items': 'center',
               width: '40px',
               height: '40px'
-            }"
-            (click)="selectIcon(i)"
-          >
+            }" (click)="selectIcon(i)">
             {{ icon.name }}
           </mat-icon>
-          <mat-icon
-            style="background-color: white"
-            (click)="perspectives()"
-            matTooltip="Perspectives"
-            class="animated-icon1"
-            >settings
+          <mat-icon style="background-color: white" (click)="perspectives()" matTooltip="Perspectives"
+            class="animated-icon1">settings
           </mat-icon>
-          <mat-icon
-            (click)="perspectiveFilter($event)"
-            matTooltip="Filter"
-            class="animated-icon1"
-          >
+          <mat-icon (click)="perspectiveFilter($event)" matTooltip="Filter" class="animated-icon1">
             filter_list
           </mat-icon>
         </div>
@@ -317,23 +293,17 @@
     </div>
   </div>
   <!-- For Patient Intake -->
-  <div
-    class="col-sm-12 mt-3 mb-4"
-    style="width: 104%; margin-left: -20px"
-    *ngIf="selectedIcon === 0"
-  >
+  <div class="col-sm-12 mt-3 mb-4" style="width: 104%; margin-left: -20px" *ngIf="selectedIcon === 0">
     <!-- 1st -->
     <div class="col-sm-4">
       <table style="width: 103%; border-collapse: collapse; text-align: left">
         <tbody>
           <tr *ngFor="let data of patientData; let i = index">
-            <td
-              [ngStyle]="{
+            <td [ngStyle]="{
                 'background-color': i % 2 === 0 ? '#e3f2fd' : 'lemonchiffon',
                 padding: '8px',
                 border: '1px solid #ddd'
-              }"
-            >
+              }">
               {{ data.description }}
             </td>
             <td class="count1">
@@ -348,13 +318,11 @@
       <table style="width: 103%; border-collapse: collapse; text-align: left">
         <tbody>
           <tr *ngFor="let data of patientData2; let i = index">
-            <td
-              [ngStyle]="{
+            <td [ngStyle]="{
                 'background-color': i % 2 === 0 ? 'lemonchiffon' : '#e3f2fd',
                 padding: '8px',
                 border: '1px solid #ddd'
-              }"
-            >
+              }">
               {{ data.description }}
             </td>
             <td class="count1">
@@ -369,30 +337,21 @@
       <table style="width: 103%; border-collapse: collapse; text-align: left">
         <tbody>
           <tr *ngFor="let data of logData; let i = index">
-            <td
-              [ngStyle]="{
+            <td [ngStyle]="{
                 'background-color': i % 2 === 0 ? '#e3f2fd' : 'lemonchiffon',
                 padding: '8px',
                 border: '1px solid #ddd'
-              }"
-            >
+              }">
               {{ data.description }}
             </td>
-            <td
-              class="count1"
-              *ngIf="
+            <td class="count1" *ngIf="
                 data.description == 'Denied' || data.description == 'Delayed'
-              "
-              [ngStyle]="{ color: 'red' }"
-            >
+              " [ngStyle]="{ color: 'red' }">
               {{ data.count }}
             </td>
-            <td
-              class="count1"
-              *ngIf="
+            <td class="count1" *ngIf="
                 data.description != 'Denied' && data.description != 'Delayed'
-              "
-            >
+              ">
               {{ data.count }}
             </td>
           </tr>
@@ -403,12 +362,8 @@
 
   <!-- Liaison -->
   <div class="arrow-container" *ngIf="selectedIcon === 1">
-    <div
-      class="arrow-shape"
-      *ngFor="let stat of Liaisons; let i = index"
-      [style.background-color]="getBackgroundColor(i)"
-      style="color: black"
-    >
+    <div class="arrow-shape" *ngFor="let stat of Liaisons; let i = index"
+      [style.background-color]="getBackgroundColor(i)" style="color: black">
       <span class="arrow-text">{{ stat.text }}</span>
       <span class="arrow-number">{{ stat.number }}</span>
     </div>
@@ -532,23 +487,17 @@
   </div>
 
   <!-- For Collection Intake -->
-  <div
-    class="col-sm-12 mt-3 mb-4"
-    style="width: 104%; margin-left: -20px"
-    *ngIf="selectedIcon === 6"
-  >
+  <div class="col-sm-12 mt-3 mb-4" style="width: 104%; margin-left: -20px" *ngIf="selectedIcon === 6">
     <!-- 1st -->
     <div class="col-sm-4">
       <table style="width: 103%; border-collapse: collapse; text-align: left">
         <tbody>
           <tr *ngFor="let data of collectionData; let i = index">
-            <td
-              [ngStyle]="{
+            <td [ngStyle]="{
                 'background-color': i % 2 === 0 ? '#e3f2fd' : 'lemonchiffon',
                 padding: '8px',
                 border: '1px solid #ddd'
-              }"
-            >
+              }">
               {{ data.description }}
             </td>
             <td class="count1">
@@ -563,13 +512,11 @@
       <table style="width: 103%; border-collapse: collapse; text-align: left">
         <tbody>
           <tr *ngFor="let data of collectionData2; let i = index">
-            <td
-              [ngStyle]="{
+            <td [ngStyle]="{
                 'background-color': i % 2 === 0 ? 'lemonchiffon' : '#e3f2fd',
                 padding: '8px',
                 border: '1px solid #ddd'
-              }"
-            >
+              }">
               {{ data.description }}
             </td>
             <td class="count1">
@@ -584,30 +531,21 @@
       <table style="width: 103%; border-collapse: collapse; text-align: left">
         <tbody>
           <tr *ngFor="let data of collectionLogData; let i = index">
-            <td
-              [ngStyle]="{
+            <td [ngStyle]="{
                 'background-color': i % 2 === 0 ? '#e3f2fd' : 'lemonchiffon',
                 padding: '8px',
                 border: '1px solid #ddd'
-              }"
-            >
+              }">
               {{ data.description }}
             </td>
-            <td
-              class="count1"
-              *ngIf="
+            <td class="count1" *ngIf="
                 data.description == 'Denied' || data.description == 'Delayed'
-              "
-              [ngStyle]="{ color: 'red' }"
-            >
+              " [ngStyle]="{ color: 'red' }">
               {{ data.count }}
             </td>
-            <td
-              class="count1"
-              *ngIf="
+            <td class="count1" *ngIf="
                 data.description != 'Denied' && data.description != 'Delayed'
-              "
-            >
+              ">
               {{ data.count }}
             </td>
           </tr>
@@ -680,85 +618,47 @@
 
   <!-- Buttons -->
   <div class="w-100 mt-4">
-    <div
-      class="row"
-      style="display: flex; justify-content: flex-end; align-items: center"
-    >
-      <label class="control-label mt-2 margin-right-10"
-        >Apply Save Search :</label
-      >
-      <mat-select
-        class="form-control margin-right-10"
-        style="width: 180px"
-        placeholder="Select Subject"
-      >
+    <div class="row" style="display: flex; justify-content: flex-end; align-items: center">
+      <label class="control-label mt-2 margin-right-10">Apply Save Search :</label>
+      <mat-select class="form-control margin-right-10" style="width: 180px" placeholder="Select Subject">
         <mat-option [value]="'New York'">Pending Verification</mat-option>
         <mat-option [value]="'Los Angeles'">SCH & Pending AUTH</mat-option>
         <mat-option [value]="'Chicago'">Referrals this week</mat-option>
         <mat-option [value]="'Houston'">Authorized this week</mat-option>
       </mat-select>
-      <button
-        mat-raised-button
-        matTooltip="Save"
-        style="background-color: green; color: white; margin-right: 8px"
-      >
+      <button mat-raised-button matTooltip="Save" style="background-color: green; color: white; margin-right: 8px">
         Go
       </button>
 
       <!-- <button class="outline-button margin-right-10 pull-right button-sub-acute"
         matTooltip="Filter items by 'Hold' status">Hold (25)
       </button> -->
-      <button
-        mat-raised-button
-        style="background-color: #37474f; color: white"
-        (click)="openMerge()"
-        class="filters-hover margin-right-10"
-      >
+      <button mat-raised-button style="background-color: #37474f; color: white" (click)="openMerge()"
+        class="filters-hover margin-right-10">
         <mat-icon>merge_type</mat-icon> Merge
       </button>
 
-      <button
-        mat-raised-button
-        matTooltip="Download CSV"
-        class="center-icon"
-        style="background-color: black; color: white; margin-right: 8px"
-      >
+      <button mat-raised-button matTooltip="Download CSV" class="center-icon"
+        style="background-color: black; color: white; margin-right: 8px">
         <mat-icon>get_app</mat-icon>
       </button>
 
-      <button
-        mat-raised-button
-        matTooltip="Download Template"
-        class="center-icon"
-        style="background-color: black; color: white; margin-right: 8px"
-      >
+      <button mat-raised-button matTooltip="Download Template" class="center-icon"
+        style="background-color: black; color: white; margin-right: 8px">
         <mat-icon>get_app</mat-icon>
       </button>
 
-      <button
-        mat-raised-button
-        matTooltip="Upload CSV"
-        class="center-icon"
-        style="background-color: black; color: white; margin-right: 8px"
-      >
+      <button mat-raised-button matTooltip="Upload CSV" class="center-icon"
+        style="background-color: black; color: white; margin-right: 8px">
         <mat-icon>backup</mat-icon>
       </button>
 
-      <button
-        mat-raised-button
-        style="background-color: black; color: white"
-        class="margin-right-10"
-        (click)="filterToggle = !filterToggle"
-      >
+      <button mat-raised-button style="background-color: black; color: white" class="margin-right-10"
+        (click)="filterToggle = !filterToggle">
         <mat-icon class="mat-margin-top">filter_list</mat-icon> Filter
       </button>
 
-      <button
-        mat-raised-button
-        color="primary"
-        class="btn-primary margin-right-5"
-        (click)="openEditDialog(null)"
-      >
+      <button mat-raised-button color="primary" class="btn-primary margin-right-5" (click)="openEditDialog(null)">
         <mat-icon class="mat-margin-top">add</mat-icon> Add Referral
       </button>
     </div>
@@ -766,13 +666,8 @@
 </div>
 
 <!-- Filter UI -->
-<div
-  class="col-sm-10"
-  [ngClass]="{ 'full-width': !isNavOpen }"
-  fxLayout="row wrap"
-  *ngIf="filterToggle"
-  style="margin-bottom: 10px"
->
+<div class="col-sm-10" [ngClass]="{ 'full-width': !isNavOpen }" fxLayout="row wrap" *ngIf="filterToggle"
+  style="margin-bottom: 10px">
   <div fxFlex="100" class="flex-p w-100">
     <form>
       <mat-card class="filter">
@@ -783,11 +678,7 @@
                 <label class="control-label mt-2">Keyword :</label>
               </div>
               <div class="col-sm-8">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Serch by Keywords.."
-                />
+                <input type="text" class="form-control" placeholder="Serch by Keywords.." />
               </div>
             </div>
             <div class="col-sm-4">
@@ -795,10 +686,7 @@
                 <label class="control-label mt-2">Patient Name :</label>
               </div>
               <div class="col-sm-8">
-                <mat-select
-                  placeholder="Filter by Patient Name"
-                  class="form-control"
-                >
+                <mat-select placeholder="Filter by Patient Name" class="form-control">
                   <mat-option value="1">John Doe</mat-option>
                   <mat-option value="1">Jane Smith</mat-option>
                   <mat-option value="1">Mike Johnson</mat-option>
@@ -855,48 +743,30 @@
               </div>
             </div>
             <div class="col-sm-4 mt-3">
-              <a
-                (click)="filterToggle = !filterToggle"
-                matTooltip="Close"
-                class="pull-right"
-                style="font-size: 20px; cursor: pointer; margin-left: 5px"
-              >
+              <a (click)="filterToggle = !filterToggle" matTooltip="Close" class="pull-right"
+                style="font-size: 20px; cursor: pointer; margin-left: 5px">
                 <i class="fa fa-angle-double-up" aria-hidden="true"></i>
               </a>
 
-              <i
-                class="material-icons pull-right"
-                matTooltip="Clear"
-                style="font-size: 25px; cursor: pointer; margin-left: 5px"
-              >
+              <i class="material-icons pull-right" matTooltip="Clear"
+                style="font-size: 25px; cursor: pointer; margin-left: 5px">
                 settings_backup_restore
               </i>
 
-              <i
-                class="fa fa-save pull-right"
-                matTooltip="Save"
-                (click)="saveFilters()"
-                style="
+              <i class="fa fa-save pull-right" matTooltip="Save" (click)="saveFilters()" style="
                   font-size: 20px;
                   cursor: pointer;
                   margin-left: 5px;
                   color: green;
-                "
-                aria-hidden="true"
-              >
+                " aria-hidden="true">
               </i>
 
-              <i
-                class="fa fa-search pull-right"
-                matTooltip="Search"
-                style="
+              <i class="fa fa-search pull-right" matTooltip="Search" style="
                   font-size: 20px;
                   cursor: pointer;
                   margin-left: 5px;
                   color: blue;
-                "
-                aria-hidden="true"
-              >
+                " aria-hidden="true">
               </i>
             </div>
           </div>
@@ -910,10 +780,7 @@
 <div class="col-sm-10" [ngClass]="{ 'full-width': !isNavOpen }">
   <div id="grid-table-container" class="table-responsive">
     <table matSort class="table table-bordered table-hover">
-      <thead
-        class="tbl-head1"
-        style="background-color: rgb(58, 53, 53); color: white"
-      >
+      <thead class="tbl-head1" style="background-color: rgb(58, 53, 53); color: white">
         <tr>
           <th class="text-center">Actions</th>
           <th class="text-center">Status</th>
@@ -939,58 +806,37 @@
       <tbody>
         <tr *ngFor="let applicant of users">
           <td style="white-space: nowrap" class="text-center">
-            <a
-              matTooltip="Edit Record"
-              (click)="openEditDialog(applicant.id)"
-              class="fa fa-edit action-btn edit-btn"
-              style="margin-right: 10px"
-            >
+            <a matTooltip="Edit Record" (click)="openEditDialog(applicant.id)" class="fa fa-edit action-btn edit-btn"
+              style="margin-right: 10px">
             </a>
-            <a
-              matTooltip="Delete Record"
-              class="fa fa-trash action-btn delete-btn"
-            >
+            <a matTooltip="Delete Record" class="fa fa-trash action-btn delete-btn">
             </a>
           </td>
           <td class="text-center">{{ applicant.status }}</td>
           <td class="text-center" style="cursor: pointer">
             <a [routerLink]="['/rcm-login/referrals-dashboard']">{{
               applicant.referralId
-            }}</a>
+              }}</a>
           </td>
           <td class="text-center">
             <mat-checkbox></mat-checkbox>
           </td>
-          <td
-            class="text-center"
-            style="cursor: pointer"
-            [routerLink]="['/rcm-login/inner-visits']"
-          >
+          <td class="text-center" style="cursor: pointer" [routerLink]="['/rcm-login/inner-visits']">
             <a>{{ applicant.visits }}</a>
           </td>
-          <td
-            class="text-center"
-            style="cursor: pointer"
-            [routerLink]="['/rcm-login/inner-claims']"
-          >
+          <td class="text-center" style="cursor: pointer" [routerLink]="['/rcm-login/inner-claims']">
             <a>{{ applicant.claims }}</a>
           </td>
-          <td
-            class="text-center"
-            (click)="open(applicant.id)"
-            style="cursor: pointer; color: cornflowerblue"
-          >
+          <td class="text-center" (click)="open(applicant.id)" style="cursor: pointer; color: cornflowerblue">
             {{ applicant.referralId }}
           </td>
           <td>{{ applicant.patientName }}</td>
           <td>{{ applicant.referralFrom }}</td>
-          <td
-            style="
+          <td style="
               white-space: nowrap;
               text-align: center;
               color: cornflowerblue;
-            "
-          >
+            ">
             3
           </td>
           <td>{{ applicant.specialty }}</td>
@@ -1009,20 +855,11 @@
     <button class="mine" mat-fab (click)="scrollGrid('right')">
       <mat-icon style="color: #37474f">fast_forward</mat-icon>
     </button>
-    <button
-      class="mine"
-      mat-fab
-      style="margin-right: 78px !important"
-      (click)="scrollGrid('left')"
-    >
+    <button class="mine" mat-fab style="margin-right: 78px !important" (click)="scrollGrid('left')">
       <mat-icon style="color: #37474f">fast_rewind</mat-icon>
     </button>
-    <mat-paginator
-      [length]="totalSize"
-      [pageIndex]="currentPage"
-      [pageSizeOptions]="[5, 10, 25, 50, 100]"
-      showFirstLastButtons
-    >
+    <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSizeOptions]="[5, 10, 25, 50, 100]"
+      showFirstLastButtons>
     </mat-paginator>
   </div>
 </div>

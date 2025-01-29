@@ -34,8 +34,20 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 export class ReferralsComponent {
 
 
-  
-  showCard: boolean ;
+
+  showCard: boolean;
+
+  toggleCard() {
+
+    this.showCard = !this.showCard;
+
+    if (!this.showCard) {
+      this.showTable = false;
+      this.showTable1 = false;
+      this.showTable2 = false;
+    }
+  }
+
 
 
   dataSource = [
@@ -80,29 +92,21 @@ export class ReferralsComponent {
   showTable2: boolean = false;
 
   toggleTable(table: string) {
-    // Close all tables
-    this.showTable = false;
-    this.showTable1 = false;
-    this.showTable2 = false;
-
-    // Open the selected table
     if (table === 'table') {
-      this.showTable = true;
+      this.showTable = !this.showTable; // Toggle the state
+      this.showTable1 = false; // Ensure other tables are closed
+      this.showTable2 = false;
     } else if (table === 'table1') {
-      this.showTable1 = true;
+      this.showTable1 = !this.showTable1; // Toggle the state
+      this.showTable = false;
+      this.showTable2 = false;
     } else if (table === 'table2') {
-      this.showTable2 = true;
+      this.showTable2 = !this.showTable2; // Toggle the state
+      this.showTable = false;
+      this.showTable1 = false;
     }
   }
 
-
-
-  // Toggles the flag
-  toggleCard() {
-    this.showCard = !this.showCard;
-  }
-
-  
 
 
   filterToggle2: boolean = false;
