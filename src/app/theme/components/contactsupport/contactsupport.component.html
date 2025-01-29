@@ -1,0 +1,21 @@
+<button mat-icon-button [matMenuTriggerFor]="appsMenu" #appsMenuTrigger="matMenuTrigger">
+    <!-- <mat-icon title="Help" style="color: yellow;">help</mat-icon> -->
+    <img src="../../../../assets/help2image-removebg-preview.png" style="margin-top: -5px;">
+</button>
+<mat-menu #appsMenu="matMenu" [overlapTrigger]="false" class="toolbar-dropdown-menu applications">
+    <span (mouseleave)="appsMenuTrigger.closeMenu()">
+        <mat-toolbar color="primary">
+            <div fxLayout="row" fxLayoutAlign="space-around center" class="header" style="padding-left: 10px;">
+                Chart X Support
+            </div>
+        </mat-toolbar>
+        <mat-card style="margin-top: 20px;padding-left: 20px;padding-right: 20px;padding-bottom: 20px;">
+            <label>Relationship Manager:</label> John Doe
+            <label style="margin-top: 20px;">Mobile:</label> 996-969-9698
+            <label style="margin-top: 20px;margin-bottom: 10px;">Email:</label> {{ email }}
+
+
+        </mat-card>
+
+    </span>
+</mat-menu>

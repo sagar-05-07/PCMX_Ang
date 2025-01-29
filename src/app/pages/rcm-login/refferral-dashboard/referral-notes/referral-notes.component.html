@@ -1,0 +1,104 @@
+<div fxLayout="row wrap" class="mt-5">
+    <div fxFlex="90" class="p-2" style="width: 80%; max-width: 80% !important">
+        <mat-card class="p-0 chat" style="margin-left: -5px;">
+            <mat-sidenav-container>
+                <div>
+                    <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
+                        <div fxLayout="row" fxLayoutAlign="start center">
+
+                            <mat-list *ngIf="currentChat" class="p-0">
+                                <mat-list-item>
+                                    <img matListItemAvatar [src]="currentChat.image">
+                                </mat-list-item>
+                            </mat-list>
+                            <span *ngIf="currentChat" class="author-name">{{currentChat.author}} (Patient Liam
+                                Dawson,Request ID 6667-8425)</span>
+
+                        </div>
+                        <button mat-icon-button [matMenuTriggerFor]="personMenu" #personMenuTrigger="matMenuTrigger">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                    </mat-toolbar>
+                    <mat-menu #personMenu="matMenu" xPosition="before" overlapTrigger="true">
+                        <span (mouseleave)="personMenuTrigger.closeMenu()">
+                            <button mat-menu-item>
+                                <mat-icon>account_circle</mat-icon>
+                                <span>Contact info</span>
+                            </button>
+                            <button mat-menu-item>
+                                <mat-icon>volume_mute</mat-icon>
+                                <span>Mute</span>
+                            </button>
+                            <button mat-menu-item>
+                                <mat-icon>delete_forever</mat-icon>
+                                <span>Clear chat</span>
+                            </button>
+                        </span>
+                    </mat-menu>
+                    <div class="chat-content">
+                        <ng-scrollbar pointerEventsMethod="scrollbar">
+                            <mat-list *ngIf="talks" class="p-0">
+                                <mat-list-item *ngFor="let talk of talks" class="talk-item">
+                                    <img matListItemAvatar [src]="talk.image">
+                                    <p class="message">
+                                        <span [ngClass]="{'message-mine': talk.my, 'message-other': !talk.my}">
+                                            {{ talk.text }}
+
+                                        </span>
+                                        <small class="error-tag"
+                                            *ngIf="talk.text == 'Hi, Welcome to Chart X, How may i help you ?'">Errors</small>
+                                        <small class="error-tag1"
+                                            *ngIf="talk.text == 'Hi, It is a long established fact that a reader will be distracted by the readable content of a page'">Resolved</small>
+                                        <small
+                                            *ngIf="talk.text == 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.'"></small>
+                                    </p>
+                                    <p class="message-date">
+                                        <small>{{ talk.date | date:"dd MMMM, yyyy 'at' HH:mm"}}</small>
+                                        <a href="../../../assets/sample.pdf" class="attach-link"
+                                            *ngIf="talk.text == 'Hi, Welcome to Chart X, How may i help you ?'">
+                                            <mat-icon style="padding-top: 1px;">attach_file</mat-icon> case_details.pdf
+                                        </a>
+                                        <input *ngIf="talk.text == 'Hi, Welcome to Chart X, How may i help you ?'"
+                                            style="margin-right: 10px;margin-left: 10px;" type="checkbox">
+                                        <label *ngIf="talk.text == 'Hi, Welcome to Chart X, How may i help you ?'">Mark
+                                            as Resolved</label>
+                                    </p>
+                                </mat-list-item>
+                            </mat-list>
+
+                            <div *ngIf="!talks" fxLayout="column" fxLayoutAlign="center center" class="h-100 empty">
+                                <mat-icon>chat</mat-icon>
+                                <p>Select a interlocutor for talk</p>
+                            </div>
+                        </ng-scrollbar>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <mat-card class="chat-actions">
+                        <div fxLayout="row" fxLayoutAlign="space-between start">
+                            <!-- Checkbox with label "Task as Resolved" -->
+
+
+                            <!-- Input field for text message -->
+                            <mat-form-field class="w-100">
+                                <input matInput placeholder="Enter your text..." (keyup)="sendMessage($event)"
+                                    [(ngModel)]="newMessage">
+                            </mat-form-field>
+
+                            <!-- Buttons for attachment and send -->
+                            <div fxLayout="row" fxLayoutAlign="center center">
+                                <button mat-icon-button type="button" class="mx-2" (click)="openfileupload(null)">
+                                    <mat-icon>attach_file</mat-icon>
+                                </button>
+                                <button mat-mini-fab color="primary" type="button" (click)="sendMessage($event)">
+                                    <mat-icon>send</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </mat-card>
+
+                </div>
+
+            </mat-sidenav-container>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+<div class="nav-container" [ngClass]="{'nav-open': isNavOpen, 'nav-closed': !isNavOpen}">
+  <!-- Toggle Button with Hamburger Icon -->
+  <button (click)="toggleNav()" class="toggle-button">
+    <mat-icon class="toggle-icon">menu</mat-icon>
+  </button>
+
+  <nav class="nav-links">
+    <ul>
+      <li routerLinkActive="active" [routerLink]="['staff-users']">
+        <a style="margin-top: 10px;">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Staff Users">person</mat-icon>
+          <span *ngIf="isNavOpen">Staff Users</span>
+        </a>
+      </li>
+      <li routerLinkActive="active" [routerLink]="['settings']">
+        <a style="margin-top: 10px;">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Settings">settings</mat-icon>
+          <span *ngIf="isNavOpen">Settings</span>
+        </a>
+      </li>
+      <li routerLinkActive="active" [routerLink]="['lookup-options']">
+        <a style="margin-top: 10px;">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Manage Lookup Options">list_alt</mat-icon>
+          <span *ngIf="isNavOpen">Lookup Options</span>
+        </a>
+      </li>
+      <li routerLinkActive="active" [routerLink]="['event-master']">
+        <a style="margin-top: 10px;">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Event Management">event</mat-icon>
+          <span *ngIf="isNavOpen">Event Master</span>
+        </a>
+      </li>
+      <li routerLinkActive="active" [routerLink]="['activity-log']">
+        <a style="margin-top: 10px;">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Activity Logs">history</mat-icon>
+          <span *ngIf="isNavOpen">Activity Log</span>
+        </a>
+      </li>
+      <li routerLinkActive="active" [routerLink]="['audit-trail']">
+        <a style="margin-top: 10px;">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Audit Logs">fact_check</mat-icon>
+          <span *ngIf="isNavOpen">Audit Trail</span>
+        </a>
+      </li>
+      <li routerLinkActive="active" [routerLink]="['error-log']">
+        <a style="margin-top: 10px;">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Error Logs">bug_report</mat-icon>
+          <span *ngIf="isNavOpen">Error Log</span>
+        </a>
+      </li>
+      <li routerLinkActive="active" [routerLink]="['service-levels']">
+        <a style="margin-top: 10px;">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Service Level Agreements">task_alt</mat-icon>
+          <span *ngIf="isNavOpen">Service Levels</span>
+        </a>
+      </li>
+      <li routerLinkActive="active" [routerLink]="['escalation-matrix']">
+        <a style="margin-top: 10px;">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Escalation Management">escalator_warning</mat-icon>
+          <span *ngIf="isNavOpen">Escalation</span>
+        </a>
+      </li>
+      <li routerLinkActive="active" [routerLink]="['insurance-groups']">
+        <a style="margin-top: 10px;">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="Insurance Groups">groups</mat-icon>
+          <span *ngIf="isNavOpen">Insurance Groups</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<div [ngClass]="{'full-width': !isNavOpen}" class="col-sm-10">
+  <router-outlet></router-outlet>
+</div>

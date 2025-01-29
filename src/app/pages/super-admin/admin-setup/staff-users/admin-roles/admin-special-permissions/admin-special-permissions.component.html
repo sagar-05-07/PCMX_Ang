@@ -1,0 +1,26 @@
+<div class="col-sm-12" style="max-width: 100%; overflow-x: hidden; padding: 0; margin: 0; box-sizing: border-box;">
+
+  <div class="NewHeader">
+    <h1 mat-dialog-title style="color: white">Special Permission</h1>
+  </div>
+
+  <div mat-dialog-content style="overflow: hidden !important">
+    <form class="form-horizontal row" novalidate style="margin-top: 10px">
+      <div class="col-sm-6" *ngFor="let role of roles; let i = index">
+        <mat-checkbox class="primary">{{ role.role }}</mat-checkbox>
+      </div>
+    </form>
+  </div>
+
+  <mat-dialog-actions align="end">
+    <div style="margin-right: 50px; margin-top: -20px">
+      <button mat-raised-button style="background-color: green; color:white">
+        <mat-icon>save</mat-icon>Save
+      </button>
+      <button mat-raised-button class="add-dark-hover btn-default" style="color: red;" (click)="close()">
+        <mat-icon>closed</mat-icon>
+        Close
+      </button>
+    </div>
+  </mat-dialog-actions>
+</div>

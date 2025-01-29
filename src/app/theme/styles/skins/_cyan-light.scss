@@ -1,0 +1,8 @@
+$cyan-light-primary: mat.define-palette(mat.$cyan-palette, 400, 100, 600);
+$cyan-light-accent: mat.define-palette(mat.$light-blue-palette, 600, 300, 900);
+$cyan-light-warn: mat.define-palette(mat.$red-palette, 500);
+
+$cyan-light-theme: mat.define-light-theme((color: (primary: $cyan-light-primary,
+                accent: $cyan-light-accent,
+                warn: $cyan-light-warn,
+            )));

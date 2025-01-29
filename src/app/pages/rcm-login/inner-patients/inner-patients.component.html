@@ -1,0 +1,80 @@
+<div class="container-fluid" style="margin-bottom: 10px; padding-right: 25px">
+    <div class="w-100">
+        <div class="row" style="display: flex; justify-content: flex-end; align-items: center">
+            <button mat-raised-button class="pull-right" (click)="back();"
+                style="background-color: gray; color: white; margin-top: -20px; margin-right: 10px;">
+                <mat-icon>arrow_back</mat-icon>Back
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Table -->
+<div class="col-sm-12">
+    <div id="grid-table-container" class="table-responsive">
+        <table matSort class="table table-bordered table-hover">
+            <thead class="tbl-head1" style="background-color: rgb(58, 53, 53); color: white">
+                <tr>
+                    <th class="text-center" style="white-space: nowrap">Patient ID</th>
+                    <!-- <th style="white-space: nowrap">Select</th> -->
+                    <th style="white-space: nowrap">Patient Name</th>
+                    <!-- <th class="text-center" style="white-space: nowrap">Cases</th>
+                    <th class="text-center" style="white-space: nowrap">Referrals</th>
+                    <th class="text-center" style="white-space: nowrap">Providers</th>
+                    <th class="text-center" style="white-space: nowrap">Visits</th>
+                    <th class="text-center" style="white-space: nowrap">Claims</th> -->
+                    <!-- <th style="white-space: nowrap">Liaison</th> -->
+                    <th style="white-space: nowrap">City</th>
+                    <th style="white-space: nowrap">State</th>
+                    <th class="text-center" style="white-space: nowrap">Zip Code</th>
+                    <th style="white-space: nowrap">Emergency</th>
+                    <th style="white-space: nowrap">Employment</th>
+                    <th style="white-space: nowrap">Insurance</th>
+                    <th class="text-center" style="white-space: nowrap">Cell Phone</th>
+                    <th style="white-space: nowrap">Email</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let applicant of users">
+                    <td class="text-center">{{ applicant.patientId }}</td>
+                    <!-- <td>
+                        <mat-radio-button></mat-radio-button>
+                    </td> -->
+                    <td style="white-space: nowrap">{{ applicant.name }}</td>
+                    <!-- <td class="text-center" [routerLink]="['../inner-cases']" style="color: blue; cursor: pointer">
+                        {{ applicant.cases }}
+                    </td>
+                    <td class="text-center" [routerLink]="['../inner-referrals']" style="color: blue; cursor: pointer">
+                        {{ applicant.referrals }}
+                    </td>
+                    <td class="text-center" [routerLink]="['../inner-providers']" style="color: blue; cursor: pointer">
+                        {{ applicant.providers }}
+                    </td>
+                    <td class="text-center" [routerLink]="['../inner-visits']" style="color: blue; cursor: pointer">5
+                    </td>
+                    <td class="text-center" [routerLink]="['../inner-claims']" style="color: blue; cursor: pointer">
+                        {{ applicant.claims }}
+                    </td> -->
+                    <!-- <td style="white-space: nowrap">{{ applicant.liaison }}</td> -->
+                    <td style="white-space: nowrap">{{ applicant.city }}</td>
+                    <td style="white-space: nowrap">{{ applicant.state }}</td>
+                    <td class="text-center">{{ applicant.zipCode }}</td>
+                    <td style="white-space: nowrap">Natalie Cohen</td>
+                    <td style="white-space: nowrap">{{ applicant.employment }}</td>
+                    <td style="white-space: nowrap">{{ applicant.insurance }}</td>
+                    <td class="text-center">{{ applicant.cellPhone }}</td>
+                    <td>{{ applicant.email }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="mine" mat-fab (click)="scrollGrid('right')">
+            <mat-icon style="color: #37474f">fast_forward</mat-icon>
+        </button>
+        <button class="mine" mat-fab style="margin-right: 78px !important" (click)="scrollGrid('left')">
+            <mat-icon style="color: #37474f">fast_rewind</mat-icon>
+        </button>
+        <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSizeOptions]="[5, 10, 25, 50, 100]"
+            showFirstLastButtons></mat-paginator>
+    </div>
+</div>

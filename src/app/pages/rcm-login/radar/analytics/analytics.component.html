@@ -1,0 +1,151 @@
+<div class="col-sm-12 mt-3" style="margin-left: 5px;">
+    <mat-card style="background-color: rgb(213, 232, 239);">
+        <mat-card-content>
+            <!-- From Year -->
+            <div class="col-sm-4 row">
+                <div class="col-sm-4 mt-2">
+                    <b>State :</b>
+                </div>
+                <div class="col-sm-8" style="margin-left: -20px;">
+                    <mat-select class="form-control bac" placeholder="Select State">
+                        <mat-option value="2020">California</mat-option>
+                        <mat-option value="2021">Texas</mat-option>
+                        <mat-option value="2022">New Jersey</mat-option>
+                        <mat-option value="2023">Florida</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+
+            <div class="col-sm-4 row">
+                <div class="col-sm-4 mt-2">
+                    <b>Year :</b>
+                </div>
+                <div class="col-sm-8" style="margin-left: -20px;">
+                    <mat-select class="form-control bac" placeholder="Select Year">
+                        <mat-option value="2020">2020</mat-option>
+                        <mat-option value="2021">2021</mat-option>
+                        <mat-option value="2022">2022</mat-option>
+                        <mat-option value="2023">2023</mat-option>
+                        <mat-option value="2024">2024</mat-option>
+                        <mat-option value="2025">2025</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+
+            <div class="col-sm-4 row">
+                <div class="col-sm-4 mt-2">
+                    <b>Referral :</b>
+                </div>
+                <div class="col-sm-8" style="margin-left: -20px;">
+                    <mat-select class="form-control bac" placeholder="Select Referral">
+                        <mat-option [value]="'Initiated'">Initiated</mat-option>
+                        <mat-option [value]="'Verification'">Verification</mat-option>
+                        <mat-option [value]="'Authorization'">Authorization</mat-option>
+                        <mat-option [value]="'Scheduling'">Scheduling</mat-option>
+                        <mat-option [value]="'Provider Care'">Provider Care</mat-option>
+                        <mat-option [value]="'Claim Processing'">Claim Processing</mat-option>
+                        <mat-option [value]="'Closed'">Closed</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+
+            <div class="col-sm-4 mt-3 row">
+                <div class="col-sm-4 mt-2">
+                    <b>Case :</b>
+                </div>
+                <div class="col-sm-8" style="margin-left: -20px;">
+                    <mat-select class="form-control bac" placeholder="Select Case">
+                        <mat-option [value]="'New York'">Subacute Trauma</mat-option>
+                        <mat-option [value]="'Los Angeles'">Self Pay</mat-option>
+                        <mat-option [value]="'Chicago'">Insurance</mat-option>
+                        <mat-option [value]="'Houston'">Workers Comp</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="col-sm-7 mt-3">
+                <button mat-raised-button style="background-color: black; color: white;" class="pull-right">
+                    <mat-icon>clear</mat-icon> Clear
+                </button>
+                <button mat-raised-button style="background-color: blue; color: white;"
+                    class="pull-right margin-right-10">
+                    <mat-icon>search</mat-icon> Search
+                </button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+<div class="row">
+    <div class="col-sm-3" style="margin-left: 20px; width: 24.5%">
+        <mat-card class="small-card" style="background-color: #d3d3d3;"> <!-- Light Gray -->
+            <div class="card-content">
+                <div class="card-title">Active Providers</div>
+                <div class="card-value">12239</div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col-sm-3" style="width: 24.5%">
+        <mat-card class="small-card" style="background-color: #f5f5a0;"> <!-- Light Yellow -->
+            <div class="card-content">
+                <div class="card-title">Active Law Firms</div>
+                <div class="card-value">17662</div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col-sm-3" style="width: 24.5%">
+        <mat-card class="small-card" style="background-color: #b3e5fc;"> <!-- Light Blue -->
+            <div class="card-content">
+                <div class="card-title">Total Patients</div>
+                <div class="card-value">989062</div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col-sm-3" style="width: 24.5%">
+        <mat-card class="small-card" style="background-color: #dcedc8;"> <!-- Light Green -->
+            <div class="card-content">
+                <div class="card-title">Active Cases</div>
+                <div class="card-value">39590</div>
+            </div>
+        </mat-card>
+    </div>
+</div>
+
+<div class="col-sm-12">
+</div>
+
+<div class="col-sm-12" style="margin-top: 15px">
+    <figure class="highcharts-figure">
+        <div id="container" style="margin-left: -217px;width: 154%;height: 400px;overflow: hidden;"></div>
+    </figure>
+</div>
+
+<div class="col-sm-12">
+
+</div>
+
+<div class="col-sm-12" style="margin-top: 15px">
+    <figure class="highcharts-figure">
+        <div id="container8" style="margin-left: -217px;width: 154%;height: 400px;overflow: hidden;"></div>
+    </figure>
+</div>
+
+<div class="col-sm-12 row">
+    <div class="col-sm-4">
+        <figure class="highcharts-figure">
+            <div id="container9"></div>
+        </figure>
+    </div>
+
+    <div class="col-sm-4">
+        <figure class="highcharts-figure">
+            <div id="container10"></div>
+        </figure>
+    </div>
+
+    <div class="col-sm-4">
+        <figure class="highcharts-figure">
+            <div id="container11"></div>
+        </figure>
+    </div>
+</div>

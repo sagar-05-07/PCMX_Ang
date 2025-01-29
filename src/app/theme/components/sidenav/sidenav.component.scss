@@ -1,0 +1,52 @@
+@import "../../styles/variables";
+
+.pin {
+    width: 124px;
+    height: 24px;
+    cursor: pointer;
+    fill: currentColor;
+}
+
+.sidenav-header {
+    padding: 0 10px !important;
+}
+
+.user-block {
+    height: 0;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+
+    .user-info-wrapper {
+        padding: 0 6px;
+        margin: 4px 0;
+        width: 100%;
+        margin-top: 8px;
+
+        .user-info {
+            text-align: center;
+
+            .name {
+                font-size: 15px;
+            }
+
+            .position {
+                font-size: 13px;
+            }
+        }
+    }
+
+    &.show {
+        height: 100px;
+        /* Increased height when expanded */
+    }
+}
+
+ng-scrollbar.sidenav-menu-outer {
+    height: calc(100% - #{$toolbar-height});
+
+    &.user-block-show {
+        height: calc(100% - #{$toolbar-height + 100px});
+        /* Match the increased .user-block.show height */
+    }
+}

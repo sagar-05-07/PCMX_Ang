@@ -1,0 +1,149 @@
+<div class="container-fluid" style="margin-bottom: 10px; padding-right: 25px">
+  <div class="w-100">
+    <div class="row" style="display: flex; justify-content: flex-end; align-items: center">
+      <!-- Filter Button -->
+      <button mat-raised-button style="background-color: #37474f; color: white" class="filters-hover margin-right-10"
+        (click)="filterToggle = !filterToggle">
+        <mat-icon class="mat-margin-top">filter_list</mat-icon> Filter
+      </button>
+
+      <!-- Grid Columns Button -->
+      <button mat-raised-button style="background-color: #37474f; color: white" (click)="openManageGridDialog()"
+        class="filters-hover margin-right-10">
+        <mat-icon>grid_on</mat-icon> Grid Columns
+      </button>
+
+      <!-- Download CSV Button -->
+      <button mat-raised-button style="background-color: black; color: white; margin-right: 8px">
+        <mat-icon>get_app</mat-icon> Download CSV
+      </button>
+
+      <!-- Back Button -->
+      <!-- <button mat-raised-button (click)="goBack()"
+        style="position: absolute; top: -50px; right: 10px; z-index: 10; border-radius: 5px; background-color: gray; color: white;">
+        <mat-icon>arrow_back_ios</mat-icon> Back
+      </button> -->
+
+      <!-- Upload CSV Button -->
+      <!-- <button
+          mat-raised-button
+          style="background-color: black; color: white; margin-right: 8px"
+        >
+          <mat-icon>backup</mat-icon> Upload CSV
+        </button> -->
+
+
+      <!-- Add Account Button -->
+      <button mat-raised-button (click)="goBack();"
+      style="background-color: gray; color: white;">
+      <mat-icon>arrow_back</mat-icon>Back
+  </button>
+    </div>
+  </div>
+</div>
+
+<!-- Filter UI -->
+<div fxLayout="row wrap" *ngIf="filterToggle" style="margin-bottom: 10px">
+  <div fxFlex="100" class="flex-p w-100">
+    <form [formGroup]="filterForm">
+      <mat-card class="filter">
+        <mat-card-content>
+          <div class="row col-sm-12">
+            <div class="col-sm-4 row">
+              <div class="col-sm-3">
+                <b>Industry:</b>
+              </div>
+              <div class="col-sm-9">
+                <select placeholder="Select Industry" class="form-control" formControlName="Status">
+                  <option></option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-sm-4 row">
+              <div class="col-sm-2">
+                <b>Select Status:</b>
+              </div>
+              <div class="col-sm-10">
+                <select placeholder="Select Status" class="form-control" formControlName="Status">
+                  <option></option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <a (click)="filterToggle = !filterToggle" class="pull-right"
+                style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+              </a>
+              <button mat-raised-button color="primary" class="pull-right">
+                Search
+              </button>
+
+              <button mat-raised-button class="pull-right btn-default margin-right-10">
+                Clear
+              </button>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </div>
+</div>
+
+<!-- Table -->
+<div class="col-sm-12">
+  <div id="grid-table-container" class="table-responsive">
+    <table matSort class="table table-bordered table-hover">
+      <thead class="tbl-head1" style="background-color: rgb(58, 53, 53); color: white">
+        <tr>
+          <th class="text-center" style="white-space: nowrap">Status</th>
+          <th class="text-center" style="white-space: nowrap">Patient ID</th>
+          <th style="white-space: nowrap">Name</th>
+
+          <th style="white-space: nowrap">Liaison</th>
+          <th style="white-space: nowrap">City</th>
+          <th style="white-space: nowrap">State</th>
+          <th class="text-center" style="white-space: nowrap">Zip Code</th>
+          <th style="white-space: nowrap">Emergency</th>
+          <th style="white-space: nowrap">Employment</th>
+          <th style="white-space: nowrap">Insurance</th>
+          <th class="text-center" style="white-space: nowrap">Cell Phone</th>
+          <th style="white-space: nowrap">Email</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let applicant of users">
+          <td class="text-center">
+            <a style="color: blue; cursor: pointer">{{ applicant.status }}</a>
+          </td>
+          <td class="text-center">
+            <a>
+              {{ applicant.patientId }}
+            </a>
+          </td>
+          <td style="white-space: nowrap">{{ applicant.name }}</td>
+
+          <td style="white-space: nowrap">{{ applicant.liaison }}</td>
+          <td style="white-space: nowrap">{{ applicant.city }}</td>
+          <td style="white-space: nowrap">{{ applicant.state }}</td>
+          <td class="text-center">{{ applicant.zipCode }}</td>
+          <td style="white-space: nowrap">Natalie Cohen</td>
+          <td style="white-space: nowrap">{{ applicant.employment }}</td>
+          <td style="white-space: nowrap">{{ applicant.insurance }}</td>
+          <td class="text-center">{{ applicant.cellPhone }}</td>
+          <td>{{ applicant.email }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="mine" mat-fab (click)="scrollGrid('right')">
+      <mat-icon style="color: #37474f">fast_forward</mat-icon>
+    </button>
+    <button class="mine" mat-fab style="margin-right: 78px !important" (click)="scrollGrid('left')">
+      <mat-icon style="color: #37474f">fast_rewind</mat-icon>
+    </button>
+    <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSizeOptions]="[5, 10, 25, 50, 100]"
+      showFirstLastButtons></mat-paginator>
+  </div>
+</div>

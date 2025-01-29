@@ -1,0 +1,13 @@
+.left-align-btn {
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    display: inline-block;
+    width: 140px;
+}
+
+.left-align-btn.active {
+    background-color: #50636d !important;
+    color: white;
+}

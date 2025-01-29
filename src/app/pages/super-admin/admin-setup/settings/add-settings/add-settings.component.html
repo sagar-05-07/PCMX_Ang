@@ -1,0 +1,78 @@
+<div
+  class="col-sm-12"
+  style="
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  "
+>
+  <div class="NewHeader" style="text-align: center; padding: 10px 0">
+    <h1 mat-dialog-title>{{ data ? "Update" : "Add" }}</h1>
+  </div>
+  <div
+    mat-dialog-content
+    style="padding: 16px; box-sizing: border-box; max-width: 100%"
+  >
+    <form class="form-horizontal" style="width: 100%; box-sizing: border-box">
+      <div
+        class="form-group row"
+        style="margin-bottom: 1rem; display: flex; align-items: center"
+      >
+        <label
+          class="control-label col-sm-4 add-member-label"
+          style="text-align: right; padding-right: 10px; margin-left: 100px"
+          >Name:</label
+        >
+        <div class="col-sm-8" style="padding: 0; margin-right: 80px">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Name"
+            style="width: 100%; box-sizing: border-box"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+  <mat-dialog-actions
+    align="end"
+    style="
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      padding: 16px;
+      box-sizing: border-box;
+    "
+  >
+    <button
+      mat-raised-button
+      color="primary"
+      [mat-dialog-close]="'test'"
+      style="
+        padding: 8px 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+      "
+    >
+      <mat-icon>send</mat-icon> <span>{{ data ? "Update" : "Save" }}</span>
+    </button>
+    <button
+      mat-raised-button
+      class="add-dark-hover btn-default"
+      style="
+        background-color: lightgray;
+        color: red;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+      "
+      (click)="close()"
+    >
+      <mat-icon>cancel</mat-icon>Close
+    </button>
+  </mat-dialog-actions>
+</div>

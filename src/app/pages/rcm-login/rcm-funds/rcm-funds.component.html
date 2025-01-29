@@ -1,0 +1,49 @@
+<div class="nav-container" [ngClass]="{'nav-open': isNavOpen, 'nav-closed': !isNavOpen}">
+    <!-- Toggle Button with Hamburger Icon -->
+    <!-- <button (click)="toggleNav()" class="toggle-button">
+        <mat-icon>menu</mat-icon>
+    </button> -->
+
+    <button (click)="toggleNav()" class="toggle-button">
+        <mat-icon class="toggle-icon">menu</mat-icon>
+    </button>
+
+    <nav class="nav-links">
+        <ul>
+            <li routerLinkActive="active" [routerLink]="['invoices']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Invoices">receipt</mat-icon>
+                    <span *ngIf="isNavOpen">Invoices</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['batches']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Batches">list_alt</mat-icon>
+                    <span *ngIf="isNavOpen">Batches</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['payments']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Funding">credit_card</mat-icon>
+                    <span *ngIf="isNavOpen">Funding</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['calculators']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Calculators">calculate</mat-icon>
+                    <span *ngIf="isNavOpen">Calculator</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['repayments']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Payback">sync</mat-icon>
+                    <span *ngIf="isNavOpen">Payback</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div [ngClass]="{'full-width': !isNavOpen}" class="col-sm-10">
+    <router-outlet></router-outlet>
+</div>

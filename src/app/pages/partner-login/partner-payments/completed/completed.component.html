@@ -1,0 +1,38 @@
+<div class="col-sm-12">
+    <!-- <div class="col-sm-1 mt-3" style="margin-left: -20px;">
+        <button *ngFor="let button of buttons; let i = index" class="left-align-btn"
+            [class.active]="selectedButton === i" mat-raised-button (click)="selectButton(i)">
+            {{ button }}
+        </button>
+    </div> -->
+    <!-- <div class="col-sm-1"></div> -->
+    <div class="mt-4 col-sm-8">
+        <div id="grid-table-container" class="table-responsive">
+            <table matSort class="table table-bordered table-hover">
+                <thead class="tbl-head1" style="background-color: rgb(58, 53, 53); color: white;">
+                    <tr>
+                        <th style="white-space: nowrap;" class="text-center">Batch Code</th>
+                        <th style="white-space: nowrap;" class="text-center">Submitted Date</th>
+                        <th style="white-space: nowrap;" class="text-center">Paid Date</th>
+                        <th style="white-space: nowrap;" class="text-center">Requested Date</th>
+                        <th style="white-space: nowrap;" class="text-center">Paid</th>
+                        <th style="white-space: nowrap;" class="text-center">Invoice Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of records">
+                        <td style="white-space: nowrap;" class="text-center">{{ item.batchCode }}</td>
+                        <td style="white-space: nowrap;" class="text-center">{{ item.submittedDate }}</td>
+                        <td style="white-space: nowrap;" class="text-center">{{ item.paidDate }}</td>
+                        <td style="white-space: nowrap;" class="text-center">{{ item.requestedDate }}</td>
+                        <td style="white-space: nowrap;" class="text-center">{{ item.paid | currency }}</td>
+                        <td class="text-center" style="color: blue; cursor: pointer;"
+                            [routerLink]="['/partner-login/requests']">{{
+                            item.invoiceCount }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="pills">
+  <ul class="nav nav-pills" style="margin-left: 10px; margin-bottom: -25px">
+    <li routerLinkActive="active" [routerLink]="['./active']">
+      <a mat-raised-button class="navtabWidth" style="margin-top: 10px">
+        Active (18)
+      </a>
+    </li>
+    <li routerLinkActive="active" [routerLink]="['./history']">
+      <a mat-raised-button class="navtabWidth" style="margin-top: 10px">
+        History (1822)
+      </a>
+    </li>
+  </ul>
+</div>
+<router-outlet></router-outlet>

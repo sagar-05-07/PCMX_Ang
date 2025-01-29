@@ -1,0 +1,146 @@
+<h1 style="background-color: rgb(73, 128, 150); color: white; text-align: center;" mat-dialog-title><span
+        *ngIf="!data">Add</span><span *ngIf="data">Edit</span> Location
+</h1>
+
+<div class="col-sm-12" style="padding: 30px !important;">
+    <div class="col-sm-6">
+        <div class="row" style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required mt-2">Location :</label>
+            </div>
+            <div class="col-sm-7">
+                <input type="text" class="form-control bac" placeholder="Enter Location" required>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required mt-2">Type :</label>
+            </div>
+            <div class="col-sm-7">
+                <mat-select class="form-control bac" placeholder="Select Type">
+                    <mat-option [value]="'New York'">Clinic</mat-option>
+                    <mat-option [value]="'Los Angeles'">Hospital</mat-option>
+                    <mat-option [value]="'Chicago'">Nursing Home</mat-option>
+                    <mat-option [value]="'Houston'">Others</mat-option>
+                </mat-select>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required mt-2">Address :</label>
+            </div>
+            <div class="col-sm-7">
+                <input type="text" class="form-control bac" placeholder="Enter Address" required>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required mt-2">City :</label>
+            </div>
+            <div class="col-sm-7">
+                <mat-select class="form-control bac" placeholder="Select City Name">
+                    <mat-option [value]="'New York'">New York</mat-option>
+                    <mat-option [value]="'Los Angeles'">Los Angeles</mat-option>
+                    <mat-option [value]="'Chicago'">Chicago</mat-option>
+                    <mat-option [value]="'Houston'">Houston</mat-option>
+                    <mat-option [value]="'Phoenix'">Phoenix</mat-option>
+                    <mat-option [value]="'Philadelphia'">Philadelphia</mat-option>
+                    <mat-option [value]="'San Antonio'">San Antonio</mat-option>
+                    <mat-option [value]="'San Diego'">San Diego</mat-option>
+                    <mat-option [value]="'Dallas'">Dallas</mat-option>
+                    <mat-option [value]="'Austin'">Austin</mat-option>
+                    <mat-option [value]="'San Jose'">San Jose</mat-option>
+                    <mat-option [value]="'Fort Worth'">Fort Worth</mat-option>
+                    <mat-option [value]="'Jacksonville'">Jacksonville</mat-option>
+                    <mat-option [value]="'Indianapolis'">Indianapolis</mat-option>
+                    <mat-option [value]="'Columbus'">Columbus</mat-option>
+                </mat-select>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required mt-2">State :</label>
+            </div>
+            <div class="col-sm-7">
+                <mat-select class="form-control bac" placeholder="Select State Name">
+                    <mat-option [value]="'New York'">New York</mat-option>
+                    <mat-option [value]="'California'">California</mat-option>
+                    <mat-option [value]="'Illinois'">Illinois</mat-option>
+                    <mat-option [value]="'Texas'">Texas</mat-option>
+                    <mat-option [value]="'Arizona'">Arizona</mat-option>
+                    <mat-option [value]="'Pennsylvania'">Pennsylvania</mat-option>
+                    <mat-option [value]="'Florida'">Florida</mat-option>
+                    <mat-option [value]="'Ohio'">Ohio</mat-option>
+                    <mat-option [value]="'Michigan'">Michigan</mat-option>
+                    <mat-option [value]="'Georgia'">Georgia</mat-option>
+                    <mat-option [value]="'North Carolina'">North Carolina</mat-option>
+                    <mat-option [value]="'Virginia'">Virginia</mat-option>
+                    <mat-option [value]="'Washington'">Washington</mat-option>
+                    <mat-option [value]="'Colorado'">Colorado</mat-option>
+                    <mat-option [value]="'Tennessee'">Tennessee</mat-option>
+                </mat-select>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required mt-2">Zip Code :</label>
+            </div>
+            <div class="col-sm-7">
+                <input type="text" class="form-control bac" placeholder="Enter Zip Code" required>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="row" style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required mt-2">Phone :</label>
+            </div>
+            <div class="col-sm-7">
+                <input type="text" class="form-control bac" placeholder="Enter Phone Number" required>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required mt-2">Phone 2 :</label>
+            </div>
+            <div class="col-sm-7">
+                <input type="text" class="form-control bac" placeholder="Enter Phone Number 2" required>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required mt-2">Fax :</label>
+            </div>
+            <div class="col-sm-7">
+                <input type="text" class="form-control bac" placeholder="Enter Fax Number" required>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required mt-2">Fax 2 :</label>
+            </div>
+            <div class="col-sm-7">
+                <input type="text" class="form-control bac" placeholder="Enter Fax Number 2" required>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required mt-2">Email :</label>
+            </div>
+            <div class="col-sm-7">
+                <input type="text" class="form-control bac" placeholder="Enter Email" required>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<mat-dialog-actions align="end">
+    <div style="margin-right: 45px;" class="col-sm-12 mb-4">
+        <button mat-raised-button style="background-color: green; color: white;"> <mat-icon>save</mat-icon>
+            <span>{{ data ? 'Update' : 'Save'}}</span></button>
+        <button mat-raised-button style="background-color: lightgray; color: red;" class="add-dark-hover btn-default"
+            (click)="close()"><mat-icon>cancel</mat-icon>Close</button>
+    </div>
+</mat-dialog-actions>

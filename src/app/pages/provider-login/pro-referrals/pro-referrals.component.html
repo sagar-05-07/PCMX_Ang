@@ -1,0 +1,373 @@
+<div class="nav-container" [ngClass]="{ 'nav-open': isNavOpen, 'nav-closed': !isNavOpen }">
+    <!-- Toggle Button with Hamburger Icon -->
+    <button (click)="toggleNav()" class="toggle-button">
+        <mat-icon class="toggle-icon">menu</mat-icon>
+    </button>
+
+
+    <!-- <div [ngClass]="{ 'full-width': !isNavOpen }" class="col-sm-10" class="container-fluid col-sm-10"
+    style="margin-bottom: 10px; padding-right: 25px">
+  
+    <div class="arrow-container">
+      <div class="arrow-shape" style="background-color: #BFBFBF; color: black;">
+        <span class="arrow-text">Intake</span>
+        <span class="arrow-number">79</span>
+      </div>
+  
+      <div class="arrow-shape" style="background-color: #FFA07A; color: black;">
+        <span class="arrow-text">Verification</span>
+        <span class="arrow-number">190</span>
+      </div>
+  
+      <div class="arrow-shape" style="background-color: #E6E600; color: black;">
+        <span class="arrow-text">Authorization</span>
+        <span class="arrow-number">70</span>
+      </div>
+  
+      <div class="arrow-shape" style="background-color: #48C78E; color: black;">
+        <span class="arrow-text">Scheduling</span>
+        <span class="arrow-number">20</span>
+      </div>
+  
+      <div class="arrow-shape" style="background-color: #9694FF; color: black;">
+        <span class="arrow-text">Scheduled</span>
+        <span class="arrow-number">60</span>
+      </div>
+  
+      <div class="arrow-shape" style="background-color: #80C4E9; color: black;">
+        <span class="arrow-text">Processing</span>
+        <span class="arrow-number">10</span>
+      </div>
+  
+      <div class="arrow-shape" style="background-color: #CDC1FF; color: black;">
+        <span class="arrow-text">Closed</span>
+        <span class="arrow-number">190</span>
+      </div>
+    </div>
+  
+    <div class="w-100 mt-4">
+      <div class="row" style="display: flex; justify-content: flex-end; align-items: center">
+        <button mat-raised-button style="background-color: #37474f; color: white" class="filters-hover margin-right-10"
+          (click)="filterToggle = !filterToggle">
+          <mat-icon class="mat-margin-top">filter_list</mat-icon> Filter
+        </button>
+        <button mat-raised-button style="background-color: black; color: white; margin-right: 8px">
+          <mat-icon>get_app</mat-icon> Download CSV
+        </button>
+  
+        <button mat-raised-button style="background-color: black; color: white; margin-right: 8px">
+          <mat-icon>backup</mat-icon> Upload CSV
+        </button>
+  
+        <button mat-raised-button color="primary" class="btn-primary margin-right-5" (click)="openEditDialog(null)">
+          <mat-icon class="mat-margin-top">add</mat-icon> Add Referral
+        </button>
+      </div>
+    </div>
+  </div> -->
+
+    <!-- Navigation Links (visible only when nav is open) -->
+    <div *ngIf="isNavOpen">
+        <nav class="nav-links">
+
+            <mat-card style="padding: 5px; cursor: pointer; margin-top: 23px;">
+                <div style="flex: 1; padding-right: 20px;">
+                    <h3 style="margin-left: 17px; margin-top: 18px; margin-bottom: 10px;">Case Types</h3>
+
+                    <div class="case-type-row">
+                        <div class="icon-container1">
+                            <mat-icon style="color: #67d799;">medical_services</mat-icon>
+                        </div>
+                        <div class="subtitle-container">
+                            <mat-card-subtitle class="subtitle">Sub Acute</mat-card-subtitle>
+                            <mat-card-subtitle class="count">1298</mat-card-subtitle>
+                        </div>
+                    </div>
+
+                    <div class="case-type-row">
+                        <div class="icon-container2">
+                            <mat-icon style="color: #8a81f2;">health_and_safety</mat-icon>
+                        </div>
+                        <div class="subtitle-container">
+                            <mat-card-subtitle class="subtitle">Insurance</mat-card-subtitle>
+                            <mat-card-subtitle class="count">120</mat-card-subtitle>
+                        </div>
+                    </div>
+
+                    <div class="case-type-row">
+                        <div class="icon-container2">
+                            <mat-icon style="color: #8a81f2;">work</mat-icon>
+                        </div>
+                        <div class="subtitle-container">
+                            <mat-card-subtitle class="subtitle" style="white-space: nowrap">Worker
+                                Comp</mat-card-subtitle>
+                            <mat-card-subtitle class="count">80</mat-card-subtitle>
+                        </div>
+                    </div>
+
+                    <div class="case-type-row">
+                        <div class="icon-container4">
+                            <mat-icon style="color: #e76f51;">account_balance_wallet</mat-icon>
+                        </div>
+                        <div class="subtitle-container">
+                            <mat-card-subtitle class="subtitle">Self Pay</mat-card-subtitle>
+                            <mat-card-subtitle class="count">12</mat-card-subtitle>
+                        </div>
+                    </div>
+
+                </div>
+            </mat-card>
+
+
+
+
+            <!-- <div class="row mt-5" style="margin-bottom: 12px">
+        <div class="col-sm-12">
+          <label class="control-label required">Referral Status :</label>
+        </div>
+        <div class="col-sm-12">
+          <mat-select class="form-control bac" placeholder="Select Referral Status">
+            <mat-option [value]="'Initiated'">Initiated</mat-option>
+            <mat-option [value]="'Verification'">Verification</mat-option>
+            <mat-option [value]="'Authorization'">Authorization</mat-option>
+            <mat-option [value]="'Scheduling'">Scheduling</mat-option>
+            <mat-option [value]="'Provider Care'">Provider Care</mat-option>
+            <mat-option [value]="'Claim Processing'">Claim Processing</mat-option>
+            <mat-option [value]="'Closed'">Closed</mat-option>
+          </mat-select>
+        </div>
+      </div>
+
+      <div class="row mt-5" style="margin-bottom: 12px">
+        <div class="col-sm-12">
+          <label class="control-label required">Case Type :</label>
+        </div>
+        <div class="col-sm-12">
+          <mat-select class="form-control bac" placeholder="Select Case Type">
+            <mat-option [value]="'Injury'">Injury</mat-option>
+            <mat-option [value]="'Malpractice'">Malpractice</mat-option>
+            <mat-option [value]="'Worker’s Compensation'">Worker’s Compensation</mat-option>
+            <mat-option [value]="'Disability Claim'">Disability Claim</mat-option>
+            <mat-option [value]="'Civil Dispute'">Civil Dispute</mat-option>
+            <mat-option [value]="'Criminal Case'">Criminal Case</mat-option>
+            <mat-option [value]="'Bankruptcy'">Bankruptcy</mat-option>
+            <mat-option [value]="'Health Insurance Claim'">Health Insurance Claim</mat-option>
+            <mat-option [value]="'Divorce'">Divorce</mat-option>
+            <mat-option [value]="'Employment Dispute'">Employment Dispute</mat-option>
+          </mat-select>
+        </div>
+      </div> -->
+
+            <!-- <div class="row mt-5" style="margin-bottom: 12px">
+        <div class="col-sm-12">
+          <label class="control-label required">Status :</label>
+        </div>
+        <div class="col-sm-12">
+          <mat-select class="form-control bac" placeholder="Select Status">
+            <mat-option [value]="'ALL'">ALL</mat-option>
+            <mat-option [value]="'ER Follow Up'">ER Follow Up</mat-option>
+            <mat-option [value]="'Previous Day'">Previous Day</mat-option>
+            <mat-option [value]="'Pending Estimate'">Pending Estimate</mat-option>
+            <mat-option [value]="'Pending Verification'">Pending Verification</mat-option>
+            <mat-option [value]="'Pending Authorization'">Pending Authorization</mat-option>
+            <mat-option [value]="'Pending Ver / Auth'">Pending Ver / Auth</mat-option>
+            <mat-option [value]="'Pending Schedule'">Pending Schedule</mat-option>
+            <mat-option [value]="'Schedule / Pending Verification'">Schedule / Pending Verification</mat-option>
+          </mat-select>
+        </div>
+      </div> -->
+        </nav>
+    </div>
+</div>
+
+<div [ngClass]="{ 'full-width': !isNavOpen }" class="col-sm-10 container-fluid"
+    style="margin-bottom: 10px; padding-right: 25px">
+
+    <div class="arrow-container">
+        <div class="arrow-shape" style="background-color: #D9D9D9; color: black;">
+            <span class="arrow-text">Intake</span>
+            <span class="arrow-number">79</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #FFD2B2; color: black;">
+            <span class="arrow-text">Verification</span>
+            <span class="arrow-number">190</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #FFFACD; color: black;">
+            <span class="arrow-text">Authorization</span>
+            <span class="arrow-number">70</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #A8E5C1; color: black;">
+            <span class="arrow-text">Scheduling</span>
+            <span class="arrow-number">20</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #C4C2FF; color: black;">
+            <span class="arrow-text">Scheduled</span>
+            <span class="arrow-number">60</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #B3E3F6; color: black;">
+            <span class="arrow-text">Processing</span>
+            <span class="arrow-number">10</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #E0DBFF; color: black;">
+            <span class="arrow-text">Closed</span>
+            <span class="arrow-number">190</span>
+        </div>
+    </div>
+
+    <div class="w-100 mt-4">
+        <div class="row" style="display: flex; justify-content: flex-end; align-items: center">
+
+            <button mat-raised-button style="background-color: #37474f; color: white" (click)="openMerge()"
+                class="filters-hover margin-right-10">
+                <mat-icon>merge_type</mat-icon> Merge
+            </button>
+            <button mat-raised-button style="background-color: #546E7A; color: white"
+                class="filters-hover margin-right-10" (click)="filterToggle = !filterToggle">
+                <mat-icon class="mat-margin-top">filter_list</mat-icon> Filter
+            </button>
+
+            <button mat-raised-button style="background-color: black; color: white; margin-right: 8px">
+                <mat-icon>get_app</mat-icon> Download CSV
+            </button>
+
+            <button mat-raised-button style="background-color: black; color: white; margin-right: 8px">
+                <mat-icon>backup</mat-icon> Upload CSV
+            </button>
+
+            <button mat-raised-button color="primary" class="btn-primary margin-right-5" (click)="openEditDialog(null)">
+                <mat-icon class="mat-margin-top">add</mat-icon> Add Referral
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Filter UI -->
+<!-- <div fxLayout="row wrap" *ngIf="filterToggle" style="margin-bottom: 10px">
+    <div fxFlex="100" class="flex-p w-100">
+        <form [formGroup]="filterForm">
+            <mat-card class="filter">
+                <mat-card-content>
+                    <div class="row col-sm-12">
+                        <div class="col-sm-4 row">
+                            <div class="col-sm-3">
+                                <b>Industry:</b>
+                            </div>
+                            <div class="col-sm-9">
+                                <select placeholder="Select Industry" class="form-control" formControlName="Status">
+                                    <option></option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 row">
+                            <div class="col-sm-2">
+                                <b>Select Status:</b>
+                            </div>
+                            <div class="col-sm-10">
+                                <select placeholder="Select Status" class="form-control" formControlName="Status">
+                                    <option></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <a (click)="filterToggle = !filterToggle" class="pull-right"
+                                style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                            </a>
+                            <button mat-raised-button color="primary" class="pull-right">
+                                Search
+                            </button>
+
+                            <button mat-raised-button class="pull-right btn-default margin-right-10">
+                                Clear
+                            </button>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </div>
+</div> -->
+
+<!-- Table -->
+<div class="col-sm-10" [ngClass]="{ 'full-width': !isNavOpen }" class="col-sm-10">
+    <div id="grid-table-container" class="table-responsive">
+        <table matSort class="table table-bordered table-hover">
+            <thead class="tbl-head1" style="background-color: rgb(58, 53, 53); color: white">
+                <tr>
+                    <th class="text-center">Actions</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center" style="white-space: nowrap">Referral ID</th>
+                    <th class="text-center">Select</th>
+                    <th class="text-center">Visits</th>
+                    <th class="text-center">Claims</th>
+                    <th style="white-space: nowrap">Patient Name</th>
+                    <th style="white-space: nowrap">Referral From</th>
+                    <th style="white-space: nowrap">Referral To</th>
+                    <th>Specialty</th>
+                    <th style="white-space: nowrap">Case ID</th>
+                    <th style="white-space: nowrap">Case Type</th>
+                    <th style="white-space: nowrap">Order Type</th>
+                    <th style="white-space: nowrap" class="text-center">Last Updated</th>
+                    <th style="white-space: nowrap" class="text-center">Created</th>
+                    <!-- <th>City</th>
+                    <th>State</th> -->
+                    <!-- <th class="text-center">Zip Code</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let applicant of users">
+                    <td style="white-space: nowrap" class="text-center">
+                        <a matTooltip="Edit Record" (click)="openEditDialog(applicant.id)"
+                            class="fa fa-edit action-btn edit-btn" style="margin-right: 10px;">
+                        </a>
+                        <a matTooltip="Delete Record" class="fa fa-trash action-btn delete-btn">
+                        </a>
+                    </td>
+                    <td class="text-center">{{ applicant.status }}</td>
+                    <td class="text-center" style="cursor: pointer;">
+                        <a [routerLink]="['/rcm-login/referrals-dashboard']">{{ applicant.referralId }}</a>
+                    </td>
+                    <td class="text-center">
+                        <mat-checkbox></mat-checkbox>
+                    </td>
+                    <td class="text-center" style="cursor: pointer;" [routerLink]="['/rcm-login/inner-visits']">
+                        <a>{{ applicant.visits }}</a>
+                    </td>
+                    <td class="text-center" style="cursor: pointer;" [routerLink]="['/rcm-login/inner-claims']">
+                        <a>{{ applicant.claims }}</a>
+                    </td>
+                    <td>{{ applicant.patientName }}</td>
+                    <td>{{ applicant.referralFrom }}</td>
+                    <td style="white-space: nowrap; text-align: center; color: cornflowerblue;">3</td>
+                    <td>{{ applicant.specialty }}</td>
+                    <td>C12345</td>
+                    <td style="white-space: nowrap">{{ applicant.caseType }}</td>
+                    <td>{{ applicant.orderType }}</td>
+                    <td class="text-center">
+                        {{ applicant.lastUpdated | date : "dd-MMM-yyyy" }}
+                    </td>
+                    <td style="white-space: nowrap" class="text-center">
+                        {{ applicant.created | date : "dd-MMM-yyyy" }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="mine" mat-fab (click)="scrollGrid('right')">
+            <mat-icon style="color: #37474f">fast_forward</mat-icon>
+        </button>
+        <button class="mine" mat-fab style="margin-right: 78px !important" (click)="scrollGrid('left')">
+            <mat-icon style="color: #37474f">fast_rewind</mat-icon>
+        </button>
+        <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSizeOptions]="[5, 10, 25, 50, 100]"
+            showFirstLastButtons></mat-paginator>
+    </div>
+</div>

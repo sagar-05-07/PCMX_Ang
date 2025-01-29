@@ -1,0 +1,29 @@
+.bac {
+  background-color: rgb(254, 254, 196);
+}
+
+::ng-deep .mat-step-header .mat-step-icon {
+  background-color: gray !important;
+  color: white !important;
+  margin-left: 25px;
+}
+
+::ng-deep .mat-step-header .mat-step-icon:hover {
+  background-color: darkgray;
+}
+
+/* Adjusting the position of the "Insurances" step */
+::ng-deep .mat-horizontal-stepper .mat-step:nth-child(5) {
+  margin-right: 55px !important;
+  text-align: center;
+}
+
+::ng-deep .mat-horizontal-stepper-header-container {
+  width: 94%;
+}
+
+::ng-deep .mat-step-header .mat-step {
+  margin-left: -55px !important;
+  //   width: 100px !important;
+  //   padding: 10px;
+}

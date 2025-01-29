@@ -1,0 +1,20 @@
+<h1 style="background-color: rgb(73, 128, 150); color: white; text-align: center;" mat-dialog-title> Manage Grid
+</h1>
+
+<div style="margin-left: 30px;">
+    <div class="row col-sm-12 mt-5">
+        <div *ngFor="let item of headers;let i = index" class="col-sm-4" style="margin-bottom: 10px;">
+            <mat-checkbox [checked]="item.IsSelected" [(ngModel)]="item.IsSelected" class="marginClasImportant"
+                [checked]="checkbox">{{item.Name}}</mat-checkbox>
+        </div>
+    </div>
+</div>
+
+<mat-dialog-actions align="end" style="margin-right: 40px; margin-bottom: 15px;">
+    <button mat-raised-button class="pull-right add-hover btn-success" style="width: 93px !important;" (click)="save()">
+        <mat-icon>send</mat-icon>Apply
+    </button>
+    <button mat-raised-button color="primary" style="color: red !important; background-color: lightgray;"
+        class="pull-right" (click)="close()"><mat-icon>cancel</mat-icon>&nbsp;Close
+    </button>
+</mat-dialog-actions>

@@ -1,0 +1,137 @@
+<div class="col-sm-12">
+    <div fxLayout="row wrap">
+        <div class="w-100">
+            <!-- <div class="flex-p">
+                <div class="row wrap">
+                    <div class="col-xs-12" style="margin-right: 0px !important;margin-top: 15px;margin-bottom: 10px;">
+                        <div class="col-sm-12 pull-right" style="margin-right: -18px;">
+                            <button mat-raised-button class="pull-right" (click)="back();"
+                                style="background-color: gray; color: white; margin-top: -20px; margin-right: 10px;">
+                                <mat-icon>arrow_back</mat-icon>Back
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="container-fluid" style="padding-right: 5px; padding-left: 0px">
+                <div fxLayout="row wrap" #resizedDiv>
+                    <div class="flex-p w-100 sizeAlign">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div id="grid-table-container" class="table-responsive">
+                                    <table matSort class="table table-bordered table-hover" style="width: 100%">
+                                        <thead class="tbl-head">
+                                            <tr class="tr-grid-header">
+                                                <!-- <th>Actions</th> -->
+                                                <th>Reset</th>
+                                                <th>Sync</th>
+                                                <th class="text-center">REG</th>
+                                                <th>Provider</th>
+                                                <th>Networks</th>
+                                                <th style="min-width: 145px">Phone</th>
+                                                <th>Insurance</th>
+                                                <th>Email</th>
+                                                <th>Locations</th>
+                                                <th>State</th>
+                                                <th>City</th>
+                                                <th>Paitents</th>
+                                                <th>Referrals</th>
+                                                <th>Visits</th>
+                                                <th>Cases</th>
+                                                <th>Claims</th>
+                                                <th>Specialities</th>
+                                                <th class="text-center">2F</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngIf="allContacts.length > 0">
+                                            <tr *ngFor="let item of allContacts">
+                                                <td class="pad-left inner-screen text-left"
+                                                    style="text-align: center !important">
+                                                    <a style="cursor: pointer; text-decoration: none"
+                                                        matTooltip="Reset">
+                                                        <mat-icon>sync</mat-icon>
+                                                    </a>
+                                                </td>
+                                                <td class="text-center">
+                                                    <mat-icon style="color: #007bff">settings</mat-icon>
+                                                </td>
+                                                <td class="text-center"><mat-checkbox></mat-checkbox></td>
+                                                <td
+                                                    style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
+                                                    {{ item.name }}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{ item.networks }}
+                                                </td>
+
+                                                <td>
+                                                    {{ item.Phone }}
+                                                </td>
+
+                                                <!-- insurance -->
+                                                <td class="text-center">
+                                                    {{ item.insurances }}
+                                                </td>
+                                                <td>{{ item.Email }}</td>
+                                                <td class="text-center">6</td>
+                                                <td>Texas</td>
+                                                <td style="white-space: nowrap">
+                                                    {{ item.city }}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{ item.paitents }}
+                                                </td>
+                                                <td class="text-center" style="cursor: pointer">
+                                                    {{ item.referrals }}
+                                                </td>
+                                                <td class="text-center" style="cursor: pointer">
+                                                    {{ item.visits }}
+                                                </td>
+                                                <td class="text-center" style="cursor: pointer">
+                                                    {{ item.cases }}
+                                                </td>
+                                                <td class="text-center" style="cursor: pointer">
+                                                    {{ item.claims }}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{ item.category }}
+                                                    <!-- <a style="cursor: pointer">
+                                                        <span matTooltip="Category" matTooltipPosition="above">
+                                                            {{ item.category }}
+                                                        </span>
+                                                        |
+                                                        <span matTooltip="Specialty" matTooltipPosition="above">
+                                                            {{ item.speciality }}
+                                                        </span>
+                                                        |
+                                                        <span matTooltip="Sub Specialty" matTooltipPosition="above">
+                                                            {{ item.subSpecialty }}
+                                                        </span>
+                                                    </a> -->
+                                                </td>
+
+                                                <td class="text-center"><mat-checkbox></mat-checkbox></td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                    <button class="mine" mat-fab (click)="scrollGrid('right')">
+                                        <mat-icon style="color: #37474f">fast_forward</mat-icon>
+                                    </button>
+                                    <button class="mine" mat-fab style="margin-right: 78px !important"
+                                        (click)="scrollGrid('left')">
+                                        <mat-icon style="color: #37474f">fast_rewind</mat-icon>
+                                    </button>
+                                </div>
+                                <mat-paginator class="col-sm-12" [length]="totalSize" [pageIndex]="currentPage"
+                                    [pageSize]="" [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="handlePage($event)"
+                                    showFirstLastButtons></mat-paginator>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

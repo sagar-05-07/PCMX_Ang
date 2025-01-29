@@ -1,0 +1,309 @@
+<div class="nav-container" [ngClass]="{ 'nav-open': isNavOpen, 'nav-closed': !isNavOpen }">
+    <!-- Toggle Button with Hamburger Icon -->
+    <button (click)="toggleNav()" class="toggle-button">
+        <mat-icon class="toggle-icon">menu</mat-icon>
+    </button>
+
+    <!-- Navigation Links (visible only when nav is open) -->
+    <div *ngIf="isNavOpen">
+        <nav class="nav-links">
+
+            <mat-card style="padding: 5px; cursor: pointer; margin-top: 23px;">
+                <div style="flex: 1; padding-right: 20px;">
+                    <h3 style="margin-left: 17px; margin-top: 18px; margin-bottom: 10px;">Ageing</h3>
+
+                    <div class="case-type-row">
+                        <div class="icon-container1">
+                            <mat-icon style="color: #67d799;">event_available</mat-icon>
+                        </div>
+                        <div class="subtitle-container">
+                            <mat-card-subtitle class="subtitle">0-30 Days</mat-card-subtitle>
+                            <mat-card-subtitle class="count">1298</mat-card-subtitle>
+                        </div>
+                    </div>
+
+                    <div class="case-type-row">
+                        <div class="icon-container2">
+                            <mat-icon style="color: #8a81f2;">update</mat-icon>
+                        </div>
+                        <div class="subtitle-container">
+                            <mat-card-subtitle class="subtitle">30-90 Days</mat-card-subtitle>
+                            <mat-card-subtitle class="count">120</mat-card-subtitle>
+                        </div>
+                    </div>
+
+                    <div class="case-type-row">
+                        <div class="icon-container3">
+                            <mat-icon style="color: #8a81f2;">watch_later</mat-icon>
+                        </div>
+                        <div class="subtitle-container">
+                            <mat-card-subtitle class="subtitle" style="white-space: nowrap;">
+                                90-180 Days
+                            </mat-card-subtitle>
+                            <mat-card-subtitle class="count">80</mat-card-subtitle>
+                        </div>
+                    </div>
+
+                    <div class="case-type-row">
+                        <div class="icon-container4">
+                            <mat-icon style="color: #e76f51;">date_range</mat-icon>
+                        </div>
+                        <div class="subtitle-container">
+                            <mat-card-subtitle class="subtitle">6M - 1Y</mat-card-subtitle>
+                            <mat-card-subtitle class="count">12</mat-card-subtitle>
+                        </div>
+                    </div>
+
+                    <div class="case-type-row">
+                        <div class="icon-container5">
+                            <mat-icon style="color: #e76f51;">event_note</mat-icon>
+                        </div>
+                        <div class="subtitle-container">
+                            <mat-card-subtitle class="subtitle">1 - 2 Years</mat-card-subtitle>
+                            <mat-card-subtitle class="count">12</mat-card-subtitle>
+                        </div>
+                    </div>
+
+                    <div class="case-type-row">
+                        <div class="icon-container6">
+                            <mat-icon style="color: #e76f51;">history</mat-icon>
+                        </div>
+                        <div class="subtitle-container">
+                            <mat-card-subtitle class="subtitle">2+ Years</mat-card-subtitle>
+                            <mat-card-subtitle class="count">12</mat-card-subtitle>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+        </nav>
+    </div>
+</div>
+
+<div [ngClass]="{ 'full-width': !isNavOpen }" class="col-sm-10 container-fluid"
+    style="margin-bottom: 10px; padding-right: 25px">
+
+    <div class="arrow-container">
+        <div class="arrow-shape" style="background-color: #D9D9D9; color: black;">
+            <span class="arrow-text">Initiated</span>
+            <span class="arrow-number">79</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #FFD2B2; color: black;">
+            <span class="arrow-text">Interim</span>
+            <span class="arrow-number">190</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #FFFACD; color: black;">
+            <span class="arrow-text">Overdue</span>
+            <span class="arrow-number">70</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #A8E5C1; color: black;">
+            <span class="arrow-text">Settled</span>
+            <span class="arrow-number">20</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #C4C2FF; color: black;">
+            <span class="arrow-text">Expired</span>
+            <span class="arrow-number">60</span>
+        </div>
+
+        <!-- <div class="arrow-shape" style="background-color: #B3E3F6; color: black;">
+            <span class="arrow-text">Processing</span>
+            <span class="arrow-number">10</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #E0DBFF; color: black;">
+            <span class="arrow-text">Closed</span>
+            <span class="arrow-number">190</span>
+        </div> -->
+    </div>
+
+    <div class="w-100 mt-4">
+        <div class="row" style="display: flex; justify-content: flex-end; align-items: center">
+            <!-- Filter Button -->
+
+            <button mat-raised-button style="background-color: #37474f; color: white" (click)="openMerge()"
+                class="filters-hover margin-right-10">
+                <mat-icon>merge_type</mat-icon> Merge
+            </button>
+            <button mat-raised-button style="background-color: #37474f; color: white"
+                class="filters-hover margin-right-10" (click)="filterToggle = !filterToggle">
+                <mat-icon class="mat-margin-top">filter_list</mat-icon> Filter
+            </button>
+
+            <!-- Grid Columns Button -->
+            <!-- <button mat-raised-button style="background-color: #37474f; color: white"
+                    class="filters-hover margin-right-10">
+                    <mat-icon>grid_on</mat-icon> Grid Columns
+                </button> -->
+
+            <!-- Download CSV Button -->
+            <button mat-raised-button style="background-color: black; color: white; margin-right: 8px">
+                <mat-icon>get_app</mat-icon> Download CSV
+            </button>
+
+            <!-- Upload CSV Button -->
+            <button mat-raised-button style="background-color: black; color: white; margin-right: 8px">
+                <mat-icon>backup</mat-icon> Upload CSV
+            </button>
+
+            <!-- Add Account Button -->
+            <button mat-raised-button color="primary" class="btn-primary margin-right-5" (click)="openEditDialog(null)">
+                <mat-icon class="mat-margin-top">add</mat-icon> Add Case
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Filter UI -->
+<!-- <div fxLayout="row wrap" *ngIf="filterToggle" style="margin-bottom: 10px">
+    <div fxFlex="100" class="flex-p w-100">
+        <form [formGroup]="filterForm">
+            <mat-card class="filter">
+                <mat-card-content>
+                    <div class="row col-sm-12">
+                        <div class="col-sm-4 row">
+                            <div class="col-sm-3">
+                                <b>Industry:</b>
+                            </div>
+                            <div class="col-sm-9">
+                                <select placeholder="Select Industry" class="form-control" formControlName="Status">
+                                    <option></option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 row">
+                            <div class="col-sm-2">
+                                <b>Select Status:</b>
+                            </div>
+                            <div class="col-sm-10">
+                                <select placeholder="Select Status" class="form-control" formControlName="Status">
+                                    <option></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <a (click)="filterToggle = !filterToggle" class="pull-right"
+                                style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                            </a>
+                            <button mat-raised-button color="primary" class="pull-right">
+                                Search
+                            </button>
+
+                            <button mat-raised-button class="pull-right btn-default margin-right-10">
+                                Clear
+                            </button>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </div>
+</div> -->
+
+<!-- Table -->
+<div [ngClass]="{ 'full-width': !isNavOpen }" class="col-sm-10">
+    <div id="grid-table-container" class="table-responsive">
+        <table matSort class="table table-bordered table-hover">
+            <thead class="tbl-head1" style="background-color: rgb(58, 53, 53); color: white">
+                <tr>
+                    <th class="text-center">Actions</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center" style="white-space: nowrap">Case ID</th>
+                    <th class="text-center">Select</th>
+                    <th class="text-center">Claims</th>
+                    <th class="text-center" style="white-space: nowrap">Referrals</th>
+                    <th class="text-center" style="white-space: nowrap">Visits</th>
+                    <th style="white-space: nowrap" class="text-center">Patients</th>
+                    <th style="white-space: nowrap" class="text-center">Locations</th>
+                    <th style="white-space: nowrap" class="text-center">Providers</th>
+                    <th class="text-left">Liaison</th>
+                    <th style="white-space: nowrap">Patient Name</th>
+                    <th class="text-center">DoB</th>
+                    <th class="text-center">Dol</th>
+                    <th>Law Firm</th>
+                    <th class="text-center" style="white-space: nowrap">Last Updated</th>
+                    <th>Gender</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th class="text-center" style="white-space: nowrap">Zip Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let applicant of users">
+                    <td class="text-center" style="white-space: nowrap">
+                        <a matTooltip="Edit Record" (click)="openEditDialog(applicant.id)"
+                            class="fa fa-edit action-btn edit-btn" style="margin-right: 10px;">
+                        </a>
+                        <a matTooltip="Delete Record" class="fa fa-trash action-btn delete-btn">
+                        </a>
+                    </td>
+                    <!-- <td class="text-center">{{ applicant.status }}</td> -->
+                    <td class="text-center" style="text-align: center !important; ">
+                        <a [ngStyle]="{'color':  applicant.status? 'blue' : 'red','cursor':'pointer'}">
+                            <span *ngIf="!applicant.status" style="color:red">Inactive</span>
+                            <span *ngIf=" applicant.status">Active</span>
+                        </a>
+                    </td>
+                    <td class="text-center">{{ applicant.caseId }}</td>
+                    <td class="text-center">
+                        <mat-checkbox></mat-checkbox>
+                    </td>
+                    <td class="text-center" [routerLink]="['/rcm-login/inner-claims']"
+                        style="color: cornflowerblue; cursor: pointer;">{{
+                        applicant.claims }}</td>
+                    <td class="text-center" [routerLink]="['/rcm-login/inner-referrals']"
+                        style="color: cornflowerblue; cursor: pointer;">
+                        {{ applicant.referrals }}
+                    </td>
+                    <td class="text-center" [routerLink]="['/rcm-login/inner-visits']"
+                        style="color: cornflowerblue; cursor: pointer;">
+                        {{ applicant.referrals }}
+                    </td>
+                    <td class="text-center" style="color: cornflowerblue; cursor: pointer;"
+                        [routerLink]="['/rcm-login/inner-patients']">
+                        {{ applicant.patientId }}
+                    </td>
+                    <td class="text-center" [routerLink]="['/rcm-login/inner-locations']"
+                        style="color: cornflowerblue; cursor: pointer;">
+                        {{ applicant.locations }}
+                    </td>
+                    <td class="text-center" [routerLink]="['/rcm-login/inner-providers']"
+                        style="color: cornflowerblue; cursor: pointer;">
+                        {{ applicant.providers }}
+                    </td>
+                    <td class="text-left" style="white-space: nowrap">
+                        {{ applicant.liaison }}
+                    </td>
+                    <td style="white-space: nowrap">{{ applicant.patientName }}</td>
+                    <td class="text-center" style="white-space: nowrap">
+                        {{ applicant.dob | date : "dd-MMM-yyyy" }}
+                    </td>
+                    <td class="text-center" style="white-space: nowrap">
+                        {{ applicant.dol | date : "dd-MMM-yyyy" }}
+                    </td>
+                    <td style="white-space: nowrap">{{ applicant.lawFirm }}</td>
+                    <td class="text-center" style="white-space: nowrap">
+                        {{ applicant.updated | date : "dd-MMM-yyyy" }}
+                    </td>
+                    <td>{{ applicant.gender }}</td>
+                    <td>{{ applicant.city }}</td>
+                    <td>{{ applicant.state }}</td>
+                    <td class="text-center">{{ applicant.zipCode }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="mine" mat-fab (click)="scrollGrid('right')">
+            <mat-icon style="color: #37474f">fast_forward</mat-icon>
+        </button>
+        <button class="mine" mat-fab style="margin-right: 78px !important" (click)="scrollGrid('left')">
+            <mat-icon style="color: #37474f">fast_rewind</mat-icon>
+        </button>
+        <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSizeOptions]="[5, 10, 25, 50, 100]"
+            showFirstLastButtons></mat-paginator>
+    </div>
+</div>

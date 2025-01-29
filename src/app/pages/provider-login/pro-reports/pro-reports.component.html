@@ -1,0 +1,33 @@
+<div class="nav-container" [ngClass]="{'nav-open': isNavOpen, 'nav-closed': !isNavOpen}">
+    <!-- Toggle Button with Hamburger Icon -->
+    <button (click)="toggleNav()" class="toggle-button">
+        <mat-icon class="toggle-icon">menu</mat-icon>
+    </button>
+
+    <nav class="nav-links">
+        <ul>
+            <li routerLinkActive="active" [routerLink]="['eod']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="EOD Report">assignment</mat-icon>
+                    <span *ngIf="isNavOpen">EOD Report</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['referral-report']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Referral Reports">group_add</mat-icon>
+                    <span *ngIf="isNavOpen">Referrals</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['visit-report']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Visit Reports">location_on</mat-icon>
+                    <span *ngIf="isNavOpen">Visits</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div [ngClass]="{'full-width': !isNavOpen}" class="col-sm-10">
+    <router-outlet></router-outlet>
+</div>

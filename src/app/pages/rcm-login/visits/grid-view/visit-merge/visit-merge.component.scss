@@ -1,0 +1,19 @@
+.bac {
+    background-color: rgb(254, 254, 196);
+}
+
+/* Default button styles */
+button.mat-raised-button {
+    background-color: #f0f0f0;
+    color: black;
+}
+
+/* Active button style */
+.active-btn {
+    background-color: rgb(181, 177, 177) !important;
+    color: white !important;
+}
+
+.size {
+    width: 130px !important;
+}

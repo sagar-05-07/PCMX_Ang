@@ -1,0 +1,471 @@
+<div class="col-sm-12 mt-5">
+    <table
+        style="margin-bottom: 20px;margin-left: -14px;width: 100%;background-color: #fffce4;border-width: 0; padding: 10px;">
+        <tr>
+            <th style="padding-left: 8px;">Date of Injury</th>
+            <th>Order Type</th>
+            <th>Case Type</th>
+            <th>Priority</th>
+            <th>Referral Status</th>
+        </tr>
+        <tr>
+            <td style="padding-left: 8px;">
+                <input type="date" class="form-control">
+            </td>
+            <td>
+                <mat-select class="form-control bac" placeholder="Select Order Type">
+                    <mat-option [value]="'Prescription Order'">Prescription Order</mat-option>
+                    <mat-option [value]="'Lab Test Order'">Lab Test Order</mat-option>
+                    <mat-option [value]="'Imaging Order'">Imaging (X-ray/MRI/CT)</mat-option>
+                    <mat-option [value]="'Surgical Procedure'">Surgical Procedure</mat-option>
+                    <mat-option [value]="'Surgical Procedure'">Other</mat-option>
+                </mat-select>
+            </td>
+            <td>
+                <mat-select class="form-control bac" placeholder="Select Case Type">
+                    <mat-option [value]="'New York'">Sub Acute</mat-option>
+                    <mat-option [value]="'Los Angeles'">Insurance</mat-option>
+                    <mat-option [value]="'Chicago'">Worker Comp</mat-option>
+                    <mat-option [value]="'Houston'">Self Pay</mat-option>
+                </mat-select>
+            </td>
+            <td>
+                <mat-select class="form-control bac" placeholder="Select Priority">
+                    <mat-option [value]="'High Priority'">High Priority</mat-option>
+                    <mat-option [value]="'Medium Priority'">Medium Priority</mat-option>
+                    <mat-option [value]="'Low Priority'">Low Priority</mat-option>
+                    <mat-option [value]="'Urgent Priority'">Urgent Priority</mat-option>
+                    <mat-option [value]="'Routine Priority'">Routine Priority</mat-option>
+                    <mat-option [value]="'Critical Priority'">Critical Priority</mat-option>
+                </mat-select>
+            </td>
+            <td>
+                <mat-select class="form-control bac" placeholder="Select Referral Status">
+                    <mat-option [value]="'Failed'">Intake</mat-option>
+                    <mat-option [value]="'Approved'">Verification</mat-option>
+                    <mat-option [value]="'Completed'">Authorization</mat-option>
+                    <mat-option [value]="'Pending'">Scheduling</mat-option>
+                    <mat-option [value]="'In Progress'">Scheduled</mat-option>
+                    <mat-option [value]="'On Hold'">Processing</mat-option>
+                    <mat-option [value]="'Canceled'">Closed</mat-option>
+                    <mat-option [value]="'Canceled'">Hold</mat-option>
+                </mat-select>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <button class="tab-button margin-right-10" [class.active]="selectedTab === 'overview'"
+        (click)="selectTab('overview')">Patient Info
+    </button>
+    <button class="tab-button margin-right-10" [class.active]="selectedTab === 'case-info'"
+        (click)="selectTab('case-info')">Case Info
+    </button>
+    <button class="tab-button margin-right-10" [class.active]="selectedTab === 'visit-info'"
+        (click)="selectTab('visit-info')">Visit Info
+    </button>
+    <button class="tab-button margin-right-10" [class.active]="selectedTab === 'moreInfo'"
+        (click)="selectTab('moreInfo')">Legal
+    </button>
+    <button class="tab-button margin-right-10" [class.active]="selectedTab === 'resolve'"
+        (click)="selectTab('resolve')">Referral
+    </button>
+    <button class="tab-button margin-right-10" [class.active]="selectedTab === 'specialties'"
+        (click)="selectTab('specialties')">Specialties
+    </button>
+</div>
+
+<div class="col-sm-12 row mt-3" *ngIf="selectedTab === 'overview'">
+
+    <div class="col-sm-6" style="margin-left: -8px;">
+        <div style="margin-bottom: 20px;" *ngIf="selectedTab === 'overview'">
+            <table class="table table-bordered" style="width: 95%;background-color: #cdf0ff;"
+                *ngIf="selectedTab === 'overview'">
+                <thead style="background-color: #50636d; color: white;">
+                    <tr>
+                        <th class="text-center" colspan="2">Patient Info</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>John Wick Canes</td>
+                    </tr>
+                    <tr>
+                        <td>DOB:</td>
+                        <td>29/09/1998</td>
+                    </tr>
+                    <tr>
+                        <td>Referrence ID :</td>
+                        <td>201998</td>
+                    </tr>
+                    <tr>
+                        <td>SNN</td>
+                        <td>999-99-9999</td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td>(601) 870-2748</td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>12950 Beeville Texas</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <mat-card style="height: auto; background-color: #fffce4;">
+            <div style="padding: 15px;">
+                <label style="font-size: 17px;">Enter Diagnosis</label>
+                <textarea name="" id="" class="form-control" placeholder="Enter Diagnosis"
+                    style="height: 180px;"></textarea>
+                <button mat-raised-button class="pull-right mt-3" style="background-color: green; color: white;">
+                    <mat-icon>save</mat-icon>Update
+                </button>
+            </div>
+        </mat-card>
+    </div>
+</div>
+
+<div class="col-sm-12 row mt-3" *ngIf="selectedTab === 'case-info'">
+    <div class="col-sm-6" style="margin-left: -8px;">
+        <div style="margin-bottom: 20px;" *ngIf="selectedTab === 'case-info'">
+            <table class="table table-bordered" style="width: 95%;background-color: #cdf0ff;"
+                *ngIf="selectedTab === 'case-info'">
+                <thead style="background-color: #50636d; color: white;">
+                    <tr>
+                        <th class="text-center" colspan="2">Case Info</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Patient Name</td>
+                        <td>John Wick Canes</td>
+                    </tr>
+                    <tr>
+                        <td>Date of Injury</td>
+                        <td>29/09/1998</td>
+                    </tr>
+                    <tr>
+                        <td>Case Type</td>
+                        <td>Surgical Cases</td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td>New / Pending Verification</td>
+                    </tr>
+                    <tr>
+                        <td>Case Category</td>
+                        <td>Personal Injury</td>
+                    </tr>
+                    <tr>
+                        <td>Date of Birth</td>
+                        <td>15-May-1990</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <!-- <mat-card style="height: auto; background-color: #fffce4;">
+            <div style="padding: 15px;">
+                <label style="font-size: 17px;">Enter Diagnosis</label>
+                <textarea name="" id="" class="form-control" placeholder="Enter Diagnosis"
+                    style="height: 180px;"></textarea>
+                <button mat-raised-button class="pull-right mt-3" style="background-color: green; color: white;">
+                    <mat-icon>save</mat-icon>Update
+                </button>
+            </div>
+        </mat-card> -->
+        <table class="table table-bordered" style="width: 95%;background-color: #fffce4;"
+            *ngIf="selectedTab === 'case-info'">
+            <thead style="background-color: #50636d; color: white;">
+                <tr>
+                    <th class="text-center" colspan="2">Case Info</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Policy Limit</td>
+                    <td>John Wick Canes</td>
+                </tr>
+                <tr>
+                    <td>Case Manager </td>
+                    <td>James Doe</td>
+                </tr>
+                <tr>
+                    <td>Law Firm</td>
+                    <td>Legal Associates</td>
+                </tr>
+                <tr>
+                    <td>Lawyer</td>
+                    <td>Michael Brown</td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>Male</td>
+                </tr>
+                <tr>
+                    <td>Liaison</td>
+                    <td>Sarah Smith</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="col-sm-12 row mt-3" *ngIf="selectedTab === 'visit-info'">
+
+    <div class="col-sm-6" style="margin-left: -8px;">
+        <div style="margin-bottom: 20px;" *ngIf="selectedTab === 'visit-info'">
+            <table class="table table-bordered" style="width: 95%;background-color: #cdf0ff;"
+                *ngIf="selectedTab === 'visit-info'">
+                <thead style="background-color: #50636d; color: white;">
+                    <tr>
+                        <th class="text-center" colspan="2">Visit Info</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>John Wick Canes</td>
+                    </tr>
+                    <tr>
+                        <td>DOB:</td>
+                        <td>29/09/1998</td>
+                    </tr>
+                    <tr>
+                        <td>Referrence ID :</td>
+                        <td>201998</td>
+                    </tr>
+                    <tr>
+                        <td>SNN</td>
+                        <td>999-99-9999</td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td>(601) 870-2748</td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>12950 Beeville Texas</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <mat-card style="height: auto; background-color: #fffce4;">
+            <div style="padding: 15px;">
+                <label style="font-size: 17px;">Enter Diagnosis</label>
+                <textarea name="" id="" class="form-control" placeholder="Enter Diagnosis"
+                    style="height: 180px;"></textarea>
+                <button mat-raised-button class="pull-right mt-3" style="background-color: green; color: white;">
+                    <mat-icon>save</mat-icon>Update
+                </button>
+            </div>
+        </mat-card>
+    </div>
+</div>
+
+
+<div *ngIf="selectedTab === 'moreInfo'" class="mt-3">
+    <div class="col-sm-5" style="margin-left: -15px;">
+        <mat-card style="height: 245px; background-color: #cdf0ff;">
+            <div style="padding: 15px;">
+                <label style="font-size: 17px;">Legal Representation</label>
+                <!-- <h5> <b>Mouin Sabbagh</b> </h5>
+                <hr style="border-top: 1px solid #ccc; margin: 10px 0;"> -->
+                <h5>Soliz Law Firms, PLLC</h5>
+                <h5>3700 MonTrose BLVD.</h5>
+                <h5>Houston, TX 77027</h5>
+                <h5>Phone (713) 795-4684</h5>
+                <h5>Email: {{ 'Jack@thesolizlawfirms.com' }}</h5>
+
+            </div>
+        </mat-card>
+    </div>
+    <div class="col-sm-6">
+        <mat-card style="height: auto; background-color: #fffce4;">
+            <div style="padding: 15px;">
+                <label style="font-size: 17px;">Enter Remarks</label>
+                <textarea name="" id="" class="form-control mb-5" style="height: 160px;">Enter Remarks</textarea>
+                <!-- <button mat-raised-button class="pull-right mt-3" style="background-color: green; color: white;">
+                    <mat-icon>save</mat-icon>Update
+                </button> -->
+            </div>
+        </mat-card>
+    </div>
+    <div class="col-sm-11 row mt-5" style="margin-left: -22px;">
+        <div class="col-sm-4">
+            <mat-select class="form-control bac" placeholder="Select Attorney" multiple>
+                <mat-option [value]="'Personal Injury Attorney'">Personal Injury Attorney</mat-option>
+                <mat-option [value]="'Medical Malpractice Attorney'">Medical Malpractice Attorney</mat-option>
+                <mat-option [value]="'Workers Compensation Attorney'">Workers’ Compensation Attorney</mat-option>
+                <mat-option [value]="'Family Law Attorney'">Family Law Attorney</mat-option>
+                <mat-option [value]="'Criminal Defense Attorney'">Criminal Defense Attorney</mat-option>
+                <mat-option [value]="'Estate Planning Attorney'">Estate Planning Attorney</mat-option>
+                <mat-option [value]="'Business Law Attorney'">Business Law Attorney</mat-option>
+                <mat-option [value]="'Immigration Attorney'">Immigration Attorney</mat-option>
+            </mat-select>
+        </div>
+        <div class="col-sm-4">
+            <mat-select class="form-control bac" placeholder="Select Paralegal" multiple>
+                <mat-option [value]="'Litigation Paralegal'">Litigation Paralegal</mat-option>
+                <mat-option [value]="'Corporate Paralegal'">Corporate Paralegal</mat-option>
+                <mat-option [value]="'Family Law Paralegal'">Family Law Paralegal</mat-option>
+                <mat-option [value]="'Immigration Paralegal'">Immigration Paralegal</mat-option>
+                <mat-option [value]="'Real Estate Paralegal'">Real Estate Paralegal</mat-option>
+                <mat-option [value]="'Intellectual Property Paralegal'">Intellectual Property Paralegal</mat-option>
+                <mat-option [value]="'Criminal Law Paralegal'">Criminal Law Paralegal</mat-option>
+                <mat-option [value]="'Estate Planning Paralegal'">Estate Planning Paralegal</mat-option>
+            </mat-select>
+        </div>
+
+        <div class="col-sm-4">
+            <mat-select class="form-control bac" placeholder="Select Other" multiple>
+                <mat-option [value]="'Prescription Order'">Prescription Order</mat-option>
+                <mat-option [value]="'Lab Test Order'">Lab Test Order</mat-option>
+                <mat-option [value]="'Imaging Order'">Imaging (X-ray/MRI/CT)</mat-option>
+                <mat-option [value]="'Surgical Procedure'">Surgical Procedure</mat-option>
+                <mat-option [value]="'Surgical Procedure'">Other</mat-option>
+            </mat-select>
+        </div>
+
+        <div class="row col-sm-12 mt-5">
+            <button mat-raised-button class="pull-right"
+                style="background-color: gray; color: white; margin-right: -22px;">
+                <mat-icon>clear</mat-icon>Clear
+            </button>
+            <button mat-raised-button class="pull-right"
+                style="background-color: green; color: white; margin-right: 10px; ">
+                <mat-icon>save</mat-icon>Update
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<div *ngIf="selectedTab === 'resolve'" class="mt-3">
+    <div class="col-sm-5" style="margin-left: -15px;">
+        <mat-card style="height: auto; background-color: #cdf0ff;">
+            <div style="padding: 15px;">
+                <label style="font-size: 17px;">Referral From</label>
+                <h5> <b>Mouin Sabbagh</b> </h5>
+                <hr style="border-top: 1px solid #ccc; margin: 10px 0;">
+                <h5>Advanced Medical Group (ROHC)</h5>
+                <h5>4200 Twelve Oaks Place</h5>
+                <h5>Houston, TX 77027</h5>
+                <h5>Phone (713) 795-4684</h5>
+                <h5>Fax (713) 795-4684</h5>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col-sm-5">
+        <mat-card style="height: auto; background-color: #fffce4;">
+            <div style="padding: 15px;">
+                <label style="font-size: 17px;">Referral To</label>
+                <h5> <b>Mouin Sabbagh</b> </h5>
+                <hr style="border-top: 1px solid #ccc; margin: 10px 0;">
+                <h5>Advanced Medical Group (ROHC)</h5>
+                <h5>4200 Twelve Oaks Place</h5>
+                <h5>Houston, TX 77027</h5>
+                <h5>Phone (713) 795-4684</h5>
+                <h5>Fax (713) 795-4684</h5>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col-sm-5 mt-4 mb-5" style="margin-left: -15px;">
+        <mat-card style="height: auto; background-color: #fffce4;">
+            <div style="padding: 15px;">
+                <label style="font-size: 17px;">Referral To</label>
+                <h5> <b>Mouin Sabbagh</b> </h5>
+                <hr style="border-top: 1px solid #ccc; margin: 10px 0;">
+                <h5>Advanced Medical Group (ROHC)</h5>
+                <h5>4200 Twelve Oaks Place</h5>
+                <h5>Houston, TX 77027</h5>
+                <h5>Phone (713) 795-4684</h5>
+                <h5>Fax (713) 795-4684</h5>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col-sm-5 mt-4 mb-5">
+        <mat-card style="height: auto; background-color: #fffce4;">
+            <div style="padding: 15px;">
+                <label style="font-size: 17px;">Referral To</label>
+                <h5> <b>Mouin Sabbagh</b> </h5>
+                <hr style="border-top: 1px solid #ccc; margin: 10px 0;">
+                <h5>Advanced Medical Group (ROHC)</h5>
+                <h5>4200 Twelve Oaks Place</h5>
+                <h5>Houston, TX 77027</h5>
+                <h5>Phone (713) 795-4684</h5>
+                <h5>Fax (713) 795-4684</h5>
+            </div>
+        </mat-card>
+    </div>
+</div>
+
+
+<div *ngIf="selectedTab === 'specialties'" class="mt-3" style="margin-left: -20px;">
+    <div class="table-container" style="margin: 20px">
+        <button mat-raised-button class="pull-right mb-3" style="background-color: blue; color: white;"
+            (click)="addRow()">
+            <mat-icon>add</mat-icon> Add
+        </button>
+        <table class="table mt-3">
+            <thead style="background-color: #50636d">
+                <tr>
+                    <th class="text-center" style="padding: 10px; border: 1px solid #ddd; color: white;">Class</th>
+                    <th class="text-center" style="padding: 10px; border: 1px solid #ddd; color: white;">Specialty</th>
+                    <th class="text-center" style="padding: 10px; border: 1px solid #ddd; color: white;">Subspecialty
+                    </th>
+                    <th class="text-center" style="padding: 10px; border: 1px solid #ddd; color: white;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of rows; let i = index">
+                    <td style="padding: 10px; text-align: center;">
+                        <mat-select class="form-control" placeholder="Select Class" [(ngModel)]="row.category">
+                            <mat-option value="Medical">Medical</mat-option>
+                            <mat-option value="Surgery/Procedures">Surgery/Procedures</mat-option>
+                            <mat-option value="Imaging">Imaging</mat-option>
+                            <mat-option value="Ancillary">Ancillary</mat-option>
+                            <mat-option value="FSER">FSER</mat-option>
+                        </mat-select>
+                    </td>
+
+                    <td style="padding: 10px; text-align: center;">
+                        <mat-select class="form-control" placeholder="Select Specialty" [(ngModel)]="row.specialty">
+                            <mat-option value="Primary Care">Primary Care</mat-option>
+                            <mat-option value="Psychology">Psychology</mat-option>
+                            <mat-option value="General">General</mat-option>
+                        </mat-select>
+                    </td>
+
+                    <td style="padding: 10px; text-align: center;">
+                        <mat-select class="form-control" placeholder="Select SubSpecialty"
+                            [(ngModel)]="row.subSpecialty" [disabled]="row.category === 'Surgery/Procedures'"
+                            [ngClass]="{ 'disabled-cursor': row.category === 'Surgery/Procedures' }">
+                            <mat-option value="Nephrology">Nephrology</mat-option>
+                            <mat-option value="Neurology">Neurology</mat-option>
+                            <mat-option value="Neuropsychology">Neuropsychology</mat-option>
+                            <mat-option value="OBGYN">OBGYN</mat-option>
+                            <mat-option value="Oncologist">Oncologist</mat-option>
+                            <mat-option value="Opthalmology">Opthalmology</mat-option>
+                        </mat-select>
+                    </td>
+
+                    <td class="text-center" style="white-space: nowrap;">
+                        <a matTooltip="Save" style="margin-right: 5px; cursor: pointer; color: green;">
+                            <i class="fa fa-save"></i>
+                        </a>
+                        <a matTooltip="Delete" style="cursor: pointer;" class="fa fa-trash red"></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

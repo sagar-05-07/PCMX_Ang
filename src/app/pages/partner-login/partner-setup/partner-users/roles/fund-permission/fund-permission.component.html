@@ -1,0 +1,84 @@
+<div class="col-sm-12" style="margin-left: 10px;">
+    <button mat-raised-button class="pull-right btn-default margin-right-10" (click)="goback()">
+        <mat-icon>keyboard_arrow_left</mat-icon> Back
+    </button>
+    <button (click)="previous()" mat-raised-button class="pull-right btn-default margin-right-10">
+        <mat-icon>keyboard_arrow_left</mat-icon> Previous
+    </button>
+
+    <button (click)="next()" mat-raised-button class="pull-right btn-default margin-right-10">
+        <mat-icon>keyboard_arrow_right</mat-icon>Next
+    </button>
+    <button mat-raised-button class="pull-right  margin-right-10" style="background-color: green; color: white;">
+        <mat-icon>save</mat-icon> Save
+    </button>
+    <button mat-raised-button class="pull-right  margin-right-10" style="background-color: blue; color: white;">
+        <mat-icon>select_all</mat-icon> Toggle All
+    </button>
+</div>
+
+<div class="col-sm-3" style="margin-left: -10px;">
+    <div class="pills">
+        <ul class="nav nav-pills" style="margin-top:12px; margin-left: 10px; margin-bottom:25px;">
+            <li *ngFor="let item of modules" class="col-12" [ngClass]="{'active' : selectedModule.name === item.name}">
+                <a mat-raised-button class="navtabWidth" style="margin-top: 10px; width: 200px; text-align: left;"
+                    (click)="selectedModule = item">
+                    {{item.name}}
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="col-sm-9" style="margin-left: 10px;">
+    <div class="table-responsive flex-p">
+        <!--   <p style="margin-top: 20px; margin-left: 3px;"><b>Role Name: </b>{{roleName}}</p> -->
+        <table id="example2" class="table table-bordered table-hover" style="margin-top: 15px;">
+            <thead class="tbl-head">
+                <tr class="tr-grid-header">
+                    <th>Screen Permissions</th>
+                    <th class="text-center">Create</th>
+                    <th class="text-center">Read</th>
+                    <th class="text-center">Update</th>
+                    <th class="text-center">Delete</th>
+                    <th class="text-center">Download</th>
+                    <th class="text-center">Upload</th>
+                    <!-- <th class="text-center">Misc</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of selectedModule?.screens">
+                    <td>{{item?.screenName}}</td>
+                    <td class="text-center">
+                        <mat-checkbox [checked]="item.create"></mat-checkbox>
+                    </td>
+                    <td class="text-center">
+                        <mat-checkbox [checked]="item.read"></mat-checkbox>
+                    </td>
+                    <td class="text-center">
+                        <mat-checkbox [checked]="item.update"></mat-checkbox>
+                    </td>
+                    <td class="text-center">
+                        <mat-checkbox [checked]="item.delete"></mat-checkbox>
+                    </td>
+                    <td class="text-center">
+                        <mat-checkbox [checked]="item.download"></mat-checkbox>
+                    </td>
+                    <td class="text-center">
+                        <mat-checkbox [checked]="item.merge"></mat-checkbox>
+                    </td>
+                    <!-- <td style="width: 200px;">
+                        <mat-select multiple placeholder="Select" class="form-control">
+                            <mat-option *ngIf="item.cancel">Cancel</mat-option>
+                            <mat-option *ngIf="item.print">Print</mat-option>
+                            <mat-option *ngIf="item.email">Email</mat-option>
+                            <mat-option *ngIf="item.report">Report</mat-option>
+                            <mat-option *ngIf="item.import">Import</mat-option>
+                            <mat-option *ngIf="item.export">Export</mat-option>
+                            <mat-option *ngIf="item.approve">Approve</mat-option>
+                        </mat-select>
+                    </td> -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

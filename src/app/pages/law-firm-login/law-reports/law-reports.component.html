@@ -1,0 +1,39 @@
+<div class="nav-container" [ngClass]="{'nav-open': isNavOpen, 'nav-closed': !isNavOpen}">
+    <!-- Toggle Button with Hamburger Icon -->
+    <button (click)="toggleNav()" class="toggle-button">
+        <mat-icon class="toggle-icon">menu</mat-icon>
+    </button>
+
+    <nav class="nav-links">
+        <ul>
+            <li routerLinkActive="active" [routerLink]="['autometed-eod']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="EOD Report">assignment</mat-icon>
+                    <span *ngIf="isNavOpen">EOD Report</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['case-report']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Case Reports">folder_shared</mat-icon>
+                    <span *ngIf="isNavOpen">Cases</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['claims-report']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Claims Reports">description</mat-icon>
+                    <span *ngIf="isNavOpen">Claims</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['payments-report']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Payments Reports">payments</mat-icon>
+                    <span *ngIf="isNavOpen">Payments</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div [ngClass]="{'full-width': !isNavOpen}" class="col-sm-10">
+    <router-outlet></router-outlet>
+</div>

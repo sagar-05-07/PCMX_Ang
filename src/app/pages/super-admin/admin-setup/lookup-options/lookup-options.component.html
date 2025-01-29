@@ -1,0 +1,93 @@
+<div class="content-container">
+  <div class="content" #content>
+    <div fxLayout="row wrap">
+      <div class="w-100">
+        <div class="flex-p">
+          <div class="row wrap">
+            <div class="col-xs-12" style="
+                margin-right: 0px !important;
+                margin-top: 15px;
+                margin-bottom: 10px;
+              ">
+              <div class="col-sm-12" style="padding: 0 0 0 0 !important; margin-left:-25px">
+
+                <button mat-raised-button style="background-color: blue; color: white;"
+                  (click)="openproviderdialog(null)" class="filter-hover pull-right">
+                  <mat-icon style="margin-left: 10px">person_add</mat-icon>Add
+                </button>
+
+
+                <select class=" pull-right" placeholder="--Select by Lookup" style="
+                               margin-right:10px;
+                               height:38px;
+                                min-width: 220px; border-radius:5px;">
+                  <option value="" disabled selected>--Select by Code--</option>
+                  <option *ngFor="let option of filterOptions" [value]="option.value">
+                    {{ option.viewValue }}
+                  </option>
+                </select>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap" style="padding: 20px">
+          <div class="w-100">
+            <div fxLayout="row wrap">
+              <div class="table-responsive w-100" style="margin-top: -20px" id="divTable">
+                <table id="tblContacts" class="table table-striped table-bordered table-hover" matSort
+                  style="margin-left: 11px; width: 98.5%">
+                  <thead class="tbl-head">
+                    <tr class="tr-grid-header">
+                      <th class="text-center">Actions</th>
+                      <th>Code </th>
+                      <th>Lookup Name</th>
+                      <th class="text-center">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngIf="users1.length > 0">
+                    <tr *ngFor="let item of users1; let i = index">
+                      <td class="text-center" style="width:100px">
+                        <a matTooltip="Click to Edit " class="edit-icon" (click)="opencontactDialog(null)">
+                          <i class="fa fa-edit"></i>
+                        </a>
+                        <a class="delete-icon">
+                          <i class="fa fa-trash red"></i>
+                        </a>
+                      </td>
+
+
+                      <td class="text-left" style="cursor: pointer; width: 100px">
+                        {{ item.code }}
+                      </td>
+                      <td class="text-left" style="cursor: pointer; width: 150px">
+                        {{ item.lookupName }}
+                      </td>
+                      <td class="text-center" style="cursor: pointer; width: 150px">
+                        <a>{{item.status}}</a>
+                      </td>
+
+
+                    </tr>
+                  </tbody>
+                  <tbody *ngIf="users1.length == 0">
+                    <tr>
+                      <td colspan="17">
+                        <span>No data available</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <mat-paginator class="col-sm-12" [length]="totalSize" [pageIndex]="currentPage" [pageSize]="totalSize"
+                [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons>
+              </mat-paginator>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

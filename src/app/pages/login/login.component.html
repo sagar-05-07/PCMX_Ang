@@ -1,0 +1,82 @@
+<mat-sidenav-container>
+
+    <div fxLayout="row" fxLayoutAlign="center center" class="h-100 login-bg">
+
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" fxFlex="80" fxFlex.gt-sm="30" fxFlex.sm="60" style="position: relative;
+         left: 0%;
+         top: 0%;
+         margin-bottom: 0%;">
+
+            <!-- First Card half up-->
+            <mat-card class="mat-elevation-z24 box">
+                <div fxLayout="column" fxLayoutAlign="center center" style="background-color:lightgrey;"
+                    class="box-header">
+                    <div>
+
+                        <div class="logodiv text-center">
+
+
+                            <!-- <h1 class="ChartxLogo" style="color: white;">O P T I O N M A T R I X</h1> -->
+                            <!-- <h3 style="color: White;font-size: 30px;">CHARTX</h3> -->
+
+                            <img style="width: 70%; margin-top: -30px;" src="../../../assets/adh-logo.png">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- First Card half down-->
+                <mat-card-content fxLayout="column" fxLayoutAlign="end center" class=" box-content">
+                    <mat-card fxLayout="column" fxLayoutAlign="center center"
+                        class="mat-elevation-z12 box-content-inner">
+
+                        <mat-form-field class="w-100">
+                            <input matInput placeholder="Email" formControlName="email">
+                            <mat-error *ngIf="form.controls.email.errors?.required">Email is required</mat-error>
+                            <mat-error *ngIf="form.controls.email.hasError('invalidEmail')">Invalid email address
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="w-100">
+                            <input matInput placeholder="Password" [type]=TypeString formControlName="password">
+                            <mat-icon *ngIf="showpass" matSuffix
+                                style="cursor: pointer;font-size: 14px!important;margin-right: -14px;margin-top: 9px;"
+                                (click)="ChangetextType(isPassword = ! isPassword)">remove_red_eye</mat-icon>
+                            <!-- <i *ngIf="TypeString==text" class="fa fa-eye-slash" aria-hidden="true" matSuffix style="cursor: pointer;  font-size: 14px!important;" (click)="ChangetextType(isPassword = ! isPassword)></i> -->
+                            <i *ngIf="!showpass" matSuffix style="cursor: pointer;  font-size: 14px!important;"
+                                (click)="ChangetextType(isPassword = ! isPassword)" class="fa fa-eye-slash"
+                                aria-hidden="true"></i>
+                            <mat-error *ngIf="form.controls.password.errors?.required">Password is required</mat-error>
+                            <mat-error *ngIf="form.controls.password.hasError('minlength')">Password isn't long enough,
+                                minimum of 6 characters</mat-error>
+                        </mat-form-field>
+                        <div class="w-100">
+                            <a [routerLink]="['/forgot']" class="pull-right" style="color: blue;">Forgot
+                                Password?</a>
+                        </div>
+                    </mat-card>
+                    <button mat-raised-button class="mat-elevation-z12 box-button text-white"
+                        style="background-color: black;color:white" color="primary" type="submit">SIGN IN</button>
+                </mat-card-content>
+
+            </mat-card>
+            <div class="col-12 " style="position: relative;
+            left: 0%;
+            top: 50%;
+            margin-top: 20px; 
+            margin-bottom: 0%;">
+                <div class="col-12" style="margin-left: 5%;">
+
+                </div>
+
+
+            </div>
+
+        </form>
+
+    </div>
+
+</mat-sidenav-container>

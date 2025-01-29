@@ -1,0 +1,18 @@
+<div class="NewHeader">
+    <h1 mat-dialog-title style="color:white;">Grid View Configuration </h1>
+</div>
+<p style="margin-left: 50px;">Please select the required columns in the grid, to view grid with specific columns</p>
+<div mat-dialog-content>
+    <form class="row" style="margin-top:10px">
+        <div class="col-sm-4" *ngFor="let role of roles;">
+            <mat-checkbox checked=" true">{{role.role}}</mat-checkbox>
+        </div>
+    </form>
+</div>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button class="btn-success" (click)="close()">Configure</button>
+    <button mat-raised-button style="background-color: lightgray; color: red;" class="add-dark-hover btn-default"
+        (click)="close()"><mat-icon>close</mat-icon>Cancel
+    </button>
+</mat-dialog-actions>

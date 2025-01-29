@@ -1,0 +1,202 @@
+<div class="row">
+    <div fxLayout="row wrap" #resizedDiv>
+        <div class="w-100 flex-p" style="margin-top: -10px; margin-bottom: 10px;">
+            <button mat-raised-button class="pull-right margin-right-10"
+                style="background-color: black; margin-top: 10px; color:white;">
+                <mat-icon>filter_list</mat-icon> Filter
+            </button>
+            <button mat-raised-button class="pull-right margin-right-10"
+                style="background-color: black; margin-top: 10px; color:white; margin-left: 5px;"
+                (click)="isCardView = !isCardView">
+                <mat-icon>{{ isCardView ? 'view_module' : 'view_list' }}</mat-icon>
+                {{ isCardView ? 'Grid View' : 'Card View' }}
+            </button>
+            <div class="switchToggle pull-right" style="margin-right:10px!important;">
+                <input type="checkbox" id="switch" />
+                <label class="mt-4" style="background-color: #3e98d3;" for="switch">Toggle</label>
+            </div>
+
+            <mat-select class="form-control pull-right mt-4" [value]="1" placeholder="Select Category"
+                style="width: 200px;margin-right:10px;">
+                <mat-option [value]="1">All</mat-option>
+                <mat-option [value]="3">Medical</mat-option>
+                <mat-option [value]="2">Billing</mat-option>
+                <mat-option [value]="5">Imaging</mat-option>
+            </mat-select>
+            <label class="pull-right mt-5" style="width: 80px;margin-right:20px;">Category :</label>
+        </div>
+    </div>
+
+    <div fxLayout="row wrap" *ngIf="filterToggle" style="margin-left: 10px;"
+        style="margin-bottom: 10px;flex-flow: wrap;box-sizing: border-box;display: flex;">
+        <div fxFlex="100" class="flex-p w-100">
+            <form [formGroup]="filterForm">
+                <mat-card class="filter">
+                    <mat-card-content>
+                        <div class="row col-sm-12">
+                            <div class="col-sm-4 row">
+                                <div class="col-sm-3" style="margin-top: 6px;">
+                                    <b>Keyword:</b>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input type="text" placeholder="Search by Keyword" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4 row">
+                                <div class="col-sm-2" style="margin-top: 6px;">
+                                    <b>Patient:</b>
+                                </div>
+                                <div class="col-sm-10">
+
+                                    <mat-select placeholder="--Select Patient--" class="form-control" multiple
+                                        [(value)]="selectedEventType">
+                                        <mat-select-trigger>
+                                            {{selectedEventType || '--Select Patient--'}}
+                                        </mat-select-trigger>
+                                        <mat-form-field *ngIf="eventTypes.length > 1" appearance="fill"
+                                            style="width: 100%;">
+                                            <input matInput (input)="applyFilter($event)" placeholder="Search">
+                                        </mat-form-field>
+                                        <mat-option *ngFor="let event of filteredEventTypes" [value]="event">
+                                            {{event}}
+                                        </mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                        </div>
+                        <div class="row col-sm-12">
+                            <div class="col-sm-4 pull-right">
+                                <a (click)="filterToggle = !filterToggle" class="pull-right"
+                                    style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                                    <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                                </a>
+                                <button mat-raised-button color="primary" class="pull-right"
+                                    style="background-color: #007BFF !important; color:white;">
+                                    Search
+                                </button>
+
+                                <button mat-raised-button class="pull-right btn-default margin-right-10">
+                                    Clear
+                                </button>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </form>
+        </div>
+    </div>
+
+    <!-- Card Code -->
+    <div class="col-sm-12" *ngIf="isCardView">
+
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-sm-3">
+                <mat-card class="progress-card" style="height: 282px;background-color: #414141; cursor: pointer;"
+                    (click)="opencasedialog()">
+                    <mat-icon style="font-size: 6.125rem !important;height: 6.125rem !important;
+                        width: 6.125rem !important;color: white;">note_add</mat-icon>
+                    <div class="progress-details">
+                        <div style="display: flex; align-items: center;">
+                            <span style="margin-left: 10px;color: white;">Add Document Record</span>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+
+
+            <!-- Tasks (inProgress, completed, complaint) -->
+            <div class="col-sm-3" *ngFor="let task of allTasks">
+                <mat-card class="progress-card">
+                    <div class="col-sm-12 pull-right">
+                        <mat-icon (click)="opencasedialog()" class="pull-right edit-icons edit-btn"
+                            matTooltip="Edit">edit</mat-icon>
+                        <mat-icon class="pull-right delete-icons delete-btn" matTooltip="Delete">delete</mat-icon>
+                    </div>
+                    <div style="cursor:pointer">
+                        <!-- <mat-icon style="font-size: 8.125rem !important;height: 8.125rem !important;
+                            width: 8.125rem !important;">note_add
+                        </mat-icon> -->
+
+                        <!-- <mat-icon style="font-size: 8.125rem !important;height: 8.125rem !important;
+                            width: 8.125rem !important;">
+                            {{ task.icon }}
+                        </mat-icon> -->
+
+                        <mat-icon style="font-size: 7.125rem !important;height: 7.125rem !important;
+                            width: 7.125rem !important;" [ngStyle]="{'color': task.color}">
+                            {{ task.icon }}
+                        </mat-icon>
+
+                        <div class="progress-details">
+                            <div class="progress-name">{{ task.name }}</div>
+                            <div class="progress-providername" [ngStyle]="{'color': task.providernameColor}">
+                                {{ task.providername }}
+                            </div>
+                            <div class="progress-status" style="cursor: pointer; white-space: nowrap;"
+                                matTooltip="Uploaded by Corey Williams on {{ task.dueDate }}">
+                                Corey Williams | {{ task.dueDate }}
+                            </div>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Grid Code -->
+    <div class="col-sm-12 mt-5" *ngIf="!isCardView">
+        <div fxLayout="row wrap">
+            <div class="w-100">
+                <div fxLayout="row wrap" style="margin-top:-3px;">
+                    <div class="table-responsive w-100 flex-p" id="divTable">
+                        <table matSort id="example2" class="table table-bordered table-hover">
+                            <thead class="tbl-head">
+                                <tr>
+                                    <th>Document Type</th>
+                                    <th>Document Title</th>
+                                    <th class="text-center">Upload File</th>
+                                    <th>Uploaded Date</th>
+                                    <th>Uploaded By</th>
+                                    <th>Remarks</th>
+                                    <th class="text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of values1">
+                                    <td>{{item.documentType}}</td>
+                                    <td>{{item.documentTitle}}</td>
+                                    <td class="text-center">
+                                        <mat-icon style="color: blue;">file_copy</mat-icon>
+                                    </td>
+
+                                    <td>{{item.uploadedDate}}</td>
+                                    <td>{{item.uploadedBy}}</td>
+                                    <td class="text-center">
+                                        <span matTooltip="{{item.remarks}}" matTooltipPosition="above">
+                                            <mat-icon style="cursor: pointer; color: blue;">info</mat-icon>
+                                        </span>
+                                    </td>
+                                    <td class="text-center editDel">
+                                        <a style="cursor: pointer;" matTooltip="Edit">
+                                            <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                                        </a>
+                                        <a style="cursor: pointer;" matTooltip="Delete">
+                                            <i class="fa fa-trash red"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <mat-paginator class="col-sm-12" [length]="totalSize" [pageIndex]="currentPage" [pageSize]=""
+                        [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

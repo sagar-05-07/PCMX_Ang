@@ -1,0 +1,72 @@
+<div class="interest-calculator">
+    <div class="left-side">
+        <h3>Enter Your Details</h3>
+
+        <div class="input-row">
+            <label for="principal">Loan Amount :</label>
+            <input id="principal" [(ngModel)]="principal" type="number" placeholder="Enter principal" />
+        </div>
+
+        <div class="input-row">
+            <label for="rate">Interest Rate (%) :</label>
+            <input id="rate" [(ngModel)]="rate" type="number" placeholder="Enter rate" />
+        </div>
+
+        <div class="input-row">
+            <label for="terms">Loan Term (Year) :</label>
+            <input id="terms" [(ngModel)]="terms" type="number" placeholder="Enter loan term" />
+        </div>
+
+        <div class="input-row">
+            <label for="time">Repayment Frequency :</label>
+            <select id="time" [(ngModel)]="time">
+                <option value="monthly">Monthly</option>
+                <option value="weekly">Weekly</option>
+                <option value="daily">Daily</option>
+                <option value="yearly">Yearly</option>
+            </select>
+        </div>
+
+        <div class="input-row">
+            <label for="interest">Interest:</label>
+            <div class="interest-input" style="margin-left: 55px;">
+                <input id="interest" [value]="calculatedInterest | currency:'USD'" type="text" readonly />
+                <select [(ngModel)]="time" id="repaymentFrequency" style="width: 110px;" disabled>
+                    <option value="monthly">Monthly</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="daily">Daily</option>
+                    <option value="yearly">Yearly</option>
+                </select>
+            </div>
+        </div>
+
+
+        <!-- Buttons container -->
+        <div>
+            <button mat-raised-button style="width: 90px; color: red;" class="pull-right mt-5" (click)="resetForm()">
+                <mat-icon>settings_backup_restore</mat-icon> Clear
+            </button>
+            <button mat-raised-button style="width: 123px; background-color: green; color: white;"
+                class="pull-right mt-5 margin-right-10" (click)="calculateInterest()">Calculate</button>
+        </div>
+    </div>
+
+    <div class="right-side">
+        <h3>View Your Results</h3>
+
+        <div class="input-row">
+            <label style="color: green;" for="time">Monthly Repayment :</label>
+            <label style="color: green;">$125485</label>
+        </div>
+
+        <div class="input-row">
+            <label for="interest">Total Interest / Fee Payable :</label>
+            <label>$525485</label>
+        </div>
+
+        <div class="input-row">
+            <label for="totalAmount">Total Payments :</label>
+            <label>$825485</label>
+        </div>
+    </div>
+</div>

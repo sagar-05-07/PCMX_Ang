@@ -1,0 +1,29 @@
+.errorClass {
+    border: solid 1px red !important;
+}
+
+::ng-deep .errorClassDate {
+    .ui-calendar {
+        .ui-inputtext {
+            border: solid 1px red !important;
+
+        }
+    }
+}
+
+// .l-green{
+//     background-color: #d9ead3 !important;
+// }
+// .l-orange{
+//     background-color: #e4c34bc7 !important;
+// }
+.disable-custom-grey {
+    pointer-events: none !important;
+    background-color: #dcdcdc;
+}
+
+.attachement-icon {
+    cursor: pointer;
+    font-size: 16px !important;
+    color: #007ad9 !important;
+}

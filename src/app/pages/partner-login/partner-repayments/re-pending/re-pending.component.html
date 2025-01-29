@@ -1,0 +1,50 @@
+<div class="col-sm-10" style="margin-top:-39px">
+    <button mat-raised-button class="pull-right" style="background-color: black; color: white; margin-right: 43px">
+        <mat-icon>get_app</mat-icon> Download CSV
+    </button>
+
+    <!-- <button mat-raised-button class="pull-right" style="background-color: black; color: white; margin-right: 8px">
+        <mat-icon>get_app</mat-icon> Download Template
+    </button>
+    <button mat-raised-button class="pull-right" style="background-color: black; color: white; margin-right: 8px ">
+        <mat-icon>backup</mat-icon> Upload CSV
+    </button> -->
+</div>
+
+<div class="col-sm-12">
+    <!-- <div class="col-sm-2 mt-3" style="margin-left: -20px;">
+        <button *ngFor="let button of buttons; let i = index" class="left-align-btn"
+            [class.active]="selectedButton === i" mat-raised-button (click)="selectButton(i)">
+            {{ button }}
+        </button>
+    </div> -->
+
+    <div class="col-sm-10 mt-4" style="margin-left: -30px;">
+        <div id="grid-table-container" class="table-responsive">
+            <table matSort class="table table-bordered table-hover">
+                <thead class="tbl-head1" style="background-color: rgb(58, 53, 53); color: white;">
+                    <tr>
+                        <th style="white-space: nowrap;" class="text-center">Batch Code</th>
+                        <th style="white-space: nowrap;" class="text-center">Paid Date</th>
+                        <th style="white-space: nowrap;" class="text-center">Funded</th>
+                        <th style="white-space: nowrap;" class="text-center">Payable Today</th>
+                        <th style="white-space: nowrap;" class="text-center">Interest Accrued</th>
+                        <th style="white-space: nowrap;" class="text-center">Invoice Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of records">
+                        <td class="text-center">{{ item.batchCode }}</td>
+                        <td class="text-center">{{ item.paidDate }}</td>
+                        <td class="text-center">{{ item.funded | currency }}</td>
+                        <td class="text-center">{{ item.payableToday | currency }}</td>
+                        <td class="text-center">{{ item.interestAccrued | currency }}</td>
+                        <td class="text-center" style="color: blue; cursor: pointer;"
+                            [routerLink]="['/partner-login/requests']">{{item.invoiceCount }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,109 @@
+<div class="header-container">
+    <h3><strong>Location Dashboard</strong></h3>
+    <p>Here is the comprehensive data about patient status and activity.</p>
+</div>
+
+<div [ngClass]="{'full-width': !isNavOpen}" class="col-sm-10">
+    <button mat-raised-button class="pull-right" (click)="back();"
+        style="background-color: gray; color: white; margin-top: -20px;">
+        <mat-icon>arrow_back</mat-icon>Back
+    </button>
+</div>
+
+<div class="nav-container" [ngClass]="{'nav-open': isNavOpen, 'nav-closed': !isNavOpen}">
+
+    <button (click)="toggleNav()" class="toggle-button">
+        <mat-icon class="toggle-icon">menu</mat-icon>
+    </button>
+
+    <nav class="nav-links">
+        <ul>
+            <li routerLinkActive="active" [routerLink]="['radar']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Radar">radar</mat-icon>
+                    <span *ngIf="isNavOpen">Radar</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['analytics']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Claims">assignment</mat-icon>
+                    <span *ngIf="isNavOpen">Analytics</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['patients']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Claims">assignment</mat-icon>
+                    <span *ngIf="isNavOpen">Patients (2500)</span>
+                </a>
+            </li>
+
+            <li routerLinkActive="active" [routerLink]="['cases']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Visit">event</mat-icon>
+                    <span *ngIf="isNavOpen">Cases (5000)</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['referrals']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Claims">assignment</mat-icon>
+                    <span *ngIf="isNavOpen">Referrals (15000)</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['visits']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Claims">assignment</mat-icon>
+                    <span *ngIf="isNavOpen">Visits (45026)</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['notes']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Notes">note</mat-icon>
+                    <span *ngIf="isNavOpen">Notes</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['law-firms']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Notes">note</mat-icon>
+                    <span *ngIf="isNavOpen">Law Firms (2140)</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['locations']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Claims">assignment</mat-icon>
+                    <span *ngIf="isNavOpen">Locations (8)</span>
+                </a>
+            </li>
+
+            <li routerLinkActive="active" [routerLink]="['documents']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Documents">folder</mat-icon>
+                    <span *ngIf="isNavOpen">Documents (111,421)</span>
+                </a>
+            </li>
+
+            <li routerLinkActive="active" [routerLink]="['activity']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Activity">timeline</mat-icon>
+                    <span *ngIf="isNavOpen">Activity (250,002)</span>
+                </a>
+            </li>
+
+            <li routerLinkActive="active" (click)="openAddPaitent(null);">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Intake Update">save</mat-icon>
+                    <span *ngIf="isNavOpen">Patient Intake</span>
+                </a>
+            </li>
+
+            <!-- <li routerLinkActive="active" (click)="openAddPaitent(null);">
+                <button mat-raised-button style="background-color: green; color: white;">
+                    <mat-icon>save</mat-icon> Update
+                </button>
+            </li> -->
+        </ul>
+    </nav>
+</div>
+
+<div [ngClass]="{'full-width': !isNavOpen}" class="col-sm-10 mt-5">
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,39 @@
+<div class="nav-container">
+    <nav class="nav-links">
+        <h3>Funds</h3>
+        <ul>
+            <li routerLinkActive="active" [routerLink]="['invoices']">
+                <a style="margin-top: 10px;">
+                    Invoices
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['batches']">
+                <a style="margin-top: 10px;">
+                    Batches
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['requests']">
+                <a style="margin-top: 10px;">
+                    Requests
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['payments']">
+                <a style="margin-top: 10px;">
+                    Payments
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['calculators']">
+                <a style="margin-top: 10px;">
+                    Calculator
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['repayments']">
+                <a style="margin-top: 10px;">
+                    Repayments
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<router-outlet></router-outlet>

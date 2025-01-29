@@ -1,0 +1,255 @@
+<!-- Perspective Mat-Icons -->
+<div class="col-sm-12 mb-3">
+    <div class="col-sm-5"></div>
+    <div class="col-sm-3" style="text-align: right;">
+        <p *ngIf="selectedIcon !== null" class="mt-2 tooltipName">
+            <span style="color: #A6A6A6; font-size: 19px;">{{ icons[selectedIcon].tooltip }}</span>
+        </p>
+    </div>
+    <div class="col-sm-4">
+        <mat-card
+            style="background-color: rgb(230, 228, 228); height: 35px; display: flex; justify-content: center; align-items: center;">
+            <div style="display: flex; justify-content: center; align-items: center; cursor: pointer;">
+                <mat-icon *ngFor="let icon of icons; let i = index" matTooltip="{{ icon.tooltip }}"
+                    class="animated-icon1" [ngStyle]="{
+              'background-color': selectedIcon === i ? 'yellow' : 'transparent',
+              'padding': selectedIcon === i ? '15px 15px 12px 15px' : '0px',
+              'border-radius': '6px',
+              'border': selectedIcon === i ? '2px solid orange' : 'none',
+              'display': 'flex',
+              'justify-content': 'center',
+              'align-items': 'center',
+              'width': '40px',
+              'height': '40px'
+            }" (click)="selectIcon(i)">
+                    {{ icon.name }}
+                </mat-icon>
+                <mat-icon style="background-color: white;" (click)="perspectives();" matTooltip="Perspectives"
+                    class="animated-icon1">settings
+                </mat-icon>
+                <mat-icon (click)="perspectiveFilter($event)" matTooltip="Filter" class="animated-icon1">
+                    filter_list
+                </mat-icon>
+            </div>
+        </mat-card>
+    </div>
+</div>
+
+
+
+<div class="container-fluid" style="margin-bottom: 10px; padding-right: 25px;">
+    <div class="w-100">
+        <div class="row" style="display: flex; justify-content: flex-end; align-items: center">
+            <!-- Filter Button -->
+            <button mat-raised-button style="background-color: #37474f; color: white"
+                class="filters-hover margin-right-10" (click)="filterToggle = !filterToggle">
+                <mat-icon class="mat-margin-top">filter_list</mat-icon> Filter
+            </button>
+
+            <!-- Grid Columns Button -->
+            <button mat-raised-button style="background-color: #37474f; color: white"
+                class="filters-hover margin-right-10">
+                <mat-icon>grid_on</mat-icon> Grid Columns
+            </button>
+
+            <!-- Download CSV Button -->
+            <button mat-raised-button style="background-color: black; color: white; margin-right: 8px">
+                <mat-icon>get_app</mat-icon> Download CSV
+            </button>
+
+            <!-- Upload CSV Button -->
+            <!-- <button mat-raised-button style="background-color: black; color: white; margin-right: 8px">
+                <mat-icon>backup</mat-icon> Upload CSV
+            </button> -->
+
+            <!-- Add Account Button -->
+            <!-- <button mat-raised-button color="primary" class="btn-primary margin-right-5"
+                (click)="openEditDialog(null);">
+                <mat-icon class="mat-margin-top">add</mat-icon> Add Invoice
+            </button> -->
+        </div>
+    </div>
+</div>
+
+<!-- Filter UI -->
+<div fxLayout="row wrap" *ngIf="filterToggle" style="margin-bottom: 10px" class="col-sm-12">
+    <div fxFlex="100" class="flex-p w-100">
+        <form>
+            <mat-card class="filter">
+                <mat-card-content>
+                    <div class="row col-sm-12">
+                        <div class="col-sm-4 row">
+                            <div class="col-sm-4 mt-2">
+                                <b class="mt-2">Claims ID:</b>
+                            </div>
+                            <div class="col-sm-7">
+                                <mat-select class="form-control bac" placeholder="Select Claims ID">
+                                    <mat-option value="10025423">10025423</mat-option>
+                                    <mat-option value="10025424">10025424</mat-option>
+                                    <mat-option value="10025425">10025425</mat-option>
+                                    <mat-option value="10025426">10025426</mat-option>
+                                    <mat-option value="10025427">10025427</mat-option>
+                                    <mat-option value="10025428">10025428</mat-option>
+                                    <mat-option value="10025429">10025429</mat-option>
+                                    <mat-option value="10025430">10025430</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 row">
+                            <div class="col-sm-4 mt-2">
+                                <b>Patient Name:</b>
+                            </div>
+                            <div class="col-sm-8">
+                                <mat-select class="form-control bac" placeholder="Select Patient Name">
+                                    <mat-option value="John Doe">John Doe</mat-option>
+                                    <mat-option value="Jane Smith">Jane Smith</mat-option>
+                                    <mat-option value="Alice Johnson">Alice Johnson</mat-option>
+                                    <mat-option value="Bob Brown">Bob Brown</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 row">
+                            <div class="col-sm-4 mt-2">
+                                <b>Claim Status:</b>
+                            </div>
+                            <div class="col-sm-8">
+                                <mat-select placeholder="Select Claim Status" class="form-control">
+                                    <mat-option [value]="'Scheduled'">Scheduled</mat-option>
+                                    <mat-option [value]="'Completed'">Completed</mat-option>
+                                    <mat-option [value]="'Pending'">Pending</mat-option>
+                                    <mat-option [value]="'No Show'">No Show</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+
+                        <!-- Search and Clear Buttons -->
+                        <div class="col-sm-12 mt-3">
+                            <button mat-raised-button class="pull-right" style="background-color: black; color: white;"
+                                (click)="filterForm.reset()">
+                                Clear
+                            </button>
+                            <button mat-raised-button style="background-color: blue; color: white;"
+                                class="pull-right margin-right-10">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </div>
+</div>
+
+
+<!-- Table -->
+<div class="col-sm-12">
+    <div id="grid-table-container" class="table-responsive">
+        <table matSort class="table table-bordered table-hover">
+            <thead class="tbl-head1" style="background-color: rgb(58, 53, 53); color: white;">
+                <tr>
+                    <th class="text-center" style="white-space: nowrap;">Actions</th>
+                    <th class="text-center" style="white-space: nowrap;">Invoice ID</th>
+                    <th style="white-space: nowrap;">Case ID</th>
+                    <th style="white-space: nowrap;">Claim ID</th>
+                    <th style="white-space: nowrap;">Visit ID</th>
+                    <th class="text-center" style="white-space: nowrap;">Referral ID</th>
+                    <th class="text-center" style="white-space: nowrap;">Patient ID</th>
+                    <th class="text-center" style="white-space: nowrap;">Location ID</th>
+                    <th>Location Name</th>
+                    <th style="white-space: nowrap;" class="text-center">Funding Partner</th>
+                    <th class="text-center">Publish</th>
+                    <th class="text-center">PDF</th>
+                    <th class="text-center" style="white-space: nowrap;">Claim Amount</th>
+                    <th class="text-center" style="white-space: nowrap;">Funding</th>
+                    <th style="white-space: nowrap;">Patient Name</th>
+                    <th class="text-center" style="white-space: nowrap;">Payback Date</th>
+                    <th class="text-center" style="white-space: nowrap;">DoB</th>
+                    <th class="text-center" style="white-space: nowrap;">DoS</th>
+                    <th class="text-center" style="white-space: nowrap;">DoI</th>
+                    <th class="text-center" style="white-space: nowrap;">MED</th>
+                    <th class="text-center" style="white-space: nowrap;">AoB</th>
+                    <th class="text-center" style="white-space: nowrap;">LoP</th>
+                    <th style="white-space: nowrap;">Law Firm</th>
+                    <th style="white-space: nowrap;">Provider</th>
+                    <th style="white-space: nowrap;" class="text-center">Created Date</th>
+                    <th style="white-space: nowrap;" class="text-center">Funded Date</th>
+                    <th style="white-space: nowrap;" class="text-center">Remarks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of users">
+                    <td class="text-center" style="white-space: nowrap;">
+                        <a matTooltip="Edit Record" (click)="openEditDialog(item)"
+                            class="fa fa-edit action-btn edit-btn" style="margin-right: 10px;">
+                        </a>
+                        <a matTooltip="Delete Record" class="fa fa-trash action-btn delete-btn">
+                        </a>
+                    </td>
+                    <td class="text-center">{{ item.invoiceId }}</td>
+                    <td class="text-center">{{ item.caseId }}</td>
+                    <td class="text-center">{{ item.claimId }}</td>
+                    <td class="text-center" [routerLink]="['/rcm-login/visits-dashboard']"
+                        style="color: cornflowerblue; cursor: pointer;">{{ item.invoiceId }}
+                    </td>
+                    <td class="text-center" [routerLink]="['/rcm-login/referrals-dashboard']"
+                        style="color: cornflowerblue; cursor: pointer;">
+                        {{ item.invoiceId }}
+                    </td>
+                    <td class="text-center" (click)="open(item);" style="color: cornflowerblue; cursor: pointer;">
+                        {{item.caseId }}
+                    </td>
+                    <td class="text-center">{{ item.claimId }}</td>
+                    <td style="white-space: nowrap;">{{ item.locationName }}</td>
+                    <td class="text-center">
+                        <mat-select [(value)]="item.fundingPartner" class="form-control" placeholder="Select Partner">
+                            <mat-option [value]="'Partner A'">Medtronic Ventures</mat-option>
+                            <mat-option [value]="'Partner B'">LHC Group</mat-option>
+                            <mat-option [value]="'Partner C'">Centene Corporation</mat-option>
+                        </mat-select>
+                    </td>
+                    <td class="text-center">
+                        <mat-checkbox [(ngModel)]="item.publish"></mat-checkbox>
+                    </td>
+                    <td class="text-center" (click)="openfileupload(null)" style="color: blue; cursor: pointer;">
+                        <mat-icon>file_copy</mat-icon>
+                    </td>
+                    <td class="text-center">{{ item.invoiceValue }}</td>
+                    <td class="text-center">{{ item.fundsReceived }}</td>
+                    <td>{{ item.patientName }}</td>
+                    <td class="text-center" style="white-space: nowrap;">{{ item.dob | date: 'dd-MMM-yyyy' }}</td>
+                    <td class="text-center" style="white-space: nowrap;">{{ item.dob | date: 'dd-MMM-yyyy' }}</td>
+                    <td class="text-center" style="white-space: nowrap;">{{ item.dos | date: 'dd-MMM-yyyy' }}</td>
+                    <td class="text-center" style="white-space: nowrap;">{{ item.doi | date: 'dd-MMM-yyyy' }}</td>
+                    <td class="text-center" (click)="openfileupload(null)" style="color: blue; cursor: pointer;">
+                        <mat-icon>file_copy</mat-icon>
+                    </td>
+                    <td class="text-center" (click)="openfileupload(null)" style="color: blue; cursor: pointer;">
+                        <mat-icon>file_copy</mat-icon>
+                    </td>
+                    <td class="text-center" (click)="openfileupload(null)" style="color: blue; cursor: pointer;">
+                        <mat-icon>file_copy</mat-icon>
+                    </td>
+                    <td style="white-space: nowrap;">{{ item.lawFirmBy }}</td>
+                    <td style="white-space: nowrap;">{{ item.provider }}</td>
+                    <td class="text-center">{{ item.createdDate | date: 'dd-MMM-yyyy' }}</td>
+                    <td class="text-center">{{ item.fundedDate | date: 'dd-MMM-yyyy' }}</td>
+                    <td class="text-center" style="color: blue; cursor: pointer;" (click)="notesDialog(item);">
+                        <mat-icon>info</mat-icon>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button class="mine" mat-fab (click)="scrollGrid('right')">
+            <mat-icon style="color: #37474f">fast_forward</mat-icon>
+        </button>
+        <button class="mine" mat-fab style="margin-right: 78px !important" (click)="scrollGrid('left')">
+            <mat-icon style="color: #37474f">fast_rewind</mat-icon>
+        </button>
+
+        <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSizeOptions]="[5, 10, 25, 50, 100]"
+            showFirstLastButtons></mat-paginator>
+    </div>
+</div>

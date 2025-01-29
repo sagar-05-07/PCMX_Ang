@@ -1,0 +1,100 @@
+.interest-calculator {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+}
+
+.left-side,
+.right-side {
+    width: 48%;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    /* Keeps rounded corners without the border */
+    /* Remove the border property */
+}
+
+h3 {
+    text-align: left;
+}
+
+label {
+    display: inline-block;
+    margin-top: 10px;
+    width: 100%;
+    text-align: left;
+}
+
+.input-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.input-row label {
+    width: 50%;
+    text-align: left;
+}
+
+.input-row input {
+    width: 50%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+// button {
+//     width: 48%;
+//     padding: 10px;
+//     background-color: #4CAF50;
+//     color: white;
+//     border: none;
+//     border-radius: 4px;
+//     cursor: pointer;
+// }
+
+// button:hover {
+//     background-color: #45a049;
+// }
+
+.right-side label {
+    font-weight: bold;
+}
+
+.right-side div {
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .interest-calculator {
+        flex-direction: column;
+    }
+
+    .left-side,
+    .right-side {
+        width: 100%;
+    }
+
+    .input-row label,
+    .input-row input {
+        width: 100%;
+    }
+}
+
+.input-row select {
+    width: 50%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+}

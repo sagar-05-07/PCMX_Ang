@@ -1,0 +1,30 @@
+<div class="content-panel mt-5">
+    <ngx-mat-timeline class="custom-timeline" [position]="position" [orientation]="orientation" [reverse]="reverse">
+        <ngx-mat-timeline-item *ngFor="let item of items; let idx = index" style="gap: 84px;">
+            <div class="custom-content" style="min-width: 250px; max-width: 350px">
+                <div class="timeline-header">
+                    <div class="avatar">
+                        <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+                    </div>
+                    <div class="details mb-3">
+                        <div class="name">
+                            <b>{{ item.name }}</b>
+                        </div>
+                        <div class="updated">Updated: {{ item.updated }}</div>
+                    </div>
+                </div>
+                {{ item.content }}
+            </div>
+
+            <ng-template ngxMatTimelineItemIcon>
+                <div class="custom-icon">{{ idx + 1 }}</div>
+            </ng-template>
+
+            <ng-template ngxMatTimelineItemLabel>
+                <div class="custom-label" [ngClass]="getLabelClass(item.label)">
+                    {{ item.label }}
+                </div>
+            </ng-template>
+        </ngx-mat-timeline-item>
+    </ngx-mat-timeline>
+</div>

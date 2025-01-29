@@ -1,0 +1,259 @@
+<h1 style="background-color: rgb(73, 128, 150); color: white; text-align: center;" mat-dialog-title><span
+    *ngIf="!data">Add</span><span *ngIf="data">Edit</span> Claims
+</h1>
+
+<mat-horizontal-stepper #stepper>
+<mat-step>
+    <div mat-dialog-content>
+        <form class="form-horizontal" novalidate>
+            <ng-template matStepLabel>Overview</ng-template>
+            <div class="col-sm-6">
+                <div class="row" style="margin-bottom: 12px;">
+                    <div class="col-sm-4">
+                        <label class="control-label add-member-label required">Patient ID :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <mat-select class="form-control bac" placeholder="Select Patient ID">
+                            <mat-option [value]="'New York'">10025423</mat-option>
+                            <mat-option [value]="'Los Angeles'">10025424</mat-option>
+                            <mat-option [value]="'Chicago'">10025425</mat-option>
+                            <mat-option [value]="'Houston'">10025426</mat-option>
+                            <mat-option [value]="'Phoenix'">10025427</mat-option>
+                            <mat-option [value]="'Philadelphia'">10025428</mat-option>
+                            <mat-option [value]="'San Antonio'">10025429</mat-option>
+                            <mat-option [value]="'San Diego'">10025430</mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4">
+                        <label class="control-label add-member-label required">Claim :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control bac" placeholder="Enter Claim" required>
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4">
+                        <label class="control-label add-member-label required">Referral :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control bac" placeholder="Enter Referral" required>
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4">
+                        <label class="control-label add-member-label required">Visit Reference :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <mat-select class="form-control bac" placeholder="Select Visit Reference">
+                            <mat-option [value]="'MRN123456789'">MRN123456789</mat-option>
+                            <mat-option [value]="'VST-20241128-001'">VST-20241128-001</mat-option>
+                            <mat-option [value]="'APPT-20241128-1054'">APPT-20241128-1054</mat-option>
+                            <mat-option [value]="'CLM-1025-4489'">CLM-1025-4489</mat-option>
+                            <mat-option [value]="'LAB-20241128-0893'">LAB-20241128-0893</mat-option>
+                            <mat-option [value]="'PROC-567234'">PROC-567234</mat-option>
+                            <mat-option [value]="'ADM202411281230'">ADM202411281230</mat-option>
+                            <mat-option [value]="'ER202411281745'">ER202411281745</mat-option>
+                            <mat-option [value]="'TM-VID20241128-007'">TM-VID20241128-007</mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 12px;">
+                    <div class="col-sm-4">
+                        <label class="control-label add-member-label required">Submitted By :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <mat-select class="form-control bac" placeholder="Select Submitted By">
+                            <mat-option [value]="'Dr. John Smith'">Dr. John Smith</mat-option>
+                            <mat-option [value]="'Nurse Emily Davis'">Nurse Emily Davis</mat-option>
+                            <mat-option [value]="'Dr. Sarah Johnson'">Dr. Sarah Johnson</mat-option>
+                            <mat-option [value]="'Technician Mike Brown'">Technician Mike Brown</mat-option>
+                            <mat-option [value]="'Administrator Karen Taylor'">Administrator Karen
+                                Taylor</mat-option>
+                            <mat-option [value]="'Dr. Robert Wilson'">Dr. Robert Wilson</mat-option>
+                            <mat-option [value]="'Nurse Laura Moore'">Nurse Laura Moore</mat-option>
+                            <mat-option [value]="'Staff Member James White'">Staff Member James White</mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row" style="margin-bottom: 12px;">
+                    <div class="col-sm-4">
+                        <label class="control-label add-member-label required">Service :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <mat-select class="form-control bac" placeholder="Select Service" required>
+                            <mat-option [value]="'General Consultation'">General Consultation</mat-option>
+                            <mat-option [value]="'Specialist Appointment'">Specialist Appointment</mat-option>
+                            <mat-option [value]="'Diagnostic Services'">Diagnostic Services</mat-option>
+                            <mat-option [value]="'Physical Therapy'">Physical Therapy</mat-option>
+                            <mat-option [value]="'Vaccination'">Vaccination</mat-option>
+                            <mat-option [value]="'Mental Health Counseling'">Mental Health Counseling</mat-option>
+                            <mat-option [value]="'Prenatal Care'">Prenatal Care</mat-option>
+                            <mat-option [value]="'Post-Surgery Follow-Up'">Post-Surgery Follow-Up</mat-option>
+                            <mat-option [value]="'Telemedicine Consultation'">Telemedicine Consultation</mat-option>
+                            <mat-option [value]="'Emergency Care'">Emergency Care</mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4">
+                        <label class="control-label add-member-label required">Service Date :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="date" class="form-control bac" placeholder="Enter Duration" required>
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4">
+                        <label class="control-label add-member-label required">Date of Injury :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="date" class="form-control bac" placeholder="Enter Duration" required>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 12px;">
+                    <div class="col-sm-4">
+                        <label class="control-label add-member-label required">Claim Type :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <mat-select class="form-control bac" placeholder="Select Claim Type" required>
+                            <mat-option [value]="'Emergency Case'">Emergency Case</mat-option>
+                            <mat-option [value]="'Routine Checkup'">Routine Checkup</mat-option>
+                            <mat-option [value]="'Follow-Up Visit'">Follow-Up Visit</mat-option>
+                            <mat-option [value]="'Diagnostic Evaluation'">Diagnostic Evaluation</mat-option>
+                            <mat-option [value]="'Surgical Case'">Surgical Case</mat-option>
+                            <mat-option [value]="'Rehabilitation Case'">Rehabilitation Case</mat-option>
+                            <mat-option [value]="'Chronic Disease Management'">Chronic Disease
+                                Management</mat-option>
+                            <mat-option [value]="'Mental Health Case'">Mental Health Case</mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 12px;">
+                    <div class="col-sm-4">
+                        <label class="control-label add-member-label required">Claims Status :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <mat-select class="form-control bac" placeholder="Select Claims Status" required>
+                            <mat-option [value]="'Submitted'">Submitted</mat-option>
+                            <mat-option [value]="'In Review'">In Review</mat-option>
+                            <mat-option [value]="'Approved'">Approved</mat-option>
+                            <mat-option [value]="'Rejected'">Rejected</mat-option>
+                            <mat-option [value]="'Pending Documentation'">Pending Documentation</mat-option>
+                            <mat-option [value]="'Processed'">Processed</mat-option>
+                            <mat-option [value]="'Denied'">Denied</mat-option>
+                            <mat-option [value]="'Appealed'">Appealed</mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12" style="margin-left: -15px;">
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-2">
+                        <label class="control-label add-member-label required mt-5">Enter Notes :</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <textarea type="time" class="form-control bac" placeholder="Enter Remarks"
+                            style="height: 80px;width: 96%;margin-left: 11px;" required></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <mat-dialog-actions align="end">
+        <button matStepperNext mat-raised-button style="background-color: green; color: white;"><span *ngIf="!data">
+                Save & Next</span><span *ngIf="data">Update</span></button>
+        <button mat-raised-button class="add-dark-hover btn-default" style="background-color: gray; color: red;"
+            (click)="close()">Cancel</button>
+    </mat-dialog-actions>
+</mat-step>
+
+<mat-step>
+    <div mat-dialog-content>
+        <form class="form-horizontal" novalidate>
+            <ng-template matStepLabel>Payment</ng-template>
+            <div class="col-sm-6">
+                <div class="row" style="margin-bottom: 12px;">
+                    <div class="col-sm-4">
+                        <label class="control-label add-member-label required">Estimate :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control bac" placeholder="Enter Estimate" required>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 12px;">
+                    <div class="col-sm-4">
+                        <label class="control-label add-member-label required">Negotiated Amount :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control bac" placeholder="Enter Negotiated Amount" required>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 12px;">
+                    <div class="col-sm-4">
+                        <label class="control-label add-member-label required">Purchase Amount :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control bac" placeholder="Enter Purchase Amount" required>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 12px;">
+                    <div class="col-sm-4">
+                        <label class="control-label add-member-label required">Check No :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control bac" placeholder="Enter Check Number" required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row" style="margin-bottom: 12px;">
+                    <div class="col-sm-4">
+                        <label class="control-label add-member-label required">Deposit :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control bac" placeholder="Enter Deposit" required>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 12px;">
+                    <div class="col-sm-4">
+                        <label class="control-label add-member-label required">Negotiated Date :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="date" class="form-control bac" placeholder="Enter Negotiated Date" required>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 12px;">
+                    <div class="col-sm-4">
+                        <label class="control-label add-member-label required">Paid Amount :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control bac" placeholder="Enter Paid Amount" required>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 12px;">
+                    <div class="col-sm-4">
+                        <label class="control-label add-member-label required">Payemnet Date :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="date" class="form-control bac" placeholder="Enter Payemnet Date" required>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <mat-dialog-actions align="end">
+        <button mat-raised-button (click)="close()" style="background-color: green; color: white;"><span
+                *ngIf="!data">
+                Submit</span><span *ngIf="data">Update</span></button>
+        <button mat-raised-button class="add-dark-hover btn-default" style="background-color: gray; color: red;"
+            (click)="close()">Cancel</button>
+    </mat-dialog-actions>
+</mat-step>
+</mat-horizontal-stepper>

@@ -1,0 +1,339 @@
+<!--This page is used to add or edit accounts-->
+<h1
+  style="background-color: rgb(73, 128, 150); color: white; text-align: center"
+  mat-dialog-title
+>
+  <span *ngIf="!account">Add</span><span *ngIf="account">Edit</span> Law Firm
+</h1>
+
+<mat-horizontal-stepper #stepper>
+  <mat-step>
+    <div mat-dialog-content>
+      <form class="form-horizontal" novalidate>
+        <ng-template matStepLabel>Overview</ng-template>
+        <div class="col-sm-6">
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-4 add-mem">
+              <label class="control-label add-member-label required"
+                >Network Name :</label
+              >
+            </div>
+            <div class="col-sm-7">
+              <input
+                type="text"
+                class="form-control bac"
+                placeholder="Enter Network Name"
+                maxlength="100"
+                minlength="2"
+                onDrag="return false"
+                onDrop="return false"
+                required
+              />
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-4 add-mem">
+              <label class="control-label add-member-label required"
+                >ATTYS :</label
+              >
+            </div>
+            <div class="col-sm-7">
+              <input
+                type="text"
+                class="form-control bac"
+                placeholder="Enter ATTYS"
+                maxlength="100"
+                minlength="2"
+                onDrag="return false"
+                onDrop="return false"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-4 add-mem">
+              <label class="control-label add-member-label required"
+                >Law Firm :</label
+              >
+            </div>
+            <div class="col-sm-7">
+              <input
+                type="text"
+                class="form-control bac"
+                placeholder="Enter Law Firm"
+                maxlength="100"
+                minlength="2"
+                onDrag="return false"
+                onDrop="return false"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-4 add-mem">
+              <label class="control-label add-member-label required"
+                >City :</label
+              >
+            </div>
+            <div class="col-sm-7">
+              <mat-select class="form-control bac" placeholder="Select City">
+                <mat-option [value]="'New York'">New York</mat-option>
+                <mat-option [value]="'Los Angeles'">Los Angeles</mat-option>
+                <mat-option [value]="'Chicago'">Chicago</mat-option>
+                <mat-option [value]="'Houston'">Houston</mat-option>
+                <mat-option [value]="'Phoenix'">Phoenix</mat-option>
+                <mat-option [value]="'Philadelphia'">Philadelphia</mat-option>
+                <mat-option [value]="'San Antonio'">San Antonio</mat-option>
+                <mat-option [value]="'San Diego'">San Diego</mat-option>
+                <mat-option [value]="'Dallas'">Dallas</mat-option>
+                <mat-option [value]="'San Jose'">San Jose</mat-option>
+              </mat-select>
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-4 add-mem">
+              <label class="control-label add-member-label required"
+                >State :</label
+              >
+            </div>
+            <div class="col-sm-7">
+              <mat-select class="form-control bac" placeholder="Select State">
+                <mat-option [value]="'California'">California</mat-option>
+                <mat-option [value]="'Texas'">Texas</mat-option>
+                <mat-option [value]="'Florida'">Florida</mat-option>
+                <mat-option [value]="'New York'">New York</mat-option>
+                <mat-option [value]="'Illinois'">Illinois</mat-option>
+                <mat-option [value]="'Pennsylvania'">Pennsylvania</mat-option>
+                <mat-option [value]="'Ohio'">Ohio</mat-option>
+                <mat-option [value]="'Georgia'">Georgia</mat-option>
+                <mat-option [value]="'North Carolina'"
+                  >North Carolina</mat-option
+                >
+                <mat-option [value]="'Michigan'">Michigan</mat-option>
+              </mat-select>
+            </div>
+          </div>
+
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-4 add-mem">
+              <label class="control-label add-member-label required"
+                >Zip Code :</label
+              >
+            </div>
+            <div class="col-sm-7">
+              <input
+                type="number"
+                class="form-control bac"
+                placeholder="Enter Zip Code"
+                maxlength="100"
+                minlength="2"
+                onDrag="return false"
+                onDrop="return false"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-4 add-mem">
+              <label class="control-label add-member-label required"
+                >Email :</label
+              >
+            </div>
+            <div class="col-sm-7">
+              <input
+                type="text"
+                class="form-control bac"
+                placeholder="Enter Email"
+                maxlength="100"
+                minlength="2"
+                onDrag="return false"
+                onDrop="return false"
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-4 add-mem">
+              <label class="control-label required">Provider :</label>
+            </div>
+            <div class="col-sm-7">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter Provider"
+                maxlength="100"
+                minlength="2"
+                onDrag="return false"
+                onDrop="return false"
+                required
+              />
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-4 add-mem">
+              <label class="control-label required">Work Phone :</label>
+            </div>
+            <div class="col-sm-7">
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Enter Work Phone Number"
+                maxlength="100"
+                minlength="2"
+                onDrag="return false"
+                onDrop="return false"
+                required
+              />
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-4 add-mem">
+              <label class="control-label add-member-label required"
+                >Cell Phone :</label
+              >
+            </div>
+            <div class="col-sm-7">
+              <input
+                type="number"
+                class="form-control bac"
+                placeholder="Enter Cell Phone Number"
+                maxlength="100"
+                minlength="2"
+                onDrag="return false"
+                onDrop="return false"
+                required
+              />
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-4 add-mem">
+              <label class="control-label required">Language :</label>
+            </div>
+            <div class="col-sm-7">
+              <mat-select class="form-control" placeholder="Select Language">
+                <mat-option [value]="'English'">English</mat-option>
+                <mat-option [value]="'Spanish'">Spanish</mat-option>
+                <mat-option [value]="'French'">French</mat-option>
+                <mat-option [value]="'German'">German</mat-option>
+                <mat-option [value]="'Chinese'">Chinese</mat-option>
+                <mat-option [value]="'Hindi'">Hindi</mat-option>
+                <mat-option [value]="'Arabic'">Arabic</mat-option>
+                <mat-option [value]="'Russian'">Russian</mat-option>
+                <mat-option [value]="'Portuguese'">Portuguese</mat-option>
+                <mat-option [value]="'Japanese'">Japanese</mat-option>
+              </mat-select>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <mat-dialog-actions align="end">
+      <div style="margin-top: -20px; margin-right: 55px">
+        <button
+          matStepperNext
+          mat-raised-button
+          style="background-color: green; color: white"
+        >
+          Proceed
+        </button>
+        <button
+          mat-raised-button
+          class="add-dark-hover btn-default"
+          style="background-color: gray; color: red"
+          (click)="close()"
+        >
+          Cancel
+        </button>
+      </div>
+    </mat-dialog-actions>
+  </mat-step>
+  <mat-step>
+    <div mat-dialog-content>
+      <form class="form-horizontal" novalidate>
+        <ng-template matStepLabel>Networks</ng-template>
+        <div class="col-sm-12">
+          <div
+            class="search-container"
+            style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              flex-wrap: wrap;
+            "
+          >
+            <input
+              type="search"
+              class="form-control"
+              placeholder="Search By Network Name"
+              onDrag="return false"
+              onDrop="return false"
+              style="flex: 1; min-width: 100px"
+            />
+            <button
+              class="search-button"
+              style="
+                padding: 8px 12px;
+                background-color: #50636d;
+                border: none;
+                cursor: pointer;
+                border-radius: 4px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <mat-icon style="color: white; font-size: 16px">search</mat-icon>
+            </button>
+          </div>
+
+          <div class="row mt-5" style="margin-bottom: 12px">
+            <div
+              class="network-list"
+              style="
+                display: grid;
+                grid-template-columns: repeat(3, auto);
+                gap: 16px;
+              "
+            >
+              <div
+                *ngFor="let network of networks"
+                class="network-item"
+                style="display: flex; align-items: center; gap: 8px"
+              >
+                <mat-checkbox></mat-checkbox>
+                <label>
+                  {{ network.name }}
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <mat-dialog-actions align="end">
+      <div style="margin-top: -20px; margin-right: 50px">
+        <button
+          matStepperNext
+          mat-raised-button
+          style="background-color: green; color: white"
+        >
+          Proceed
+        </button>
+        <button
+          mat-raised-button
+          class="add-dark-hover btn-default"
+          style="background-color: gray; color: red"
+          (click)="close()"
+        >
+          Cancel
+        </button>
+      </div>
+    </mat-dialog-actions>
+  </mat-step>
+</mat-horizontal-stepper>

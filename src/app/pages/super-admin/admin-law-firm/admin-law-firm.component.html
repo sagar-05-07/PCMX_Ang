@@ -1,0 +1,336 @@
+<div class="col-sm-12">
+  <div fxLayout="row wrap">
+    <div class="w-100">
+      <div class="flex-p">
+        <div class="row wrap">
+          <div class="col-xs-12" style="
+              margin-right: 0px !important;
+              margin-top: 15px;
+              margin-bottom: 10px;
+            ">
+            <div class="col-sm-12 pull-right">
+              <button mat-raised-button class="pull-right" style="background-color: #007bff !important; color: white"
+                (click)="openproviderdialog(null)">
+                <mat-icon class="mat-margin-top">add</mat-icon> Add Lawfirm
+              </button>
+              <button mat-raised-button style="background-color: black; color: white"
+                class="pull-right filter-hover margin-right-10" (click)="filterToggle = !filterToggle">
+                <mat-icon class="mt-2">filter_list</mat-icon> Filter
+              </button>
+
+              <button mat-raised-button class="pull-right" style="
+                  background-color: #50636d !important;
+                  color: white;
+                  margin-right: 8px;
+                ">
+                <mat-icon class="mt-2">get_app</mat-icon> Download CSV
+              </button>
+
+              <button mat-raised-button class="pull-right" style="
+                  background-color: #007bff !important;
+                  color: white;
+                  margin-right: 8px;
+                ">
+                <mat-icon class="mt-2">cloud_upload</mat-icon> Upload CSV
+              </button>
+
+              <button mat-raised-button class="pull-right" style="
+                  background-color: #50636d !important;
+                  color: white;
+                  margin-right: 8px;
+                " (click)="openproviderdialoge(null)">
+                <mat-icon class="mt-2">grid_on</mat-icon> Grid Columns
+              </button>
+
+              <button mat-raised-button class="pull-right" style="
+                  background-color: #50636d !important;
+                  color: white;
+                  margin-right: 8px;
+                ">
+                <mat-icon class="mt-2">get_app</mat-icon> Download Template
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row wrap" *ngIf="filterToggle" style="
+          margin-bottom: 10px;
+          flex-flow: wrap;
+          box-sizing: border-box;
+          display: flex;
+        ">
+        <div fxFlex="100" class="flex-p w-100">
+          <form [formGroup]="filterForm">
+            <mat-card class="filter">
+              <mat-card-content>
+                <div class="row col-sm-12">
+                  <div class="col-sm-4 row">
+                    <div class="col-sm-3" style="margin-top: 6px">
+                      <b>Keyword:</b>
+                    </div>
+                    <div class="col-sm-9">
+                      <input type="text" placeholder="Search by Keyword" class="form-control" />
+                    </div>
+                  </div>
+
+                  <div class="col-sm-4 row">
+                    <div class="col-sm-2" style="margin-top: 6px">
+                      <b>State:</b>
+                    </div>
+                    <div class="col-sm-10">
+                      <mat-select placeholder="--Select State--" class="form-control" multiple
+                        [(value)]="selectedEventType3">
+                        <mat-select-trigger>
+                          {{ selectedEventType3 || "--Select State--" }}
+                        </mat-select-trigger>
+                        <mat-form-field *ngIf="eventTypes3.length > 1" appearance="fill" style="width: 100%">
+                          <input matInput (input)="applyFilter3($event)" placeholder="Search" />
+                        </mat-form-field>
+                        <mat-option *ngFor="let event of filteredEventTypes3" [value]="event">
+                          {{ event }}
+                        </mat-option>
+                      </mat-select>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 row">
+                    <div class="col-sm-2" style="margin-top: 6px">
+                      <b>City:</b>
+                    </div>
+                    <div class="col-sm-10">
+                      <mat-select placeholder="--Select City--" class="form-control" multiple
+                        [(value)]="selectedEventType">
+                        <mat-select-trigger>
+                          {{ selectedEventType || "--Select City--" }}
+                        </mat-select-trigger>
+                        <mat-form-field *ngIf="eventTypes.length > 1" appearance="fill" style="width: 100%">
+                          <input matInput (input)="applyFilter($event)" placeholder="Search" />
+                        </mat-form-field>
+                        <mat-option *ngFor="let event of filteredEventTypes" [value]="event">
+                          {{ event }}
+                        </mat-option>
+                      </mat-select>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                </div>
+                <div class="row col-sm-12" style="margin-top: 10px">
+                  <!-- <div class="col-sm-4 row">
+                    <div class="col-sm-2" style="margin-top: 6px">
+                      <b>Group:</b>
+                    </div>
+                    <div class="col-sm-10">
+                      <mat-select
+                        placeholder="--Select Group--"
+                        class="form-control"
+                        multiple
+                        [(value)]="selectedEventType1"
+                      >
+                        <mat-select-trigger>
+                          {{ selectedEventType1 || "--Select Group--" }}
+                        </mat-select-trigger>
+                        <mat-form-field
+                          *ngIf="eventTypes1.length > 1"
+                          appearance="fill"
+                          style="width: 100%"
+                        >
+                          <input
+                            matInput
+                            (input)="applyFilter1($event)"
+                            placeholder="Search"
+                          />
+                        </mat-form-field>
+                        <mat-option
+                          *ngFor="let event of filteredEventTypes1"
+                          [value]="event"
+                        >
+                          {{ event }}
+                        </mat-option>
+                      </mat-select>
+                    </div>
+                  </div> -->
+                  <div class="col-sm-4 row">
+                    <div class="col-sm-3" style="margin-top: 6px">
+                      <b style="white-space: nowrap">Law Firm:</b>
+                    </div>
+                    <div class="col-sm-9">
+                      <mat-select placeholder="--Select Law Firm--" class="form-control" multiple
+                        [(value)]="selectedEventType2">
+                        <mat-select-trigger>
+                          {{ selectedEventType2 || "--Select Consultant--" }}
+                        </mat-select-trigger>
+                        <mat-form-field *ngIf="eventTypes2.length > 1" appearance="fill" style="width: 100%">
+                          <input matInput (input)="applyFilter2($event)" placeholder="Search" />
+                        </mat-form-field>
+                        <mat-option *ngFor="let event of filteredEventTypes2" [value]="event">
+                          {{ event }}
+                        </mat-option>
+                      </mat-select>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-4 pull-right" style="margin-right: 75px">
+                    <a (click)="filterToggle = !filterToggle" class="pull-right"
+                      style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                      <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                    </a>
+                    <button mat-raised-button color="primary" class="pull-right"
+                      style="background-color: #007bff !important; color: white">
+                      Search
+                    </button>
+
+                    <button mat-raised-button class="pull-right btn-default margin-right-10">
+                      Clear
+                    </button>
+                  </div>
+
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </form>
+        </div>
+      </div>
+      <div class="container-fluid" style="padding-right: 5px; padding-left: 0px">
+        <div fxLayout="row wrap" #resizedDiv>
+          <div class="flex-p w-100 sizeAlign">
+            <div class="row">
+              <div class="col-sm-12">
+                <div id="grid-table-container" class="table-responsive">
+                  <table matSort class="table table-bordered table-hover" style="width: 100%">
+                    <thead class="tbl-head">
+                      <tr class="tr-grid-header">
+                        <th class="text-center">Actions</th>
+                        <th>Reset</th>
+                        <th>Sync</th>
+                        <th>REG</th>
+                        <th>Law Firms</th>
+                        <th class="text-center">Attorneys</th>
+                        <th>Network</th>
+                        <th mat-sort-header="contactJobTitle" style="min-width: 145px">
+                          Phone
+                        </th>
+                        <th>Email</th>
+                        <th>State</th>
+                        <th>City</th>
+                        <th>Paitents</th>
+                        <th>Referrals</th>
+                        <th>Cases</th>
+                        <th>Providers</th>
+                        <th class="text-center">2F</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngIf="allContacts.length > 0">
+                      <tr *ngFor="let item of allContacts">
+                        <td class="text-left">
+                          <div style="
+                              display: flex;
+                              justify-content: flex-start;
+                              gap: 5px;
+                            ">
+                            <a style="cursor: pointer" matTooltip="Shadow Login">
+                              <i class="fa fa-arrow-right"></i>
+                            </a>
+                            <a style="cursor: pointer" matTooltip="Edit" (click)="openproviderdialog(null)">
+                              <i class="fa fa-edit"></i>
+                            </a>
+                            <a style="cursor: pointer" matTooltip="Delete">
+                              <i class="fa fa-trash red"></i>
+                            </a>
+                            <a style="cursor: pointer" matTooltip="Message">
+                              <i class="fa fa-message"></i>
+                            </a>
+                          </div>
+                        </td>
+                        <td class="pad-left inner-screen text-left" style="text-align: center !important">
+                          <a style="cursor: pointer; text-decoration: none" matTooltip="Reset">
+                            <mat-icon>sync</mat-icon>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <mat-icon style="color: #007bff">settings</mat-icon>
+                        </td>
+                        <td class="text-center"><mat-checkbox></mat-checkbox></td>
+                        <td class="text-left" style="white-space: nowrap">
+                          {{ item.Firm }}
+                        </td>
+                        <td class="text-center" style="white-space: nowrap" (click)="openattys(null)">
+                          <a style="cursor: pointer">
+                            {{ item.attys }}
+                          </a>
+                        </td>
+
+                        <td class="text-left" style="white-space: nowrap">
+                          {{ item.networks }}
+                        </td>
+
+                        <td class="text-left">
+                          {{ item.Phone }}
+                        </td>
+
+                        <td class="text-left">
+                          {{ item.Email }}
+                        </td>
+
+                        <td class="text-left">Texas</td>
+                        <td class="text-left" style="white-space: nowrap">
+                          {{ item.city }}
+                        </td>
+                        <td class="text-center" (click)="openPatients()">
+                          <a style="cursor: pointer">
+                            {{ item.paitents }}
+                          </a>
+                        </td>
+                        <td class="text-center" style="cursor: pointer" [routerLink]="['/rcm-login/inner-referrals']">
+                          <a style="cursor: pointer">
+                            {{ item.referrals }}
+                          </a>
+                        </td>
+                        <td class="text-center" style="cursor: pointer" [routerLink]="['/rcm-login/inner-visits']">
+                          <a style="cursor: pointer">
+                            {{ item.visits }}
+                          </a>
+                        </td>
+
+                        <td class="text-center" [routerLink]="['/rcm-login/inner-providers']"
+                          style="white-space: nowrap">
+                          <a style="cursor: pointer">
+                            {{ item.name }}
+                          </a>
+                        </td>
+
+                        <td class="text-center"><mat-checkbox></mat-checkbox></td>
+                        <td [ngStyle]="{
+                            color: item.status === 'Active' ? 'blue' : 'red'
+                          }">
+                          {{ item.status }}
+                        </td>
+                      </tr>
+                    </tbody>
+                    <tbody *ngIf="allContacts.length == 0">
+                      <tr>
+                        <td colspan="17">
+                          <span>No data available</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <button class="mine" mat-fab (click)="scrollGrid('right')">
+                    <mat-icon style="color: #37474f">fast_forward</mat-icon>
+                  </button>
+                  <button class="mine" mat-fab style="margin-right: 78px !important" (click)="scrollGrid('left')">
+                    <mat-icon style="color: #37474f">fast_rewind</mat-icon>
+                  </button>
+                </div>
+                <mat-paginator class="col-sm-12" [length]="totalSize" [pageIndex]="currentPage" [pageSize]=""
+                  [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="handlePage($event)"
+                  showFirstLastButtons></mat-paginator>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+$brown-light-primary: mat.define-palette(mat.$brown-palette, 400, 100, 600);
+$brown-light-accent: mat.define-palette(mat.$light-blue-palette, 600, 300, 900);
+$brown-light-warn: mat.define-palette(mat.$red-palette, 500);
+
+$brown-light-theme: mat.define-light-theme((color: (primary: $brown-light-primary,
+                accent: $brown-light-accent,
+                warn: $brown-light-warn,
+            )));

@@ -1,0 +1,93 @@
+<div class="col-sm-8 mt-3">
+    <div class="row" style="margin-bottom: 12px;">
+        <div class="col-sm-4">
+            <label class="control-label required mt-2">Preferred Time :</label>
+        </div>
+        <div class="col-sm-8">
+            <input type="time" class="form-control bac" required>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 12px;">
+        <div class="col-sm-4">
+            <label class="control-label required mt-2">Comparison Reference :</label>
+        </div>
+        <div class="col-sm-8">
+            <mat-select class="form-control bac" placeholder="Select Comparison Reference">
+                <mat-option [value]="'Katherine Morgan'">Last Year</mat-option>
+                <mat-option [value]="'Katherine Morgan'">Last 2 Year</mat-option>
+                <mat-option [value]="'Katherine Morgan'">Last 3 Year</mat-option>
+                <mat-option [value]="'Katherine Morgan'">Current Year Average</mat-option>
+            </mat-select>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 12px;">
+        <div class="col-sm-4">
+            <label class="control-label required mt-2">Trend Span :</label>
+        </div>
+        <div class="col-sm-8" style="gap: 25px;">
+            <mat-radio-group class="d-flex align-items-center" style="gap: 25px;">
+                <mat-radio-button value="3Months">3 Months</mat-radio-button>
+                <mat-radio-button value="6Months" style="margin-left: 42px;">6 Months</mat-radio-button>
+                <mat-radio-button value="1Year" style="margin-left: 42px;">Last One Year</mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </div>
+
+
+    <div class="row" style="margin-bottom: 12px;">
+        <div class="col-sm-4">
+            <label class="control-label required mt-2"> Alerts :</label>
+        </div>
+        <div class="col-sm-8">
+            <mat-checkbox></mat-checkbox>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 12px;">
+        <div class="col-sm-4">
+            <label class="control-label required mt-2">Leader Board :</label>
+        </div>
+        <div class="col-sm-8">
+            <mat-checkbox></mat-checkbox>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 12px;">
+        <div class="col-sm-4">
+            <label class="control-label required mt-2">Variance Versus Budget:</label>
+        </div>
+        <div class="col-sm-8">
+            <mat-checkbox></mat-checkbox>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 12px;">
+        <div class="col-sm-4">
+            <label class="control-label required mt-2">Receipts :</label>
+        </div>
+        <div class="col-sm-8">
+            <mat-select class="form-control bac" placeholder="Select Core Team Members" multiple>
+                <mat-option [value]="'Alice Johnson'">Alice Johnson</mat-option>
+                <mat-option [value]="'Michael Smith'">Michael Smith</mat-option>
+                <mat-option [value]="'Sophia Davis'">Sophia Davis</mat-option>
+                <mat-option [value]="'James Wilson'">James Wilson</mat-option>
+                <mat-option [value]="'Emma Brown'">Emma Brown</mat-option>
+                <mat-option [value]="'Oliver Garcia'">Oliver Garcia</mat-option>
+                <mat-option [value]="'Liam Martinez'">Liam Martinez</mat-option>
+                <mat-option [value]="'Amelia Hernandez'">Amelia Hernandez</mat-option>
+                <mat-option [value]="'Noah Robinson'">Noah Robinson</mat-option>
+                <mat-option [value]="'Isabella Lopez'">Isabella Lopez</mat-option>
+            </mat-select>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-8 mt-4" style=" margin-left: 8px;">
+    <button mat-raised-button class="pull-right" style="background-color: green; color: white;">
+        <mat-icon>save</mat-icon>Save
+    </button>
+    <button mat-raised-button class="pull-right margin-right-10"
+        style="background-color: blue; color: white; font-size: 15px; text-decoration: none;"
+        (click)="downloadAndOpen('../../../../../assets/sample.pdf')">
+        <mat-icon>file_copy</mat-icon>
+        Preview
+    </button>
+
+</div>

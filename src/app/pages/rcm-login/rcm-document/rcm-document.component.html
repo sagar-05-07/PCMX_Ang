@@ -1,0 +1,301 @@
+<div class="nav-container" [ngClass]="{'nav-open': isNavOpen, 'nav-closed': !isNavOpen}">
+    <!-- Toggle Button with Hamburger Icon -->
+    <button (click)="toggleNav()" class="toggle-button">
+        <mat-icon class="toggle-icon">menu</mat-icon>
+    </button>
+
+
+
+    <!-- Navigation Links -->
+    <nav class="nav-links" *ngIf="isNavOpen">
+        <h3>Doc Types</h3>
+        <!-- 'Post' list -->
+        <ul *ngIf="showPost">
+            <li *ngFor="let item of items" routerLinkActive="active" [ngClass]="{'clicked-item': item === selectedItem}"
+                (click)="selectItem(item)">
+                <a style="margin-top: 10px;">{{ item }}</a>
+            </li>
+        </ul>
+
+        <!-- 'Pre' list -->
+        <ul *ngIf="!showPost">
+            <li *ngFor="let item of itemss" routerLinkActive="active"
+                [ngClass]="{'clicked-item': item === selectedItems}" (click)="selectItems(item)">
+                <a style="margin-top: 10px;">{{ item }}</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div [ngClass]="{'full-width': !isNavOpen}" class="col-sm-10">
+    <div class="row">
+        <div class="col-sm-12" fxLayout="row wrap" #resizedDiv>
+            <div class="w-100 flex-p" style="margin-top: -10px; margin-bottom: 10px;">
+                <button mat-raised-button class="pull-right margin-right-10" (click)="filterToggle = !filterToggle"
+                    style="background-color: black; color:white;">
+                    <mat-icon>filter_list</mat-icon> Filter
+                </button>
+                <button mat-raised-button class="pull-right margin-right-10"
+                    style="background-color: black; color:white; margin-left: 5px;" (click)="isCardView = !isCardView">
+                    <mat-icon>{{ isCardView ? 'view_module' : 'view_list' }}</mat-icon>
+                    {{ isCardView ? 'Grid View' : 'Card View' }}
+                </button>
+                <!-- <div class="switchToggle pull-right" style="margin-right:10px!important;">
+                    <input type="checkbox" id="switch" />
+                    <label class="mt-4" style="background-color: #3e98d3;" for="switch">Toggle</label>
+                </div> -->
+
+                <mat-select class="form-control pull-right" [value]="1" placeholder="Select Category"
+                    style="width: 200px;margin-right:10px;">
+                    <mat-option [value]="1">All</mat-option>
+                    <mat-option [value]="3">Medical</mat-option>
+                    <mat-option [value]="2">Billing</mat-option>
+                    <mat-option [value]="5">Imaging</mat-option>
+                </mat-select>
+                <label class="pull-right mt-2" style="width: 80px;margin-right:20px;">Category :</label>
+
+                <!-- Only show buttons when navigation is open -->
+                <div>
+                    <button mat-raised-button class="margin-right-10 btn-hover" color="primary"
+                        [ngStyle]="{'background-color': showPost ? '#3f51b5' : '', 'color': showPost ? 'white' : ''}"
+                        (click)="showPost = true">Post Visit (7060)
+                    </button>
+
+                    <button mat-raised-button class="margin-right-10 btn-hover" color="primary"
+                        [ngStyle]="{'background-color': !showPost ? '#3f51b5' : '', 'color': !showPost ? 'white' : ''}"
+                        (click)="showPost = false">Pre Visit (9029)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div fxLayout="row wrap" class="col-sm-12" *ngIf="filterToggle">
+            <form>
+                <mat-card class="filter">
+                    <mat-card-content>
+                        <!-- From Year -->
+                        <div class="col-sm-4 row">
+                            <div class="col-sm-4 mt-2">
+                                <b>From Date :</b>
+                            </div>
+                            <div class="col-sm-8" style="margin-left: -20px;">
+                                <input type="date" class="form-control bac" placeholder="Select Year">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 row">
+                            <div class="col-sm-4 mt-2">
+                                <b>To Date :</b>
+                            </div>
+                            <div class="col-sm-8" style="margin-left: -20px;">
+                                <input type="date" class="form-control bac" placeholder="Select Year">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 row">
+                            <div class="col-sm-4 mt-2">
+                                <b>Liaison :</b>
+                            </div>
+                            <div class="col-sm-8" style="margin-left: -20px;">
+                                <mat-select class="form-control bac" placeholder="Select Class">
+                                    <mat-option value="Medical">Medical</mat-option>
+                                    <mat-option value="Surgery/Procedures">Surgery/Procedures</mat-option>
+                                    <mat-option value="Imaging">Imaging</mat-option>
+                                    <mat-option value="Ancillary">Ancillary</mat-option>
+                                    <mat-option value="FSER">FSER</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 mt-3 row">
+                            <div class="col-sm-4 mt-2">
+                                <b>Law Firm :</b>
+                            </div>
+                            <div class="col-sm-8" style="margin-left: -20px;">
+                                <mat-select class="form-control bac" placeholder="Select Class">
+                                    <mat-option [value]="'1'">Peterson & Associates</mat-option>
+                                    <mat-option [value]="'1'">Mitchell Legal Group</mat-option>
+                                    <mat-option [value]="'1'">Carter & Bennett LLP</mat-option>
+                                    <mat-option [value]="'1'">Sanders & Cooper Attorneys</mat-option>
+                                    <mat-option [value]="'1'">Richardson & Harris Law</mat-option>
+                                    <mat-option [value]="'1'">Adams & Thompson Law Offices</mat-option>
+                                    <mat-option [value]="'1'">Brooks & Stevenson LLP</mat-option>
+                                    <mat-option [value]="'1'">Greenfield Legal Solutions</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 row mt-3">
+                            <div class="col-sm-4 mt-2">
+                                <b>Provider:</b>
+                            </div>
+                            <div class="col-sm-8" style="margin-left: -20px;">
+                                <mat-select class="form-control bac" placeholder="Select Provider">
+                                    <mat-option value="MayoClinic">Mayo Clinic</mat-option>
+                                    <mat-option value="ClevelandClinic">Cleveland Clinic</mat-option>
+                                    <mat-option value="KaiserPermanente">Kaiser Permanente</mat-option>
+                                    <mat-option value="JohnsHopkins">Johns Hopkins Medicine</mat-option>
+                                    <mat-option value="Geisinger">Geisinger Health</mat-option>
+                                    <mat-option value="PartnersHealthcare">Partners HealthCare</mat-option>
+                                    <mat-option value="MountSinai">Mount Sinai Health System</mat-option>
+                                    <mat-option value="UCLAHealth">UCLA Health</mat-option>
+                                    <mat-option value="BannerHealth">Banner Health</mat-option>
+                                    <mat-option value="MedStarHealth">MedStar Health</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="col-sm-4 mt-3" style="margin-left: -44px;">
+                            <button mat-raised-button style="background-color: black; color: white;" class="pull-right">
+                                <mat-icon>clear</mat-icon> Clear
+                            </button>
+                            <button mat-raised-button style="background-color: blue; color: white;"
+                                class="pull-right margin-right-10">
+                                <mat-icon>search</mat-icon> Search
+                            </button>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </form>
+        </div>
+
+        <!-- Card Code -->
+        <div class="col-sm-12" *ngIf="isCardView">
+
+            <div class="row" style="margin-top: 20px;">
+
+                <!-- Tasks (inProgress, completed, complaint) -->
+                <div class="col-sm-3" *ngFor="let task of allTasks">
+                    <mat-card class="progress-card">
+                        <div class="col-sm-12 pull-right">
+                            <mat-icon (click)="opencasedialog()" class="pull-right edit-icons edit-btn"
+                                matTooltip="Edit">edit</mat-icon>
+                            <mat-icon class="pull-right delete-icons delete-btn" matTooltip="Delete">delete</mat-icon>
+                        </div>
+                        <div style="cursor:pointer">
+                            <!-- <mat-icon style="font-size: 8.125rem !important;height: 8.125rem !important;
+                                width: 8.125rem !important;">note_add
+                            </mat-icon> -->
+
+                            <!-- <mat-icon style="font-size: 8.125rem !important;height: 8.125rem !important;
+                                width: 8.125rem !important;">
+                                {{ task.icon }}
+                            </mat-icon> -->
+
+                            <mat-icon style="font-size: 7.125rem !important;height: 7.125rem !important;
+                                width: 7.125rem !important;" [ngStyle]="{'color': task.color}">
+                                {{ task.icon }}
+                            </mat-icon>
+
+                            <div class="progress-details">
+                                <div class="progress-name">{{ task.name }}</div>
+                                <div class="progress-providername" [ngStyle]="{'color': task.providernameColor}">
+                                    {{ task.providername }}
+                                </div>
+                                <div class="progress-status" style="cursor: pointer; white-space: nowrap;"
+                                    matTooltip="Uploaded by Corey Williams on {{ task.dueDate }}">
+                                    Corey Williams | {{ task.dueDate }}
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Grid Code -->
+        <div class="col-sm-12 mt-2" *ngIf="!isCardView">
+            <div fxLayout="row wrap">
+                <div class="w-100">
+                    <div fxLayout="row wrap" style="margin-top:-3px;">
+                        <div class="table-responsive w-100 flex-p" id="grid-table-container">
+                            <table matSort id="example2" class="table table-bordered table-hover">
+                                <thead class="tbl-head">
+                                    <tr>
+                                        <th>Document Type</th>
+                                        <th>Document Title</th>
+                                        <th class="text-center">Patient ID</th>
+                                        <th class="text-center">Referral ID</th>
+                                        <th class="text-center">Visit ID</th>
+                                        <th class="text-center">Claim ID</th>
+                                        <th class="text-center">Case ID</th>
+                                        <th class="text-center">Location ID</th>
+                                        <th class="text-center">Provider ID</th>
+                                        <th>Patient Name</th>
+                                        <th>Location Name</th>
+                                        <th>Provider Name</th>
+                                        <th class="text-center">Download</th>
+                                        <th>Uploaded Date</th>
+                                        <th>Uploaded By</th>
+                                        <th>Remarks</th>
+                                        <!-- <th class="text-center">Actions</th> -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of values1">
+                                        <td>{{item.documentType}}</td>
+                                        <td>{{item.documentTitle}}</td>
+                                        <td class="text-center" (click)="open(item);" style="color: cornflowerblue;">
+                                            {{item.patientId}}
+                                        </td>
+                                        <td class="text-center" [routerLink]="['/rcm-login/referrals-dashboard']"
+                                            style="color: cornflowerblue; cursor: pointer;">{{item.referralId}}
+                                        </td>
+                                        <td class="text-center" [routerLink]="['/rcm-login/visits-dashboard']"
+                                            style=" color: cornflowerblue; cursor: pointer;">{{item.visitId}}
+                                        </td>
+                                        <td class="text-center" [routerLink]="['/rcm-login/inner-claims']"
+                                            style="color: cornflowerblue; cursor: pointer;">{{item.claimId}}
+                                        </td>
+                                        <td class="text-center" [routerLink]="['/rcm-login/inner-cases']"
+                                            style="color: cornflowerblue; cursor: pointer;">{{item.caseId}}
+                                        </td>
+                                        <td class="text-center" [routerLink]="['/rcm-login/inner-locations']"
+                                            style="color: cornflowerblue; cursor: pointer;">{{item.locationId}}
+                                        </td>
+                                        <td class="text-center" [routerLink]="['/rcm-login/inner-providers']"
+                                            style="color: cornflowerblue; cursor: pointer;">{{item.providerId}}
+                                        </td>
+                                        <td>{{item.patientName}}</td>
+                                        <td>{{item.locationName}}</td>
+                                        <td>{{item.providerName}}</td>
+                                        <td class="text-center">
+                                            <mat-icon style="color: blue; cursor: pointer;">download</mat-icon>
+                                        </td>
+                                        <td>{{item.uploadedDate}}</td>
+                                        <td>{{item.uploadedBy}}</td>
+                                        <td class="text-center">
+                                            <span matTooltip="{{item.remarks}}" matTooltipPosition="above">
+                                                <mat-icon style="cursor: pointer; color: blue;">info</mat-icon>
+                                            </span>
+                                        </td>
+                                        <!-- <td class="text-center editDel">
+                                            <a style="cursor: pointer;" matTooltip="Edit">
+                                                <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                                            </a>
+                                            <a style="cursor: pointer;" matTooltip="Delete">
+                                                <i class="fa fa-trash red"></i>
+                                            </a>
+                                        </td> -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row" style="margin-left: 90%;">
+                            <button class="mine" mat-fab (click)="scrollGrid('left')">
+                                <mat-icon style="color: #37474f">fast_rewind</mat-icon>
+                            </button>
+                            <button class="mine" mat-fab (click)="scrollGrid('right')">
+                                <mat-icon style="color: #37474f">fast_forward</mat-icon>
+                            </button>
+                        </div>
+                        <mat-paginator class="col-sm-12" [length]="totalSize" [pageIndex]="currentPage" [pageSize]=""
+                            [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

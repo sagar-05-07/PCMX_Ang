@@ -1,0 +1,154 @@
+<h1 style="background-color: rgb(73, 128, 150); color: white; text-align: center;" mat-dialog-title><span
+        *ngIf="!data">Add</span><span *ngIf="data">Edit</span> Visit
+</h1>
+
+<div class="col-sm-12" style="padding: 30px !important;">
+    <div class="col-sm-6">
+        <div class="row" style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required">Patient ID :</label>
+            </div>
+            <div class="col-sm-7">
+                <mat-select class="form-control bac" placeholder="Select Patient ID">
+                    <mat-option [value]="'New York'">10025423</mat-option>
+                    <mat-option [value]="'Los Angeles'">10025424</mat-option>
+                    <mat-option [value]="'Chicago'">10025425</mat-option>
+                    <mat-option [value]="'Houston'">10025426</mat-option>
+                    <mat-option [value]="'Phoenix'">10025427</mat-option>
+                    <mat-option [value]="'Philadelphia'">10025428</mat-option>
+                    <mat-option [value]="'San Antonio'">10025429</mat-option>
+                    <mat-option [value]="'San Diego'">10025430</mat-option>
+                </mat-select>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required">Case ID :</label>
+            </div>
+            <div class="col-sm-7">
+                <mat-select class="form-control bac" placeholder="Select Case ID">
+                    <mat-option [value]="'New York'">10025423</mat-option>
+                    <mat-option [value]="'Los Angeles'">10025424</mat-option>
+                    <mat-option [value]="'Chicago'">10025425</mat-option>
+                    <mat-option [value]="'Houston'">10025426</mat-option>
+                    <mat-option [value]="'Phoenix'">10025427</mat-option>
+                    <mat-option [value]="'Philadelphia'">10025428</mat-option>
+                    <mat-option [value]="'San Antonio'">10025429</mat-option>
+                    <mat-option [value]="'San Diego'">10025430</mat-option>
+                </mat-select>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required">Referral ID :</label>
+            </div>
+            <div class="col-sm-7">
+                <mat-select class="form-control bac" placeholder="Select Referral ID">
+                    <mat-option [value]="'New York'">10025423</mat-option>
+                    <mat-option [value]="'Los Angeles'">10025424</mat-option>
+                    <mat-option [value]="'Chicago'">10025425</mat-option>
+                    <mat-option [value]="'Houston'">10025426</mat-option>
+                    <mat-option [value]="'Phoenix'">10025427</mat-option>
+                    <mat-option [value]="'Philadelphia'">10025428</mat-option>
+                    <mat-option [value]="'San Antonio'">10025429</mat-option>
+                    <mat-option [value]="'San Diego'">10025430</mat-option>
+                </mat-select>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="row " style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required">Date :</label>
+            </div>
+            <div class="col-sm-7">
+                <input type="date" class="form-control bac" placeholder="Enter First Name" maxlength="100" minlength="2"
+                    onDrag="return false" onDrop="return false" required>
+            </div>
+        </div>
+        <div class="row " style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required">Time :</label>
+            </div>
+            <div class="col-sm-7">
+                <input type="time" class="form-control bac" required>
+            </div>
+        </div>
+        <div class="row " style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required">Duration :</label>
+            </div>
+            <div class="col-sm-7">
+                <input type="text" class="form-control bac" placeholder="Enter Duration" required>
+            </div>
+            <!-- <div class="row" style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required">Enter Duration :</label>
+            </div>
+            <div class="col-sm-3">
+                <input type="number" class="form-control bac" placeholder="Days" min="0" required>
+            </div>
+            <div class="col-sm-3">
+                <input type="number" class="form-control bac" placeholder="Hours" min="0" max="23" required>
+            </div>
+            <div class="col-sm-3">
+                <input type="number" class="form-control bac" placeholder="Minutes" min="0" max="59" required>
+            </div>
+        </div> -->
+        </div>
+
+
+        <!-- <div class="row " style="margin-bottom: 12px;">
+        <div class="col-sm-4">
+            <label class="control-label add-member-label required">Location :</label>
+        </div>
+        <div class="col-sm-7">
+            <input type="text" class="form-control bac" placeholder="Enter Location" required>
+        </div>
+    </div>
+    <div class="row " style="margin-bottom: 12px;">
+        <div class="col-sm-4">
+            <label class="control-label add-member-label required">Provider :</label>
+        </div>
+        <div class="col-sm-7">
+            <input type="text" class="form-control bac" placeholder="Enter Provider Name" required>
+        </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 12px;">
+        <div class="col-sm-4">
+            <label class="control-label add-member-label required">Status :</label>
+        </div>
+        <div class="col-sm-7">
+            <mat-select class="form-control bac" placeholder="Select Status">
+                <mat-option [value]="'New York'">Scheduled</mat-option>
+                <mat-option [value]="'Los Angeles'">Completed</mat-option>
+                <mat-option [value]="'Houston'">Pending</mat-option>
+                <mat-option [value]="'Chicago'">No Show</mat-option>
+            </mat-select>
+        </div>
+    </div> -->
+    </div>
+    <div class="col-sm-12" style="margin-left: -15px;">
+        <div class="row " style="margin-bottom: 12px;">
+            <div class="col-sm-2">
+                <label class="control-label add-member-label required mt-5">Enter Remarks :</label>
+            </div>
+            <div class="col-sm-10">
+                <textarea type="time" class="form-control bac" placeholder="Select Remarks"
+                    style="height: 80px;width: 96%;margin-left: 11px;" required></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<mat-dialog-actions align="end">
+    <div style="margin-right: 15px;">
+        <button mat-raised-button style="background-color: green; color: white;"> <mat-icon>save</mat-icon>
+            <span>{{ data ? 'Update' : 'Save'}}</span></button>
+        <button mat-raised-button style="background-color: lightgray; color: red;" class="add-dark-hover btn-default"
+            (click)="close()"><mat-icon>cancel</mat-icon>Close</button>
+    </div>
+</mat-dialog-actions>

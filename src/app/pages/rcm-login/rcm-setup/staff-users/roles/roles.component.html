@@ -1,0 +1,112 @@
+<div class="col-sm-12">
+    <button mat-raised-button class="pull-right" (click)="openEditDialog()"
+        style="background-color: blue; color: white;">
+        <mat-icon>person_add</mat-icon> Add Role
+    </button>
+
+    <button mat-raised-button style="background-color: black; color:white;" class="pull-right margin-right-10"
+        (click)="filterToggle = !filterToggle">
+        <mat-icon>filter_list</mat-icon> Filter
+    </button>
+</div>
+
+<div class="col-sm-12 mt-3 mb-3">
+    <div fxLayout="row wrap" *ngIf="filterToggle">
+        <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p">
+            <form [formGroup]="filterForm">
+                <mat-card class="filter">
+                    <mat-card-content>
+                        <div class="row col-sm-12">
+                            <div class="col-sm-4">
+                                <div class="col-sm-3 newMarginClass">
+                                    <b>Keyword:</b>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input type="text" onCopy="return false" onPaste="return false" class="form-control"
+                                        placeholder="Search by Name, Email, Role">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="col-sm-3 newMarginClass">
+                                    <b>Role:</b>
+                                </div>
+                                <div class="col-sm-8">
+                                    <select placeholder="Select Role" class="form-control">
+                                        <option [value]="1">
+                                            Admin
+                                        </option>
+                                        <option [value]="2">
+                                            Client
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+
+                                <a (click)="filterToggle = !filterToggle" class="pull-right"
+                                    style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                                    <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                                </a>
+                                <button mat-raised-button color="primary" class="pull-right">
+                                    <mat-icon>youtube_searched_for</mat-icon> Search
+                                </button>
+                                <button mat-raised-button class="pull-right btn-default margin-right-10"
+                                    (click)="clearFilter()">
+                                    <mat-icon>settings_backup_restore</mat-icon> Clear
+                                </button>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Creating Table -->
+<div class="table-responsive col-sm-12">
+    <table id="example2" class="table table-bordered table-hover">
+        <thead class="tbl-head">
+            <tr class="tr-grid-header">
+                <th>Role</th>
+                <th class="text-center">Users</th>
+                <th class="text-center">Special Permission</th>
+                <th class="text-center">Perspectives Permission</th>
+                <th style="text-align: center !important;">Screen Permissions</th>
+                <th style="text-align: center !important;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of roleDetails">
+                <td>{{item.RoleName}}</td>
+                <td class="text-center"><a style="cursor: pointer; color: cornflowerblue;"
+                        (click)="onUserClick()">4/12</a>
+                </td>
+                <td class="text-center">
+                    <a (click)="openSpecialPermission()" style="cursor: pointer; color: cornflowerblue;">10/20</a>
+                </td>
+                <td class="text-center" (click)="perspectives();" style="color: cornflowerblue; cursor: pointer;">
+                    4/11
+                </td>
+                <td class="text-center">
+                    <a style="cursor: pointer; color: cornflowerblue;" (click)="onPermClick()">20/40
+                    </a>
+                </td>
+                <td style="text-align: center !important;">
+                    <a matTooltip="Edit Record" (click)="openEditDialog()" class="fa fa-edit action-btn edit-btn"
+                        style="margin-right: 10px;">
+                    </a>
+
+                    <a matTooltip="Delete Record" class="fa fa-trash action-btn delete-btn">
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <mat-paginator [length]="totalSize" [pageIndex]="currentPage" (page)="handlePage($event)"
+        [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons>
+    </mat-paginator>
+</div>

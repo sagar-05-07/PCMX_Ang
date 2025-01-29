@@ -1,0 +1,101 @@
+@use '@angular/material' as mat;
+@import './variables';
+$custom-typography: mat.define-typography-config($body-1: mat.define-typography-level(14px, 20px, 400, $font-family),
+        $button: mat.define-typography-level(14px, 22px, 600, $font-family, $letter-spacing: 0.02em),
+    );
+@include mat.all-component-typographies($custom-typography);
+@include mat.core();
+
+@import 'theme-reset';
+
+.app {
+    &.indigo-light {
+        @import "skins/indigo-light";
+        @include mat.all-component-colors($indigo-light-theme);
+        @include theme-reset($indigo-light-theme);
+    }
+
+    &.teal-light {
+        @import "skins/teal-light";
+        @include mat.all-component-colors($teal-light-theme);
+        @include theme-reset($teal-light-theme);
+    }
+
+    &.red-light {
+        @import "skins/red-light";
+        @include mat.all-component-colors($red-light-theme);
+        @include theme-reset($red-light-theme);
+    }
+
+    &.grey-light {
+        @import "skins/grey-light";
+        @include mat.all-component-colors($grey-light-theme);
+        @include theme-reset($grey-light-theme);
+    }
+
+    &.deep-purple-light {
+        @import "skins/deep-purple-light";
+        @include mat.all-component-colors($deep-purple-light-theme);
+        @include theme-reset($deep-purple-light-theme);
+    }
+
+    &.light-green-light {
+        @import "skins/light-green-light";
+        @include mat.all-component-colors($light-green-light-theme);
+        @include theme-reset($light-green-light-theme);
+    }
+
+    &.blue-grey-light {
+        @import "skins/blue-grey-light";
+        @include mat.all-component-colors($blue-grey-light-theme);
+        @include theme-reset($blue-grey-light-theme);
+    }
+
+    &.cyan-light {
+        @import "skins/cyan-light";
+        @include mat.all-component-colors($cyan-light-theme);
+        @include theme-reset($cyan-light-theme);
+    }
+
+    &.green-light {
+        @import "skins/green-light";
+        @include mat.all-component-colors($green-light-theme);
+        @include theme-reset($green-light-theme);
+    }
+
+    &.lime-light {
+        @import "skins/lime-light";
+        @include mat.all-component-colors($lime-light-theme);
+        @include theme-reset($lime-light-theme);
+    }
+
+    &.brown-light {
+        @import "skins/brown-light";
+        @include mat.all-component-colors($brown-light-theme);
+        @include theme-reset($brown-light-theme);
+    }
+
+    &.amber-light {
+        @import "skins/amber-light";
+        @include mat.all-component-colors($amber-light-theme);
+        @include theme-reset($amber-light-theme);
+    }
+
+    &.blue-dark {
+        @import "skins/blue-dark";
+        @include mat.all-component-colors($blue-dark-theme);
+        @include theme-reset($blue-dark-theme);
+    }
+
+    &.green-dark {
+        @import "skins/green-dark";
+        @include mat.all-component-colors($green-dark-theme);
+        @include theme-reset($green-dark-theme);
+    }
+
+    &.pink-dark {
+        @import "skins/pink-dark";
+        @include mat.all-component-colors($pink-dark-theme);
+        @include theme-reset($pink-dark-theme);
+    }
+}

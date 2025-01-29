@@ -1,0 +1,251 @@
+<div class="nav-container" [ngClass]="{ 'nav-open': isNavOpen, 'nav-closed': !isNavOpen }">
+    <!-- Toggle Button with Hamburger Icon -->
+    <button (click)="toggleNav()" class="toggle-button">
+        <mat-icon class="toggle-icon">menu</mat-icon>
+    </button>
+
+    <!-- Navigation Links (visible only when nav is open) -->
+    <div *ngIf="isNavOpen">
+        <nav class="nav-links">
+
+            <mat-card style="padding: 5px; cursor: pointer; margin-top: 23px;">
+                <div style="flex: 1; padding-right: 20px;">
+                    <h3 style="margin-left: 17px; margin-top: 18px; margin-bottom: 10px;">Pareto</h3>
+
+                    <div class="case-type-row">
+                        <div class="icon-container1">
+                            <mat-icon style="color: #67d799;">event_available</mat-icon>
+                        </div>
+                        <div class="subtitle-container">
+                            <mat-card-subtitle class="subtitle">$ Less 1000</mat-card-subtitle>
+                            <mat-card-subtitle class="count">1298</mat-card-subtitle>
+                        </div>
+                    </div>
+
+                    <div class="case-type-row">
+                        <div class="icon-container2">
+                            <mat-icon style="color: #8a81f2;">update</mat-icon>
+                        </div>
+                        <div class="subtitle-container">
+                            <mat-card-subtitle class="subtitle">$ 1000 - 3000</mat-card-subtitle>
+                            <mat-card-subtitle class="count">120</mat-card-subtitle>
+                        </div>
+                    </div>
+
+                    <div class="case-type-row">
+                        <div class="icon-container3">
+                            <mat-icon style="color: #8a81f2;">watch_later</mat-icon>
+                        </div>
+                        <div class="subtitle-container">
+                            <mat-card-subtitle class="subtitle" style="white-space: nowrap;">
+                                $ 3000 - 5000
+                            </mat-card-subtitle>
+                            <mat-card-subtitle class="count">80</mat-card-subtitle>
+                        </div>
+                    </div>
+
+                    <div class="case-type-row">
+                        <div class="icon-container4">
+                            <mat-icon style="color: #e76f51;">date_range</mat-icon>
+                        </div>
+                        <div class="subtitle-container">
+                            <mat-card-subtitle class="subtitle">$ 5000 - 10000</mat-card-subtitle>
+                            <mat-card-subtitle class="count">12</mat-card-subtitle>
+                        </div>
+                    </div>
+
+                    <div class="case-type-row">
+                        <div class="icon-container5">
+                            <mat-icon style="color: #e76f51;">event_note</mat-icon>
+                        </div>
+                        <div class="subtitle-container">
+                            <mat-card-subtitle class="subtitle">$ 10000 Plus</mat-card-subtitle>
+                            <mat-card-subtitle class="count">12</mat-card-subtitle>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+        </nav>
+    </div>
+</div>
+
+<div [ngClass]="{ 'full-width': !isNavOpen }" class="col-sm-10 container-fluid"
+    style="margin-bottom: 10px; padding-right: 25px">
+
+    <div class="arrow-container">
+        <div class="arrow-shape" style="background-color: #D9D9D9; color: black;">
+            <span class="arrow-text">This Month</span>
+            <span class="arrow-number">79</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #FFD2B2; color: black;">
+            <span class="arrow-text">Last Month</span>
+            <span class="arrow-number">190</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #FFFACD; color: black;">
+            <span class="arrow-text">This Quarter</span>
+            <span class="arrow-number">70</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #A8E5C1; color: black;">
+            <span class="arrow-text">Last Quarter</span>
+            <span class="arrow-number">20</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #C4C2FF; color: black;">
+            <span class="arrow-text">This Year</span>
+            <span class="arrow-number">60</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #B3E3F6; color: black;">
+            <span class="arrow-text">Last Year</span>
+            <span class="arrow-number">10</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #E0DBFF; color: black;">
+            <span class="arrow-text">Previous</span>
+            <span class="arrow-number">190</span>
+        </div>
+    </div>
+
+    <div class="w-100 mt-4">
+        <div class="row" style="display: flex; justify-content: flex-end; align-items: center; margin-right: -7px;">
+            <!-- Filter Button -->
+
+            <button mat-raised-button style="background-color: #37474f; color: white"
+                class="filters-hover margin-right-10" (click)="filterToggle = !filterToggle">
+                <mat-icon class="mat-margin-top">filter_list</mat-icon> Filter
+            </button>
+
+            <!-- Download CSV Button -->
+            <button mat-raised-button style="background-color: black; color: white; margin-right: 8px">
+                <mat-icon>get_app</mat-icon> Download CSV
+            </button>
+
+            <!-- Download CSV Button -->
+            <button mat-raised-button style="background-color: black; color: white; margin-right: 8px">
+                <mat-icon>get_app</mat-icon> Download Template
+            </button>
+
+            <!-- Upload CSV Button -->
+            <button mat-raised-button style="background-color: black; color: white; margin-right: 8px">
+                <mat-icon>backup</mat-icon> Upload CSV
+            </button>
+
+            <!-- Add Account Button -->
+            <button mat-raised-button class="pull-right btn-primary" (click)="openEditDialog(null);"
+                style="background-color: gray; color: white; ">
+                <mat-icon>add</mat-icon>Add Payment
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Filter UI -->
+<!-- <div fxLayout="row wrap" *ngIf="filterToggle" style="margin-bottom: 10px">
+    <div fxFlex="100" class="flex-p w-100">
+        <form [formGroup]="filterForm">
+            <mat-card class="filter">
+                <mat-card-content>
+                    <div class="row col-sm-12">
+                        <div class="col-sm-4 row">
+                            <div class="col-sm-3">
+                                <b>Industry:</b>
+                            </div>
+                            <div class="col-sm-9">
+                                <select placeholder="Select Industry" class="form-control" formControlName="Status">
+                                    <option></option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 row">
+                            <div class="col-sm-2">
+                                <b>Select Status:</b>
+                            </div>
+                            <div class="col-sm-10">
+                                <select placeholder="Select Status" class="form-control" formControlName="Status">
+                                    <option></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <a (click)="filterToggle = !filterToggle" class="pull-right"
+                                style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                            </a>
+                            <button mat-raised-button color="primary" class="pull-right">
+                                Search
+                            </button>
+
+                            <button mat-raised-button class="pull-right btn-default margin-right-10">
+                                Clear
+                            </button>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </div>
+</div> -->
+
+<!-- Table -->
+<div [ngClass]="{ 'full-width': !isNavOpen }" class="col-sm-10">
+    <div id="grid-table-container" class="table-responsive">
+        <table matSort class="table table-bordered table-hover">
+            <thead class="tbl-head1" style="background-color: rgb(58, 53, 53); color: white">
+                <tr>
+                    <th class="text-center">Actions</th>
+                    <th class="text-center">Payment Date</th>
+                    <th class="text-center">Amount</th>
+                    <th>Payment Mode</th>
+                    <th>Case Distribution</th>
+                    <th class="text-center">PDF</th>
+                    <th class="text-center">Payment Ref</th>
+                    <th class="text-center">Patient ID</th>
+                    <th class="text-center">Case ID</th>
+                    <!-- <th class="text-center">Claims</th> -->
+                    <th class="text-center">Remarks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let applicant of users">
+                    <td class="text-center" style="white-space: nowrap">
+                        <a matTooltip="Edit Record" (click)="openEditDialog(applicant.id)"
+                            class="fa fa-edit action-btn edit-btn" style="margin-right: 10px;"></a>
+                        <a matTooltip="Delete Record" class="fa fa-trash action-btn delete-btn"></a>
+                    </td>
+                    <td class="text-center">{{ applicant.paymentDate | date : "dd-MMM-yyyy" }}</td>
+                    <td class="text-center">{{ applicant.amount | currency }}</td>
+                    <td>{{ applicant.paymentMode }}</td>
+                    <!-- <td>{{ applicant.paymentType }}</td> -->
+                    <td (click)="openDistribution();" style="color: blue; cursor: pointer; text-align: center;">
+                        3
+                    </td>
+                    <td style="color: blue; cursor: pointer; text-align: center;">
+                        <mat-icon>file_copy</mat-icon>
+                    </td>
+                    <td class="text-center">{{ applicant.paymentRef }}
+                    </td>
+                    <td class="text-center">{{ applicant.patientId }}</td>
+                    <td class="text-center">{{ applicant.caseId }}</td>
+                    <!-- <td class="text-center">{{ applicant.claimId }}</td> -->
+                    <td (click)="notesDialog(null)" style="color: blue; text-align: center; cursor: pointer;">
+                        <mat-icon>info</mat-icon>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- <button class="mine" mat-fab (click)="scrollGrid('right')">
+            <mat-icon style="color: #37474f">fast_forward</mat-icon>
+        </button>
+        <button class="mine" mat-fab style="margin-right: 78px !important" (click)="scrollGrid('left')">
+            <mat-icon style="color: #37474f">fast_rewind</mat-icon>
+        </button> -->
+        <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSizeOptions]="[5, 10, 25, 50, 100]"
+            showFirstLastButtons></mat-paginator>
+    </div>
+</div>

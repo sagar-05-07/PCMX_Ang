@@ -1,0 +1,77 @@
+<div class="col-sm-12" style="
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+">
+    <div class="NewHeader">
+        <h1 mat-dialog-title style="color: white">Specialties</h1>
+    </div>
+
+    <div class="table-container" style="margin: 20px">
+        <button mat-raised-button class="pull-right mb-3" style="background-color: blue; color: white;"
+            (click)="addRow()">
+            <mat-icon>add</mat-icon> Add
+        </button>
+        <table class="table mt-3" style="border-collapse: collapse; width: 100%;">
+            <thead style="background-color: #50636d">
+                <tr>
+                    <th class="text-center" style="padding: 10px; border: 1px solid #ddd; color: white;">Class</th>
+                    <th class="text-center" style="padding: 10px; border: 1px solid #ddd; color: white;">Specialty</th>
+                    <th class="text-center" style="padding: 10px; border: 1px solid #ddd; color: white;">Subspecialty
+                    </th>
+                    <th class="text-center" style="padding: 10px; border: 1px solid #ddd; color: white;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of rows; let i = index" style="border: 1px solid #ddd;">
+                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">
+                        <mat-select class="form-control" placeholder="Select Class" [(ngModel)]="row.category">
+                            <mat-option value="Medical">Medical</mat-option>
+                            <mat-option value="Surgery/Procedures">Surgery/Procedures</mat-option>
+                            <mat-option value="Imaging">Imaging</mat-option>
+                            <mat-option value="Ancillary">Ancillary</mat-option>
+                            <mat-option value="FSER">FSER</mat-option>
+                        </mat-select>
+                    </td>
+
+                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">
+                        <mat-select class="form-control" placeholder="Select Specialty" [(ngModel)]="row.specialty">
+                            <mat-option value="Primary Care">Primary Care</mat-option>
+                            <mat-option value="Psychology">Psychology</mat-option>
+                            <mat-option value="General">General</mat-option>
+                        </mat-select>
+                    </td>
+
+                    <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">
+                        <mat-select class="form-control" placeholder="Select SubSpecialty"
+                            [(ngModel)]="row.subSpecialty" [disabled]="row.category === 'Surgery/Procedures'"
+                            [ngClass]="{ 'disabled-cursor': row.category === 'Surgery/Procedures' }">
+                            <mat-option value="Nephrology">Nephrology</mat-option>
+                            <mat-option value="Neurology">Neurology</mat-option>
+                            <mat-option value="Neuropsychology">Neuropsychology</mat-option>
+                            <mat-option value="OBGYN">OBGYN</mat-option>
+                            <mat-option value="Oncologist">Oncologist</mat-option>
+                            <mat-option value="Opthalmology">Opthalmology</mat-option>
+                        </mat-select>
+                    </td>
+
+                    <td class="text-center" style="white-space: nowrap; border: 1px solid #ddd;">
+                        <a matTooltip="Save" style="margin-right: 5px; cursor: pointer; color: green;">
+                            <i class="fa fa-save"></i>
+                        </a>
+                        <a matTooltip="Delete" style="cursor: pointer;" class="fa fa-trash red"></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="row" style="margin-right: 2px;">
+            <button mat-raised-button class="pull-right" (click)="close();"
+                style="color: red; background-color: lightgray;">
+                <mat-icon>close</mat-icon>Close
+            </button>
+        </div>
+    </div>
+</div>

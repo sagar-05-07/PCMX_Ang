@@ -1,0 +1,61 @@
+<div class="nav-container" [ngClass]="{'nav-open': isNavOpen, 'nav-closed': !isNavOpen}">
+    <!-- Toggle Button with Hamburger Icon -->
+    <!-- <button (click)="toggleNav()" class="toggle-button">
+        <mat-icon>menu</mat-icon>
+    </button> -->
+
+    <button (click)="toggleNav()" class="toggle-button">
+        <mat-icon class="toggle-icon">menu</mat-icon>
+    </button>
+
+    <nav class="nav-links">
+        <ul>
+            <li routerLinkActive="active" [routerLink]="['rcm-case-manager']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Case Manager">person</mat-icon>
+                    <span *ngIf="isNavOpen">Case Managers</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['liaison']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Liaison">group</mat-icon>
+                    <span *ngIf="isNavOpen">Liaisons</span>
+                </a>
+            </li>
+            <!-- <li routerLinkActive="active" [routerLink]="['doc-types']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Doc Type">library_books</mat-icon>
+                    <span *ngIf="isNavOpen">Doc Types</span>
+                </a>
+            </li> -->
+            <li routerLinkActive="active" [routerLink]="['law-firm']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Law Firms">business</mat-icon>
+                    <span *ngIf="isNavOpen">Law Firms</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['location']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Locations">place</mat-icon>
+                    <span *ngIf="isNavOpen">Locations</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['providers']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Providers">card_travel</mat-icon>
+                    <span *ngIf="isNavOpen">Providers</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['funding-partner']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Landers">attach_money</mat-icon>
+                    <span *ngIf="isNavOpen">Lenders</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div [ngClass]="{'full-width': !isNavOpen}" class="col-sm-10">
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,36 @@
+<div class="col-sm-12" style="
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+">
+    <div class="NewHeader">
+        <h1 mat-dialog-title style="color: white">Attorneys</h1>
+    </div>
+
+    <div mat-dialog-content style="overflow: hidden !important">
+        <form class="form-horizontal row" novalidate style="margin-top: 10px">
+            <!-- Loop through displayedRoles instead of roles -->
+            <div class="col-sm-3" *ngFor="let role of displayedRoles; let i = index" style="margin-bottom: 10px;">
+                <a>
+                    {{ role.role }}
+
+                </a>
+            </div>
+        </form>
+
+    </div>
+
+    <mat-dialog-actions align="end">
+
+        <div style="margin-right: 50px; margin-top: -20px">
+            <button mat-raised-button class="btn btn-primary">
+                Load More
+            </button>
+            <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">
+                Close
+            </button>
+        </div>
+    </mat-dialog-actions>
+</div>

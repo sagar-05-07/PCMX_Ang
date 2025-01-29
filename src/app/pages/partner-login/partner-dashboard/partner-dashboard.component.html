@@ -1,0 +1,147 @@
+<div class="col-sm-12">
+  <mat-card style="background-color: rgb(213, 232, 239);">
+    <mat-card-content>
+      <!-- From Year -->
+      <div class="col-sm-4 row">
+        <div class="col-sm-4 mt-2">
+          <b>Select State :</b>
+        </div>
+        <div class="col-sm-8" style="margin-left: -20px;">
+          <mat-select class="form-control bac" placeholder="Select State">
+            <mat-option value="2020">California</mat-option>
+            <mat-option value="2021">Texas</mat-option>
+            <mat-option value="2022">New Jersey</mat-option>
+            <mat-option value="2023">Florida</mat-option>
+          </mat-select>
+        </div>
+      </div>
+
+      <div class="col-sm-4 row">
+        <div class="col-sm-4 mt-2">
+          <b>Select Year :</b>
+        </div>
+        <div class="col-sm-8" style="margin-left: -20px;">
+          <mat-select class="form-control bac" placeholder="Select Year">
+            <mat-option value="2020">2020</mat-option>
+            <mat-option value="2021">2021</mat-option>
+            <mat-option value="2022">2022</mat-option>
+            <mat-option value="2023">2023</mat-option>
+            <mat-option value="2024">2024</mat-option>
+            <mat-option value="2025">2025</mat-option>
+          </mat-select>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="col-sm-3">
+        <button mat-raised-button style="background-color: black; color: white;" class="pull-right">
+          <mat-icon>clear</mat-icon> Clear
+        </button>
+        <button mat-raised-button style="background-color: blue; color: white;" class="pull-right margin-right-10">
+          <mat-icon>search</mat-icon> Search
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="row" style="cursor: pointer;">
+  <div class="col-sm-3" style="margin-left: 16px; width: 24.5%">
+    <mat-card class="small-card" style="background-color: #FFB6C1; color: black;"> <!-- Light Pink -->
+      <div class="card-content">
+        <div class="card-title">Total Locations</div>
+        <div class="card-value">15,230</div>
+      </div>
+    </mat-card>
+  </div>
+  <div class="col-sm-3" style="width: 24.5%">
+    <mat-card class="small-card" style="background-color: #B3E5FC; color: black;"> <!-- Light Blue -->
+      <div class="card-content">
+        <div class="card-title">Total Batches</div>
+        <div class="card-value">12,500</div>
+      </div>
+    </mat-card>
+  </div>
+  <div class="col-sm-3" style="width: 24.5%">
+    <mat-card class="small-card" style="background-color: #C8E6C9; color: black;"> <!-- Light Green -->
+      <div class="card-content">
+        <div class="card-title">Total Funding</div>
+        <div class="card-value">$42,600,000</div>
+      </div>
+    </mat-card>
+  </div>
+  <div class="col-sm-3" style="width: 24.5%">
+    <mat-card class="small-card" style="background-color: #FFF9C4; color: black;"> <!-- Light Yellow -->
+      <div class="card-content">
+        <div class="card-title">Total Payback</div>
+        <div class="card-value">$32,400,000</div>
+      </div>
+    </mat-card>
+  </div>
+  <div class="col-sm-3" style="margin-left: 16px; width: 24.5%">
+    <mat-card class="small-card" style="background-color: #F8BBD0; color: black;"> <!-- Soft Pink -->
+      <div class="card-content">
+        <div class="card-title">Pending Batches</div>
+        <div class="card-value">900</div>
+      </div>
+    </mat-card>
+  </div>
+  <div class="col-sm-3" style="width: 24.5%">
+    <mat-card class="small-card" style="background-color: #D1C4E9; color: black;"> <!-- Light Purple -->
+      <div class="card-content">
+        <div class="card-title">Overdue</div>
+        <div class="card-value">$1,500,000</div>
+      </div>
+    </mat-card>
+  </div>
+  <div class="col-sm-3" style="width: 24.5%">
+    <mat-card class="small-card" style="background-color: #FFCCBC; color: black;"> <!-- Soft Orange -->
+      <div class="card-content">
+        <div class="card-title">Interest Accrued</div>
+        <div class="card-value">$1,250,000</div>
+      </div>
+    </mat-card>
+  </div>
+  <div class="col-sm-3" style="width: 24.5%">
+    <mat-card class="small-card" style="background-color: #E1F5FE; color: black;"> <!-- Very Light Blue -->
+      <div class="card-content">
+        <div class="card-title">Interest Paid</div>
+        <div class="card-value">$420,000</div>
+      </div>
+    </mat-card>
+  </div>
+</div>
+
+<div class="col-sm-12 mt-4 row">
+  <figure class="highcharts-figure">
+    <div id="container30"></div>
+  </figure>
+</div>
+
+<div class="col-sm-12 mt-5 row">
+  <div class="col-sm-6">
+    <figure class="highcharts-figure">
+      <div id="container31"></div>
+    </figure>
+  </div>
+
+  <div class="col-sm-6">
+    <figure class="highcharts-figure">
+      <div id="container32"></div>
+    </figure>
+  </div>
+</div>
+
+<div class="col-sm-12 mt-5 mb-5 row">
+  <div class="col-sm-6">
+    <figure class="highcharts-figure">
+      <div id="container33"></div>
+    </figure>
+  </div>
+
+  <div class="col-sm-6">
+    <figure class="highcharts-figure">
+      <div id="container34"></div>
+    </figure>
+  </div>
+</div>

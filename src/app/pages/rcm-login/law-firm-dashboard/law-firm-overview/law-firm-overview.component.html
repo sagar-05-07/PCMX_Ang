@@ -1,0 +1,124 @@
+<div class="col-sm-12 mt-5">
+    <table
+        style="margin-bottom: 20px;margin-left: -14px;width: 100%;background-color: #fffce4;border-width: 0; padding: 10px;">
+        <tr>
+            <th style="padding-left: 8px;">Date of Injury</th>
+            <th>Order Type</th>
+            <th>Case Type</th>
+            <th>Priority</th>
+            <th>Referral Status</th>
+        </tr>
+        <tr>
+            <td style="padding-left: 8px;">
+                <input type="date" class="form-control">
+            </td>
+            <td>
+                <mat-select class="form-control bac" placeholder="Select Order Type">
+                    <mat-option [value]="'Prescription Order'">Prescription Order</mat-option>
+                    <mat-option [value]="'Lab Test Order'">Lab Test Order</mat-option>
+                    <mat-option [value]="'Imaging Order'">Imaging (X-ray/MRI/CT)</mat-option>
+                    <mat-option [value]="'Surgical Procedure'">Surgical Procedure</mat-option>
+                    <mat-option [value]="'Surgical Procedure'">Other</mat-option>
+                </mat-select>
+            </td>
+            <td>
+                <mat-select class="form-control bac" placeholder="Select Case Type">
+                    <mat-option [value]="'New York'">Sub Acute</mat-option>
+                    <mat-option [value]="'Los Angeles'">Insurance</mat-option>
+                    <mat-option [value]="'Chicago'">Worker Comp</mat-option>
+                    <mat-option [value]="'Houston'">Self Pay</mat-option>
+                </mat-select>
+            </td>
+            <td>
+                <mat-select class="form-control bac" placeholder="Select Priority">
+                    <mat-option [value]="'High Priority'">High Priority</mat-option>
+                    <mat-option [value]="'Medium Priority'">Medium Priority</mat-option>
+                    <mat-option [value]="'Low Priority'">Low Priority</mat-option>
+                    <mat-option [value]="'Urgent Priority'">Urgent Priority</mat-option>
+                    <mat-option [value]="'Routine Priority'">Routine Priority</mat-option>
+                    <mat-option [value]="'Critical Priority'">Critical Priority</mat-option>
+                </mat-select>
+            </td>
+            <td>
+                <mat-select class="form-control bac" placeholder="Select Referral Status">
+                    <mat-option [value]="'Failed'">Intake</mat-option>
+                    <mat-option [value]="'Approved'">Verification</mat-option>
+                    <mat-option [value]="'Completed'">Authorization</mat-option>
+                    <mat-option [value]="'Pending'">Scheduling</mat-option>
+                    <mat-option [value]="'In Progress'">Scheduled</mat-option>
+                    <mat-option [value]="'On Hold'">Processing</mat-option>
+                    <mat-option [value]="'Canceled'">Closed</mat-option>
+                    <mat-option [value]="'Canceled'">Hold</mat-option>
+                </mat-select>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-sm-12 row mt-3">
+    <div class="col-sm-6" style="margin-left: -8px;">
+        <div style="margin-bottom: 20px;">
+            <table class="table table-bordered" style="width: 95%;background-color: #cdf0ff;">
+                <thead style="background-color: #50636d; color: white;">
+                    <tr>
+                        <th class="text-center" colspan="2">Law Firm Overview</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Network Name</td>
+                        <td>John Wick Canes</td>
+                    </tr>
+                    <tr>
+                        <td>ATTYS</td>
+                        <td>Alice Johnson</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>johnwick&#64;adhsys.com</td>
+                    </tr>
+                    <tr>
+                        <td>Phone Number</td>
+                        <td>123-456-7890</td>
+                    </tr>
+                    <tr>
+                        <td>City</td>
+                        <td>Dallas</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <table class="table table-bordered" style="width: 95%;background-color: #fffce4;"
+            *ngIf="selectedTab === 'overview'">
+            <thead style="background-color: #50636d; color: white;">
+                <tr>
+                    <th class="text-center" colspan="2">Law Firm Overview</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Provider</td>
+                    <td>John Russell</td>
+                </tr>
+                <tr>
+                    <td>Zip Code</td>
+                    <td>700972</td>
+                </tr>
+                <tr>
+                    <td>Cell Number</td>
+                    <td>123-456-7890</td>
+                </tr>
+                <tr>
+                    <td>Work Number</td>
+                    <td>123-456-7890</td>
+                </tr>
+                <tr>
+                    <td>Language</td>
+                    <td>English</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

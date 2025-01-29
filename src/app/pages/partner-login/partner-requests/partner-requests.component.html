@@ -1,0 +1,226 @@
+<!-- <div class="col-sm-2" style=" margin-top: 10px;">
+    <button *ngFor="let button of buttons; let i = index" class="left-align-btn" [class.active]="selectedButton === i"
+        mat-raised-button (click)="selectButton(i)">
+        {{ button }}
+    </button>
+</div> -->
+
+
+<div [ngClass]="{ 'full-width': !isNavOpen }" class="col-sm-12 container-fluid"
+    style="margin-bottom: 10px; padding-right: 25px">
+
+    <div class="arrow-container">
+        <div class="arrow-shape" style="background-color: #D9D9D9; color: black;">
+            <span class="arrow-text">ADH Houston</span>
+            <span class="arrow-number">79 &nbsp; &nbsp; &nbsp;
+                <a href="../../../../../assets/sample.pdf" target="_blank"
+                    style="color: blue; font-size: 15px; text-decoration: none;"
+                    onclick="downloadAndOpen(event, '../../../../../assets/sample.pdf')">
+                    PSA
+                </a>
+            </span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #FFD2B2; color: black;">
+            <span class="arrow-text">Dallas</span>
+            <span class="arrow-number">190 &nbsp; &nbsp; &nbsp;
+                <a href="../../../../../assets/sample.pdf" target="_blank"
+                    style="color: blue; font-size: 15px; text-decoration: none;"
+                    onclick="downloadAndOpen(event, '../../../../../assets/sample.pdf')">
+                    PSA
+                </a>
+            </span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #FFFACD; color: black;">
+            <span class="arrow-text">River Oaks</span>
+            <span class="arrow-number">70 &nbsp; &nbsp; &nbsp;
+                <a href="../../../../../assets/sample.pdf" target="_blank"
+                    style="color: blue; font-size: 15px; text-decoration: none;"
+                    onclick="downloadAndOpen(event, '../../../../../assets/sample.pdf')">
+                    PSA
+                </a>
+            </span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #A8E5C1; color: black;">
+            <span class="arrow-text">East Houston</span>
+            <span class="arrow-number">20 &nbsp; &nbsp; &nbsp;
+                <a href="../../../../../assets/sample.pdf" target="_blank"
+                    style="color: blue; font-size: 15px; text-decoration: none;"
+                    onclick="downloadAndOpen(event, '../../../../../assets/sample.pdf')">
+                    PSA
+                </a>
+            </span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #C4C2FF; color: black;">
+            <span class="arrow-text">Capital Care</span>
+            <span class="arrow-number">
+                60 &nbsp; &nbsp; &nbsp;
+                <a href="../../../../../assets/sample.pdf" target="_blank"
+                    style="color: blue; font-size: 15px; text-decoration: none;"
+                    onclick="downloadAndOpen(event, '../../../../../assets/sample.pdf')">
+                    PSA
+                </a>
+            </span>
+        </div>
+
+        <!-- <div class="arrow-shape" style="background-color: #B3E3F6; color: black;">
+            <span class="arrow-text">Processing</span>
+            <span class="arrow-number">10</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #E0DBFF; color: black;">
+            <span class="arrow-text">Closed</span>
+            <span class="arrow-number">190</span>
+        </div> -->
+    </div>
+
+
+</div>
+
+
+<div class="container-fluid col-sm-12" style="margin-bottom: 10px; margin-left: 25px; width: 96%;">
+    <div class="w-100">
+        <div class="row mb-3" style="display: flex; justify-content: flex-end; align-items: center">
+            <!-- Download CSV Button -->
+
+            <!-- Grid Columns Button -->
+            <button mat-raised-button style="background-color: black; color: white;"
+                class="filters-hover margin-right-10">
+                <mat-icon>grid_on</mat-icon> Grid Columns
+            </button>
+
+            <!-- Download CSV Button -->
+            <button mat-raised-button style="background-color: black; color: white; margin-right: 8px">
+                <mat-icon>get_app</mat-icon> Download CSV
+            </button>
+            <button mat-raised-button (click)="back();" style="background-color: gray; color: white;">
+                <mat-icon>arrow_back</mat-icon> Back
+            </button>
+        </div>
+        <div class="row">
+            <div id="grid-table-container" class="table-responsive">
+                <table matSort class="table table-bordered table-hover">
+                    <thead class="tbl-head1" style="background-color: rgb(58, 53, 53); color: white;">
+                        <tr>
+                            <!-- <th class="text-center" style="white-space: nowrap;">Select</th> -->
+                            <th class="text-center" style="white-space: nowrap;">Invoice ID</th>
+                            <th style="white-space: nowrap;">Case ID</th>
+                            <th style="white-space: nowrap;">Claim ID</th>
+                            <th style="white-space: nowrap;">Visit ID</th>
+                            <th class="text-center" style="white-space: nowrap;">Referral ID</th>
+                            <th class="text-center" style="white-space: nowrap;">Patient ID</th>
+                            <th class="text-center" style="white-space: nowrap;">Location ID</th>
+                            <th>Location Name</th>
+                            <!-- <th style="white-space: nowrap;" class="text-center">Funding Partner</th> -->
+                            <!-- <th class="text-center">Publish</th> -->
+                            <th class="text-center">PDF</th>
+                            <th class="text-center" style="white-space: nowrap;">Claim Amount</th>
+                            <th class="text-center" style="white-space: nowrap;">Funding</th>
+                            <th style="white-space: nowrap;">Patient Name</th>
+                            <th class="text-center" style="white-space: nowrap;">Payback Date</th>
+                            <th class="text-center" style="white-space: nowrap;">DoB</th>
+                            <th class="text-center" style="white-space: nowrap;">DoS</th>
+                            <th class="text-center" style="white-space: nowrap;">DoI</th>
+                            <th class="text-center" style="white-space: nowrap;">MED</th>
+                            <th class="text-center" style="white-space: nowrap;">AoB</th>
+                            <th class="text-center" style="white-space: nowrap;">LoP</th>
+                            <th style="white-space: nowrap;">Law Firm</th>
+                            <th style="white-space: nowrap;">Provider</th>
+                            <th style="white-space: nowrap;" class="text-center">Created Date</th>
+                            <th style="white-space: nowrap;" class="text-center">Funded Date</th>
+                            <th style="white-space: nowrap;" class="text-center">Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of users">
+                            <!-- <td class="text-center" style="white-space: nowrap;">
+                                <a matTooltip="Edit Record" (click)="openEditDialog(item)"
+                                    class="fa fa-edit action-btn edit-btn" style="margin-right: 10px;">
+                                </a>
+                                <a matTooltip="Delete Record" class="fa fa-trash action-btn delete-btn">
+                                </a>
+                            </td> -->
+                            <!-- <td>
+                                <mat-checkbox [checked]="true"></mat-checkbox>
+                            </td> -->
+                            <td class="text-center">{{ item.invoiceId }}</td>
+                            <td class="text-center">{{ item.caseId }}</td>
+                            <td class="text-center">{{ item.claimId }}</td>
+                            <td class="text-center" [routerLink]="['/rcm-login/visits-dashboard']"
+                                style="color: cornflowerblue; cursor: pointer;">{{ item.invoiceId }}
+                            </td>
+                            <td class="text-center" [routerLink]="['/rcm-login/referrals-dashboard']"
+                                style="color: cornflowerblue; cursor: pointer;">
+                                {{ item.invoiceId }}
+                            </td>
+                            <td class="text-center" (click)="open(item);"
+                                style="color: cornflowerblue; cursor: pointer;">
+                                {{item.caseId }}
+                            </td>
+                            <td class="text-center">{{ item.claimId }}</td>
+                            <td style="white-space: nowrap;">{{ item.locationName }}</td>
+                            <!-- <td class="text-center">
+                                <mat-select [(value)]="item.fundingPartner" class="form-control"
+                                    placeholder="Select Partner">
+                                    <mat-option [value]="'Partner A'">Medtronic Ventures</mat-option>
+                                    <mat-option [value]="'Partner B'">LHC Group</mat-option>
+                                    <mat-option [value]="'Partner C'">Centene Corporation</mat-option>
+                                </mat-select>
+                            </td> -->
+                            <!-- <td class="text-center">
+                                <mat-checkbox [(ngModel)]="item.publish"></mat-checkbox>
+                            </td> -->
+                            <td class="text-center" (click)="openfileupload(null)"
+                                style="color: blue; cursor: pointer;">
+                                <mat-icon>file_copy</mat-icon>
+                            </td>
+                            <td class="text-center">{{ item.invoiceValue }}</td>
+                            <td class="text-center">{{ item.fundsReceived }}</td>
+                            <td>{{ item.patientName }}</td>
+                            <td class="text-center" style="white-space: nowrap;">{{ item.dob | date: 'dd-MMM-yyyy' }}
+                            </td>
+                            <td class="text-center" style="white-space: nowrap;">{{ item.dob | date: 'dd-MMM-yyyy' }}
+                            </td>
+                            <td class="text-center" style="white-space: nowrap;">{{ item.dos | date: 'dd-MMM-yyyy' }}
+                            </td>
+                            <td class="text-center" style="white-space: nowrap;">{{ item.doi | date: 'dd-MMM-yyyy' }}
+                            </td>
+                            <td class="text-center" (click)="openfileupload(null)"
+                                style="color: blue; cursor: pointer;">
+                                <mat-icon>file_copy</mat-icon>
+                            </td>
+                            <td class="text-center" (click)="openfileupload(null)"
+                                style="color: blue; cursor: pointer;">
+                                <mat-icon>file_copy</mat-icon>
+                            </td>
+                            <td class="text-center" (click)="openfileupload(null)"
+                                style="color: blue; cursor: pointer;">
+                                <mat-icon>file_copy</mat-icon>
+                            </td>
+                            <td style="white-space: nowrap;">{{ item.lawFirmBy }}</td>
+                            <td style="white-space: nowrap;">{{ item.provider }}</td>
+                            <td class="text-center">{{ item.createdDate | date: 'dd-MMM-yyyy' }}</td>
+                            <td class="text-center">{{ item.fundedDate | date: 'dd-MMM-yyyy' }}</td>
+                            <td class="text-center" style="color: blue; cursor: pointer;" (click)="notesDialog(item);">
+                                <mat-icon>info</mat-icon>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <button class="mine" mat-fab (click)="scrollGrid('right')">
+                    <mat-icon style="color: #37474f">fast_forward</mat-icon>
+                </button>
+                <button class="mine" mat-fab style="margin-right: 78px !important" (click)="scrollGrid('left')">
+                    <mat-icon style="color: #37474f">fast_rewind</mat-icon>
+                </button>
+
+                <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSizeOptions]="[5, 10, 25, 50, 100]"
+                    showFirstLastButtons></mat-paginator>
+            </div>
+        </div>
+    </div>
+</div>

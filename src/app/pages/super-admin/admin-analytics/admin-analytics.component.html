@@ -1,0 +1,27 @@
+<div class="pills">
+  <ul class="nav nav-pills mb-3" style="margin-left: 10px;">
+    <li routerLinkActive="active" [routerLink]="['./analytics-sales']">
+      <a mat-raised-button class="navtabWidth">
+        Networks
+      </a>
+    </li>
+    <li routerLinkActive="active" [routerLink]="['./analytics-providers']">
+      <a mat-raised-button class="navtabWidth">
+        Providers
+      </a>
+    </li>
+    <li routerLinkActive="active" [routerLink]="['./analytics-requestors']">
+      <a mat-raised-button class="navtabWidth">
+        Law Firms
+      </a>
+    </li>
+    <!-- <li routerLinkActive="active" [routerLink]="['./analytics-lenders']">
+      <a mat-raised-button class="navtabWidth">
+        Lenders
+      </a>
+    </li> -->
+  </ul>
+</div>
+
+
+<router-outlet></router-outlet>

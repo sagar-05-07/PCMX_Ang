@@ -1,0 +1,32 @@
+<div class="container" style="position: relative;">
+    <!-- Back Button at the top right corner -->
+    <button mat-raised-button class="pull-right" (click)="goBack();"
+        style="background-color: gray; color: white; margin-top: -40px;">
+        <mat-icon>arrow_back</mat-icon>Back
+    </button>
+
+    <!-- Main content -->
+    <div class="row">
+        <div class="col-md-4 col-sm-6" *ngFor="let location of displayedLocations" style="margin-bottom: 20px;">
+            <div class="location-card" style="padding: 10px; border-radius: 5px; text-align: center;">
+                <a class="location-link" (click)="openLocation(location)"
+                    style="font-weight: bold; color: blue; text-decoration: none; cursor: pointer;">
+                    {{ location.name }}
+                </a>
+                <p class="location-details" style="margin: 5px 0; color: black;">
+                    {{ location.address }}
+                </p>
+                <p class="location-details" style="margin: 5px 0; color: black;">
+                    {{ location.cityState }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Show More / Show Less Button -->
+    <div style="text-align: center; margin-top: 20px;">
+        <button mat-raised-button (click)="toggleLocations()" style="background-color: gray; color:white">
+            {{ isExpanded ? 'Show Less' : 'Show More' }}
+        </button>
+    </div>
+</div>

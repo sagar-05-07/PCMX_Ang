@@ -1,0 +1,20 @@
+<div class="col-sm-12" style="margin-left: -10px; margin-bottom: 10px;">
+    <div class="pills">
+        <ul class="nav nav-pills" style="margin-left: 10px;">
+            <li routerLinkActive="active" [routerLink]="['pending']">
+                <a mat-raised-button>
+                    Pending (19)
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['completed']">
+                <a mat-raised-button>
+                    Completed (891)
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="col-sm-12">
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,17 @@
+.mine {
+    position: fixed;
+    bottom: 80px;
+    right: 40px;
+    background-color: #e6e6e6 !important;
+}
+
+.outline-button {
+    border: 2px solid red;
+    color: red;
+    background-color: transparent;
+}
+
+.outline-button:hover {
+    background-color: red;
+    color: white;
+}

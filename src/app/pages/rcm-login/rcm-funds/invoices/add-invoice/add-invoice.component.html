@@ -1,0 +1,106 @@
+<h1 style="background-color: rgb(73, 128, 150); color: white; text-align: center;" mat-dialog-title><span
+        *ngIf="!data">Add</span><span *ngIf="data">Edit</span> Invoice
+</h1>
+
+<div class="col-sm-12" style="padding: 30px !important;">
+    <div class="col-sm-6">
+
+        <div class="row " style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required mt-2">Amount Funded :</label>
+            </div>
+            <div class="col-sm-7">
+                <input type="text" class="form-control bac" placeholder="Enter Amount Funded" maxlength="100"
+                    minlength="2" onDrag="return false" onDrop="return false" required>
+            </div>
+        </div>
+        <div class="row " style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required mt-2">Invoice Created Date :</label>
+            </div>
+            <div class="col-sm-7">
+                <input type="date" class="form-control bac" required>
+            </div>
+        </div>
+        <div class="row " style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required">Invoice Submitted Date :</label>
+            </div>
+            <div class="col-sm-7">
+                <input type="date" class="form-control bac" required>
+            </div>
+        </div>
+        <div class="row " style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required mt-2">Invoice Funded Date :</label>
+            </div>
+            <div class="col-sm-7">
+                <input type="date" class="form-control bac" required>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-6">
+        <div class="row" style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required mt-2">Funding Partner :</label>
+            </div>
+            <div class="col-sm-7">
+                <mat-select class="form-control bac" placeholder="Select Funding Partner">
+                    <mat-option [value]="'UnitedHealth Group'">UnitedHealth Group</mat-option>
+                    <mat-option [value]="'Anthem Inc.'">Anthem Inc.</mat-option>
+                    <mat-option [value]="'Cigna'">Cigna</mat-option>
+                    <mat-option [value]="'Humana'">Humana</mat-option>
+                    <mat-option [value]="'Kaiser Permanente'">Kaiser Permanente</mat-option>
+                    <mat-option [value]="'Blue Cross Blue Shield'">Blue Cross Blue Shield</mat-option>
+                    <mat-option [value]="'Aetna'">Aetna</mat-option>
+                    <mat-option [value]="'Centene Corporation'">Centene Corporation</mat-option>
+                </mat-select>
+            </div>
+        </div>
+        <div class="row " style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required">Upload Medical Record :</label>
+            </div>
+            <div class="col-sm-7">
+                <input type="file" class="form-control bac" placeholder="Enter Duration" required>
+            </div>
+        </div>
+        <div class="row " style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required">Upload Latter of Protection :</label>
+            </div>
+            <div class="col-sm-7">
+                <input type="file" class="form-control bac" placeholder="Enter Duration" required>
+            </div>
+        </div>
+        <div class="row " style="margin-bottom: 12px;">
+            <div class="col-sm-4">
+                <label class="control-label add-member-label required">Upload Assignment of Benefits :</label>
+            </div>
+            <div class="col-sm-7">
+                <input type="file" class="form-control bac" placeholder="Enter Duration" required>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12" style="margin-left: -15px;">
+        <div class="row " style="margin-bottom: 12px;">
+            <div class="col-sm-2">
+                <label class="control-label add-member-label required mt-5">Enter Notes :</label>
+            </div>
+            <div class="col-sm-10">
+                <textarea type="time" class="form-control bac" placeholder="Enter Remarks"
+                    style="height: 80px;width: 96%;margin-left: 11px;" required></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<mat-dialog-actions align="end">
+    <div style="margin-right: 15px;">
+        <button mat-raised-button style="background-color: green; color: white;"> <mat-icon>save</mat-icon>
+            <span>{{ data ? 'Update' : 'Save'}}</span></button>
+        <button mat-raised-button style="background-color: lightgray; color: red;" class="add-dark-hover btn-default"
+            (click)="close()"><mat-icon>cancel</mat-icon>Close</button>
+    </div>
+</mat-dialog-actions>

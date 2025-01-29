@@ -1,0 +1,8 @@
+$lime-light-primary: mat.define-palette(mat.$lime-palette, 400, 100, 600);
+$lime-light-accent: mat.define-palette(mat.$light-blue-palette, 600, 300, 900);
+$lime-light-warn: mat.define-palette(mat.$red-palette, 500);
+
+$lime-light-theme: mat.define-light-theme((color: (primary: $lime-light-primary,
+                accent: $lime-light-accent,
+                warn: $lime-light-warn,
+            )));

@@ -1,0 +1,194 @@
+<div class="content-container">
+  <div class="content" #content>
+    <div fxLayout="row wrap">
+      <div class="w-100">
+        <div class="flex-p">
+          <div class="row wrap">
+            <div
+              class="col-xs-12"
+              style="
+                margin-right: 0px !important;
+                margin-top: 15px;
+                margin-bottom: 10px;
+              "
+            >
+              <div
+                class="col-sm-8 pull-right"
+                style="padding: 0 0 0 0 !important"
+              >
+                <!-- <button
+                mat-raised-button
+                class="pull-right add-hover btn-success margin-right-10"
+                (click)="openEntityDialog(null)"
+              >
+                <mat-icon>add</mat-icon> Add Entity
+              </button> -->
+
+                <button
+                  mat-raised-button
+                  style="background-color: #50636d !important; color: white"
+                  (click)="filterToggle8 = !filterToggle8"
+                  class="filter-hover pull-right margin-right-5"
+                >
+                  <mat-icon style="margin-left: 10px">filter_list</mat-icon
+                  >Filter
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          fxLayout="row wrap"
+          *ngIf="filterToggle8"
+          style="
+            margin-bottom: 10px;
+            flex-flow: wrap;
+            box-sizing: border-box;
+            display: flex;
+          "
+        >
+          <div fxFlex="100" class="flex-p w-100">
+            <form [formGroup]="filterForm">
+              <mat-card class="filter">
+                <mat-card-content>
+                  <div class="row col-sm-12">
+                    <div class="col-sm-4 row">
+                      <div class="col-sm-3" style="margin-top: 6px">
+                        <b>Keyword:</b>
+                      </div>
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          placeholder="Search by Keyword"
+                          class="form-control"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                      <div
+                        class="col-sm-3 newMarginClass"
+                        style="margin-top: 6px"
+                      >
+                        <b>Status:</b>
+                      </div>
+                      <div class="col-sm-8">
+                        <select
+                          placeholder="Select Status"
+                          formControlName="Role"
+                          class="form-control"
+                        >
+                          <option [value]="1">Active</option>
+                          <option [value]="2">Inactive</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                  </div>
+                  <div class="row col-sm-12">
+                    <div class="col-sm-4 pull-right" style="margin-top: -35px">
+                      <a
+                        (click)="filterToggle8 = !filterToggle8"
+                        class="pull-right"
+                        style="
+                          font-size: 25px;
+                          cursor: pointer;
+                          margin-left: 5px;
+                        "
+                      >
+                        <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                      </a>
+                      <button
+                        mat-raised-button
+                        color="primary"
+                        class="pull-right"
+                        style="
+                          background-color: #007bff !important;
+                          color: white;
+                        "
+                      >
+                        Search
+                      </button>
+
+                      <button
+                        mat-raised-button
+                        class="pull-right btn-default margin-right-10"
+                      >
+                        Clear
+                      </button>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </form>
+          </div>
+        </div>
+        <div fxLayout="row wrap">
+          <div class="w-100">
+            <div fxLayout="row wrap" style="margin-top: -3px">
+              <table
+                id="tblContacts"
+                class="table table-striped table-bordered table-hover"
+                matSort
+                style="margin-left: 11px; width: 98.5%"
+              >
+                <thead class="tbl-head">
+                  <tr class="tr-grid-header">
+                    <th>Actions</th>
+                    <th>Level</th>
+                    <th>Recipient</th>
+                    <th>Remarks</th>
+                    <th>Delay</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="notificationLevels.length > 0">
+                  <tr *ngFor="let item of notificationLevels; let i = index">
+                    <td class="text-center" style="cursor: pointer">
+                      <a matTooltip="Click to Edit " class="edit-icon">
+                        <i class="fa fa-edit"></i>
+                      </a>
+                    </td>
+                    <td class="text-left" style="white-space: nowrap">
+                      {{ item.level }}
+                    </td>
+                    <td class="text-left" style="cursor: pointer">
+                      {{ item.recipient }}
+                    </td>
+                    <td class="text-left" style="cursor: pointer">
+                      {{ item.remarks }}
+                    </td>
+                    <td class="text-center" style="cursor: pointer">
+                      {{ item.delay }}
+                    </td>
+                    <td class="text-left" style="cursor: pointer">
+                      <a>{{ item.status }}</a>
+                    </td>
+                  </tr>
+                </tbody>
+                <tbody *ngIf="notificationLevels.length == 0">
+                  <tr>
+                    <td colspan="17">
+                      <span>No data available</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <mat-paginator
+                class="col-sm-12"
+                [length]="totalSize"
+                [pageIndex]="currentPage"
+                [pageSize]=""
+                [pageSizeOptions]="[5, 10, 25, 50, 100]"
+                showFirstLastButtons
+              ></mat-paginator>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+.bac {
+    background-color: rgb(254, 254, 196);
+}
+
+/* Default button styles */
+button.mat-raised-button {
+    background-color: skyblue !important;
+    color: black;
+}
+
+/* Active button style */
+.active-btn {
+    background-color: skyblue !important;
+    color: white !important;
+}
+
+.size {
+    width: 130px !important;
+    background-color: rgb(220, 218, 218);
+}
+
+.rich-text-editor {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #fff;
+}

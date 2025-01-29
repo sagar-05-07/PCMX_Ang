@@ -1,0 +1,36 @@
+<div class="col-sm-12">
+    <div class="col-sm-2 mt-3" style="margin-left: -20px;">
+        <button *ngFor="let button of buttons; let i = index" class="left-align-btn"
+            [class.active]="selectedButton === i" mat-raised-button (click)="selectButton(i)">
+            {{ button }}
+        </button>
+    </div>
+
+
+    <div class="col-sm-8 mt-4" style="margin-left: 30px;">
+        <div id="grid-table-container" class="table-responsive">
+            <table matSort class="table table-bordered table-hover">
+                <thead class="tbl-head1" style="background-color: rgb(58, 53, 53); color: white;">
+                    <tr>
+                        <th style="white-space: nowrap;" class="text-center">Batch Code</th>
+                        <th style="white-space: nowrap;" class="text-center">Funding Date</th>
+                        <th style="white-space: nowrap;" class="text-center">Settled Date</th>
+                        <th style="white-space: nowrap;" class="text-center">Funding</th>
+                        <th style="white-space: nowrap;" class="text-center">Payback</th>
+                        <th style="white-space: nowrap;" class="text-center">Interest Paid</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of records">
+                        <td class="text-center">{{ item.batchCode }}</td>
+                        <td class="text-center">{{ item.paidDate }}</td>
+                        <td class="text-center">{{ item.closedDate }}</td>
+                        <td class="text-center">{{ item.funded | currency }}</td>
+                        <td class="text-center">{{ item.payableToday | currency }}</td>
+                        <td class="text-center">{{ item.interestAccrued | currency }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

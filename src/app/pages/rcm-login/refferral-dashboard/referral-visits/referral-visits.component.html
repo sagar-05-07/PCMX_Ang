@@ -1,0 +1,142 @@
+<div class="container-fluid" style="margin-bottom: 10px;">
+    <div class="w-100">
+        <div class="row" style="display: flex; justify-content: flex-end; align-items: center; margin-right: 0px;">
+            <!-- Filter Button -->
+            <button mat-raised-button style="background-color: #37474f; color: white"
+                class="filters-hover margin-right-10" (click)="filterToggle = !filterToggle">
+                <mat-icon class="mat-margin-top">filter_list</mat-icon> Filter
+            </button>
+
+            <!-- Grid Columns Button -->
+            <!-- <button mat-raised-button style="background-color: #37474f; color: white"
+                class="filters-hover margin-right-10">
+                <mat-icon>grid_on</mat-icon> Grid Columns
+            </button> -->
+
+
+
+            <!-- Add Account Button -->
+            <button mat-raised-button color="primary" class="btn-primary margin-right-5" (click)="openEditDialog(null)">
+                <mat-icon class="mat-margin-top">add</mat-icon> Add Visit
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Filter UI -->
+<!-- <div fxLayout="row wrap" *ngIf="filterToggle" style="margin-bottom: 10px">
+    <div fxFlex="100" class="flex-p w-100">
+        <form [formGroup]="filterForm">
+            <mat-card class="filter">
+                <mat-card-content>
+                    <div class="row col-sm-12">
+                        <div class="col-sm-4 row">
+                            <div class="col-sm-3">
+                                <b>Industry:</b>
+                            </div>
+                            <div class="col-sm-9">
+                                <select placeholder="Select Industry" class="form-control" formControlName="Status">
+                                    <option></option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 row">
+                            <div class="col-sm-2">
+                                <b>Select Status:</b>
+                            </div>
+                            <div class="col-sm-10">
+                                <select placeholder="Select Status" class="form-control" formControlName="Status">
+                                    <option></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <a (click)="filterToggle = !filterToggle" class="pull-right"
+                                style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                            </a>
+                            <button mat-raised-button color="primary" class="pull-right">
+                                Search
+                            </button>
+
+                            <button mat-raised-button class="pull-right btn-default margin-right-10">
+                                Clear
+                            </button>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </div>
+</div> -->
+
+<!-- Table -->
+<div class="col-sm-12">
+    <div id="grid-table-container" class="table-responsive">
+        <table matSort class="table table-bordered table-hover">
+            <thead class="tbl-head1" style="background-color: rgb(58, 53, 53); color: white">
+                <tr>
+                    <th class="text-center">Actions</th>
+                    <th class="text-center">Visit ID</th>
+                    <th class="text-center">Date</th>
+                    <th class="text-center">Time</th>
+                    <!-- <th>Visit ID</th>
+                    <th>Patient ID</th> -->
+                    <th>Patient Name</th>
+                    <th>Provider</th>
+                    <th>Location</th>
+                    <th>Referral From</th>
+                    <!-- <th class="text-center">Case ID</th>
+                    <th class="text-center">Referral ID</th> -->
+                    <th class="text-center">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let applicant of users">
+                    <td class="text-center">
+                        <a matTooltip="Edit" (click)="openEditDialog(applicant.id)"
+                            style="margin-right: 10px; cursor: pointer; color: cornflowerblue">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a matTooltip="Delete" style="cursor: pointer" class="fa fa-trash red"></a>
+                    </td>
+                    <td class="text-center">
+                        <a>{{ applicant.visitId }}</a>
+                    </td>
+                    <td class="text-center">
+                        {{ applicant.date | date : "dd-MMM-yyyy" }}
+                    </td>
+                    <td class="text-center">{{ applicant.time }}</td>
+                    <!-- <td>
+                        <a>{{ applicant.visitId }}</a>
+                    </td>
+                    <td>
+                        <a>{{ applicant.patientId }}</a>
+                    </td> -->
+                    <td>{{ applicant.patientName }}</td>
+                    <td>{{ applicant.provider }}</td>
+                    <td>{{ applicant.location }}</td>
+                    <td>{{ applicant.referralFrom }}</td>
+                    <!-- <td class="text-center">
+                        <a>{{ applicant.caseId }}</a>
+                    </td>
+                    <td class="text-center">
+                        <a>{{ applicant.referralId }}</a>
+                    </td> -->
+                    <td class="text-center">
+                        <mat-select class="form-control" placeholder="Select Status">
+                            <mat-option [value]="'New York'">Scheduled</mat-option>
+                            <mat-option [value]="'Los Angeles'">Completed</mat-option>
+                            <mat-option [value]="'Houston'">Pending</mat-option>
+                            <mat-option [value]="'Chicago'">No Show</mat-option>
+                        </mat-select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSizeOptions]="[5, 10, 25, 50, 100]"
+            showFirstLastButtons></mat-paginator>
+    </div>
+</div>

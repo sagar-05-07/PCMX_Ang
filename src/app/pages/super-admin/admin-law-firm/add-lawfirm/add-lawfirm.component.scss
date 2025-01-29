@@ -1,0 +1,17 @@
+.bac {
+  background-color: rgb(254, 254, 196);
+}
+
+::ng-deep .mat-horizontal-stepper-header-container {
+  width: 40%;
+}
+
+::ng-deep .mat-step-header .mat-step-icon {
+  background-color: gray !important; /* Ensure the background is gray */
+  color: white !important; /* Make the number white */
+  margin-left: 25px;
+}
+
+::ng-deep .mat-step-header .mat-step-icon:hover {
+  background-color: darkgray; /* Optional: hover effect */
+}

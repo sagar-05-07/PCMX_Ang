@@ -1,0 +1,165 @@
+// @import "../../../theme/styles/_variables";
+
+@import "../../../../theme/styles/variables";
+
+.message-mine {
+    background-color: #e0e0e0;
+    /* Light grey for messages sent by current user */
+    color: #333;
+    /* Dark grey text */
+}
+
+.message-other {
+    background-color: #f0f0f0;
+    /* Light grey for messages received from others */
+    color: #666;
+    /* Slightly darker grey text */
+}
+
+.chat {
+    .chat-actions {
+        padding: 12px;
+    }
+
+    .author-name {
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    .talk-item {
+        padding: 6px 0;
+        height: 100%;
+    }
+
+    .message {
+        white-space: unset;
+        text-overflow: unset;
+
+        span {
+            padding: 6px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            font-size: 14px;
+        }
+    }
+
+    .message-date {
+        opacity: 0.8;
+    }
+
+    .empty {
+        mat-icon {
+            font-size: 220px;
+            height: 220px;
+            width: 220px;
+            opacity: 0.4;
+        }
+
+        p {
+            font-size: 18px;
+            opacity: 0.8;
+        }
+    }
+}
+
+.chat-status-icon {
+    font-size: 14px;
+    height: 14px;
+    width: 14px;
+    line-height: 16px;
+    margin-right: 6px;
+}
+
+.author-status {
+    font-size: 13px;
+}
+
+.chat-sidenav {
+    border-right: 1px solid transparent;
+    overflow: hidden;
+    width: 200px;
+}
+
+.chat-content {
+    padding: 12px;
+    height: calc(100vh - (#{$toolbar-height} + #{$inner-sidenav-content-padding}*2 + 292px));
+}
+
+.chat-sidenav-list {
+    height: calc(100vh - (#{$toolbar-height} + #{$inner-sidenav-content-padding}*2 + 188px));
+
+    .mat-mdc-list-item {
+        height: 64px !important;
+    }
+}
+
+
+.button-container {
+    display: flex;
+}
+
+.custom-button {
+    background-color: darkgrey;
+    color: white;
+    border: none;
+    outline: none;
+    padding: 8px 16px;
+    margin-right: 8px;
+}
+
+.custom-button1 {
+    background-color: red;
+    color: white;
+    border: none;
+    outline: none;
+    padding: 8px 16px;
+    margin-right: 8px;
+}
+
+.active-button {
+    background-color: red;
+    color: white;
+}
+
+.custom-button:hover {
+    background-color: darkgrey;
+}
+
+.error-tag {
+    border-radius: 5px;
+    color: white;
+    background-color: red;
+    padding: 2px 5px;
+    /* Adjust padding as needed */
+    margin-left: 5px;
+    /* Optional: Add some space between text and tag */
+}
+
+.error-tag1 {
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(11, 175, 11);
+    padding: 2px 5px;
+    /* Adjust padding as needed */
+    margin-left: 5px;
+    /* Optional: Add some space between text and tag */
+}
+
+.error-tag2 {
+    border-radius: 5px;
+    border: 2px solid red;
+    color: red;
+    background-color: white;
+    padding: 2px 5px;
+    /* Adjust padding as needed */
+    margin-left: 5px;
+    /* Optional: Add some space between text and tag */
+}
+
+.attach-link {
+    margin-left: 10px;
+    /* Adjust margin as needed */
+}
+
+
+/* Example CSS for label styles */

@@ -1,0 +1,8 @@
+$green-light-primary: mat.define-palette(mat.$green-palette, 400, 100, 600);
+$green-light-accent: mat.define-palette(mat.$light-blue-palette, 600, 300, 900);
+$green-light-warn: mat.define-palette(mat.$red-palette, 500);
+
+$green-light-theme: mat.define-light-theme((color: (primary: $green-light-primary,
+                accent: $green-light-accent,
+                warn: $green-light-warn,
+            )));

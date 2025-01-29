@@ -1,0 +1,18 @@
+<div class="col-sm-12" style="margin-left: -5px; margin-bottom: 10px;">
+    <div class="pills">
+        <ul class="nav nav-pills" style="margin-left: 10px;">
+            <li routerLinkActive="active" [routerLink]="['users']">
+                <a mat-raised-button>
+                    Users
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLink]="['roles']">
+                <a mat-raised-button>
+                    Roles
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

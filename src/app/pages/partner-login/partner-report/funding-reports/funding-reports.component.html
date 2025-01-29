@@ -1,0 +1,255 @@
+<div class="container-fluid" style="margin-bottom: 10px; padding-right: 25px;">
+    <div class="w-100">
+        <div class="row" style="display: flex; justify-content: flex-end; align-items: center">
+            <!-- Filter Button -->
+            <button mat-raised-button style="background-color: #37474f; color: white"
+                class="filters-hover margin-right-10" (click)="filterToggle = !filterToggle">
+                <mat-icon class="mat-margin-top">filter_list</mat-icon> Filter
+            </button>
+
+            <!-- Grid Columns Button -->
+            <button mat-raised-button (click)="openManageGridDialog();" style="background-color: black; color: white"
+                class="margin-right-10">
+                <mat-icon>grid_on</mat-icon> Grid Columns
+            </button>
+
+
+            <!-- Download CSV Button -->
+            <button mat-raised-button style="background-color: black; color: white; margin-right: 8px">
+                <mat-icon>get_app</mat-icon> Download CSV
+            </button>
+
+            <button mat-raised-button style="background-color: black; color: white; margin-right: 8px">
+                <mat-icon>get_app</mat-icon> Download PDF
+            </button>
+
+            <!-- Upload CSV Button -->
+            <button mat-raised-button style="background-color: #1976d2; color: white; margin-right: 8px">
+                <mat-icon>email</mat-icon> Send Report
+            </button>
+
+            <!-- Add Account Button -->
+            <!-- <button mat-raised-button color="primary" class="btn-primary margin-right-5">
+                <mat-icon class="mat-margin-top">add</mat-icon> Add EOD
+            </button> -->
+        </div>
+    </div>
+</div>
+
+<!-- Filter UI -->
+<div fxLayout="row wrap" class="col-sm-12" *ngIf="filterToggle" style="margin-bottom: 10px;">
+    <div fxFlex="100" class="flex-p w-100">
+        <form>
+            <mat-card class="filter">
+                <mat-card-content>
+                    <!-- From Year -->
+                    <div class="col-sm-4 row">
+                        <div class="col-sm-4 mt-2">
+                            <b>From Year:</b>
+                        </div>
+                        <div class="col-sm-8" style="margin-left: -20px;">
+                            <mat-select class="form-control bac" placeholder="Select From Year">
+                                <mat-option value="2020">2020</mat-option>
+                                <mat-option value="2021">2021</mat-option>
+                                <mat-option value="2022">2022</mat-option>
+                                <mat-option value="2023">2023</mat-option>
+                                <mat-option value="2024">2024</mat-option>
+                                <mat-option value="2025">2025</mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+
+                    <!-- From Month -->
+                    <div class="col-sm-4 row">
+                        <div class="col-sm-4 mt-2">
+                            <b>From Month:</b>
+                        </div>
+                        <div class="col-sm-8" style="margin-left: -10px;">
+                            <mat-select class="form-control bac" placeholder="Select Month">
+                                <mat-option value="January">January</mat-option>
+                                <mat-option value="February">February</mat-option>
+                                <mat-option value="March">March</mat-option>
+                                <mat-option value="April">April</mat-option>
+                                <mat-option value="May">May</mat-option>
+                                <mat-option value="June">June</mat-option>
+                                <mat-option value="July">July</mat-option>
+                                <mat-option value="August">August</mat-option>
+                                <mat-option value="September">September</mat-option>
+                                <mat-option value="October">October</mat-option>
+                                <mat-option value="November">November</mat-option>
+                                <mat-option value="December">December</mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 row">
+                        <div class="col-sm-4 mt-2">
+                            <b>To Year:</b>
+                        </div>
+                        <div class="col-sm-8" style="margin-left: -20px;">
+                            <mat-select class="form-control bac" placeholder="Select To Year">
+                                <mat-option value="2020">2020</mat-option>
+                                <mat-option value="2021">2021</mat-option>
+                                <mat-option value="2022">2022</mat-option>
+                                <mat-option value="2023">2023</mat-option>
+                                <mat-option value="2024">2024</mat-option>
+                                <mat-option value="2025">2025</mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+
+                    <!-- From Month -->
+                    <div class="col-sm-4 row mt-2">
+                        <div class="col-sm-4 mt-2">
+                            <b>To Month:</b>
+                        </div>
+                        <div class="col-sm-8" style="margin-left: -20px;">
+                            <mat-select class="form-control bac" placeholder="Select To Month">
+                                <mat-option value="January">January</mat-option>
+                                <mat-option value="February">February</mat-option>
+                                <mat-option value="March">March</mat-option>
+                                <mat-option value="April">April</mat-option>
+                                <mat-option value="May">May</mat-option>
+                                <mat-option value="June">June</mat-option>
+                                <mat-option value="July">July</mat-option>
+                                <mat-option value="August">August</mat-option>
+                                <mat-option value="September">September</mat-option>
+                                <mat-option value="October">October</mat-option>
+                                <mat-option value="November">November</mat-option>
+                                <mat-option value="December">December</mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+
+                    <!-- Law Firm -->
+                    <div class="col-sm-4 row mt-2">
+                        <div class="col-sm-4 mt-2">
+                            <b>Law Firm:</b>
+                        </div>
+                        <div class="col-sm-8" style="margin-left: -10px;">
+                            <mat-select class="form-control bac" placeholder="Select Law Firm">
+                                <mat-option value="John Peterson">John Peterson</mat-option>
+                                <mat-option value="Sarah Mitchell">Sarah Mitchell</mat-option>
+                                <mat-option value="Emily Carter">Emily Carter</mat-option>
+                                <mat-option value="William Bennett">William Bennett</mat-option>
+                                <mat-option value="Olivia Sanders">Olivia Sanders</mat-option>
+                                <mat-option value="James Cooper">James Cooper</mat-option>
+                                <mat-option value="Ava Richardson">Ava Richardson</mat-option>
+                                <mat-option value="Michael Harris">Michael Harris</mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+
+                    <!-- Provider -->
+                    <div class="col-sm-4 row mt-2">
+                        <div class="col-sm-4 mt-2">
+                            <b>Provider:</b>
+                        </div>
+                        <div class="col-sm-8" style="margin-left: -20px;">
+                            <mat-select class="form-control bac" placeholder="Select Provider">
+                                <mat-option value="MayoClinic">Mayo Clinic</mat-option>
+                                <mat-option value="ClevelandClinic">Cleveland Clinic</mat-option>
+                                <mat-option value="KaiserPermanente">Kaiser Permanente</mat-option>
+                                <mat-option value="JohnsHopkins">Johns Hopkins Medicine</mat-option>
+                                <mat-option value="Geisinger">Geisinger Health</mat-option>
+                                <mat-option value="PartnersHealthcare">Partners HealthCare</mat-option>
+                                <mat-option value="MountSinai">Mount Sinai Health System</mat-option>
+                                <mat-option value="UCLAHealth">UCLA Health</mat-option>
+                                <mat-option value="BannerHealth">Banner Health</mat-option>
+                                <mat-option value="MedStarHealth">MedStar Health</mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+
+                    <!-- Patient -->
+                    <div class="col-sm-4 row mt-2">
+                        <div class="col-sm-4 mt-2">
+                            <b>Case Type:</b>
+                        </div>
+                        <div class="col-sm-8" style="margin-left: -20px;">
+                            <mat-select class="form-control bac" placeholder="Select Case Type">
+                                <mat-option [value]="'New York'">Subacute Trauma</mat-option>
+                                <mat-option [value]="'Los Angeles'">Self Pay</mat-option>
+                                <mat-option [value]="'Chicago'">Insurance</mat-option>
+                                <mat-option [value]="'Houston'">Workers Comp</mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="col-sm-8 mt-3" style="margin-left: -3%;">
+                        <a (click)="filterToggle = !filterToggle" class="pull-right"
+                            style="font-size: 25px; cursor: pointer; margin-left: 5px;">
+                            <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                        </a>
+                        <button mat-raised-button style="background-color: black; color: white;" class="pull-right">
+                            <mat-icon>clear</mat-icon> Clear
+                        </button>
+                        <button mat-raised-button style="background-color: blue; color: white;"
+                            class="pull-right margin-right-10">
+                            <mat-icon>search</mat-icon> Search
+                        </button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </div>
+</div>
+
+<div class="col-sm-12 row">
+    <div class="col-sm-6">
+        <figure class="highcharts-figure">
+            <div id="container11"></div>
+        </figure>
+    </div>
+
+    <div class="col-sm-6">
+        <figure class="highcharts-figure">
+            <div id="container12"></div>
+        </figure>
+    </div>
+
+</div>
+
+<!-- Table -->
+<div class="col-sm-12 mt-5">
+    <div id="grid-table-container" class="table-responsive">
+        <table matSort class="table table-bordered table-hover">
+            <thead class="tbl-head1" style="background-color: rgb(58, 53, 53); color: white;">
+                <tr>
+                    <th class="text-center">Batched ID</th>
+                    <th class="text-center">Submitted Date</th>
+                    <th class="text-center">Paid Date</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Claimed</th>
+                    <th class="text-center">Paid</th>
+                    <th class="text-center">Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td class="text-center">{{ user.batchedId }}</td>
+                    <td class="text-center">{{ user.submittedDate }}</td>
+                    <td class="text-center">{{ user.paidDate }}</td>
+                    <td class="text-center">{{ user.status }}</td>
+                    <td class="text-center">{{ user.claimedAmount }}</td>
+                    <td class="text-center">{{ user.paidAmount }}</td>
+                    <td class="text-center">{{ user.balance }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+
+        <button class="mine" mat-fab (click)="scrollGrid('right')">
+            <mat-icon style="color: #37474f">fast_forward</mat-icon>
+        </button>
+        <button class="mine" mat-fab style="margin-right: 78px !important" (click)="scrollGrid('left')">
+            <mat-icon style="color: #37474f">fast_rewind</mat-icon>
+        </button>
+        <!-- <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSizeOptions]="[5, 10, 25, 50, 100]"
+            showFirstLastButtons>
+        </mat-paginator> -->
+    </div>
+</div>

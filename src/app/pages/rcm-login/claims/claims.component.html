@@ -1,0 +1,585 @@
+<div class="nav-container" [ngClass]="{ 'nav-open': isNavOpen, 'nav-closed': !isNavOpen }">
+    <!-- Toggle Button with Hamburger Icon -->
+    <button (click)="toggleNav()" class="toggle-button">
+        <mat-icon class="toggle-icon">menu</mat-icon>
+    </button>
+
+    <!-- Navigation Links (visible only when nav is open) -->
+    <div *ngIf="isNavOpen">
+        <nav class="nav-links">
+
+            <mat-card style="padding: 5px; cursor: pointer; margin-top: 23px;">
+                <div style="flex: 1; padding-right: 20px;">
+                    <h3 style="margin-left: 17px; margin-top: 18px; margin-bottom: 10px;">Ageing</h3>
+
+                    <div class="case-type-row">
+                        <div class="icon-container1">
+                            <mat-icon style="color: #67d799;">event_available</mat-icon>
+                        </div>
+                        <div class="subtitle-container">
+                            <mat-card-subtitle class="subtitle">0-30 Days</mat-card-subtitle>
+                            <mat-card-subtitle class="count">1298</mat-card-subtitle>
+                        </div>
+                    </div>
+
+                    <div class="case-type-row">
+                        <div class="icon-container2">
+                            <mat-icon style="color: #8a81f2;">update</mat-icon>
+                        </div>
+                        <div class="subtitle-container">
+                            <mat-card-subtitle class="subtitle">30-90 Days</mat-card-subtitle>
+                            <mat-card-subtitle class="count">120</mat-card-subtitle>
+                        </div>
+                    </div>
+
+                    <div class="case-type-row">
+                        <div class="icon-container3">
+                            <mat-icon style="color: #8a81f2;">watch_later</mat-icon>
+                        </div>
+                        <div class="subtitle-container">
+                            <mat-card-subtitle class="subtitle" style="white-space: nowrap;">
+                                90-180 Days
+                            </mat-card-subtitle>
+                            <mat-card-subtitle class="count">80</mat-card-subtitle>
+                        </div>
+                    </div>
+
+                    <div class="case-type-row">
+                        <div class="icon-container4">
+                            <mat-icon style="color: #e76f51;">date_range</mat-icon>
+                        </div>
+                        <div class="subtitle-container">
+                            <mat-card-subtitle class="subtitle">6M - 1Y</mat-card-subtitle>
+                            <mat-card-subtitle class="count">12</mat-card-subtitle>
+                        </div>
+                    </div>
+
+                    <div class="case-type-row">
+                        <div class="icon-container5">
+                            <mat-icon style="color: #e76f51;">event_note</mat-icon>
+                        </div>
+                        <div class="subtitle-container">
+                            <mat-card-subtitle class="subtitle">1 - 2 Years</mat-card-subtitle>
+                            <mat-card-subtitle class="count">12</mat-card-subtitle>
+                        </div>
+                    </div>
+
+                    <div class="case-type-row">
+                        <div class="icon-container6">
+                            <mat-icon style="color: #e76f51;">history</mat-icon>
+                        </div>
+                        <div class="subtitle-container">
+                            <mat-card-subtitle class="subtitle">2+ Years</mat-card-subtitle>
+                            <mat-card-subtitle class="count">12</mat-card-subtitle>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+        </nav>
+    </div>
+</div>
+
+<div [ngClass]="{ 'full-width': !isNavOpen }" class="col-sm-10 container-fluid"
+    style="margin-bottom: 10px; padding-right: 25px">
+    <!-- Perspective Mat-Icons -->
+    <div class="col-sm-12 mb-3" style="width: 103.6%;">
+        <div class="col-sm-5"></div>
+        <div class="col-sm-3" style="text-align: right;">
+            <p *ngIf="selectedIcon !== null" class="mt-2  tooltipName">
+                <span style="color: #A6A6A6;">{{ icons[selectedIcon].tooltip }}</span>
+            </p>
+        </div>
+        <div class="col-sm-4">
+            <mat-card
+                style="background-color: rgb(230, 228, 228); height: 35px; display: flex; justify-content: center; align-items: center;">
+                <div style="display: flex; justify-content: center; align-items: center; cursor: pointer;">
+                    <mat-icon *ngFor="let icon of icons; let i = index" matTooltip="{{ icon.tooltip }}"
+                        class="animated-icon1" [ngStyle]="{
+                  'background-color': selectedIcon === i ? 'yellow' : 'transparent',
+                  'padding': selectedIcon === i ? '15px 15px 12px 15px' : '0px',
+                  'border-radius': '6px',
+                  'border': selectedIcon === i ? '2px solid orange' : 'none',
+                  'display': 'flex',
+                  'justify-content': 'center',
+                  'align-items': 'center',
+                  'width': '40px',
+                  'height': '40px'
+                  
+                }" (click)="selectIcon(i)">
+                        {{ icon.name }}
+                    </mat-icon>
+                    <mat-icon style="background-color: white;" (click)="perspectives();" matTooltip="Perspectives"
+                        class="animated-icon1">settings
+                    </mat-icon>
+                    <mat-icon (click)="perspectiveFilter($event)" matTooltip="Filter" class="animated-icon1">
+                        filter_list
+                    </mat-icon>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+
+    <!-- Liaison -->
+    <div class="arrow-container" *ngIf="selectedIcon === 0">
+        <div class="arrow-shape" *ngFor="let stat of Liaisons; let i = index"
+            [style.background-color]="getBackgroundColor(i)" style="color: black;">
+            <span class="arrow-text">{{ stat.text }}</span>
+            <span class="arrow-number">{{ stat.number }}</span>
+        </div>
+    </div>
+
+    <!-- Case Manager -->
+    <div class="arrow-container" *ngIf="selectedIcon === 1">
+        <div class="arrow-shape" style="background-color: #C4C2FF; color: black;">
+            <span class="arrow-text">AUTH & Pending SCH</span>
+            <span class="arrow-number">60,901</span>
+        </div>
+        <div class="arrow-shape" style="background-color: #B3E3F6; color: black;">
+            <span class="arrow-text">Pending Authorization</span>
+            <span class="arrow-number">10,987</span>
+        </div>
+        <div class="arrow-shape" style="background-color: #E0DBFF; color: black;">
+            <span class="arrow-text">Verified & Pending SCH</span>
+            <span class="arrow-number">19,290</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #D9D9D9; color: black;">
+            <span class="arrow-text">SCH & Pending AUTH</span>
+            <span class="arrow-number">98,762</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #FFD2B2; color: black;">
+            <span class="arrow-text">SCH this week</span>
+            <span class="arrow-number">9891</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #A8E5C1; color: black;">
+            <span class="arrow-text">Pending Scheduled</span>
+            <span class="arrow-number">7498</span>
+        </div>
+    </div>
+
+    <!-- Scheduling -->
+    <div class="arrow-container" *ngIf="selectedIcon === 2">
+        <div class="arrow-shape" style="background-color: #C4C2FF; color: black;">
+            <span class="arrow-text">Pending Verification</span>
+            <span class="arrow-number">42,981</span>
+        </div>
+        <div class="arrow-shape" style="background-color: #B3E3F6; color: black;">
+            <span class="arrow-text">Pending Authorization</span>
+            <span class="arrow-number">40,897</span>
+        </div>
+        <div class="arrow-shape" style="background-color: #E0DBFF; color: black;">
+            <span class="arrow-text">SCH & Pending AUTH</span>
+            <span class="arrow-number">32,781</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #D9D9D9; color: black;">
+            <span class="arrow-text">Scheduled Today</span>
+            <span class="arrow-number">9891</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #FFD2B2; color: black;">
+            <span class="arrow-text">AUTH & Pending SCH</span>
+            <span class="arrow-number">981</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #A8E5C1; color: black;">
+            <span class="arrow-text">Scheduling Overdue</span>
+            <span class="arrow-number">741</span>
+        </div>
+
+    </div>
+
+    <!-- Claims -->
+    <div class="arrow-container" *ngIf="selectedIcon === 3">
+        <div class="arrow-shape" style="background-color: #E0DBFF; color: black;">
+            <span class="arrow-text">Claims This Month</span>
+            <span class="arrow-number">32,987</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #D9D9D9; color: black;">
+            <span class="arrow-text">Claims This Quarter</span>
+            <span class="arrow-number">30,652</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #FFD2B2; color: black;">
+            <span class="arrow-text">Claims This Year</span>
+            <span class="arrow-number">31,987</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #A8E5C1; color: black;">
+            <span class="arrow-text">Claims Pending</span>
+            <span class="arrow-number">1556</span>
+        </div>
+        <div class="arrow-shape" style="background-color: #C4C2FF; color: black;">
+            <span class="arrow-text">Claims Last Month</span>
+            <span class="arrow-number">879</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #B3E3F6; color: black;">
+            <span class="arrow-text">Claims Last Quarter</span>
+            <span class="arrow-number">765</span>
+        </div>
+
+    </div>
+
+    <!-- Funds -->
+    <div class="arrow-container1" *ngIf="selectedIcon === 4">
+        <div class="arrow-shape" style="background-color: #E0DBFF; color: black;">
+            <span class="arrow-text">Batched Claims</span>
+            <span class="arrow-number1">92,987</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #D9D9D9; color: black;">
+            <span class="arrow-text">Funded Claims</span>
+            <span class="arrow-number1">91,675</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #FFD2B2; color: black;">
+            <span class="arrow-text">Claims Settled</span>
+            <span class="arrow-number1">90,786</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #A8E5C1; color: black;">
+            <span class="arrow-text">Claims Paid</span>
+            <span class="arrow-number1">89,987</span>
+        </div>
+
+    </div>
+
+    <!-- For Collection Intake -->
+    <div class="col-sm-12 mt-3 mb-4" style="width: 104%; margin-left: -20px;" *ngIf="selectedIcon === 5">
+        <!-- 1st -->
+        <div class="col-sm-4">
+            <table style="width: 103%; border-collapse: collapse; text-align: left;">
+                <tbody>
+                    <tr *ngFor="let data of collectionData; let i = index">
+                        <td
+                            [ngStyle]="{'background-color': i % 2 === 0 ? '#e3f2fd' : 'lemonchiffon', 'padding': '8px', 'border': '1px solid #ddd'}">
+                            {{ data.description }}
+                        </td>
+                        <td class="count1">
+                            {{ data.count }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-sm-4">
+            <table style="width: 103%; border-collapse: collapse; text-align: left;">
+                <tbody>
+                    <tr *ngFor="let data of collectionData2; let i = index">
+                        <td
+                            [ngStyle]="{'background-color': i % 2 === 0 ? 'lemonchiffon' : '#e3f2fd', 'padding': '8px', 'border': '1px solid #ddd'}">
+                            {{ data.description }}
+                        </td>
+                        <td class="count1">
+                            {{ data.count }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-sm-4">
+            <table style="width: 103%; border-collapse: collapse; text-align: left;">
+                <tbody>
+                    <tr *ngFor="let data of collectionLogData; let i = index">
+                        <td
+                            [ngStyle]="{'background-color': i % 2 === 0 ? '#e3f2fd' : 'lemonchiffon', 'padding': '8px', 'border': '1px solid #ddd'}">
+                            {{ data.description }}
+                        </td>
+                        <td class="count1" *ngIf="data.description == 'Denied'  || data.description == 'Delayed'"
+                            [ngStyle]=" {'color': 'red' }">
+                            {{ data.count }}
+                        </td>
+                        <td class="count1" *ngIf="data.description != 'Denied' && data.description != 'Delayed'">
+                            {{ data.count }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Leadership -->
+    <div class="arrow-container" *ngIf="selectedIcon === 6">
+        <div class="arrow-shape" style="background-color: #C4C2FF; color: black;">
+            <span class="arrow-text">Claims This Year</span>
+            <span class="arrow-number">122,981</span>
+        </div>
+        <div class="arrow-shape" style="background-color: #B3E3F6; color: black;">
+            <span class="arrow-text">Claims Last Year</span>
+            <span class="arrow-number">101,781</span>
+        </div>
+        <div class="arrow-shape" style="background-color: #E0DBFF; color: black;">
+            <span class="arrow-text">Claims This Quarter</span>
+            <span class="arrow-number">321,876</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #D9D9D9; color: black;">
+            <span class="arrow-text">Scheduling Overdue</span>
+            <span class="arrow-number">981</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #FFD2B2; color: black;">
+            <span class="arrow-text">Claims Overdue</span>
+            <span class="arrow-number">989</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #A8E5C1; color: black;">
+            <span class="arrow-text">QTQ Referrals Growth</span>
+            <span class="arrow-number">34%</span>
+        </div>
+
+    </div>
+
+
+    <!-- Buttons -->
+    <div class="w-100 mt-4">
+        <div class="row" style="display: flex; justify-content: flex-end; align-items: center">
+
+            <label class="control-label mt-2 margin-right-10">Apply Save Search :</label>
+            <mat-select class="form-control margin-right-10" style="width: 165px;" placeholder="Select Subject">
+                <mat-option [value]="'New York'">Pending Verification</mat-option>
+                <mat-option [value]="'Los Angeles'">SCH & Pending AUTH</mat-option>
+                <mat-option [value]="'Chicago'">Referrals this week</mat-option>
+                <mat-option [value]="'Houston'">Authorized this week</mat-option>
+            </mat-select>
+            <button mat-raised-button matTooltip="Save"
+                style="background-color: green; color: white; margin-right: 8px">
+                Go
+            </button>
+
+            <!-- Filter Button -->
+            <button mat-raised-button style="background-color: #37474f; color: white" (click)="openMerge()"
+                class="filters-hover margin-right-10">
+                <mat-icon>merge_type</mat-icon> Merge
+            </button>
+            <button mat-raised-button style="background-color: black; color: white" class="margin-right-10"
+                (click)="filterToggle = !filterToggle">
+                <mat-icon class="mat-margin-top">filter_list</mat-icon> Filter
+            </button>
+            <!-- Grid Columns Button -->
+            <button mat-raised-button matTooltip="Grid Columns" style="background-color: black; color: white"
+                class="margin-right-10 center-icon">
+                <mat-icon>grid_on</mat-icon>
+            </button>
+
+            <!-- Download CSV Button -->
+            <button mat-raised-button matTooltip="Download CSV" class="center-icon"
+                style="background-color: black; color: white; margin-right: 8px">
+                <mat-icon>get_app</mat-icon>
+            </button>
+
+            <!-- Download Template Button -->
+            <button mat-raised-button matTooltip="Download Template" class="center-icon"
+                style="background-color: black; color: white; margin-right: 8px">
+                <mat-icon>get_app</mat-icon>
+            </button>
+
+            <!-- Upload CSV Button -->
+            <button mat-raised-button matTooltip="Upload CSV" class="center-icon"
+                style="background-color: black; color: white; margin-right: 8px">
+                <mat-icon>backup</mat-icon>
+            </button>
+
+            <!-- Add Account Button -->
+            <button mat-raised-button color="primary" class="btn-primary margin-right-5"
+                (click)="openEditDialog(null);">
+                <mat-icon class="mat-margin-top">add</mat-icon> Add Claim
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Filter UI -->
+<div fxLayout="row wrap" *ngIf="filterToggle" style="margin-bottom: 10px" [ngClass]="{ 'full-width': !isNavOpen }"
+    class="col-sm-10">
+    <div fxFlex="100" class="flex-p w-100">
+        <form>
+            <mat-card class="filter">
+                <mat-card-content>
+                    <div class="row col-sm-12">
+                        <div class="col-sm-4 row">
+                            <div class="col-sm-4 mt-2">
+                                <b class="mt-2">Claims ID:</b>
+                            </div>
+                            <div class="col-sm-7">
+                                <mat-select class="form-control bac" placeholder="Select Claims ID">
+                                    <mat-option value="10025423">10025423</mat-option>
+                                    <mat-option value="10025424">10025424</mat-option>
+                                    <mat-option value="10025425">10025425</mat-option>
+                                    <mat-option value="10025426">10025426</mat-option>
+                                    <mat-option value="10025427">10025427</mat-option>
+                                    <mat-option value="10025428">10025428</mat-option>
+                                    <mat-option value="10025429">10025429</mat-option>
+                                    <mat-option value="10025430">10025430</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 row">
+                            <div class="col-sm-4 mt-2">
+                                <b>Patient Name:</b>
+                            </div>
+                            <div class="col-sm-8">
+                                <mat-select class="form-control bac" placeholder="Select Patient Name">
+                                    <mat-option value="John Doe">John Doe</mat-option>
+                                    <mat-option value="Jane Smith">Jane Smith</mat-option>
+                                    <mat-option value="Alice Johnson">Alice Johnson</mat-option>
+                                    <mat-option value="Bob Brown">Bob Brown</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 row">
+                            <div class="col-sm-4 mt-2">
+                                <b>Claim Status:</b>
+                            </div>
+                            <div class="col-sm-8">
+                                <mat-select placeholder="Select Claim Status" class="form-control">
+                                    <mat-option [value]="'Scheduled'">Scheduled</mat-option>
+                                    <mat-option [value]="'Completed'">Completed</mat-option>
+                                    <mat-option [value]="'Pending'">Pending</mat-option>
+                                    <mat-option [value]="'No Show'">No Show</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+
+                        <!-- Search and Clear Buttons -->
+                        <div class="col-sm-12 mt-3">
+                            <button mat-raised-button class="pull-right" style="background-color: black; color: white;"
+                                (click)="filterForm.reset()">
+                                Clear
+                            </button>
+                            <button mat-raised-button style="background-color: blue; color: white;"
+                                class="pull-right margin-right-10">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </div>
+</div>
+
+
+
+<!-- Table -->
+<div [ngClass]="{ 'full-width': !isNavOpen }" class="col-sm-10">
+    <div id="grid-table-container" class="table-responsive">
+        <table matSort class="table table-bordered table-hover">
+            <thead class="tbl-head1" style="background-color: rgb(58, 53, 53); color: white;">
+                <tr>
+                    <th class="text-center" style="white-space: nowrap;">Actions</th>
+                    <th class="text-center" style="white-space: nowrap;">Claims ID</th>
+                    <th style="white-space: nowrap;">Patient ID</th>
+                    <th style="white-space: nowrap;">Referral ID</th>
+                    <th style="white-space: nowrap;">Visit ID</th>
+                    <th style="white-space: nowrap;">Location ID</th>
+                    <th style="white-space: nowrap;">Location Name</th>
+                    <th style="white-space: nowrap;">Patient Name</th>
+                    <th style="white-space: nowrap;" class="text-center">Claim Status</th>
+                    <th class="text-center">Finance</th>
+                    <th class="text-center">Estimate</th>
+                    <th class="text-center">Deposit</th>
+                    <th class="text-center" style="white-space: nowrap;">Negotiated Amount</th>
+                    <th class="text-center" style="white-space: nowrap;">Negotiation Date</th>
+                    <th class="text-center" style="white-space: nowrap;">Purchase Amount</th>
+                    <th class="text-center" style="white-space: nowrap;">Paid Amount</th>
+                    <th class="text-center" style="white-space: nowrap;">Balance Amount</th>
+                    <th class="text-center" style="white-space: nowrap;">Payments</th>
+                    <th class="text-center" style="white-space: nowrap;">Claim Date</th>
+                    <th class="text-center" style="white-space: nowrap;">Last Payment Date</th>
+                    <th class="text-center" style="white-space: nowrap;">Settlement Date</th>
+                    <!-- <th class="text-center" style="white-space: nowrap;">Payment Reference</th> -->
+                    <th style="white-space: nowrap;">Submitted By</th>
+                    <th style="white-space: nowrap;">Service</th>
+                    <th style="white-space: nowrap;" class="text-center">Due Date</th>
+                    <th style="white-space: nowrap;" class="text-center">Service Date</th>
+                    <th style="white-space: nowrap;" class="text-center">Date of Injury</th>
+                    <th class="text-center">Remarks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of rows">
+                    <td class="text-center" style="white-space: nowrap;">
+                        <a matTooltip="Edit Record" (click)="openEditDialog(item)"
+                            class="fa fa-edit action-btn edit-btn" style="margin-right: 10px;">
+                        </a>
+
+                        <a matTooltip="Delete Record" class="fa fa-trash action-btn delete-btn">
+                        </a>
+                    </td>
+                    <td class="text-center" [routerLink]="['/rcm-login/claims-dashboard']"
+                        style="color: cornflowerblue; cursor: pointer;">{{ item.claimsId }}
+                    </td>
+                    <td (click)="open(item);" style="cursor: pointer; color: cornflowerblue;">
+                        {{ item.patientId }}
+                    </td>
+                    <td class="text-center" [routerLink]="['/rcm-login/referrals-dashboard']"
+                        style="cursor: pointer; color: cornflowerblue;">
+                        {{item.patientId }}
+                    </td>
+                    <td class="text-center" [routerLink]="['../inner-visits']"
+                        style="cursor: pointer; color: cornflowerblue;">{{item.patientId }}
+                    </td>
+                    <td class="text-center">{{ item.patientId }}</td>
+                    <td style="white-space: nowrap;">{{ item.locationName }}</td>
+                    <td>{{ item.patientName }}</td>
+                    <td class="text-center">
+                        <mat-select [(value)]="item.claimStatus" class="form-control" placeholder="Select Status">
+                            <mat-option [value]="'Scheduled'">Scheduled</mat-option>
+                            <mat-option [value]="'Completed'">Completed</mat-option>
+                            <mat-option [value]="'Pending'">Pending</mat-option>
+                            <mat-option [value]="'No Show'">No Show</mat-option>
+                        </mat-select>
+                    </td>
+                    <td class="text-center">
+                        <mat-checkbox [(ngModel)]="item.finance"></mat-checkbox>
+                    </td>
+                    <td class="text-center">{{ item.estimate }}</td>
+                    <td class="text-center">{{ item.deposit }}</td>
+                    <td class="text-center">{{ item.negotiatedAmount }}</td>
+                    <td class="text-center">{{ item.negotiationDate | date: 'dd-MMM-yyyy' }}</td>
+                    <td class="text-center">{{ item.purchaseAmount }}</td>
+                    <td class="text-center">{{ item.paidAmount }}</td>
+                    <td class="text-center">1500</td>
+                    <td class="text-center" [routerLink]="['/rcm-login/claims-payments']"
+                        style="color: cornflowerblue; cursor: pointer;">3</td>
+                    <td class="text-center" style="white-space: nowrap;">{{ item.paymentDate | date: 'dd-MMM-yyyy' }}
+                    </td>
+                    <td class="text-center" style="white-space: nowrap;">{{ item.paymentDate | date: 'dd-MMM-yyyy' }}
+                    </td>
+                    <td class="text-center" style="white-space: nowrap;">{{ item.paymentDate | date: 'dd-MMM-yyyy' }}
+                    </td>
+                    <!-- <td class="text-center">{{ item.paymentReference }}</td> -->
+                    <td>{{ item.submittedBy }}</td>
+                    <td>{{ item.service }}</td>
+                    <td class="text-center" style="white-space: nowrap;">{{ item.dateOfInjury | date: 'dd-MMM-yyyy' }}
+                    </td>
+                    <td class="text-center">{{ item.serviceDate | date: 'dd-MMM-yyyy' }}</td>
+                    <td class="text-center">{{ item.dateOfInjury | date: 'dd-MMM-yyyy' }}</td>
+                    <td class="text-center" style="color: blue; cursor: pointer;" (click)="notesDialog(item);">
+                        <mat-icon>info</mat-icon>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button class="mine" mat-fab (click)="scrollGrid('right')">
+            <mat-icon style="color: #37474f">fast_forward</mat-icon>
+        </button>
+        <button class="mine" mat-fab style="margin-right: 78px !important" (click)="scrollGrid('left')">
+            <mat-icon style="color: #37474f">fast_rewind</mat-icon>
+        </button>
+
+        <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSizeOptions]="[5, 10, 25, 50, 100]"
+            showFirstLastButtons></mat-paginator>
+    </div>
+</div>

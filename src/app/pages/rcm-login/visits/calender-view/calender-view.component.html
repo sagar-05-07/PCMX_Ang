@@ -1,0 +1,1267 @@
+<div class="col-sm-12">
+    <!-- Perspective Mat-Icons -->
+    <div class="col-sm-12 mb-3" style="width: 103.6%;">
+        <div class="col-sm-6"></div>
+        <div class="col-sm-2">
+            <p *ngIf="selectedIcon !== null" class="mt-2 tooltipName">
+                <b>{{ icons[selectedIcon].tooltip }}</b>
+            </p>
+        </div>
+        <div class="col-sm-4" style="margin-top: -45px; margin-left: -35px;">
+            <mat-card
+                style="background-color: rgb(230, 228, 228); height: 35px; display: flex; justify-content: center; align-items: center;">
+                <div style="display: flex; justify-content: center; align-items: center; cursor: pointer;">
+                    <mat-icon *ngFor="let icon of icons; let i = index" matTooltip="{{ icon.tooltip }}"
+                        class="animated-icon1" [ngStyle]="{
+                'background-color': selectedIcon === i ? 'yellow' : 'transparent',
+                'padding': selectedIcon === i ? '15px 15px 12px 15px' : '0px',
+                'border-radius': '6px',
+                'border': selectedIcon === i ? '2px solid orange' : 'none',
+                'display': 'flex',
+                'justify-content': 'center',
+                'align-items': 'center',
+                'width': '40px',
+                'height': '40px'
+              }" (click)="selectIcon(i)">
+                        {{ icon.name }}
+                    </mat-icon>
+                    <mat-icon style="background-color: white;" (click)="perspectives();" matTooltip="Perspectives"
+                        class="animated-icon1">settings
+                    </mat-icon>
+                    <mat-icon (click)="perspectiveFilter($event)" matTooltip="Filter" class="animated-icon1">
+                        filter_list
+                    </mat-icon>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="col-sm-12 mt-3 mb-4" style="width: 104%; margin-left: -20px;" *ngIf="selectedIcon === 1">
+        <!-- 1st -->
+        <div class="col-sm-4">
+            <table style="width: 103%; border-collapse: collapse; text-align: left;">
+                <tbody>
+                    <tr *ngFor="let data of patientData; let i = index">
+                        <td
+                            [ngStyle]="{'background-color': i % 2 === 0 ? '#e3f2fd' : 'lemonchiffon', 'padding': '8px', 'border': '1px solid #ddd'}">
+                            {{ data.description }}
+                        </td>
+                        <td class="count1">
+                            {{ data.count }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-sm-4">
+            <table style="width: 103%; border-collapse: collapse; text-align: left;">
+                <tbody>
+                    <tr *ngFor="let data of patientData2; let i = index">
+                        <td
+                            [ngStyle]="{'background-color': i % 2 === 0 ? 'lemonchiffon' : '#e3f2fd', 'padding': '8px', 'border': '1px solid #ddd'}">
+                            {{ data.description }}
+                        </td>
+                        <td class="count1">
+                            {{ data.count }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-sm-4">
+            <table style="width: 103%; border-collapse: collapse; text-align: left;">
+                <tbody>
+                    <tr *ngFor="let data of logData; let i = index">
+                        <td
+                            [ngStyle]="{'background-color': i % 2 === 0 ? '#e3f2fd' : 'lemonchiffon', 'padding': '8px', 'border': '1px solid #ddd'}">
+                            {{ data.description }}
+                        </td>
+                        <td class="count1" *ngIf="data.description == 'Denied'  || data.description == 'Delayed'"
+                            [ngStyle]=" {'color': 'red' }">
+                            {{ data.count }}
+                        </td>
+                        <td class="count1" *ngIf="data.description != 'Denied' && data.description != 'Delayed'">
+                            {{ data.count }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Liaison -->
+    <div class="arrow-container" *ngIf="selectedIcon === 0">
+        <div class="arrow-shape" *ngFor="let stat of Liaisons; let i = index"
+            [style.background-color]="getBackgroundColor(i)" style="color: black;">
+            <span class="arrow-text">{{ stat.text }}</span>
+            <span class="arrow-number">{{ stat.number }}</span>
+        </div>
+    </div>
+
+    <!-- Case Manager -->
+    <div class="arrow-container" *ngIf="selectedIcon === 2">
+        <div class="arrow-shape" style="background-color: #C4C2FF; color: black;">
+            <span class="arrow-text">AUTH & Pending SCH</span>
+            <span class="arrow-number">60,901</span>
+        </div>
+        <div class="arrow-shape" style="background-color: #B3E3F6; color: black;">
+            <span class="arrow-text">Pending Authorization</span>
+            <span class="arrow-number">10,987</span>
+        </div>
+        <div class="arrow-shape" style="background-color: #E0DBFF; color: black;">
+            <span class="arrow-text">Verified & Pending SCH</span>
+            <span class="arrow-number">19,290</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #D9D9D9; color: black;">
+            <span class="arrow-text">SCH & Pending AUTH</span>
+            <span class="arrow-number">98,762</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #FFD2B2; color: black;">
+            <span class="arrow-text">SCH this week</span>
+            <span class="arrow-number">9891</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #A8E5C1; color: black;">
+            <span class="arrow-text">Pending Scheduled</span>
+            <span class="arrow-number">7498</span>
+        </div>
+    </div>
+
+    <!-- Scheduling -->
+    <div class="arrow-container" *ngIf="selectedIcon === 3">
+        <div class="arrow-shape" style="background-color: #C4C2FF; color: black;">
+            <span class="arrow-text">Pending Verification</span>
+            <span class="arrow-number">42,981</span>
+        </div>
+        <div class="arrow-shape" style="background-color: #B3E3F6; color: black;">
+            <span class="arrow-text">Pending Authorization</span>
+            <span class="arrow-number">40,897</span>
+        </div>
+        <div class="arrow-shape" style="background-color: #E0DBFF; color: black;">
+            <span class="arrow-text">SCH & Pending AUTH</span>
+            <span class="arrow-number">32,781</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #D9D9D9; color: black;">
+            <span class="arrow-text">Scheduled Today</span>
+            <span class="arrow-number">9891</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #FFD2B2; color: black;">
+            <span class="arrow-text">AUTH & Pending SCH</span>
+            <span class="arrow-number">981</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #A8E5C1; color: black;">
+            <span class="arrow-text">Scheduling Overdue</span>
+            <span class="arrow-number">741</span>
+        </div>
+
+    </div>
+
+    <!-- Claims -->
+    <div class="arrow-container" *ngIf="selectedIcon === 4">
+        <div class="arrow-shape" style="background-color: #E0DBFF; color: black;">
+            <span class="arrow-text">Referrals This Month</span>
+            <span class="arrow-number">32,987</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #D9D9D9; color: black;">
+            <span class="arrow-text">SCH This Month</span>
+            <span class="arrow-number">30,652</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #FFD2B2; color: black;">
+            <span class="arrow-text">Claims This Month</span>
+            <span class="arrow-number">31,987</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #A8E5C1; color: black;">
+            <span class="arrow-text">Claim Pending</span>
+            <span class="arrow-number">1556</span>
+        </div>
+        <div class="arrow-shape" style="background-color: #C4C2FF; color: black;">
+            <span class="arrow-text"></span>
+            <span class="arrow-number"></span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #B3E3F6; color: black;">
+            <span class="arrow-text"></span>
+            <span class="arrow-number"></span>
+        </div>
+
+    </div>
+
+    <!-- Funds -->
+    <div class="arrow-container1" *ngIf="selectedIcon === 5">
+        <div class="arrow-shape" style="background-color: #E0DBFF; color: black;">
+            <span class="arrow-text">Batched Claims</span>
+            <span class="arrow-number1">92,987</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #D9D9D9; color: black;">
+            <span class="arrow-text">Funded Claims</span>
+            <span class="arrow-number1">91,675</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #FFD2B2; color: black;">
+            <span class="arrow-text">Claims Settled</span>
+            <span class="arrow-number1">90,786</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #A8E5C1; color: black;">
+            <span class="arrow-text">Claims Paid</span>
+            <span class="arrow-number1">89,987</span>
+        </div>
+
+    </div>
+
+    <!-- For Collection Intake -->
+    <div class="col-sm-12 mt-3 mb-4" style="width: 104%; margin-left: -20px;" *ngIf="selectedIcon === 6">
+        <!-- 1st -->
+        <div class="col-sm-4">
+            <table style="width: 103%; border-collapse: collapse; text-align: left;">
+                <tbody>
+                    <tr *ngFor="let data of collectionData; let i = index">
+                        <td
+                            [ngStyle]="{'background-color': i % 2 === 0 ? '#e3f2fd' : 'lemonchiffon', 'padding': '8px', 'border': '1px solid #ddd'}">
+                            {{ data.description }}
+                        </td>
+                        <td class="count1">
+                            {{ data.count }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-sm-4">
+            <table style="width: 103%; border-collapse: collapse; text-align: left;">
+                <tbody>
+                    <tr *ngFor="let data of collectionData2; let i = index">
+                        <td
+                            [ngStyle]="{'background-color': i % 2 === 0 ? 'lemonchiffon' : '#e3f2fd', 'padding': '8px', 'border': '1px solid #ddd'}">
+                            {{ data.description }}
+                        </td>
+                        <td class="count1">
+                            {{ data.count }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-sm-4">
+            <table style="width: 103%; border-collapse: collapse; text-align: left;">
+                <tbody>
+                    <tr *ngFor="let data of collectionLogData; let i = index">
+                        <td
+                            [ngStyle]="{'background-color': i % 2 === 0 ? '#e3f2fd' : 'lemonchiffon', 'padding': '8px', 'border': '1px solid #ddd'}">
+                            {{ data.description }}
+                        </td>
+                        <td class="count1" *ngIf="data.description == 'Denied'  || data.description == 'Delayed'"
+                            [ngStyle]=" {'color': 'red' }">
+                            {{ data.count }}
+                        </td>
+                        <td class="count1" *ngIf="data.description != 'Denied' && data.description != 'Delayed'">
+                            {{ data.count }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Leadership -->
+    <div class="arrow-container" *ngIf="selectedIcon === 7">
+        <div class="arrow-shape" style="background-color: #C4C2FF; color: black;">
+            <span class="arrow-text">Referrals This Year</span>
+            <span class="arrow-number">122,981</span>
+        </div>
+        <div class="arrow-shape" style="background-color: #B3E3F6; color: black;">
+            <span class="arrow-text">Visits This Year</span>
+            <span class="arrow-number">101,781</span>
+        </div>
+        <div class="arrow-shape" style="background-color: #E0DBFF; color: black;">
+            <span class="arrow-text">Claims This Year</span>
+            <span class="arrow-number">321,876</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #D9D9D9; color: black;">
+            <span class="arrow-text">Scheduling Overdue</span>
+            <span class="arrow-number">981</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #FFD2B2; color: black;">
+            <span class="arrow-text">Claims Overdue</span>
+            <span class="arrow-number">989</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #A8E5C1; color: black;">
+            <span class="arrow-text">QTQ Referrals Growth</span>
+            <span class="arrow-number">34%</span>
+        </div>
+
+    </div>
+
+    <!-- Marketing -->
+    <div class="arrow-container" *ngIf="selectedIcon === 8">
+        <div class="arrow-shape" style="background-color: #C4C2FF; color: black;">
+            <span class="arrow-text">Referrals This Year</span>
+            <span class="arrow-number">312,872</span>
+        </div>
+        <div class="arrow-shape" style="background-color: #B3E3F6; color: black;">
+            <span class="arrow-text">Claims to Referrals</span>
+            <span class="arrow-number">0.78</span>
+        </div>
+        <div class="arrow-shape" style="background-color: #E0DBFF; color: black;">
+            <span class="arrow-text">Claims This Year</span>
+            <span class="arrow-number">322,321</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #D9D9D9; color: black;">
+            <span class="arrow-text">QTQ Referrals Growth</span>
+            <span class="arrow-number">30%</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #FFD2B2; color: black;">
+            <span class="arrow-text">MTM Referrals Growth</span>
+            <span class="arrow-number">32%</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #A8E5C1; color: black;">
+            <span class="arrow-text">QTQ Claims Growth</span>
+            <span class="arrow-number">34%</span>
+        </div>
+
+    </div>
+
+
+    <div class="col-sm-12">
+        <div class="row"
+            style="background-color: #FDFAE2; padding: 20px; display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <!-- Select Provider Dropdown -->
+            <mat-select class="form-control" placeholder="Select Provider" style="min-width: 130px;">
+                <mat-option [value]="'Chris Waller'">Chris Waller</mat-option>
+                <mat-option [value]="'Chunck James'">Chunck James</mat-option>
+                <mat-option [value]="'Bennett Pugh'">Bennett Pugh</mat-option>
+                <mat-option [value]="'Catherina Jefferson'">Catherina Jefferson</mat-option>
+                <mat-option [value]="'William C.Bomer'">William C.Bomer</mat-option>
+                <mat-option [value]="'John Russell'">John Russell</mat-option>
+            </mat-select>
+
+            <!-- Select Location Dropdown -->
+            <mat-select class="form-control" placeholder="Select Location" style="min-width: 150px;">
+                <mat-option [value]="'Texas'">Texas</mat-option>
+                <mat-option [value]="'Dallas'">Dallas</mat-option>
+                <mat-option [value]="'Houston'">Houston</mat-option>
+                <mat-option [value]="'Hyderabad'">Hyderabad</mat-option>
+                <mat-option [value]="'Kondapur'">Kondapur</mat-option>
+            </mat-select>
+
+            <!-- Week Selector -->
+            <input id="myWeekInput" type="week" class="form-control" style="min-width: 100px;" value="2024-W17" />
+
+            <!-- Go Button -->
+            <button class="btn btn-primary" style="min-width: 50px;">GO</button>
+
+            <!-- Toggle Button -->
+            <mat-slide-toggle [(ngModel)]="show" class="custom-color" (change)="toggle()"
+                style="display: inline-flex; align-items: center; white-space:nowrap">
+                {{ show ? 'Hide Weekend' : 'Show Weekend' }}
+            </mat-slide-toggle>
+
+            <!-- Mega, Mini, Micro Buttons -->
+            <div style="display: flex; gap: 10px;">
+                <button mat-raised-button (click)="setView('Mega')"
+                    style="width: 80px; height: 40px; background-color: black; color: white; border-radius: 5px; font-size: 14px; cursor: pointer;">
+                    MEGA
+                </button>
+                <button mat-raised-button (click)="setView('Mini')"
+                    style="width: 80px; height: 40px; background-color: gray; color: white; border-radius: 5px; font-size: 14px; cursor: pointer;">
+                    MINI
+                </button>
+                <button mat-raised-button (click)="setView('Micro')"
+                    style="width: 80px; height: 40px; background-color: white; color: black; border: 1px solid black; border-radius: 5px; font-size: 14px; cursor: pointer;">
+                    MICRO
+                </button>
+            </div>
+        </div>
+
+
+
+
+        <div *ngIf="!IsShow">
+
+
+            <table class="table table-striped table-bordered table-hover" style="padding-left:10px;">
+                <thead class="tbl-head">
+                    <tr class="tr-grid-header text-center">
+                        <th>Hours</th>
+                        <th>User </th>
+                        <th class="text-center">Mon | 04-22</th>
+                        <th class="text-center">Tue | 04-23</th>
+                        <th class="text-center">Wed | 04-24</th>
+                        <th class="text-center">Thu | 04-25</th>
+                        <th class="text-center">Fri | 04-26</th>
+
+                    </tr>
+                </thead>
+                <tr style="background-color: #FDFAE2!important;">
+                    <td></td>
+                    <td><label class="control-label ">Completed</label></td>
+                    <td class="text-center">
+
+                        <span>40%</span><span>(2 of 5)</span>
+                    </td>
+                    <td class="text-center"><span>82%</span><span></span><span>(23 of 28)</span></td>
+                    <td class="text-center"><span>40%</span><span></span><span>(4 of 5)</span></td>
+                    <td class="text-center"><span>82%</span><span></span><span>(20 of 28)</span></td>
+                    <td class="text-center"><span>45%</span><span></span><span>(3 of 5)</span></td>
+
+                </tr>
+                <tr *ngFor="let hour of hours">
+                    <td class="text-center">{{ hour }}</td>
+                    <td>
+                        <label class="control-label">Navin Malik</label>
+                    </td>
+                    <td>
+                        <mat-card *ngIf="currentView"
+                            matTooltip="Patient: Tom Walter, Provider: Dr. John Marshall, Location: River Oaks"
+                            matTooltipPosition="above" class="item-box space-tab-master" id="unassigned"
+                            [style.height]="currentView === 'Mega' ? '110px' : (currentView === 'Mini' ? '70px' : '50px')"
+                            [style.backgroundColor]="'#90ee90'"
+                            style="font-weight: bold; color: black; padding: 10px; border-radius: 8px;">
+                            <mat-card-content style="padding: 0; margin: 0; position: relative;">
+                                <!-- Toggle icon -->
+                                <div style="position: absolute; top: 0px; right: 10px; cursor: pointer;"
+                                    (click)="toggleExpand()">
+                                    <i [class]="isExpandeded ? 'fa-sharp fa-solid fa-angle-up' : 'fa-sharp fa-solid fa-angle-down'"
+                                        style="font-size: 15px;"></i>
+
+                                </div>
+
+                                <!-- Content based on selected view -->
+                                <div *ngIf="currentView === 'Mega'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>River Oaks</span>
+                                    </div>
+                                    <div>
+                                        <span>{{ currentTime }}</span>
+                                    </div>
+                                    <div>
+                                        <span>10 Minutes</span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Mini'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>RO, {{ currentTime }} </span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Micro'"
+                                    style="display: flex; align-items: center; justify-content: space-between;">
+                                    <span>AS (DJ, RO) - {{ currentTime }}</span>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+                        <mat-card *ngIf="currentView"
+                            matTooltip="Patient: Tom Walter, Provider: Dr. John Marshall, Location: River Oaks"
+                            matTooltipPosition="above" class="item-box space-tab-master" id="unassigned"
+                            [style.height]="currentView === 'Mega' ? '110px' : (currentView === 'Mini' ? '70px' : '50px')"
+                            [style.backgroundColor]="'#90ee90'"
+                            style="font-weight: bold; color: black; padding: 10px; border-radius: 8px;">
+                            <mat-card-content style="padding: 0; margin: 0; position: relative;">
+                                <!-- Toggle icon -->
+                                <div style="position: absolute; top: 0px; right: 10px; cursor: pointer;"
+                                    (click)="toggleExpand()">
+                                    <i [class]="isExpandeded ? 'fa-sharp fa-solid fa-angle-up' : 'fa-sharp fa-solid fa-angle-down'"
+                                        style="font-size: 15px;"></i>
+                                </div>
+
+                                <!-- Content based on selected view -->
+                                <div *ngIf="currentView === 'Mega'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>River Oaks</span>
+                                    </div>
+                                    <div>
+                                        <span>{{ currentTime }}</span>
+                                    </div>
+                                    <div>
+                                        <span>10 Minutes</span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Mini'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>RO, {{ currentTime }} </span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Micro'"
+                                    style="display: flex; align-items: center; justify-content: space-between;">
+                                    <span>AS (DJ, RO) - {{ currentTime }}</span>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+
+
+
+                    </td>
+                    <td>
+                        <mat-card *ngIf="currentView"
+                            matTooltip="Patient: Tom Walter, Provider: Dr. John Marshall, Location: River Oaks"
+                            matTooltipPosition="above" class="item-box space-tab-master" id="unassigned"
+                            [style.height]="currentView === 'Mega' ? '110px' : (currentView === 'Mini' ? '70px' : '50px')"
+                            [style.backgroundColor]="'#a0e4ff'"
+                            style="font-weight: bold; color: black; padding: 10px; border-radius: 8px;">
+                            <mat-card-content style="padding: 0; margin: 0; position: relative;">
+                                <!-- Toggle icon -->
+                                <div style="position: absolute; top: 0px; right: 10px; cursor: pointer;"
+                                    (click)="toggleExpand()">
+                                    <i [class]="isExpandeded ? 'fa-sharp fa-solid fa-angle-up' : 'fa-sharp fa-solid fa-angle-down'"
+                                        style="font-size: 15px;"></i>
+                                </div>
+
+                                <!-- Content based on selected view -->
+                                <div *ngIf="currentView === 'Mega'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>River Oaks</span>
+                                    </div>
+                                    <div>
+                                        <span>{{ currentTime }}</span>
+                                    </div>
+                                    <div>
+                                        <span>10 Minutes</span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Mini'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>RO, {{ currentTime }} </span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Micro'"
+                                    style="display: flex; align-items: center; justify-content: space-between;">
+                                    <span>AS (DJ, RO) - {{ currentTime }}</span>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+                    </td>
+                    <td class="text-center"></td>
+                    <td>
+
+                        <mat-card *ngIf="currentView" class="item-box space-tab-master" id="unassigned"
+                            [style.height]="currentView === 'Mega' ? '110px' : (currentView === 'Mini' ? '70px' : '50px')"
+                            [style.backgroundColor]="'#90ee90'"
+                            matTooltip="Patient: Tom Walter, Provider: Dr. John Marshall, Location: River Oaks"
+                            matTooltipPosition="above"
+                            style="font-weight: bold; color: black; padding: 10px; border-radius: 8px;">
+                            <mat-card-content style="padding: 0; margin: 0; position: relative;">
+                                <!-- Toggle icon -->
+                                <div style="position: absolute; top: 0px; right: 10px; cursor: pointer;"
+                                    (click)="toggleExpand()">
+                                    <i [class]="isExpandeded ? 'fa-sharp fa-solid fa-angle-up' : 'fa-sharp fa-solid fa-angle-down'"
+                                        style="font-size: 15px;"></i>
+                                </div>
+
+                                <!-- Content based on selected view -->
+                                <div *ngIf="currentView === 'Mega'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>River Oaks</span>
+                                    </div>
+                                    <div>
+                                        <span>{{ currentTime }}</span>
+                                    </div>
+                                    <div>
+                                        <span>10 Minutes</span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Mini'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>RO, {{ currentTime }}</span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Micro'"
+                                    style="display: flex; align-items: center; justify-content: space-between;">
+                                    <span>AS (DJ, RO) - {{ currentTime }}</span>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+
+
+                        <mat-card *ngIf="currentView"
+                            matTooltip="Patient: Tom Walter, Provider: Dr. John Marshall, Location: River Oaks"
+                            matTooltipPosition="above" class="item-box space-tab-master" id="unassigned"
+                            [style.height]="currentView === 'Mega' ? '110px' : (currentView === 'Mini' ? '70px' : '50px')"
+                            [style.backgroundColor]="'#a0e4ff'"
+                            style="font-weight: bold; color: black; padding: 10px; border-radius: 8px;">
+                            <mat-card-content style="padding: 0; margin: 0; position: relative;">
+                                <!-- Toggle icon -->
+                                <div style="position: absolute; top: 0px; right: 10px; cursor: pointer;"
+                                    (click)="toggleExpand()">
+                                    <i [class]="isExpandeded ? 'fa-sharp fa-solid fa-angle-up' : 'fa-sharp fa-solid fa-angle-down'"
+                                        style="font-size: 15px;"></i>
+                                </div>
+
+                                <!-- Content based on selected view -->
+                                <div *ngIf="currentView === 'Mega'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>River Oaks</span>
+                                    </div>
+                                    <div>
+                                        <span>{{ currentTime }}</span>
+                                    </div>
+                                    <div>
+                                        <span>10 Minutes</span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Mini'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>RO, {{ currentTime }} </span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Micro'"
+                                    style="display: flex; align-items: center; justify-content: space-between;">
+                                    <span>AS (DJ, RO) - {{ currentTime }}</span>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+
+
+
+                        <mat-card *ngIf="currentView"
+                            matTooltip="Patient: Tom Walter, Provider: Dr. John Marshall, Location: River Oaks"
+                            matTooltipPosition="above" class="item-box space-tab-master" id="unassigned"
+                            [style.height]="currentView === 'Mega' ? '110px' : (currentView === 'Mini' ? '70px' : '50px')"
+                            [style.backgroundColor]="'#90ee90'"
+                            style="font-weight: bold; color: black; padding: 10px; border-radius: 8px;">
+                            <mat-card-content style="padding: 0; margin: 0; position: relative;">
+                                <!-- Toggle icon -->
+                                <div style="position: absolute; top: 0px; right: 10px; cursor: pointer;"
+                                    (click)="toggleExpand()">
+                                    <i [class]="isExpandeded ? 'fa-sharp fa-solid fa-angle-up' : 'fa-sharp fa-solid fa-angle-down'"
+                                        style="font-size: 15px;"></i>
+                                </div>
+
+                                <!-- Content based on selected view -->
+                                <div *ngIf="currentView === 'Mega'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>River Oaks</span>
+                                    </div>
+                                    <div>
+                                        <span>{{ currentTime }}</span>
+                                    </div>
+                                    <div>
+                                        <span>10 Minutes</span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Mini'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>RO, {{ currentTime }} </span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Micro'"
+                                    style="display: flex; align-items: center; justify-content: space-between;">
+                                    <span>AS (DJ, RO) - {{ currentTime }}</span>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+
+                    </td>
+                    <td>
+                        <mat-card *ngIf="currentView"
+                            matTooltip="Patient: Tom Walter, Provider: Dr. John Marshall, Location: River Oaks"
+                            matTooltipPosition="above" class="item-box space-tab-master" id="unassigned"
+                            [style.height]="currentView === 'Mega' ? '110px' : (currentView === 'Mini' ? '70px' : '50px')"
+                            [style.backgroundColor]="'#90ee90'"
+                            style="font-weight: bold; color: black; padding: 10px; border-radius: 8px;">
+                            <mat-card-content style="padding: 0; margin: 0; position: relative;">
+                                <!-- Toggle icon -->
+                                <div style="position: absolute; top: 0px; right: 10px; cursor: pointer;"
+                                    (click)="toggleExpand()">
+                                    <i [class]="isExpandeded ? 'fa-sharp fa-solid fa-angle-up' : 'fa-sharp fa-solid fa-angle-down'"
+                                        style="font-size: 15px;"></i>
+                                </div>
+
+                                <!-- Content based on selected view -->
+                                <div *ngIf="currentView === 'Mega'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>River Oaks</span>
+                                    </div>
+                                    <div>
+                                        <span>{{ currentTime }}</span>
+                                    </div>
+                                    <div>
+                                        <span>10 Minutes</span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Mini'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>RO, {{ currentTime }} </span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Micro'"
+                                    style="display: flex; align-items: center; justify-content: space-between;">
+                                    <span>AS (DJ, RO) - {{ currentTime }}</span>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+
+                        <mat-card *ngIf="currentView"
+                            matTooltip="Patient: Tom Walter, Provider: Dr. John Marshall, Location: River Oaks"
+                            matTooltipPosition="above" class="item-box space-tab-master" id="unassigned"
+                            [style.height]="currentView === 'Mega' ? '110px' : (currentView === 'Mini' ? '70px' : '50px')"
+                            [style.backgroundColor]="'#90ee90'"
+                            style="font-weight: bold; color: black; padding: 10px; border-radius: 8px;">
+                            <mat-card-content style="padding: 0; margin: 0; position: relative;">
+                                <!-- Toggle icon -->
+                                <div style="position: absolute; top: 0px; right: 10px; cursor: pointer;"
+                                    (click)="toggleExpand()">
+                                    <i [class]="isExpandeded ? 'fa-sharp fa-solid fa-angle-up' : 'fa-sharp fa-solid fa-angle-down'"
+                                        style="font-size: 15px;"></i>
+                                </div>
+
+                                <!-- Content based on selected view -->
+                                <div *ngIf="currentView === 'Mega'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>River Oaks</span>
+                                    </div>
+                                    <div>
+                                        <span>{{ currentTime }}</span>
+                                    </div>
+                                    <div>
+                                        <span>10 Minutes</span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Mini'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>RO, {{ currentTime }} </span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Micro'"
+                                    style="display: flex; align-items: center; justify-content: space-between;">
+                                    <span>AS (DJ, RO) - {{ currentTime }}</span>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+
+                    </td>
+
+                </tr>
+
+                <!-- <td *ngIf="noData" colspan="9" style="text-align: center !important"> No data available </td> -->
+            </table>
+        </div>
+        <div *ngIf="IsShow">
+
+            <table class="table table-striped table-bordered table-hover" style="padding-left:10px;">
+                <thead class="tbl-head">
+                    <tr class="tr-grid-header text-center">
+                        <th>Hours</th>
+                        <th>User </th>
+                        <th class="text-center">Mon | 04-22</th>
+                        <th class="text-center">Tue | 04-23</th>
+                        <th class="text-center">Wed | 04-24</th>
+                        <th class="text-center">Thu | 04-25</th>
+                        <th class="text-center">Fri | 04-26</th>
+                        <th class="text-center">Sat | 04-26</th>
+                        <th class="text-center" style="white-space:nowrap">Sun | 04-26</th>
+
+
+                    </tr>
+                </thead>
+                <tr style="background-color: #FDFAE2!important;">
+                    <td></td>
+                    <td><label class="control-label ">Completed</label></td>
+                    <td class="text-center">
+
+                        <span>40%</span><span>(2 of 5)</span>
+                    </td>
+                    <td class="text-center"><span>82%</span><span></span><span>(23 of 28)</span></td>
+                    <td class="text-center"><span>40%</span><span></span><span>(4 of 5)</span></td>
+                    <td class="text-center" style="white-space:nowrap">
+                        <span>82%</span><span></span><span>(20 of 28)</span>
+                    </td>
+                    <td class="text-center"><span>45%</span><span></span><span>(3 of 5)</span></td>
+                    <td class="text-center" style="white-space:nowrap">
+                        <span>82%</span><span></span><span>(20 of 28)</span>
+                    </td>
+                    <td class="text-center" style="white-space:nowrap"><span>45%</span><span></span><span>(3
+                            of 5)</span></td>
+
+                </tr>
+                <tr *ngFor="let hour of hours">
+                    <td class="text-center">{{ hour }}</td>
+
+                    <td><label class="control-label">Sai Shwejan</label></td>
+                    <td>
+
+                    </td>
+                    <td>
+                        <mat-card *ngIf="currentView"
+                            matTooltip="Patient: Tom Walter, Provider: Dr. John Marshall, Location: River Oaks"
+                            matTooltipPosition="above" class="item-box space-tab-master" id="unassigned"
+                            [style.height]="currentView === 'Mega' ? '110px' : (currentView === 'Mini' ? '70px' : '50px')"
+                            [style.backgroundColor]="'#90ee90'"
+                            style="font-weight: bold; color: black; padding: 10px; border-radius: 8px;">
+                            <mat-card-content style="padding: 0; margin: 0; position: relative;">
+                                <!-- Toggle icon -->
+                                <div style="position: absolute; top: 0px; right: 10px; cursor: pointer;"
+                                    (click)="toggleExpand()">
+                                    <i [class]="isExpandeded ? 'fa-sharp fa-solid fa-angle-up' : 'fa-sharp fa-solid fa-angle-down'"
+                                        style="font-size: 15px;"></i>
+                                </div>
+
+                                <!-- Content based on selected view -->
+                                <div *ngIf="currentView === 'Mega'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>River Oaks</span>
+                                    </div>
+                                    <div>
+                                        <span>{{ currentTime }}</span>
+                                    </div>
+                                    <div>
+                                        <span>10 Minutes</span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Mini'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>RO, {{ currentTime }} </span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Micro'"
+                                    style="display: flex; align-items: center; justify-content: space-between;">
+                                    <span>AS (DJ, RO) - {{ currentTime }}</span>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+
+                        <mat-card *ngIf="currentView"
+                            matTooltip="Patient: Tom Walter, Provider: Dr. John Marshall, Location: River Oaks"
+                            matTooltipPosition="above" class="item-box space-tab-master" id="unassigned"
+                            [style.height]="currentView === 'Mega' ? '110px' : (currentView === 'Mini' ? '70px' : '50px')"
+                            [style.backgroundColor]="'#a0e4ff'"
+                            style="font-weight: bold; color: black; padding: 10px; border-radius: 8px;">
+                            <mat-card-content style="padding: 0; margin: 0; position: relative;">
+                                <!-- Toggle icon -->
+                                <div style="position: absolute; top: 0px; right: 10px; cursor: pointer;"
+                                    (click)="toggleExpand()">
+                                    <i [class]="isExpandeded ? 'fa-sharp fa-solid fa-angle-up' : 'fa-sharp fa-solid fa-angle-down'"
+                                        style="font-size: 15px;"></i>
+                                </div>
+
+                                <!-- Content based on selected view -->
+                                <div *ngIf="currentView === 'Mega'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>River Oaks</span>
+                                    </div>
+                                    <div>
+                                        <span>{{ currentTime }}</span>
+                                    </div>
+                                    <div>
+                                        <span>10 Minutes</span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Mini'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>RO, {{ currentTime }} </span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Micro'"
+                                    style="display: flex; align-items: center; justify-content: space-between;">
+                                    <span>AS (DJ, RO) - {{ currentTime }}</span>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+
+                        <mat-card *ngIf="currentView"
+                            matTooltip="Patient: Tom Walter, Provider: Dr. John Marshall, Location: River Oaks"
+                            matTooltipPosition="above" class="item-box space-tab-master" id="unassigned"
+                            [style.height]="currentView === 'Mega' ? '110px' : (currentView === 'Mini' ? '70px' : '50px')"
+                            [style.backgroundColor]="'#90ee90'"
+                            style="font-weight: bold; color: black; padding: 10px; border-radius: 8px;">
+                            <mat-card-content style="padding: 0; margin: 0; position: relative;">
+                                <!-- Toggle icon -->
+                                <div style="position: absolute; top: 0px; right: 10px; cursor: pointer;"
+                                    (click)="toggleExpand()">
+                                    <i [class]="isExpandeded ? 'fa-sharp fa-solid fa-angle-up' : 'fa-sharp fa-solid fa-angle-down'"
+                                        style="font-size: 15px;"></i>
+                                </div>
+
+                                <!-- Content based on selected view -->
+                                <div *ngIf="currentView === 'Mega'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>River Oaks</span>
+                                    </div>
+                                    <div>
+                                        <span>{{ currentTime }}</span>
+                                    </div>
+                                    <div>
+                                        <span>10 Minutes</span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Mini'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>RO, {{ currentTime }} </span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Micro'"
+                                    style="display: flex; align-items: center; justify-content: space-between;">
+                                    <span>AS (DJ, RO) - {{ currentTime }}</span>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+
+                    </td>
+                    <td>
+
+                    </td>
+                    <td class="text-center"></td>
+
+                    <td>
+                        <mat-card *ngIf="currentView"
+                            matTooltip="Patient: Tom Walter, Provider: Dr. John Marshall, Location: River Oaks"
+                            matTooltipPosition="above" class="item-box space-tab-master" id="unassigned"
+                            [style.height]="currentView === 'Mega' ? '110px' : (currentView === 'Mini' ? '70px' : '50px')"
+                            [style.backgroundColor]="'#90ee90'"
+                            style="font-weight: bold; color: black; padding: 10px; border-radius: 8px;">
+                            <mat-card-content style="padding: 0; margin: 0; position: relative;">
+                                <!-- Toggle icon -->
+                                <div style="position: absolute; top: 0px; right: 10px; cursor: pointer;"
+                                    (click)="toggleExpand()">
+                                    <i [class]="isExpandeded ? 'fa-sharp fa-solid fa-angle-up' : 'fa-sharp fa-solid fa-angle-down'"
+                                        style="font-size: 15px;"></i>
+                                </div>
+
+                                <!-- Content based on selected view -->
+                                <div *ngIf="currentView === 'Mega'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>River Oaks</span>
+                                    </div>
+                                    <div>
+                                        <span>{{ currentTime }}</span>
+                                    </div>
+                                    <div>
+                                        <span>10 Minutes</span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Mini'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>RO, {{ currentTime }} </span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Micro'"
+                                    style="display: flex; align-items: center; justify-content: space-between;">
+                                    <span>AS (DJ, RO) - {{ currentTime }}</span>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+                        <mat-card *ngIf="currentView"
+                            matTooltip="Patient: Tom Walter, Provider: Dr. John Marshall, Location: River Oaks"
+                            matTooltipPosition="above" class="item-box space-tab-master" id="unassigned"
+                            [style.height]="currentView === 'Mega' ? '110px' : (currentView === 'Mini' ? '70px' : '50px')"
+                            [style.backgroundColor]="'#a0e4ff'"
+                            style="font-weight: bold; color: black; padding: 10px; border-radius: 8px;">
+                            <mat-card-content style="padding: 0; margin: 0; position: relative;">
+                                <!-- Toggle icon -->
+                                <div style="position: absolute; top: 0px; right: 10px; cursor: pointer;"
+                                    (click)="toggleExpand()">
+                                    <i [class]="isExpandeded ? 'fa-sharp fa-solid fa-angle-up' : 'fa-sharp fa-solid fa-angle-down'"
+                                        style="font-size: 15px;"></i>
+                                </div>
+
+                                <!-- Content based on selected view -->
+                                <div *ngIf="currentView === 'Mega'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>River Oaks</span>
+                                    </div>
+                                    <div>
+                                        <span>{{ currentTime }}</span>
+                                    </div>
+                                    <div>
+                                        <span>10 Minutes</span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Mini'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>RO, {{ currentTime }} </span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Micro'"
+                                    style="display: flex; align-items: center; justify-content: space-between;">
+                                    <span>AS (DJ, RO) - {{ currentTime }}</span>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+
+                        <mat-card *ngIf="currentView"
+                            matTooltip="Patient: Tom Walter, Provider: Dr. John Marshall, Location: River Oaks"
+                            matTooltipPosition="above" class="item-box space-tab-master" id="unassigned"
+                            [style.height]="currentView === 'Mega' ? '110px' : (currentView === 'Mini' ? '70px' : '50px')"
+                            [style.backgroundColor]="'#90ee90'"
+                            style="font-weight: bold; color: black; padding: 10px; border-radius: 8px;">
+                            <mat-card-content style="padding: 0; margin: 0; position: relative;">
+                                <!-- Toggle icon -->
+                                <div style="position: absolute; top: 0px; right: 10px; cursor: pointer;"
+                                    (click)="toggleExpand()">
+                                    <i [class]="isExpandeded ? 'fa-sharp fa-solid fa-angle-up' : 'fa-sharp fa-solid fa-angle-down'"
+                                        style="font-size: 15px;"></i>
+                                </div>
+
+                                <!-- Content based on selected view -->
+                                <div *ngIf="currentView === 'Mega'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>River Oaks</span>
+                                    </div>
+                                    <div>
+                                        <span>{{ currentTime }}</span>
+                                    </div>
+                                    <div>
+                                        <span>10 Minutes</span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Mini'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>RO, {{ currentTime }} </span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Micro'"
+                                    style="display: flex; align-items: center; justify-content: space-between;">
+                                    <span>AS (DJ, RO) - {{ currentTime }}</span>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+
+
+
+                        <mat-card *ngIf="currentView"
+                            matTooltip="Patient: Tom Walter, Provider: Dr. John Marshall, Location: River Oaks"
+                            matTooltipPosition="above" class="item-box space-tab-master" id="unassigned"
+                            [style.height]="currentView === 'Mega' ? '110px' : (currentView === 'Mini' ? '70px' : '50px')"
+                            [style.backgroundColor]="'#a0e4ff'"
+                            style="font-weight: bold; color: black; padding: 10px; border-radius: 8px;">
+                            <mat-card-content style="padding: 0; margin: 0; position: relative;">
+                                <!-- Toggle icon -->
+                                <div style="position: absolute; top: 0px; right: 10px; cursor: pointer;"
+                                    (click)="toggleExpand()">
+                                    <i [class]="isExpandeded ? 'fa-sharp fa-solid fa-angle-up' : 'fa-sharp fa-solid fa-angle-down'"
+                                        style="font-size: 15px;"></i>
+                                </div>
+
+                                <!-- Content based on selected view -->
+                                <div *ngIf="currentView === 'Mega'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>River Oaks</span>
+                                    </div>
+                                    <div>
+                                        <span>{{ currentTime }}</span>
+                                    </div>
+                                    <div>
+                                        <span>10 Minutes</span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Mini'">
+                                    <div>
+                                        <span>Angela Spencer</span>
+                                    </div>
+                                    <div>
+                                        <span>Dr. Daniel Johnson</span>
+                                    </div>
+                                    <div>
+                                        <span>RO, {{ currentTime }} </span>
+                                    </div>
+                                </div>
+                                <div *ngIf="currentView === 'Micro'"
+                                    style="display: flex; align-items: center; justify-content: space-between;">
+                                    <span>AS (DJ, RO) - {{ currentTime }}</span>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+
+
+        </div>
+    </div>
+</div>

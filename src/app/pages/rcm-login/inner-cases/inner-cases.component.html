@@ -1,0 +1,88 @@
+<div class="container-fluid" style="margin-bottom: 10px; padding-right: 25px">
+    <div class="w-100">
+        <div class="row" style="display: flex; justify-content: flex-end; align-items: center">
+            <!-- Filter Button -->
+
+
+            <button mat-raised-button class="pull-right" (click)="back();"
+                style="background-color: gray; color: white; margin-top: -20px; margin-right: 6px;">
+                <mat-icon>arrow_back</mat-icon>Back
+            </button>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Table -->
+<div class="col-sm-12">
+    <div id="grid-table-container" class="table-responsive">
+        <table matSort class="table table-bordered table-hover">
+            <thead class="tbl-head1" style="background-color: rgb(58, 53, 53); color: white">
+                <tr>
+                    <!-- <th class="text-center">Actions</th> -->
+                    <!-- <th class="text-center">Status</th> -->
+                    <th class="text-center">Claims</th>
+                    <th class="text-center">Referrals</th>
+                    <th class="text-left">Liaison</th>
+
+                    <th class="text-center" style="white-space: nowrap">Case ID</th>
+                    <!-- <th class="text-center">Patient ID</th> -->
+                    <th style="white-space: nowrap">Patient Name</th>
+                    <th class="text-center">DoB</th>
+                    <th class="text-center">Dol</th>
+                    <th>Law Firm</th>
+                    <th class="text-center">Updated</th>
+                    <th>Gender</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th class="text-center" style="white-space: nowrap">Zip Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let applicant of users">
+                    <!-- <td class="text-center" style="white-space: nowrap">
+                        <a matTooltip="Edit" (click)="openEditDialog(applicant.id)"
+                            style="margin-right: 10px; cursor: pointer; color: cornflowerblue">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a matTooltip="Delete" style="cursor: pointer" class="fa fa-trash red"></a>
+                    </td> -->
+                    <!-- <td class="text-center">{{ applicant.status }}</td> -->
+                    <td class="text-center">{{ applicant.claims }}</td>
+                    <td class="text-center">{{ applicant.referrals }}
+                    </td>
+                    <td class="text-left" style="white-space: nowrap">
+                        {{ applicant.liaison }}
+                    </td>
+
+                    <td class="text-center">{{ applicant.caseId }}</td>
+                    <!-- <td class="text-center">{{ applicant.patientId }}</td> -->
+                    <td style="white-space: nowrap">{{ applicant.patientName }}</td>
+                    <td class="text-center" style="white-space: nowrap">
+                        {{ applicant.dob | date : "dd-MMM-yyyy" }}
+                    </td>
+                    <td class="text-center" style="white-space: nowrap">
+                        {{ applicant.dol | date : "dd-MMM-yyyy" }}
+                    </td>
+                    <td style="white-space: nowrap">{{ applicant.lawFirm }}</td>
+                    <td class="text-center" style="white-space: nowrap">
+                        {{ applicant.updated | date : "dd-MMM-yyyy" }}
+                    </td>
+                    <td>{{ applicant.gender }}</td>
+                    <td>{{ applicant.city }}</td>
+                    <td>{{ applicant.state }}</td>
+                    <td class="text-center">{{ applicant.zipCode }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="mine" mat-fab (click)="scrollGrid('right')">
+            <mat-icon style="color: #37474f">fast_forward</mat-icon>
+        </button>
+        <button class="mine" mat-fab style="margin-right: 78px !important" (click)="scrollGrid('left')">
+            <mat-icon style="color: #37474f">fast_rewind</mat-icon>
+        </button>
+        <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSizeOptions]="[5, 10, 25, 50, 100]"
+            showFirstLastButtons></mat-paginator>
+    </div>
+</div>

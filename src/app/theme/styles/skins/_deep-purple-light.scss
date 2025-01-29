@@ -1,0 +1,8 @@
+$deep-purple-light-primary: mat.define-palette(mat.$deep-purple-palette, 400, 100, 600);
+$deep-purple-light-accent: mat.define-palette(mat.$light-blue-palette, 600, 300, 900);
+$deep-purple-light-warn: mat.define-palette(mat.$red-palette, 500);
+
+$deep-purple-light-theme: mat.define-light-theme((color: (primary: $deep-purple-light-primary,
+                accent: $deep-purple-light-accent,
+                warn: $deep-purple-light-warn,
+            )));

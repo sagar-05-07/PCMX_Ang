@@ -1,0 +1,115 @@
+<div class="col-sm-12 mb-4">
+    <button mat-raised-button class="pull-right" (click)="openAddEditDialog()"
+        style="background-color: blue; color: white;">
+        <mat-icon>person_add</mat-icon> Add Doc Type
+    </button>
+
+    <button mat-raised-button style="background-color: black; color:white;" class="pull-right margin-right-10"
+        (click)="filterToggle = !filterToggle">
+        <mat-icon>filter_list</mat-icon> Filter
+    </button>
+</div>
+
+<!-- Filter -->
+<div fxLayout="row wrap" *ngIf="filterToggle" class="col-sm-12 mb-4">
+    <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p">
+        <form [formGroup]="filterForm">
+            <mat-card class="filter">
+                <mat-card-content>
+                    <div class="row col-sm-12">
+                        <div class="col-sm-4">
+                            <div class="col-sm-3 newMarginClass">
+                                <b>Keyword:</b>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" onCopy="return false" onPaste="return false" class="form-control"
+                                    placeholder="Search by Name, Email, Role">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="col-sm-3 newMarginClass">
+                                <b>Role:</b>
+                            </div>
+                            <div class="col-sm-8">
+                                <select placeholder="Select Role" class="form-control">
+                                    <option [value]="1">
+                                        Admin
+                                    </option>
+                                    <option [value]="2">
+                                        Client
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+
+                            <a (click)="filterToggle = !filterToggle" class="pull-right"
+                                style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                            </a>
+                            <button mat-raised-button color="primary" class="pull-right">
+                                <mat-icon>youtube_searched_for</mat-icon> Search
+                            </button>
+                            <button mat-raised-button class="pull-right btn-default margin-right-10">
+                                <mat-icon>settings_backup_restore</mat-icon> Clear
+                            </button>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </div>
+</div>
+
+<!-- Creating Table -->
+<div class="col-sm-12">
+    <div fxLayout="row wrap">
+        <div class="w-100">
+            <div fxLayout="row wrap" style="margin-top:-3px;">
+                <div class="table-responsive w-100 flex-p" id="divTable">
+                    <table matSort id="example2" class="table table-bordered table-hover">
+                        <thead class="tbl-head">
+                            <tr>
+                                <th>Document Type</th>
+                                <th>Context</th>
+                                <th>Category</th>
+                                <th class="text-center">Thumbnail</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of values1">
+                                <td>{{ item.documentType }}</td>
+                                <td>{{ item.context }}</td>
+                                <td>{{ item.category }}</td>
+                                <td class="text-center">
+                                    <a style="color: cornflowerblue; cursor: pointer;">view</a>
+                                </td>
+                                <td class="text-center" style="text-align: center !important;">
+                                    <a [ngStyle]="{'color':  item.IsActive? 'blue' : 'red','cursor':'pointer'}">
+                                        <span *ngIf="!item.IsActive" style="color:red">Inactive</span>
+                                        <span *ngIf=" item.IsActive">Active</span>
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    <a matTooltip="Edit Record" (click)="openAddEditDialog()"
+                                        class="fa fa-edit action-btn edit-btn" style="margin-right: 10px;">
+                                    </a>
+
+                                    <a matTooltip="Delete Record" class="fa fa-trash action-btn delete-btn">
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <mat-paginator class="col-sm-12" [length]="totalSize" [pageIndex]="currentPage" [pageSize]=""
+                    [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+            </div>
+        </div>
+    </div>
+</div>

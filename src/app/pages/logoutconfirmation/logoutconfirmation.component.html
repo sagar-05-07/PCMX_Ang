@@ -1,0 +1,15 @@
+<h1 style="font-weight: 300; margin-bottom: 10px !important;background-color: #7a838a;text-align: center;color: white;"
+    mat-dialog-title>
+    <span>Confirmation</span>
+</h1>
+<p style="margin-left: 20px;">Are you sure you want to logout?</p>
+<mat-dialog-actions align="end">
+    <button mat-raised-button class="btn-success" type="submit" style="background: #286ba5 !important;"
+        (click)="editContact(null)">
+        <mat-icon>send</mat-icon>&nbsp;Confirm
+    </button>
+
+    <button mat-raised-button class="add-dark-hover btn-default" type="button" (click)="close()">
+        <mat-icon>cancel</mat-icon>&nbsp;Cancel
+    </button>
+</mat-dialog-actions>

@@ -1,0 +1,29 @@
+<!-- <div class="col-sm-12"></div> -->
+<div class="col-sm-6 mt-3" style="margin-left: 13px;">
+    <div id="grid-table-container" class="table-responsive">
+        <table matSort class="table table-bordered table-hover">
+            <thead class="tbl-head1" style="background-color: rgb(58, 53, 53); color: white;">
+                <tr>
+                    <th class="text-center">Facility</th>
+                    <th class="text-center">Context</th>
+                    <th class="text-center">No Charges</th>
+                    <th class="text-center">Need Completion</th>
+                    <th class="text-center">Past Due</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of users; let i = index">
+                    <!-- Dynamically set rowspan for the Category column -->
+                    <td class="text-center" *ngIf="isFirstInCategory(i, users)"
+                        [attr.rowspan]="getRowspan(item.category, users)">
+                        {{ item.category }}
+                    </td>
+                    <td class="text-center">{{ item.context }}</td>
+                    <td class="text-center" style="color: blue;">{{ item.newToday }}</td>
+                    <td class="text-center" style="color: blue;">{{ item.compToday }}</td>
+                    <td class="text-center" style="color: blue;">{{ item.pastDue }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

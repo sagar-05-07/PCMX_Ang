@@ -1,0 +1,256 @@
+.mine {
+    position: fixed;
+    bottom: 40px;
+    right: 60px;
+    background-color: #e6e6e6 !important;
+}
+
+.nav-container {
+    padding: 10px;
+    width: 14%;
+    position: fixed;
+    right: 0;
+    top: 56px;
+    height: 100vh;
+    overflow-y: auto;
+    background-color: #f0f0f0;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-open {
+    width: 14%;
+}
+
+.nav-closed {
+    width: 40px;
+    overflow: hidden;
+}
+
+.toggle-button {
+    margin-top: 10px;
+    background-color: #f0f0f0;
+    border: none;
+    font-size: 24px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    // padding: 10px;
+}
+
+// .toggle-button {
+//     background-color: #f0f0f0;
+//     border: none;
+//     font-size: 24px;
+//     margin-bottom: 15px;
+//     cursor: pointer;
+//     width: 100%;
+//     text-align: left;
+//     padding: 10px;
+//     margin-left: -10px;
+// }
+
+.toggle-button mat-icon {
+    font-size: 30px;
+}
+
+.toggle-button:hover {
+    background-color: #e0e0e0;
+}
+
+.nav-links ul {
+    font-size: 17px;
+    padding-top: 38px;
+    list-style-type: none;
+    margin: 0;
+}
+
+.nav-links li {
+    margin: 10px 0;
+    cursor: pointer;
+    color: black;
+}
+
+.nav-links li.active {
+    color: green !important;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.nav-links li:hover {
+    color: grey;
+}
+
+.nav-links li.router-link-active {
+    color: blue !important;
+}
+
+// .nav-links mat-icon {
+//   margin-right: 10px;
+// }
+
+.nav-links span {
+    display: inline-block;
+    transition: opacity 0.3s ease;
+}
+
+.nav-closed .nav-links span {
+    opacity: 0;
+}
+
+.full-width {
+    width: 97% !important;
+}
+
+.nav-container.nav-open .col-sm-10 {
+    width: calc(100% - 250px);
+}
+
+.col-sm-10 {
+    transition: width 0.3s ease;
+}
+
+.toggle-icon {
+    font-size: 40px;
+}
+
+.arrow-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    overflow-x: auto;
+    /* Enable horizontal scrolling */
+}
+
+.arrow-shape {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 180px;
+    height: 85px;
+    background-color: #005f73;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 15px 10px;
+    clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+    position: relative;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.arrow-shape:hover {
+    background-color: #0a9396;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.arrow-text {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.arrow-number {
+    font-size: 18px;
+    font-weight: bold;
+    align-self: flex-start;
+    margin-top: 5px;
+}
+
+@media (max-width: 600px) {
+    .arrow-shape {
+        width: 150px;
+        height: 80px;
+    }
+
+    .arrow-number {
+        font-size: 18px;
+    }
+
+    .arrow-text {
+        font-size: 14px;
+    }
+}
+
+
+
+
+/* Hover effect for the mat-card */
+mat-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+// mat-card:hover {}
+
+/* Hover effect for case-type-row */
+.case-type-row {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.case-type-row:hover {
+    background-color: #f5f5f5;
+    transform: scale(1.02);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon container styles */
+.icon-container1,
+.icon-container2,
+.icon-container3,
+.icon-container5,
+.icon-container6,
+.icon-container4 {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    border-radius: 10%;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+/* Background colors */
+.icon-container1 {
+    background-color: #e5f8ed;
+}
+
+.icon-container3 {
+    background-color: #f7eac7;
+}
+
+.icon-container2 {
+    background-color: #eeedfd;
+}
+
+.icon-container5 {
+    background-color: #f7eac7;
+}
+
+.icon-container6 {
+    background-color: #f7eac7;
+}
+
+.icon-container4 {
+    background-color: #f7eac7;
+}
+
+/* Subtitle styles */
+.subtitle {
+    font-size: 14px;
+    color: #333;
+}
+
+.count {
+    font-size: 14px;
+    color: #666;
+}

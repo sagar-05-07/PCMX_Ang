@@ -1,0 +1,202 @@
+<div class="col-sm-12 mt-3">
+    <mat-card style="background-color: rgb(213, 232, 239);">
+        <mat-card-content>
+            <!-- From Year -->
+            <div class="col-sm-4 row">
+                <div class="col-sm-4 mt-2">
+                    <b>State :</b>
+                </div>
+                <div class="col-sm-8" style="margin-left: -20px;">
+                    <mat-select class="form-control bac" placeholder="Select State">
+                        <mat-option value="2020">California</mat-option>
+                        <mat-option value="2021">Texas</mat-option>
+                        <mat-option value="2022">New Jersey</mat-option>
+                        <mat-option value="2023">Florida</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+
+            <div class="col-sm-4 row">
+                <div class="col-sm-4 mt-2">
+                    <b>Year :</b>
+                </div>
+                <div class="col-sm-8" style="margin-left: -20px;">
+                    <mat-select class="form-control bac" placeholder="Select Year">
+                        <mat-option value="2020">2020</mat-option>
+                        <mat-option value="2021">2021</mat-option>
+                        <mat-option value="2022">2022</mat-option>
+                        <mat-option value="2023">2023</mat-option>
+                        <mat-option value="2024">2024</mat-option>
+                        <mat-option value="2025">2025</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+
+            <div class="col-sm-4 row">
+                <div class="col-sm-4 mt-2">
+                    <b>Class :</b>
+                </div>
+                <div class="col-sm-8" style="margin-left: -20px;">
+                    <mat-select class="form-control bac" placeholder="Select Class">
+                        <mat-option value="Medical">Medical</mat-option>
+                        <mat-option value="Surgery/Procedures">Surgery/Procedures</mat-option>
+                        <mat-option value="Imaging">Imaging</mat-option>
+                        <mat-option value="Ancillary">Ancillary</mat-option>
+                        <mat-option value="FSER">FSER</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+
+            <div class="col-sm-4 mt-3 row">
+                <div class="col-sm-4 mt-2">
+                    <b>Law Firm :</b>
+                </div>
+                <div class="col-sm-8" style="margin-left: -20px;">
+                    <mat-select class="form-control bac" placeholder="Select Class">
+                        <mat-option [value]="'1'">Peterson & Associates</mat-option>
+                        <mat-option [value]="'1'">Mitchell Legal Group</mat-option>
+                        <mat-option [value]="'1'">Carter & Bennett LLP</mat-option>
+                        <mat-option [value]="'1'">Sanders & Cooper Attorneys</mat-option>
+                        <mat-option [value]="'1'">Richardson & Harris Law</mat-option>
+                        <mat-option [value]="'1'">Adams & Thompson Law Offices</mat-option>
+                        <mat-option [value]="'1'">Brooks & Stevenson LLP</mat-option>
+                        <mat-option [value]="'1'">Greenfield Legal Solutions</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+
+            <div class="col-sm-4 row mt-3">
+                <div class="col-sm-4 mt-2">
+                    <b>Provider:</b>
+                </div>
+                <div class="col-sm-8" style="margin-left: -20px;">
+                    <mat-select class="form-control bac" placeholder="Select Provider">
+                        <mat-option value="MayoClinic">Mayo Clinic</mat-option>
+                        <mat-option value="ClevelandClinic">Cleveland Clinic</mat-option>
+                        <mat-option value="KaiserPermanente">Kaiser Permanente</mat-option>
+                        <mat-option value="JohnsHopkins">Johns Hopkins Medicine</mat-option>
+                        <mat-option value="Geisinger">Geisinger Health</mat-option>
+                        <mat-option value="PartnersHealthcare">Partners HealthCare</mat-option>
+                        <mat-option value="MountSinai">Mount Sinai Health System</mat-option>
+                        <mat-option value="UCLAHealth">UCLA Health</mat-option>
+                        <mat-option value="BannerHealth">Banner Health</mat-option>
+                        <mat-option value="MedStarHealth">MedStar Health</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="col-sm-4 mt-3" style="margin-left: -44px;">
+                <button mat-raised-button style="background-color: black; color: white;" class="pull-right">
+                    <mat-icon>clear</mat-icon> Clear
+                </button>
+                <button mat-raised-button style="background-color: blue; color: white;"
+                    class="pull-right margin-right-10">
+                    <mat-icon>search</mat-icon> Search
+                </button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<div class="row" style="cursor: pointer;">
+    <div class="col-sm-3" style="margin-left: 16px; width: 24.5%">
+        <mat-card class="small-card" style="background-color: #C8E6C9; color: black;"> <!-- Light Green -->
+            <div class="card-content">
+                <div class="card-title">Total Claims</div>
+                <div class="card-value">126200</div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col-sm-3" style="width: 24.5%">
+        <mat-card class="small-card" style="background-color: #FFF9C4; color: black;"> <!-- Light Yellow -->
+            <div class="card-content">
+                <div class="card-title">Overdue</div>
+                <div class="card-value">95000</div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col-sm-3" style="width: 24.5%">
+        <mat-card class="small-card" style="background-color: #F8BBD0; color: black;"> <!-- Soft Pink -->
+            <div class="card-content">
+                <div class="card-title">Settlement</div>
+                <div class="card-value">85000</div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col-sm-3" style="width: 24.5%">
+        <mat-card class="small-card" style="background-color: #D1C4E9; color: black;"> <!-- Light Purple -->
+            <div class="card-content">
+                <div class="card-title">Expend Claims</div>
+                <div class="card-value">8500</div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col-sm-3" style="margin-left: 16px; width: 24.5%">
+        <mat-card class="small-card" style="background-color: #F8BBD0; color: black;"> <!-- Soft Pink -->
+            <div class="card-content">
+                <div class="card-title">Claims Amount</div>
+                <div class="card-value">82900</div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col-sm-3" style="width: 24.5%">
+        <mat-card class="small-card" style="background-color: #D1C4E9; color: black;"> <!-- Light Purple -->
+            <div class="card-content">
+                <div class="card-title">Overdue</div>
+                <div class="card-value">85000</div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col-sm-3" style="width: 24.5%">
+        <mat-card class="small-card" style="background-color: #FFCCBC; color: black;"> <!-- Soft Orange -->
+            <div class="card-content">
+                <div class="card-title">Settlement Amount</div>
+                <div class="card-value">72500</div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col-sm-3" style="width: 24.5%">
+        <mat-card class="small-card" style="background-color: #E1F5FE; color: black;"> <!-- Very Light Blue -->
+            <div class="card-content">
+                <div class="card-title">Ratio</div>
+                <div class="card-value">85.2 %</div>
+            </div>
+        </mat-card>
+    </div>
+</div>
+
+
+<div class="col-sm-12 mt-4 row">
+    <figure class="highcharts-figure">
+        <div id="container70"></div>
+    </figure>
+</div>
+
+<div class="col-sm-12 mt-5 row">
+    <div class="col-sm-6">
+        <figure class="highcharts-figure">
+            <div id="container71"></div>
+        </figure>
+    </div>
+
+    <div class="col-sm-6">
+        <figure class="highcharts-figure">
+            <div id="container72"></div>
+        </figure>
+    </div>
+</div>
+
+<div class="col-sm-12 mt-5 mb-5 row">
+    <div class="col-sm-6">
+        <figure class="highcharts-figure">
+            <div id="container73"></div>
+        </figure>
+    </div>
+
+    <div class="col-sm-6">
+        <figure class="highcharts-figure">
+            <div id="container74"></div>
+        </figure>
+    </div>
+</div>

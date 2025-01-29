@@ -1,0 +1,54 @@
+<div fxLayout="row wrap" #resizedDiv>
+    <!-- Table -->
+    <div class="flex-p w-100" style="width: 100% !important ; margin-left: -9px;">
+        <div class="table-responsive sizeAlign">
+            <table id="example2" style="margin-top: 10px" class="table table-bordered table-hover table-striped">
+                <thead class="tbl-head">
+                    <tr class="tr-grid-header">
+                        <th>Subject</th>
+                        <th>Description</th>
+                        <th>Previous Value</th>
+                        <th>New Value</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of values">
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.description }}</td>
+                        <td>{{ item.old_value }}</td>
+                        <td>
+                            <div *ngIf="item.name == 'Grid Length'">
+                                <mat-select class="form-control" placeholder="Select Grid Length" required>
+                                    <mat-option [value]="0">10</mat-option>
+                                    <mat-option [value]="1">20</mat-option>
+                                    <mat-option [value]="2">30</mat-option>
+                                    <mat-option [value]="4">40</mat-option>
+                                    <mat-option [value]="5">50</mat-option>
+                                </mat-select>
+                            </div>
+                            <div *ngIf="item.name == 'Notification Email'">
+                                <input type="email" class="form-control" id="email"
+                                    placeholder="Enter Notification Email" />
+                            </div>
+                            <div *ngIf="item.name == 'Email of the Director'">
+                                <input type="email" class="form-control" id="email"
+                                    placeholder="Enter Director Email" />
+                            </div>
+                            <div *ngIf="item.name == 'Audit Approval'">
+                                <input type="email" class="form-control" id="email" placeholder="Enter Manager Name" />
+                            </div>
+
+                        </td>
+                        <td>
+                            <a style="margin-right: 10px;display: flex;flex-direction: column;justify-content: center;text-align: center;"
+                                class="status" placement="left" (confirm)="saveSettings()" matTooltip="Click to Save">
+                                Save
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

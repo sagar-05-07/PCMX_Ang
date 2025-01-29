@@ -1,0 +1,22 @@
+<h1 style="background-color: rgb(73, 128, 150); color: white; text-align: center;" mat-dialog-title><span
+        *ngIf="!data">Add</span><span *ngIf="data">Edit</span> Remarks
+</h1>
+
+<div class="col-sm-12 mt-5">
+
+    <div class="col-sm-12">
+        <textarea type="time" class="form-control bac" placeholder="Enter Remarks" style="height: 120px;"
+            required></textarea>
+    </div>
+</div>
+
+
+
+<mat-dialog-actions align="end">
+    <div style="margin-right: 15px;" class="mt-2">
+        <button mat-raised-button style="background-color: green; color: white;"> <mat-icon>save</mat-icon>
+            <span>{{ data ? 'Update' : 'Save'}}</span></button>
+        <button mat-raised-button style="background-color: lightgray; color: red;" class="add-dark-hover btn-default"
+            (click)="close()"><mat-icon>cancel</mat-icon>Close</button>
+    </div>
+</mat-dialog-actions>

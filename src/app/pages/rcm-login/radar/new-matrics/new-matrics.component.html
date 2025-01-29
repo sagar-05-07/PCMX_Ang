@@ -1,0 +1,175 @@
+<div style="display: flex; align-items: center; margin-top: -4.5%;">
+    <!-- Image Container -->
+    <div
+      class="col-sm-3"
+      style="margin-left: 14%; position: relative; cursor: pointer;"
+      (click)="toggleCard()"
+    >
+      <img
+        src="../../../../assets/rbg.png"
+        class="top-left-image"
+        style="width: 35px; height: 35px;"
+      />
+    </div>
+  
+    <!-- Mat Card -->
+    <mat-card
+      style="
+        margin-left: 270px;
+        height: 35px;
+        background-color: black;
+      "
+      *ngIf="showCard"
+    >
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        style="
+          gap: 30px;
+          padding: 0 10px;
+          display: flex;
+          align-items: center;
+        "
+      >
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="color: white; line-height: 35px;">Referrals 120,000</span>
+          <mat-icon
+            style="font-size: 16px; color: white; line-height: 20px; cursor: pointer;"
+            (click)="referralvsvisits()"
+            >add_circle_outline</mat-icon
+          >
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="color: white; line-height: 35px;">Visits 105,991</span>
+          <mat-icon
+            style="font-size: 16px; color: white; line-height: 20px; cursor: pointer;"
+            (click)="visitvsclaims()"
+            >add_circle_outline</mat-icon
+          >
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="color: white; line-height: 35px;">Claims 65,001</span>
+          <mat-icon
+            style="font-size: 16px; color: white; line-height: 20px; cursor: pointer;"
+            (click)="clamisvspaid()"
+            >add_circle_outline</mat-icon
+          >
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="color: white; line-height: 35px;">Paid 45,962</span>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+
+
+
+
+
+
+<div class="col-sm-12 container-fluid" style="margin-bottom: 10px;">
+
+    <div class="arrow-container" style="margin-left: -10px;">
+        <div class="arrow-shape" style="background-color: #D9D9D9; color: black;">
+            <span class="arrow-text">Intake</span>
+            <span class="arrow-number">79</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #FFD2B2; color: black;">
+            <span class="arrow-text">Verification</span>
+            <span class="arrow-number">190</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #FFFACD; color: black;">
+            <span class="arrow-text">Authorization</span>
+            <span class="arrow-number">70</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #A8E5C1; color: black;">
+            <span class="arrow-text">Scheduling</span>
+            <span class="arrow-number">20</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #C4C2FF; color: black;">
+            <span class="arrow-text">Scheduled</span>
+            <span class="arrow-number">60</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #B3E3F6; color: black;">
+            <span class="arrow-text">Processing</span>
+            <span class="arrow-number">10</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #E0DBFF; color: black;">
+            <span class="arrow-text">Closed</span>
+            <span class="arrow-number">190</span>
+        </div>
+
+        <div class="arrow-shape" style="background-color: #ffcccc; color: black;">
+            <span class="arrow-text">Hold</span>
+            <span class="arrow-number">90</span>
+        </div>
+    </div>
+    <div class="col-sm-12" style="margin-left: 12px;">
+        <button mat-raised-button class="pull-right btn-hover" style="background-color: lightgray; color: black;">
+            Self Pay (15)
+        </button>
+        <button mat-raised-button class="pull-right margin-right-10 btn-hover"
+            style="background-color: lightgray; color: black;">
+            Workers Comp (10)
+        </button>
+        <button mat-raised-button class="pull-right margin-right-10 btn-hover"
+            style="background-color: lightgray; color: black;">
+            Insurance (18)
+        </button>
+        <button mat-raised-button class="pull-right margin-right-10 btn-hover"
+            style="background-color: lightgray; color: black;">
+            Sub Acute (30)
+        </button>
+    </div>
+    <!-- <div class="col-sm-12 pull-right" style="margin-right: -22px;">
+        <button class="outline-button margin-right-10 pull-right button-sub-acute">Sub Acute</button>
+        <button class="outline-button margin-right-10 pull-right button-insurance">Insurance</button>
+        <button class="outline-button margin-right-10 pull-right button-work-comp">Work Comp</button>
+        <button class="outline-button margin-right-10 pull-right button-self-pay">Self Pay</button>
+    </div> -->
+</div>
+
+<div class="col-sm-12 mt-2">
+    <div id="grid-table-container" class="table-responsive">
+        <table matSort class="table table-bordered table-hover">
+            <thead class="tbl-head1" style="background-color: rgb(58, 53, 53); color: white;">
+                <tr>
+                    <th rowspan="2">Category</th>
+                    <th rowspan="2">Context</th>
+                    <th rowspan="2" class="text-center">New Today</th>
+                    <th colspan="5" class="text-center">Incomplete</th>
+                    <th rowspan="2" class="text-center">Comp Today</th>
+                </tr>
+                <tr>
+                    <th class="text-center">12/04</th>
+                    <th class="text-center">12/03</th>
+                    <th class="text-center">12/02</th>
+                    <th class="text-center">All</th>
+                    <th class="text-center">Hold</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of users; let i = index">
+                    <!-- Dynamically set rowspan for the Category column -->
+                    <td *ngIf="isFirstInCategory(i, users)" [attr.rowspan]="getRowspan(item.category, users)">
+                        {{ item.category }}
+                    </td>
+                    <td>{{ item.context }}</td>
+                    <td class="text-center" style="color: blue;">{{ item.newToday }}</td>
+                    <td class="text-center" style="color: blue;">{{ item.incomplete['12/04'] }}</td>
+                    <td class="text-center" style="color: blue;">{{ item.incomplete['12/03'] }}</td>
+                    <td class="text-center" style="color: blue;">{{ item.incomplete['12/02'] }}</td>
+                    <td class="text-center" style="color: blue;">{{ item.incomplete.all }}</td>
+                    <td class="text-center" style="color: blue;">{{ item.incomplete.hold }}</td>
+                    <td class="text-center" style="color: blue;">{{ item.compToday }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

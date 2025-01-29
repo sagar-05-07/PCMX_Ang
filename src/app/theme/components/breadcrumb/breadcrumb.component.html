@@ -1,0 +1,102 @@
+<div
+  fxLayout="row wrap"
+  *ngIf="router.url != '/'"
+  style="margin-bottom: 30px"
+  class="bread"
+>
+  <div fxFlex="100" class="p-2">
+    <div
+      *ngFor="let breadcrumb of breadcrumbs; let i = index"
+      class="breadcrumb-item"
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      style="margin-left: 7px"
+    >
+      <a
+        [hidden]="i == breadcrumbs.length - 1"
+        [routerLink]="[breadcrumb.url]"
+        >{{ breadcrumb.name }}</a
+      >
+      <span
+        [hidden]="i != breadcrumbs.length - 1"
+        class="breadcrumb-title active"
+        style="font-size: 22px; display: inline-block; position: relative"
+      >
+        <strong>{{ breadcrumb.name }}</strong>
+
+        <span
+          style="
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 200%;
+            border-bottom: 2px solid black;
+          "
+        ></span>
+      </span>
+
+      <!-- referrals and claims and visits background back color Black -->
+       <!-- Created by Vineeth kumar -->
+
+      <!-- <div
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        style="
+          background-color: black;
+          border-radius: 10px; 
+          color: white;
+          padding: 10px;
+          font-size: 14px;
+          position: sticky;
+          left: 460px;
+        "
+      >
+        
+        <div fxLayout="row" fxLayoutAlign="start center" style="gap: 20px">
+          <div fxLayout="row" fxLayoutAlign="center center" style="gap: 5px">
+            <span>Referrals 120,000</span>
+            <mat-icon style="font-size: 16px">info</mat-icon>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="center center" style="gap: 5px">
+            <span>Visits 105,991</span>
+            <mat-icon style="font-size: 16px">info</mat-icon>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="center center" style="gap: 5px">
+            <span>Claims 65,001</span>
+            <mat-icon style="font-size: 16px">info</mat-icon>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="center center" style="gap: 5px">
+            <span>Paid 45,962</span>
+            <mat-icon style="font-size: 16px">info </mat-icon>
+          </div>
+        </div>
+
+      
+        <div fxLayout="row" fxLayoutAlign="end center" style="gap: 10px">
+          <div
+            style="
+              background: linear-gradient(
+                to right,
+                red,
+                orange,
+                yellow,
+                green,
+                blue,
+                indigo,
+                violet
+              );
+              height: 20px;
+              width: 60px;
+              border-radius: 5px;
+            "
+          ></div>
+          <span>2024</span>
+          <mat-icon style="cursor: pointer">pause</mat-icon>
+          <mat-icon style="cursor: pointer">play_arrow</mat-icon>
+        </div>
+      </div> -->
+
+
+    </div>
+  </div>
+</div>

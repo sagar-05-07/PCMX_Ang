@@ -1,0 +1,50 @@
+<!-- Table -->
+<div class="col-sm-12 mt-5">
+    <div id="grid-table-container" class="table-responsive">
+        <table matSort class="table table-bordered table-hover">
+            <thead class="tbl-head1" style="background-color: rgb(58, 53, 53); color: white;">
+                <tr>
+                    <th class="text-center">Received Date</th>
+                    <th>Law Firm Name</th>
+                    <th class="text-center">Claim ID</th>
+                    <th class="text-center">Visit ID</th>
+                    <th>Invoice Reference</th>
+                    <th class="text-center">Amount Received</th>
+                    <th class="text-center">Payment Mode</th>
+                    <th class="text-center">Payment Reference</th>
+                    <th class="text-center">Payback Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td class="text-center">{{ user.receivedDate }}</td>
+                    <td>{{ user.lawFirmName }}</td>
+                    <td class="text-center">{{ user.claimId }}</td>
+                    <td class="text-center">{{ user.visitId }}</td>
+                    <td>{{ user.invoiceReference }}</td>
+                    <td class="text-center">{{ user.amountReceived }}</td>
+                    <td class="text-center">{{ user.paymentMode }}</td>
+                    <td class="text-center">{{ user.paymentReference }}</td>
+                    <td class="text-center">{{ user.paybackStatus }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            <span style="font-size: 15px; color: red;">Note : All values are Prorated</span>
+            <span class="pull-right">Batch ID : 98765432</span>
+            <span class="pull-right margin-right-10">Payback Date : 12/12/2024</span>
+        </p>
+
+        <button class="mine" mat-fab (click)="scrollGrid('right')">
+            <mat-icon style="color: #37474f">fast_forward</mat-icon>
+        </button>
+        <button class="mine" mat-fab style="margin-right: 78px !important" (click)="scrollGrid('left')">
+            <mat-icon style="color: #37474f">fast_rewind</mat-icon>
+        </button>
+
+        <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSizeOptions]="[5, 10, 25, 50, 100]"
+            showFirstLastButtons>
+        </mat-paginator>
+    </div>
+</div>

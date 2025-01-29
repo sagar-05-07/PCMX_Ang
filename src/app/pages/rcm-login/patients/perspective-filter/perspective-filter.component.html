@@ -1,0 +1,90 @@
+<h1 style="background-color: rgb(73, 128, 150); color: white; text-align: center;" mat-dialog-title> Select Global Filter
+    Criteria
+</h1>
+
+<div class="col-sm-12 mt-5">
+    <div class="col-sm-12" style="margin-bottom: 12px;">
+        <div class="col-sm-4">
+            <label class="control-label mt-2 required">From Year :</label>
+        </div>
+        <div class="col-sm-8">
+            <mat-select class="form-control bac" placeholder="Select From Year">
+                <mat-option [value]="'New York'">2020</mat-option>
+                <mat-option [value]="'Los Angeles'">2021</mat-option>
+                <mat-option [value]="'Chicago'">2022</mat-option>
+                <mat-option [value]="'Houston'">2023</mat-option>
+                <mat-option [value]="'Phoenix'">2024</mat-option>
+            </mat-select>
+        </div>
+    </div>
+    <div class="col-sm-12" style="margin-bottom: 12px;">
+        <div class="col-sm-4">
+            <label class="control-label mt-2 required">From Month :</label>
+        </div>
+        <div class="col-sm-8">
+            <mat-select class="form-control bac" placeholder="Select From Month">
+                <mat-option value="January">January</mat-option>
+                <mat-option value="February">February</mat-option>
+                <mat-option value="March">March</mat-option>
+                <mat-option value="April">April</mat-option>
+                <mat-option value="May">May</mat-option>
+                <mat-option value="June">June</mat-option>
+                <mat-option value="July">July</mat-option>
+                <mat-option value="August">August</mat-option>
+                <mat-option value="September">September</mat-option>
+                <mat-option value="October">October</mat-option>
+                <mat-option value="November">November</mat-option>
+                <mat-option value="December">December</mat-option>
+            </mat-select>
+        </div>
+    </div>
+    <div class="col-sm-12" style="margin-bottom: 12px;">
+        <div class="col-sm-4">
+            <label class="control-label mt-2 required">To Year :</label>
+        </div>
+        <div class="col-sm-8">
+            <mat-select class="form-control bac" placeholder="Select To Year">
+                <mat-option [value]="'2020'">2020</mat-option>
+                <mat-option [value]="'2021'">2021</mat-option>
+                <mat-option [value]="'2022'">2022</mat-option>
+                <mat-option [value]="'2023'">2023</mat-option>
+                <mat-option [value]="'2024'">2024</mat-option>
+            </mat-select>
+        </div>
+    </div>
+    <div class="col-sm-12" style="margin-bottom: 12px;">
+        <div class="col-sm-4">
+            <label class="control-label mt-2 required">To Month :</label>
+        </div>
+        <div class="col-sm-8">
+            <mat-select class="form-control bac" placeholder="Select To Month">
+                <mat-option value="January">January</mat-option>
+                <mat-option value="February">February</mat-option>
+                <mat-option value="March">March</mat-option>
+                <mat-option value="April">April</mat-option>
+                <mat-option value="May">May</mat-option>
+                <mat-option value="June">June</mat-option>
+                <mat-option value="July">July</mat-option>
+                <mat-option value="August">August</mat-option>
+                <mat-option value="September">September</mat-option>
+                <mat-option value="October">October</mat-option>
+                <mat-option value="November">November</mat-option>
+                <mat-option value="December">December</mat-option>
+            </mat-select>
+        </div>
+    </div>
+</div>
+
+<mat-dialog-actions align="end">
+    <div style="margin-right: 30px; margin-bottom: 10px;">
+        <button mat-raised-button style="background-color: green; color: white;" (click)="close()">
+            <span>{{ data ? 'Update' : 'Apply'}}</span>
+        </button>
+        <button mat-raised-button style="background-color: lightgray; color: red;" class="add-dark-hover btn-default"
+            (click)="close()">Clear
+        </button>
+        <button mat-stroked-button style="color: red; border: 1px solid ;"
+            (click)="close()">Close
+        </button>
+    </div>
+</mat-dialog-actions>

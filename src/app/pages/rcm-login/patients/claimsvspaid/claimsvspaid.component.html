@@ -1,0 +1,25 @@
+<div class="table-header">
+  <h1>Gap Analysis – Referrals vs. Visits</h1>
+</div>
+
+<div class="col-sm-12 mt-5">
+  <div id="grid-table-container" class="table-responsive">
+      <table matSort class="table table-bordered table-hover">
+          <thead class="tbl-head1" style="background-color: rgb(58, 53, 53); color: white">
+          </thead>
+          <tbody>
+              <tr *ngFor="let user of dataSource">
+                  <td class="text-center">{{user.workList}}</td>
+                  <td class="text-center" style="color: rgb(39, 39, 116);">{{user.volume}}</td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+<mat-dialog-actions align="end">
+  <div style="margin-right: 10px; margin-bottom: 15px;">
+      <button mat-raised-button style="background-color: lightgray; color: red;" class="add-dark-hover btn-default"
+          (click)="close()"><mat-icon>cancel</mat-icon>Close
+      </button>
+  </div>
+</mat-dialog-actions>

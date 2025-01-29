@@ -1,0 +1,461 @@
+<!--This page is used to add or edit accounts-->
+<h1 style="background-color: rgb(73, 128, 150); color: white; text-align: center;" mat-dialog-title><span
+    *ngIf="!account">Add</span><span *ngIf="account">Edit</span> Patient</h1>
+
+<mat-horizontal-stepper #stepper>
+<mat-step>
+    <div mat-dialog-content>
+        <form class="form-horizontal" novalidate>
+            <ng-template matStepLabel>Patient Information</ng-template>
+            <div class="col-sm-6">
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">First Name :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control bac" placeholder="Enter First Name" maxlength="100"
+                            minlength="2" onDrag="return false" onDrop="return false" required>
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">Last Name :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control bac" placeholder="Enter Last Name" maxlength="100"
+                            minlength="2" onDrag="return false" onDrop="return false" required>
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">Date of Birth :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="date" class="form-control bac" placeholder="Enter First Name" maxlength="100"
+                            minlength="2" onDrag="return false" onDrop="return false" required>
+                    </div>
+                </div>
+
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">SSN :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="number" class="form-control bac" placeholder="Enter SNN Number" maxlength="100"
+                            minlength="2" onDrag="return false" onDrop="return false" required>
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">Home Address :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control bac" placeholder="Enter Home Address" maxlength="100"
+                            minlength="2" onDrag="return false" onDrop="return false" required>
+                    </div>
+                </div>
+
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">City :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <mat-select class="form-control bac" placeholder="Select City">
+                            <mat-option [value]="'New York'">New York</mat-option>
+                            <mat-option [value]="'Los Angeles'">Los Angeles</mat-option>
+                            <mat-option [value]="'Chicago'">Chicago</mat-option>
+                            <mat-option [value]="'Houston'">Houston</mat-option>
+                            <mat-option [value]="'Phoenix'">Phoenix</mat-option>
+                            <mat-option [value]="'Philadelphia'">Philadelphia</mat-option>
+                            <mat-option [value]="'San Antonio'">San Antonio</mat-option>
+                            <mat-option [value]="'San Diego'">San Diego</mat-option>
+                            <mat-option [value]="'Dallas'">Dallas</mat-option>
+                            <mat-option [value]="'San Jose'">San Jose</mat-option>
+                        </mat-select>
+
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">State :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <mat-select class="form-control bac" placeholder="Select State">
+                            <mat-option [value]="'California'">California</mat-option>
+                            <mat-option [value]="'Texas'">Texas</mat-option>
+                            <mat-option [value]="'Florida'">Florida</mat-option>
+                            <mat-option [value]="'New York'">New York</mat-option>
+                            <mat-option [value]="'Illinois'">Illinois</mat-option>
+                            <mat-option [value]="'Pennsylvania'">Pennsylvania</mat-option>
+                            <mat-option [value]="'Ohio'">Ohio</mat-option>
+                            <mat-option [value]="'Georgia'">Georgia</mat-option>
+                            <mat-option [value]="'North Carolina'">North Carolina</mat-option>
+                            <mat-option [value]="'Michigan'">Michigan</mat-option>
+                        </mat-select>
+
+                    </div>
+                </div>
+
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">Zip Code :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="number" class="form-control bac" placeholder="Enter Zip Code" maxlength="100"
+                            minlength="2" onDrag="return false" onDrop="return false" required>
+                    </div>
+                </div>
+
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">Email :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control bac" placeholder="Enter Email" maxlength="100"
+                            minlength="2" onDrag="return false" onDrop="return false" required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">Gender :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <mat-select class="form-control bac" placeholder="Select Gender">
+                            <mat-option [value]="'Male'">Male</mat-option>
+                            <mat-option [value]="'Female'">Female</mat-option>
+                            <mat-option [value]="'Other'">Other</mat-option>
+                            <mat-option [value]="'Prefer not to say'">Prefer not to say</mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label  required">Marital Status :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <mat-select class="form-control" placeholder="Select Marital Status">
+                            <mat-option [value]="'Single'">Single</mat-option>
+                            <mat-option [value]="'Married'">Married</mat-option>
+                            <mat-option [value]="'Divorced'">Divorced</mat-option>
+                            <mat-option [value]="'Widowed'">Widowed</mat-option>
+                            <mat-option [value]="'Prefer not to say'">Prefer not to say</mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label required">Home Phone :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="number" class="form-control" placeholder="Enter Home Phone Number"
+                            maxlength="100" minlength="2" onDrag="return false" onDrop="return false" required>
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label required">Work Phone :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="number" class="form-control" placeholder="Enter Work Phone Number"
+                            maxlength="100" minlength="2" onDrag="return false" onDrop="return false" required>
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">Cell Phone :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="number" class="form-control bac" placeholder="Enter Cell Phone Number"
+                            maxlength="100" minlength="2" onDrag="return false" onDrop="return false" required>
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label required">Ethnicity :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" placeholder="Enter Ethnicity" maxlength="100"
+                            minlength="2" onDrag="return false" onDrop="return false" required>
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label required">Language :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <mat-select class="form-control" placeholder="Select Language">
+                            <mat-option [value]="'English'">English</mat-option>
+                            <mat-option [value]="'Spanish'">Spanish</mat-option>
+                            <mat-option [value]="'French'">French</mat-option>
+                            <mat-option [value]="'German'">German</mat-option>
+                            <mat-option [value]="'Chinese'">Chinese</mat-option>
+                            <mat-option [value]="'Hindi'">Hindi</mat-option>
+                            <mat-option [value]="'Arabic'">Arabic</mat-option>
+                            <mat-option [value]="'Russian'">Russian</mat-option>
+                            <mat-option [value]="'Portuguese'">Portuguese</mat-option>
+                            <mat-option [value]="'Japanese'">Japanese</mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">Preferred Method of Contact
+                            :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="number" class="form-control bac"
+                            placeholder="Enter Preferred Method of Contact" required>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <mat-dialog-actions align="end">
+        <button matStepperNext mat-raised-button style="background-color: green; color: white;">Proceed</button>
+        <button mat-raised-button class="add-dark-hover btn-default" style="background-color: gray; color: red;"
+            (click)="close()">Cancel</button>
+    </mat-dialog-actions>
+</mat-step>
+<mat-step>
+    <div mat-dialog-content>
+        <form class="form-horizontal" novalidate>
+            <ng-template matStepLabel>Emergency Contact</ng-template>
+            <div class="col-sm-12">
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">Enter Name :</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control bac" placeholder="Enter Name" required>
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">Cell Phone :</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control bac" placeholder="Enter Cell Phone Number"
+                            maxlength="100" minlength="2" onDrag="return false" onDrop="return false" required>
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">Relation to Patient :</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <mat-select class="form-control bac" placeholder="Select Relation to Patient">
+                            <mat-option [value]="'Parent'">Parent</mat-option>
+                            <mat-option [value]="'Sibling'">Sibling</mat-option>
+                            <mat-option [value]="'Spouse'">Spouse</mat-option>
+                            <mat-option [value]="'Child'">Child</mat-option>
+                            <mat-option [value]="'Relative'">Relative</mat-option>
+                            <mat-option [value]="'Friend'">Friend</mat-option>
+                            <mat-option [value]="'Guardian'">Guardian</mat-option>
+                            <mat-option [value]="'Other'">Other</mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <mat-dialog-actions align="end">
+        <button matStepperNext mat-raised-button style="background-color: green; color: white;">Proceed</button>
+        <button mat-raised-button class="add-dark-hover btn-default" style="background-color: gray; color: red;"
+            (click)="close()">Cancel</button>
+    </mat-dialog-actions>
+</mat-step>
+<mat-step>
+    <div mat-dialog-content>
+        <form class="form-horizontal" novalidate>
+            <ng-template matStepLabel>Employment Information</ng-template>
+            <div class="col-sm-12">
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">Employment Status :</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <mat-select class="form-control bac" placeholder="Select Employment Status">
+                            <mat-option [value]="'Employed'">Employed</mat-option>
+                            <mat-option [value]="'Unemployed'">Unemployed</mat-option>
+                            <mat-option [value]="'Self-Employed'">Self-Employed</mat-option>
+                            <mat-option [value]="'Retired'">Retired</mat-option>
+                            <mat-option [value]="'Student'">Student</mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">Payment Method :</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <mat-select class="form-control bac" placeholder="Select Payment Method">
+                            <mat-option [value]="'Insurance'">Insurance</mat-option>
+                            <mat-option [value]="'Credit Card'">Credit Card</mat-option>
+                            <mat-option [value]="'Debit Card'">Debit Card</mat-option>
+                            <mat-option [value]="'PayPal'">PayPal</mat-option>
+                            <mat-option [value]="'Bank Transfer'">Bank Transfer</mat-option>
+                            <mat-option [value]="'Cash'">Cash</mat-option>
+                            <mat-option [value]="'Other'">Other</mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">Date of Injury of Service Date
+                            :</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="date" class="form-control bac" required>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <mat-dialog-actions align="end">
+        <button matStepperNext mat-raised-button style="background-color: green; color: white;">Proceed</button>
+        <button mat-raised-button class="add-dark-hover btn-default" style="background-color: gray; color: red;"
+            (click)="close()">Cancel</button>
+    </mat-dialog-actions>
+</mat-step>
+
+<mat-step>
+    <div mat-dialog-content>
+        <form class="form-horizontal" novalidate>
+            <ng-template matStepLabel>Primary Insurance</ng-template>
+            <div class="col-sm-6">
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">Insurance :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control bac" placeholder="Enter Insurance" maxlength="100"
+                            minlength="2" onDrag="return false" onDrop="return false" required>
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">Phone Number :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="number" class="form-control bac" placeholder="Enter Phone Number"
+                            maxlength="100" minlength="2" onDrag="return false" onDrop="return false" required>
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">Relationship :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <mat-select class="form-control bac" placeholder="Select Relationship">
+                            <mat-option [value]="'Parent'">Parent</mat-option>
+                            <mat-option [value]="'Sibling'">Sibling</mat-option>
+                            <mat-option [value]="'Spouse'">Spouse</mat-option>
+                            <mat-option [value]="'Child'">Child</mat-option>
+                            <mat-option [value]="'Relative'">Relative</mat-option>
+                            <mat-option [value]="'Friend'">Friend</mat-option>
+                            <mat-option [value]="'Guardian'">Guardian</mat-option>
+                            <mat-option [value]="'Other'">Other</mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">Home Address :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control bac" placeholder="Enter Home Address" maxlength="100"
+                            minlength="2" onDrag="return false" onDrop="return false" required>
+                    </div>
+                </div>
+
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">City :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <mat-select class="form-control bac" placeholder="Select City">
+                            <mat-option [value]="'New York'">New York</mat-option>
+                            <mat-option [value]="'Los Angeles'">Los Angeles</mat-option>
+                            <mat-option [value]="'Chicago'">Chicago</mat-option>
+                            <mat-option [value]="'Houston'">Houston</mat-option>
+                            <mat-option [value]="'Phoenix'">Phoenix</mat-option>
+                            <mat-option [value]="'Philadelphia'">Philadelphia</mat-option>
+                            <mat-option [value]="'San Antonio'">San Antonio</mat-option>
+                            <mat-option [value]="'San Diego'">San Diego</mat-option>
+                            <mat-option [value]="'Dallas'">Dallas</mat-option>
+                            <mat-option [value]="'San Jose'">San Jose</mat-option>
+                        </mat-select>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">State :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <mat-select class="form-control bac" placeholder="Select State">
+                            <mat-option [value]="'California'">California</mat-option>
+                            <mat-option [value]="'Texas'">Texas</mat-option>
+                            <mat-option [value]="'Florida'">Florida</mat-option>
+                            <mat-option [value]="'New York'">New York</mat-option>
+                            <mat-option [value]="'Illinois'">Illinois</mat-option>
+                            <mat-option [value]="'Pennsylvania'">Pennsylvania</mat-option>
+                            <mat-option [value]="'Ohio'">Ohio</mat-option>
+                            <mat-option [value]="'Georgia'">Georgia</mat-option>
+                            <mat-option [value]="'North Carolina'">North Carolina</mat-option>
+                            <mat-option [value]="'Michigan'">Michigan</mat-option>
+                        </mat-select>
+
+                    </div>
+                </div>
+
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">Zip Code :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="number" class="form-control bac" placeholder="Enter Zip Code" maxlength="100"
+                            minlength="2" onDrag="return false" onDrop="return false" required>
+                    </div>
+                </div>
+
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">Policy Order ID :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control bac" placeholder="Enter Policy Order ID"
+                            maxlength="100" minlength="2" onDrag="return false" onDrop="return false" required>
+                    </div>
+                </div>
+                <div class="row " style="margin-bottom: 12px;">
+                    <div class="col-sm-4 add-mem">
+                        <label class="control-label add-member-label required">Group :</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control bac" placeholder="Enter Group" maxlength="100"
+                            minlength="2" onDrag="return false" onDrop="return false" required>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <mat-dialog-actions align="end">
+        <button mat-raised-button (click)="close()" style="background-color: green; color: white;"><span
+                *ngIf="!account">
+                Submit</span><span *ngIf="account">Update</span></button>
+        <button mat-raised-button class="add-dark-hover btn-default" style="background-color: gray; color: red;"
+            (click)="close()">Cancel</button>
+    </mat-dialog-actions>
+</mat-step>
+</mat-horizontal-stepper>

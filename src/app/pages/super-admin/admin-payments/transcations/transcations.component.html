@@ -1,0 +1,185 @@
+<div class="col-sm-12">
+  <div fxLayout="row wrap">
+    <div class="w-100">
+      <div class="flex-p">
+        <div class="row wrap">
+          <div
+            class="col-xs-12"
+            style="
+              margin-right: 0px !important;
+              margin-top: 15px;
+              margin-bottom: 10px;
+            "
+          >
+            <div
+              class="col-sm-8 pull-right"
+              style="padding: 0 0 0 0 !important"
+            >
+              <button
+                mat-raised-button
+                style="background-color: #50636d !important; color: white"
+                (click)="filterToggle = !filterToggle"
+                class="filter-hover pull-right margin-right-10"
+              >
+                <mat-icon style="margin-left: 10px">filter_list</mat-icon>Filter
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        fxLayout="row wrap"
+        *ngIf="filterToggle"
+        style="
+          margin-bottom: 10px;
+          flex-flow: wrap;
+          box-sizing: border-box;
+          display: flex;
+        "
+      >
+        <div fxFlex="100" class="flex-p w-100">
+          <form [formGroup]="filterForm">
+            <mat-card class="filter">
+              <mat-card-content>
+                <div class="row col-sm-12">
+                  <div class="col-sm-4 row">
+                    <div class="col-sm-3" style="margin-top: 6px">
+                      <b>Keyword:</b>
+                    </div>
+                    <div class="col-sm-9">
+                      <input
+                        type="text"
+                        placeholder="Search by Keyword"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <div
+                      class="col-sm-3 newMarginClass"
+                      style="margin-top: 6px"
+                    >
+                      <b style="white-space: nowrap">User Type:</b>
+                    </div>
+                    <div class="col-sm-8">
+                      <select
+                        placeholder="Select Status"
+                        formControlName="Role"
+                        class="form-control"
+                      >
+                        <option [value]="1">--Select User Type--</option>
+                        <option [value]="2">Provider</option>
+                        <option [value]="3">Network</option>
+                        <option [value]="4">Law Firm</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                </div>
+                <div class="row col-sm-12">
+                  <div class="col-sm-4 pull-right" style="margin-top: -35px">
+                    <a
+                      (click)="filterToggle = !filterToggle"
+                      class="pull-right"
+                      style="font-size: 25px; cursor: pointer; margin-left: 5px"
+                    >
+                      <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                    </a>
+                    <button
+                      mat-raised-button
+                      color="primary"
+                      class="pull-right"
+                      style="background-color: #007bff !important; color: white"
+                    >
+                      Search
+                    </button>
+
+                    <button
+                      mat-raised-button
+                      class="pull-right btn-default margin-right-10"
+                    >
+                      Clear
+                    </button>
+                  </div>
+
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </form>
+        </div>
+      </div>
+      <div fxLayout="row wrap">
+        <div class="w-100">
+          <div fxLayout="row wrap" style="margin-top: -3px">
+            <div class="table-responsive w-100 flex-p" id="divTable">
+              <table
+                id="tblContacts"
+                class="table table-striped table-bordered table-hover"
+                matSort
+                style="white-space: no-wrap"
+              >
+                <thead class="tbl-head">
+                  <tr class="tr-grid-header">
+                    <th>Date & Time</th>
+                    <th>Amount</th>
+                    <th>User Name</th>
+                    <th>User Type</th>
+                    <th>Status</th>
+                    <th>Package</th>
+                    <th>Reference</th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="users.length > 0">
+                  <tr *ngFor="let item of users; let i = index">
+                    <td class="text-left">
+                      {{ item.datetime }}
+                    </td>
+                    <td class="text-left">${{ item.amount }}</td>
+                    <td class="text-left" style="cursor: pointer">
+                      {{ item.userName }}
+                    </td>
+                    <td class="text-left" style="cursor: pointer">
+                      {{ item.userType }}
+                    </td>
+                    <td
+                      [ngStyle]="{
+                        color: item.status === 'Paid' ? 'blue' : 'red'
+                      }"
+                    >
+                      {{ item.status }}
+                    </td>
+
+                    <td class="text-left" style="cursor: pointer">
+                      {{ item.Package }}
+                    </td>
+                    <td class="text-left" style="cursor: pointer">
+                      {{ item.Reference }}
+                    </td>
+                  </tr>
+                </tbody>
+                <tbody *ngIf="users.length == 0">
+                  <tr>
+                    <td colspan="17">
+                      <span>No data available</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <mat-paginator
+              class="col-sm-12"
+              [length]="totalSize"
+              [pageIndex]="totalPage"
+              [pageSize]=""
+              [pageSizeOptions]="[5, 10, 25, 50, 100]"
+              showFirstLastButtons
+            ></mat-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

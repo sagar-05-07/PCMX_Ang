@@ -1,0 +1,190 @@
+<div class="content-container">
+  <div class="content" #content>
+    <div fxLayout="row wrap">
+      <div class="w-100">
+        <div class="flex-p">
+          <div class="row wrap">
+            <div class="col-xs-12" style="
+                margin-right: 0px !important;
+                margin-top: 15px;
+                margin-bottom: 10px;
+              ">
+              <div class="col-sm-8 pull-right" style="padding: 0 0 0 0 !important">
+                <!-- <button
+                  mat-raised-button
+                  class="pull-right"
+                  style="
+                    background-color: #007bff !important;
+                    color: white;
+                    margin-right: 8px;
+                  "
+                  (click)="openproviderdialog(null)"
+                >
+                  <mat-icon class="mat-margin-top">add</mat-icon> Add
+                </button>
+                <button
+                  mat-raised-button
+                  style="background-color: #50636d !important; color: white"
+                  (click)="filterToggle1 = !filterToggle1"
+                  class="filter-hover pull-right margin-right-10"
+                >
+                  <mat-icon style="margin-left: 10px">filter_list</mat-icon
+                  >Filter
+                </button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap" *ngIf="filterToggle1" style="
+            margin-bottom: 10px;
+            flex-flow: wrap;
+            box-sizing: border-box;
+            display: flex;
+          ">
+          <div fxFlex="100" class="flex-p w-100">
+            <form [formGroup]="filterForm">
+              <mat-card class="filter">
+                <mat-card-content>
+                  <div class="row col-sm-12">
+                    <div class="col-sm-4 row">
+                      <div class="col-sm-3" style="margin-top: 6px">
+                        <b>Keyword:</b>
+                      </div>
+                      <div class="col-sm-9">
+                        <input type="text" placeholder="Search by Keyword" class="form-control" />
+                      </div>
+                    </div>
+                    <div class="col-sm-4 row">
+                      <div class="col-sm-3" style="margin-top: 6px">
+                        <b>Segment:</b>
+                      </div>
+                      <div class="col-sm-9">
+                        <select class="form-control" style="height: 36px">
+                          <option>--Select Segment--</option>
+                          <option value="Physician">Physician Office</option>
+                          <option value="Imaging">Imaging Centers</option>
+                          <option value="Hospitals">Hospitals</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-4 row">
+                      <div class="col-sm-4" style="margin-top: 6px">
+                        <b>Focus Area:</b>
+                      </div>
+                      <div class="col-sm-8">
+                        <select class="form-control" style="height: 36px">
+                          <option>--Select Focus Area--</option>
+                          <option>Provider</option>
+                          <option>Requestor</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                  </div>
+                  <div class="row col-sm-12" style="margin-top: 10px">
+                    <div class="col-sm-4">
+                      <div class="col-sm-3 newMarginClass" style="margin-left: -15px; margin-top: 6px">
+                        <b>Status:</b>
+                      </div>
+                      <div class="col-sm-8">
+                        <select placeholder="Select Status" formControlName="Role" class="form-control">
+                          <option [value]="1">Active</option>
+                          <option [value]="2">Inactive</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-4 pull-right">
+                      <a (click)="filterToggle1 = !filterToggle1" class="pull-right" style="
+                          font-size: 25px;
+                          cursor: pointer;
+                          margin-left: 5px;
+                        ">
+                        <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                      </a>
+                      <button mat-raised-button color="primary" class="pull-right" style="
+                          background-color: #007bff !important;
+                          color: white;
+                        ">
+                        Search
+                      </button>
+
+                      <button mat-raised-button class="pull-right btn-default margin-right-10">
+                        Clear
+                      </button>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </form>
+          </div>
+        </div>
+        <div fxLayout="row wrap">
+          <div class="w-100">
+            <div fxLayout="row wrap" style="margin-top: -3px">
+              <div class="table-responsive w-100 flex-p" id="divTable">
+                <table id="tblContacts" class="table table-striped table-bordered table-hover" matSort
+                  style="margin-left: 11px; width: 98.5%">
+                  <thead class="tbl-head">
+                    <tr class="tr-grid-header">
+                      <th>Subject</th>
+                      <th>Description</th>
+                      <th>Previous Value</th>
+                      <th>New Value</th>
+                      <th style="display: flex; justify-content: center">
+                        Actions
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody *ngIf="tableData.length > 0">
+                    <tr *ngFor="let item of tableData; let i = index">
+                      <td class="text-left">
+                        {{ item.subject }}
+                      </td>
+                      <td class="text-left">
+                        {{ item.Description }}
+                      </td>
+                      <td class="text-left">
+                        {{ item.previousValue }}
+                      </td>
+                      <td class="text-left" style="cursor: pointer">
+                        <select [(ngModel)]="item.newValue" class="form-control">
+                          <option value="" disabled selected>
+                            Select {{ item.placeholder || item.subject }}
+                          </option>
+                          <!-- Actual options -->
+                          <option *ngFor="let option of item.dropdownOptions" [value]="option">
+                            {{ option }}
+                          </option>
+                        </select>
+                      </td>
+                      <td class="text-center">
+                        <a matTooltip="Click to Save" class="edit-icon" (click)="saveItem(item)">
+                          <i class="fa fa-save"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+
+                  <tbody *ngIf="tableData.length == 0">
+                    <tr>
+                      <td colspan="17">
+                        <span>No data available</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <mat-paginator class="col-sm-12" [length]="totalSize" [pageIndex]="currentPage" [pageSize]=""
+                [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

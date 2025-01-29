@@ -1,0 +1,8 @@
+$amber-light-primary: mat.define-palette(mat.$amber-palette, 400, 100, 600);
+$amber-light-accent: mat.define-palette(mat.$light-blue-palette, 600, 300, 900);
+$amber-light-warn: mat.define-palette(mat.$red-palette, 500);
+
+$amber-light-theme: mat.define-light-theme((color: (primary: $amber-light-primary,
+                accent: $amber-light-accent,
+                warn: $amber-light-warn,
+            )));

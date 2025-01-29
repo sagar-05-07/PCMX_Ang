@@ -1,0 +1,101 @@
+<h1 style="background-color: rgb(73, 128, 150); color: white; text-align: center;" mat-dialog-title><span
+        *ngIf="!data">Add</span><span *ngIf="data">Edit</span> Automated EOD
+</h1>
+
+<div mat-dialog-content>
+    <form class="form-horizontal">
+        <div class="col-sm-12 mt-3">
+            <div class="row" style="margin-bottom: 12px;">
+                <div class="col-sm-5">
+                    <label class="control-label add-member-label required">Preferred Time :</label>
+                </div>
+                <div class="col-sm-7">
+                    <input type="time" class="form-control bac" required>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 12px;">
+                <div class="col-sm-5">
+                    <label class="control-label add-member-label required">Comparison Reference :</label>
+                </div>
+                <div class="col-sm-7">
+                    <mat-select class="form-control bac" placeholder="Select Comparison Reference">
+                        <mat-option [value]="'Katherine Morgan'">Last Year</mat-option>
+                        <mat-option [value]="'Katherine Morgan'">Last 2 Year</mat-option>
+                        <mat-option [value]="'Katherine Morgan'">Last 3 Year</mat-option>
+                        <mat-option [value]="'Katherine Morgan'">Current Year Average</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 12px;">
+                <div class="col-sm-5">
+                    <label class="control-label add-member-label required">Trend Span :</label>
+                </div>
+                <div class="col-sm-7 d-flex align-items-center">
+                    <div class="form-check me-3">
+                        <input type="radio" id="last3Months" name="trendSpan" value="3Months"
+                            class="form-check-input" />
+                        <label for="last3Months" class="form-check-label">3 Months</label>
+                    </div>
+                    <div class="form-check me-3">
+                        <input type="radio" id="last6Months" name="trendSpan" value="6Months"
+                            class="form-check-input" />
+                        <label for="last6Months" class="form-check-label">6 Months</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" id="lastOneYear" name="trendSpan" value="1Year" class="form-check-input" />
+                        <label for="lastOneYear" class="form-check-label">Last One Year</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 12px;">
+                <div class="col-sm-5">
+                    <label class="control-label add-member-label required"> Alerts :</label>
+                </div>
+                <div class="col-sm-7">
+                    <mat-checkbox></mat-checkbox>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 12px;">
+                <div class="col-sm-5">
+                    <label class="control-label add-member-label required">Leader Board :</label>
+                </div>
+                <div class="col-sm-7">
+                    <mat-checkbox></mat-checkbox>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 12px;">
+                <div class="col-sm-5">
+                    <label class="control-label add-member-label required">Variance Versus Budget:</label>
+                </div>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control bac" id="variance" placeholder="Enter Variance Budget" />
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 12px;">
+                <div class="col-sm-5">
+                    <label class="control-label add-member-label required">Receipts :</label>
+                </div>
+                <div class="col-sm-7">
+                    <mat-select class="form-control bac" placeholder="Select Core Team Members" multiple>
+                        <mat-option [value]="'Alice Johnson'">Alice Johnson</mat-option>
+                        <mat-option [value]="'Michael Smith'">Michael Smith</mat-option>
+                        <mat-option [value]="'Sophia Davis'">Sophia Davis</mat-option>
+                        <mat-option [value]="'James Wilson'">James Wilson</mat-option>
+                        <mat-option [value]="'Emma Brown'">Emma Brown</mat-option>
+                        <mat-option [value]="'Oliver Garcia'">Oliver Garcia</mat-option>
+                        <mat-option [value]="'Liam Martinez'">Liam Martinez</mat-option>
+                        <mat-option [value]="'Amelia Hernandez'">Amelia Hernandez</mat-option>
+                        <mat-option [value]="'Noah Robinson'">Noah Robinson</mat-option>
+                        <mat-option [value]="'Isabella Lopez'">Isabella Lopez</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button style="background-color: green; color: white;">Proceed</button>
+    <button mat-raised-button class="add-dark-hover btn-default" style="background-color: gray; color: red;"
+        (click)="close()">Cancel</button>
+</mat-dialog-actions>

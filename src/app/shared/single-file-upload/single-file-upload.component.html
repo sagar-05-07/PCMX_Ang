@@ -1,0 +1,29 @@
+<h1 style="font-weight: 300; margin-bottom: 10px !important;background-color:#3e3e3e;text-align: center;color: white;"
+    mat-dialog-title>
+    <span>Upload Document</span>
+
+</h1>
+<div class="col-sm-12 upload-container">
+    <div class="upload-box auth-form">
+        <div class="dropzone" (drop)="onDrop($event, 'auth')" (dragover)="onDragOver($event)"
+            (dragleave)="onDragLeave($event)">
+            <p>Drag and drop files here</p>
+            <input type="file" multiple (change)="onFileSelected($event, 'auth')" style="display: none;" #authInput>
+            <button type="button" class="btn btn-primary" (click)="authInput.click()">Browse Files</button>
+        </div>
+        <ul *ngIf="authFiles.length > 0">
+            <li *ngFor="let file of authFiles">{{ file.name }}</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Footer buttons -->
+<div class="modal-footer" style="margin-right: 16px;">
+    <button mat-raised-button style="background-color: green; color: white; margin-right: 10px;" type="button"
+        (click)="uploadFiles()">
+        <mat-icon>save</mat-icon>Upload
+    </button>
+    <button mat-raised-button type="button" style="color: red; background-color: lightgray;" (click)="close()">
+        <mat-icon>close</mat-icon>Close
+    </button>
+</div>

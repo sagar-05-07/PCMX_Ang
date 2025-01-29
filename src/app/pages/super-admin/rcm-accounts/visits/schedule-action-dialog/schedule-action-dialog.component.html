@@ -1,0 +1,422 @@
+<h1 style="font-weight: 300; margin-bottom: 10px !important;background-color: #286ba5;text-align: center;color: white;"
+    mat-dialog-title>
+    Schedule Action
+</h1>
+<div mat-dialog-content>
+    <mat-horizontal-stepper #stepper>
+        <mat-step>
+            <ng-template matStepLabel>Action Overview</ng-template>
+            <div class="row" *ngIf="scheduledActionDetails.Notes">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-12 margin-top-5">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:10px">
+                <div class="col-sm-3 no-padding">
+                    <div class="col-sm-12">
+                        <b>Ref No.:</b>
+                    </div>
+                    <div class="col-sm-12">
+                        <a matTooltip="Project properties" target="_blank">{{scheduledActionDetails.QuoteNo}}</a>
+
+                        &nbsp;&nbsp;&nbsp;
+
+
+
+                    </div>
+                </div>
+
+                <div class="col-sm-3 no-padding">
+                    <div class="col-sm-12">
+                        <b>Site:</b>
+                    </div>
+                    <div class="col-sm-12">
+                        <a *ngIf="lat && lng" class="anchor" target="_blank">{{scheduledActionDetails.SiteName}}</a>
+                        <a *ngIf="!lat || !lng" class="no-anchor">{{scheduledActionDetails.SiteName}}</a>
+                        &nbsp;
+
+                    </div>
+                </div>
+                <div class="col-sm-3 no-padding">
+                    <div class="col-sm-12">
+                        <b>SOW:</b>
+                    </div>
+                    <div class="col-sm-12">
+                        <a target="_blank">{{scheduledActionDetails.SowName}}</a>
+
+                    </div>
+                </div>
+                <div class="col-sm-3 no-padding">
+                    <div class="col-sm-12">
+                        <b>Task:</b>
+                    </div>
+                    <div class="col-sm-12">
+                        {{scheduledActionDetails.TaskName}}
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:10px">
+
+                <div class="col-sm-3 no-padding">
+                    <div class="col-sm-12">
+                        <b>Action:</b>
+                    </div>
+                    <div class="col-sm-12">
+                        <span class="control-label">{{scheduledActionDetails.ActionName}}</span>
+                        &nbsp;&nbsp;
+
+
+                        <a matTooltip="Click to View Document" target="_blank" class="pull-right">
+                            <i class="fas fa-folder-open"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-3 no-padding">
+                    <div class="col-sm-12">
+                        <b>Project Manager:</b>
+                    </div>
+                    <div class="col-sm-12">
+                        {{scheduledActionDetails.ProjectManagerName}}
+                    </div>
+                </div>
+
+                <div class="col-sm-3 no-padding">
+                    <div class="col-sm-12">
+                        <b>Job Code (Title):</b>
+                    </div>
+                    <div class="col-sm-12">
+                        <mat-select class="form-control" [(ngModel)]="scheduledActionDetails.JobCodeId"
+                            placeholder="Job Code" (selectionChange)="jobCodeChange($event.value)">
+                            <mat-optgroup *ngFor="let group of scheduledActionDetails.AllJobCodes"
+                                [label]="group.JobCodeCategory">
+                                <mat-option *ngFor="let item of group.JobCodes" [value]="item.jobCodeId">
+                                    {{item.jobCode}} ({{item.jobCodeTitle}})</mat-option>
+                            </mat-optgroup>
+                        </mat-select>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="row" style="margin-top:10px">
+                <div class="col-sm-3 no-padding">
+                    <div class="col-sm-12">
+                        <b>Created By:</b>
+                    </div>
+                    <div class="col-sm-12">
+                        {{scheduledActionDetails.CreatedBy}}
+                    </div>
+                </div>
+                <div class="col-sm-3 no-padding">
+                    <div class="col-sm-12">
+                        <b>Created On:</b>
+                    </div>
+                    <div class="col-sm-12">
+                        {{scheduledActionDetails.RecDate}}
+                    </div>
+                </div>
+               
+                <div class="col-sm-3 no-padding">
+                    <div class="col-sm-12">
+                        <b class="add-member-label">Scheduled Date: </b>
+                    </div>
+                    <div class="col-sm-12">
+
+                        <input type="date" class="form-control">
+                    </div>
+                </div>
+                <div class="col-sm-3 no-padding">
+                    <div class="col-sm-12">
+                        <b>Assigned To: </b>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-10 no-padding">
+                            <mat-select class='form-control' [(ngModel)]="assignedTo" placeholder="--Select User --">
+                                <mat-option *ngFor="let user of users" [value]="user.userId">
+                                    {{user.userName}}</mat-option>
+                            </mat-select>
+                        </div>
+                        <div class="col-sm-2 no-padding">
+                            <a class="edit-icon pull-right" [ngClass]="{'disable-custom': assignedTo == null}"
+                                (click)="getActionsByUserSchDate(assignedTo, currentDate,users)"
+                                style="margin-left: 0px!important;margin-right: 0px!important">
+                                <i class="fas fa-info-circle" style="color:#237ad9; font-size: 19px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row margin-top-10">
+                <div class="col-sm-3 no-padding">
+                    <div class="col-sm-12">
+                        <b>Assigned By:</b>
+                    </div>
+                    <div class="col-sm-12">
+                        {{scheduledActionDetails.AssignedByUserName}}
+                    </div>
+                </div>
+                <div class="col-sm-3 no-padding">
+                    <div class="col-sm-12">
+                        <b>Assigned On:</b>
+                    </div>
+                    <div class="col-sm-12">
+                        {{(scheduledActionDetails.AssignedOnDate == null) }}
+                    </div>
+                </div>
+
+                <div class="col-sm-3 no-padding">
+                    <div class="col-sm-12">
+                        <b>Status:</b>
+                    </div>
+                    <div class="col-sm-12">
+                        {{scheduledActionDetails.Status}}
+                    </div>
+                </div>
+                <div class="col-sm-3 no-padding">
+                    <div class="col-sm-12">
+                        <b>Split With (Assigned Hours):</b>
+                    </div>
+                    <div class="col-sm-12">
+                        <span *ngIf="splitWithUsers == null || splitWithUsers.length == 0">-</span>
+                        <span *ngIf="splitWithUsers != null && splitWithUsers.length > 0">
+                            <p *ngFor="let user of splitWithUsers" style="margin: 0px">{{user.UserName}}
+                                ({{user.userAssignedHours}})</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-sm-3 no-padding">
+                    <div class="col-sm-12">
+                        <b>Due Date & Urgency:</b>
+                    </div>
+                    <div class="col-sm-12">
+                        <a class="anchor">
+                            {{(scheduledActionDetails.DueDate != null) ? (scheduledActionDetails.DueDate | date :
+                            'y-MM-dd') : 'Pending'}}
+
+                        </a>
+
+                    </div>
+                </div>
+                <div class="col-sm-3 no-padding"
+                    *ngIf="timehseetStatus == 'Completed' || timehseetStatus == 'In Progress'">
+                    <div class="col-sm-12">
+                        <b>Action Status:</b>
+                    </div>
+                    <div class="col-sm-12">
+                        {{timehseetStatus}}&nbsp;({{scheduledActionDetails.RemainingHours != null ?
+                        scheduledActionDetails.RemainingHours.toFixed(2) : '-'}})
+                    </div>
+                </div>
+                <div class="col-sm-3 no-padding">
+                    <div class="col-sm-12">
+                        <b class="add-member-label">Planned Hours: </b>
+                    </div>
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control col-sm-8"
+                            [(ngModel)]="scheduledActionDetails.PlannedHours" placeholder="Planned Hours">
+
+                    </div>
+                </div>
+
+                <div class="col-sm-3 no-padding">
+                    <div class="col-sm-12">
+                        <b>Assigned Hours:</b>
+                    </div>
+                    <div class="col-sm-12">
+                        {{scheduledActionDetails.AssignedHours.toFixed(2)}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3 margin-top-10">
+                    <div class="row">
+                        <label class="col-sm-12 control-label">Remedial Team Member: </label>
+                       
+                    </div>
+                </div>
+                <div class="col-sm-8 margin-top-10">
+                    <div class="row">
+                        <label class="col-sm-12 control-label">Preferred Team Members: </label>
+                      
+
+                        <mat-form-field class="col-sm-12" style="bottom: 18px;"
+                            *ngIf="scheduledActionDetails.IsPreferred">
+                            <mat-chip-list #chipList cdkDropList cdkDropListOrientation="horizontal"
+                                [ngClass]="{'disable-custom':isDisabled}">
+                                <mat-chip cdkDrag *ngFor="let member of preferredMembers; let i = index;"
+                                    [removable]="true" class="l-orange" (removed)="remove(i)">
+
+                                    <mat-icon matChipRemove style="color:red">cancel</mat-icon>
+                                </mat-chip>
+                                <input #memberInput [formControl]="preferredMembersCtrl" [matAutocomplete]="auto"
+                                    [disabled]="preferredMembers.length == 3" [ngClass]="{'disable-custom':isDisabled}">
+                            </mat-chip-list>
+                            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event);">
+                                <mat-option *ngFor="let user of filteredUsers | async"
+                                    [disabled]="checkCurrent(user.userId)" [value]="user.userId">
+                                    {{user.userName + ' '+ user.aliasName}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <mat-error class="col-sm-12" style="bottom: 29px;"
+                            *ngIf="preferredMembers.length == 0 && scheduledActionDetails.IsPreferred">
+                            Preferred team members are required
+                        </mat-error>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 no-padding" style="margin-top: 10px;">
+                <div class="pull-right">
+                    <button mat-raised-button class="btn-default" matStepperNext>
+                        <mat-icon>arrow_forward</mat-icon> &nbsp;Next
+                    </button>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Action Specific History</ng-template>
+            <div class="col-sm-12 row" style="background: #007ad91f; margin-top:10px">
+                <div class="col-sm-12 row no-padding" style="margin-top:10px;">
+                    <div class="col-sm-3 row">
+                        <div class="col-sm-6 no-padding">
+                            <b>Ref No.:</b>
+                        </div>
+                        <div class="col-sm-6 no-padding">
+                            {{scheduledActionDetails.QuoteNo}}
+                        </div>
+                    </div>
+                    <div class="col-sm-3 row">
+                        <div class="col-sm-6 no-padding">
+                            <b>Site:</b>
+                        </div>
+                        <div class="col-sm-6 no-padding">
+                            {{scheduledActionDetails.SiteName}}
+                        </div>
+                    </div>
+                    <div class="col-sm-3 row">
+                        <div class="col-sm-6 no-padding">
+                            <b>SOW:</b>
+                        </div>
+                        <div class="col-sm-6 no-padding">
+                            {{scheduledActionDetails.SowName}}
+                        </div>
+                    </div>
+                    <div class="col-sm-3 row">
+                        <div class="col-sm-6 no-padding">
+                            <b>Task:</b>
+                        </div>
+                        <div class="col-sm-6 no-padding">
+                            {{scheduledActionDetails.TaskName}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 row no-padding" style="margin-top:10px">
+                    <div class="col-sm-3 row">
+                        <div class="col-sm-6 no-padding">
+                            <b>Action:</b>
+                        </div>
+                        <div class="col-sm-6 no-padding">
+                            {{scheduledActionDetails.ActionName}}
+                        </div>
+                    </div>
+                    <div class="col-sm-3 row">
+                        <div class="col-sm-6 no-padding">
+                            <b>Job Code (Title):</b>
+                        </div>
+                        <div class="col-sm-6 no-padding">
+                            {{scheduledActionDetails.JobCode}} ({{scheduledActionDetails.JobCodeTitle}})
+                        </div>
+                    </div>
+                    <div class="col-sm-3 row">
+                        <div class="col-sm-6 no-padding">
+                            <b>Planned Hours:</b>
+                        </div>
+                        <div class="col-sm-6 no-padding">
+                            {{scheduledActionDetails.PlannedHours ? (scheduledActionDetails.PlannedHours *
+                            1).toFixed(2) : '0.00'}}
+                        </div>
+                    </div>
+                    <div class="col-sm-3 row">
+                        <div class="col-sm-6 no-padding">
+                            <b>Due Date:</b>
+                        </div>
+                        <div class="col-sm-6 no-padding">
+                            {{scheduledActionDetails.DueDate | date : 'y-MM-dd'}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="table-responsive w-100" style="padding: 10px 14px 0 14px!important; max-height: 200px;">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead class="tbl-head">
+                            <tr>
+                                <th rowspan="2" style="vertical-align: middle;">Scheduled Date</th>
+                                <th rowspan="2" style="vertical-align: middle;">Assigned To</th>
+                                <th colspan="4" style="vertical-align: middle;" class="text-center">Hours</th>
+                                <th rowspan="2" style="vertical-align: middle;">Status</th>
+                                <th rowspan="2" style="vertical-align: middle;">Remarks</th>
+                                <th rowspan="2" style="vertical-align: middle;">Updated By</th>
+                                <th rowspan="2" style="vertical-align: middle;">Updated On</th>
+                            </tr>
+                            <tr>
+                                <th style="vertical-align: middle;" class="text-center">Planned</th>
+                                <th style="vertical-align: middle;" class="text-center">Assigned</th>
+                                <th style="vertical-align: middle;" class="text-center">Worked</th>
+                                <th style="vertical-align: middle;" class="text-center">Remaining</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of log">
+                                <td>{{item.ScheduledDate ? (item.ScheduledDate | date : 'y-MM-dd') : '-'}}</td>
+                                <td>{{item.AssignedToUserName ? item.AssignedToUserName : '-'}}</td>
+                                <td class="text-center">
+                                    {{item.PlannedHours == null ? '0.00' : item.PlannedHours.toFixed(2)}}</td>
+                                <td class="text-center">
+                                    {{item.AssignedHours == null ? '0.00' : item.AssignedHours.toFixed(2) }}</td>
+                                <td class="text-center">
+                                    {{item.WorkedHours == null ? '0.00' : item.WorkedHours.toFixed(2)}}</td>
+                                <td class="text-center">
+                                    {{item.RemainingHours == null ? '-' : item.RemainingHours.toFixed(2)}}</td>
+                                <td>{{(item.Status == null || item.Status == '') ? '-' : item.Status}}</td>
+                                <td>{{(item.Remarks == null || item.Remarks == '') ? '-' : (item.Remarks|
+                                    slice:0:55)}}<a *ngIf="item.Remarks != null && item.Remarks.length > 55"
+                                        class="anchor" mwlConfirmationPopover popoverTitle="Remarks"
+                                        hideCancelButton="true" hideConfirmButton="true" closeOnOutsideClick="true"
+                                        appendToBody="true" placement="left">...view more
+                                    </a></td>
+                                <td>{{item.CreatedByUserName}}</td>
+                                <td>{{item.CreatedDate | date : 'y-MM-dd, h:mm a'}}</td>
+                            </tr>
+                        </tbody>
+                        <td *ngIf="log.length == 0" colspan="10" style="text-align: center !important"> No data
+                            available </td>
+                    </table>
+                </div>
+            </div>
+            <div class="col-sm-12 no-padding" style="margin-top: 10px;">
+                <div class="pull-right">
+                    <button mat-raised-button class="btn-default" type="button" matStepperPrevious>
+                        <mat-icon>arrow_back</mat-icon>&nbsp;Back
+                    </button>
+                </div>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>
+<mat-dialog-actions align="start" class="pull-right" style="margin-left: 800px;">
+    <button mat-raised-button class="btn-default" type="button" (click)="close()">
+        <mat-icon>cancel</mat-icon>&nbsp;Close
+    </button>
+    <button *ngIf="!isDisabled" mat-raised-button class="btn-primary" type="button" (click)="assignAction()">
+        <mat-icon>send</mat-icon>&nbsp;
+        Submit
+    </button>
+</mat-dialog-actions>
+

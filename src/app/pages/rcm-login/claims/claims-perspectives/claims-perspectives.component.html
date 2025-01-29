@@ -1,0 +1,27 @@
+<!-- Created by vineeth kumar -->
+<!-- created dialog box for claims-->
+
+<div style="background-color: rgb(73, 128, 150); color: white; text-align: center;">
+    <h1 mat-dialog-title style="color: white">Perspectives</h1>
+</div>
+<div class="col-sm-12">
+    <p class="name">Please select the relevant perspectives as per your needs</p>
+    <div mat-dialog-content style="overflow: hidden !important">
+        <div class="col-sm-6" *ngFor="let role of displayedRoles; let i = index" style="margin-bottom: 8px;">
+            <mat-checkbox></mat-checkbox>
+            <b>{{ role.role }}</b>
+        </div>
+    </div>
+
+    <mat-dialog-actions align="end">
+        <div style="margin-right: 10px; margin-top: -20px">
+            <button mat-raised-button style="background-color: green; color:white">
+                <mat-icon>save</mat-icon>Save
+            </button>
+            <button mat-raised-button class="add-dark-hover btn-default" style="color: red;" (click)="close()">
+                <mat-icon>closed</mat-icon>
+                Close
+            </button>
+        </div>
+    </mat-dialog-actions>
+</div>

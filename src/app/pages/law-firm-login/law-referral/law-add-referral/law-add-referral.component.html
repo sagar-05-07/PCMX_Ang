@@ -1,0 +1,588 @@
+<!--This page is used to add or edit accounts-->
+<h1
+  style="background-color: rgb(73, 128, 150); color: white; text-align: center"
+  mat-dialog-title
+>
+  <span *ngIf="!account">Add</span><span *ngIf="account">Edit</span> Patient
+</h1>
+
+<mat-horizontal-stepper #stepper>
+  <mat-step>
+    <div mat-dialog-content>
+      <form class="form-horizontal" novalidate>
+        <ng-template matStepLabel>Overview</ng-template>
+        <div class="col-sm-6">
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-4">
+              <label class="control-label add-member-label required"
+                >Patient ID :</label
+              >
+            </div>
+            <div class="col-sm-7">
+              <mat-select
+                class="form-control bac"
+                placeholder="Select Patient ID"
+              >
+                <mat-option [value]="'New York'">10025423</mat-option>
+                <mat-option [value]="'Los Angeles'">10025424</mat-option>
+                <mat-option [value]="'Chicago'">10025425</mat-option>
+                <mat-option [value]="'Houston'">10025426</mat-option>
+                <mat-option [value]="'Phoenix'">10025427</mat-option>
+                <mat-option [value]="'Philadelphia'">10025428</mat-option>
+                <mat-option [value]="'San Antonio'">10025429</mat-option>
+                <mat-option [value]="'San Diego'">10025430</mat-option>
+              </mat-select>
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-4">
+              <label class="control-label add-member-label required"
+                >Date of Injury :</label
+              >
+            </div>
+            <div class="col-sm-7">
+              <input
+                type="date"
+                class="form-control bac"
+                placeholder="Enter First Name"
+                maxlength="100"
+                minlength="2"
+                onDrag="return false"
+                onDrop="return false"
+                required
+              />
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-4">
+              <label class="control-label add-member-label required"
+                >Order Type :</label
+              >
+            </div>
+            <div class="col-sm-7">
+              <mat-select
+                class="form-control bac"
+                placeholder="Select Order Type"
+              >
+                <mat-option [value]="'Clinical'">Clinical</mat-option>
+                <mat-option [value]="'Lab Test'">Lab Test</mat-option>
+                <mat-option [value]="'Imaging Request'"
+                  >Imaging Request</mat-option
+                >
+                <mat-option [value]="'Medication Order'"
+                  >Medication Order</mat-option
+                >
+                <mat-option [value]="'Discharge Summary'"
+                  >Discharge Summary</mat-option
+                >
+                <mat-option [value]="'Insurance Authorization'"
+                  >Insurance Authorization</mat-option
+                >
+                <mat-option [value]="'Patient Admission'"
+                  >Patient Admission</mat-option
+                >
+                <mat-option [value]="'Medical Equipment Request'"
+                  >Medical Equipment Request</mat-option
+                >
+                <mat-option [value]="'Pharmacy Refill Order'"
+                  >Pharmacy Refill Order</mat-option
+                >
+              </mat-select>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-4">
+              <label class="control-label add-member-label required"
+                >Case Type :</label
+              >
+            </div>
+            <div class="col-sm-7">
+              <mat-select
+                class="form-control bac"
+                placeholder="Select Case Type"
+              >
+                <mat-option [value]="'Injury'">Injury</mat-option>
+                <mat-option [value]="'Malpractice'">Malpractice</mat-option>
+                <mat-option [value]="'Worker’s Compensation'"
+                  >Worker’s Compensation</mat-option
+                >
+                <mat-option [value]="'Disability Claim'"
+                  >Disability Claim</mat-option
+                >
+                <mat-option [value]="'Civil Dispute'">Civil Dispute</mat-option>
+                <mat-option [value]="'Criminal Case'">Criminal Case</mat-option>
+                <mat-option [value]="'Bankruptcy'">Bankruptcy</mat-option>
+                <mat-option [value]="'Health Insurance Claim'"
+                  >Health Insurance Claim</mat-option
+                >
+                <mat-option [value]="'Divorce'">Divorce</mat-option>
+                <mat-option [value]="'Employment Dispute'"
+                  >Employment Dispute</mat-option
+                >
+              </mat-select>
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-4">
+              <label class="control-label add-member-label required"
+                >Priority :</label
+              >
+            </div>
+            <div class="col-sm-7">
+              <mat-select
+                class="form-control bac"
+                placeholder="Select Priority"
+              >
+                <mat-option [value]="'California'">Routine</mat-option>
+                <mat-option [value]="'Texas'">Start</mat-option>
+              </mat-select>
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-4">
+              <label class="control-label add-member-label required"
+                >Status :</label
+              >
+            </div>
+            <div class="col-sm-7">
+              <mat-select class="form-control bac" placeholder="Select Status">
+                <mat-option [value]="'New York'"
+                  >New / Pending Verification</mat-option
+                >
+                <mat-option [value]="'Los Angeles'"
+                  >Verified / Pending Verification</mat-option
+                >
+                <mat-option [value]="'Chicago'"
+                  >Authotized / Pending Schedule</mat-option
+                >
+                <mat-option [value]="'Houston'">Denied</mat-option>
+              </mat-select>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <mat-dialog-actions align="end">
+      <button
+        matStepperNext
+        mat-raised-button
+        style="background-color: green; color: white"
+      >
+        Proceed
+      </button>
+      <button
+        mat-raised-button
+        class="add-dark-hover btn-default"
+        style="background-color: gray; color: red"
+        (click)="close()"
+      >
+        Cancel
+      </button>
+    </mat-dialog-actions>
+  </mat-step>
+  <mat-step>
+    <div mat-dialog-content>
+      <form class="form-horizontal" novalidate>
+        <ng-template matStepLabel>Legal</ng-template>
+        <div class="col-sm-10">
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-3">
+              <label class="control-label add-member-label required"
+                >Attorny :</label
+              >
+            </div>
+            <div class="col-sm-8">
+              <mat-select
+                class="form-control bac"
+                placeholder="Select Attorney"
+              >
+                <mat-option [value]="'John Doe'">John Doe</mat-option>
+                <mat-option [value]="'Sarah Johnson'">Sarah Johnson</mat-option>
+                <mat-option [value]="'Michael Anderson'"
+                  >Michael Anderson</mat-option
+                >
+                <mat-option [value]="'Emily Roberts'">Emily Roberts</mat-option>
+                <mat-option [value]="'David Brown'">David Brown</mat-option>
+                <mat-option [value]="'Jennifer Smith'"
+                  >Jennifer Smith</mat-option
+                >
+                <mat-option [value]="'Christopher Miller'"
+                  >Christopher Miller</mat-option
+                >
+                <mat-option [value]="'Elizabeth Davis'"
+                  >Elizabeth Davis</mat-option
+                >
+                <mat-option [value]="'William Wilson'"
+                  >William Wilson</mat-option
+                >
+              </mat-select>
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-3">
+              <label class="control-label add-member-label required"
+                >Paralegal :</label
+              >
+            </div>
+            <div class="col-sm-8">
+              <mat-select
+                class="form-control bac"
+                placeholder="Select Paralegal"
+              >
+                <mat-option [value]="'Katherine Morgan'"
+                  >Katherine Morgan</mat-option
+                >
+                <mat-option [value]="'Ethan Clark'">Ethan Clark</mat-option>
+                <mat-option [value]="'Olivia Bennett'"
+                  >Olivia Bennett</mat-option
+                >
+                <mat-option [value]="'Henry Carter'">Henry Carter</mat-option>
+                <mat-option [value]="'Sophia Gray'">Sophia Gray</mat-option>
+                <mat-option [value]="'Emma Johnson'">Emma Johnson</mat-option>
+                <mat-option [value]="'Jack Davis'">Jack Davis</mat-option>
+                <mat-option [value]="'Mia Thompson'">Mia Thompson</mat-option>
+                <mat-option [value]="'Lily White'">Lily White</mat-option>
+                <mat-option [value]="'Noah Miller'">Noah Miller</mat-option>
+              </mat-select>
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-3">
+              <label class="control-label add-member-label required"
+                >Other :</label
+              >
+            </div>
+            <div class="col-sm-8">
+              <mat-select class="form-control bac" placeholder="Select Role">
+                <mat-option [value]="'Case Researcher'"
+                  >Case Researcher</mat-option
+                >
+                <mat-option [value]="'Legal Consultant'"
+                  >Legal Consultant</mat-option
+                >
+                <mat-option [value]="'Medical Expert'"
+                  >Medical Expert</mat-option
+                >
+                <mat-option [value]="'Document Specialist'"
+                  >Document Specialist</mat-option
+                >
+                <mat-option [value]="'Forensic Analyst'"
+                  >Forensic Analyst</mat-option
+                >
+                <mat-option [value]="'Translator'">Translator</mat-option>
+                <mat-option [value]="'Mediator'">Mediator</mat-option>
+                <mat-option [value]="'Notary Public'">Notary Public</mat-option>
+                <mat-option [value]="'Trial Technician'"
+                  >Trial Technician</mat-option
+                >
+                <mat-option [value]="'Litigation Support Specialist'"
+                  >Litigation Support Specialist</mat-option
+                >
+              </mat-select>
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-3">
+              <label class="control-label add-member-label required mt-5"
+                >Remarks :</label
+              >
+            </div>
+            <div class="col-sm-8">
+              <textarea
+                type="text"
+                class="form-control bac"
+                style="height: 80px"
+                placeholder="Enter Remarks"
+                required
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <mat-dialog-actions align="end">
+      <button
+        matStepperNext
+        mat-raised-button
+        style="background-color: green; color: white"
+      >
+        Proceed
+      </button>
+      <button
+        mat-raised-button
+        class="add-dark-hover btn-default"
+        style="background-color: gray; color: red"
+        (click)="close()"
+      >
+        Cancel
+      </button>
+    </mat-dialog-actions>
+  </mat-step>
+  <mat-step>
+    <div mat-dialog-content>
+      <form class="form-horizontal" novalidate>
+        <ng-template matStepLabel>Referral</ng-template>
+        <div class="col-sm-10">
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-4">
+              <label class="control-label add-member-label required mt-5"
+                >Referral To :</label
+              >
+            </div>
+            <div class="col-sm-8">
+              <textarea
+                type="text"
+                class="form-control bac"
+                style="height: 80px"
+                placeholder="Enter Referral To"
+                required
+              ></textarea>
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-4">
+              <label class="control-label add-member-label required mt-5"
+                >Referral From :</label
+              >
+            </div>
+            <div class="col-sm-8">
+              <textarea
+                type="text"
+                class="form-control bac"
+                style="height: 80px"
+                placeholder="Enter Referral From"
+                required
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <mat-dialog-actions align="end">
+      <button
+        matStepperNext
+        mat-raised-button
+        style="background-color: green; color: white"
+      >
+        Proceed
+      </button>
+      <button
+        mat-raised-button
+        class="add-dark-hover btn-default"
+        style="background-color: gray; color: red"
+        (click)="close()"
+      >
+        Cancel
+      </button>
+    </mat-dialog-actions>
+  </mat-step>
+
+  <mat-step>
+    <div mat-dialog-content>
+      <form class="form-horizontal" novalidate>
+        <ng-template matStepLabel>Diagnosis</ng-template>
+        <div class="col-sm-10">
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-3">
+              <label class="control-label add-member-label required"
+                >Specialty :</label
+              >
+            </div>
+            <div class="col-sm-8">
+              <mat-select
+                class="form-control bac"
+                placeholder="Select Specialty"
+              >
+                <mat-option [value]="'Medical Malpractice'"
+                  >Medical Malpractice</mat-option
+                >
+                <mat-option [value]="'Personal Injury'"
+                  >Personal Injury</mat-option
+                >
+                <mat-option [value]="'Workers Compensation'"
+                  >Workers' Compensation</mat-option
+                >
+                <mat-option [value]="'Disability Claims'"
+                  >Disability Claims</mat-option
+                >
+                <mat-option [value]="'Health Law'">Health Law</mat-option>
+                <mat-option [value]="'Pharmaceutical Law'"
+                  >Pharmaceutical Law</mat-option
+                >
+                <mat-option [value]="'Nursing Home Abuse'"
+                  >Nursing Home Abuse</mat-option
+                >
+                <mat-option [value]="'Product Liability'"
+                  >Product Liability</mat-option
+                >
+                <mat-option [value]="'Medical Ethics and Bioethics'"
+                  >Medical Ethics and Bioethics</mat-option
+                >
+                <mat-option [value]="'Mental Health Law'"
+                  >Mental Health Law</mat-option
+                >
+              </mat-select>
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 12px">
+            <div class="col-sm-3">
+              <label class="control-label add-member-label required mt-5"
+                >Diagnosis :</label
+              >
+            </div>
+            <div class="col-sm-8">
+              <textarea
+                type="text"
+                class="form-control bac"
+                style="height: 80px"
+                placeholder="Enter Diagnosis"
+                required
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <mat-dialog-actions align="end">
+      <button
+        mat-raised-button
+        (click)="close()"
+        style="background-color: green; color: white"
+      >
+        <span *ngIf="!account"> Submit</span><span *ngIf="account">Update</span>
+      </button>
+      <button
+        mat-raised-button
+        class="add-dark-hover btn-default"
+        style="background-color: gray; color: red"
+        (click)="close()"
+      >
+        Cancel
+      </button>
+    </mat-dialog-actions>
+  </mat-step>
+
+  <mat-step>
+    <div mat-dialog-content>
+      <form class="form-horizontal" novalidate>
+        <ng-template matStepLabel>Document</ng-template>
+        <div class="col-sm-12">
+          <div class="row nopadding" style="margin-bottom: 12px">
+            <!-- text input -->
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2">
+              <label class="add-member-label lblfnt mt5 required"
+                >Doc Title:</label
+              >
+            </div>
+            <div class="col-sm-7">
+              <div>
+                <input
+                  class="form-control name"
+                  maxlength="50"
+                  placeholder="Enter Document Title"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row nopadding" style="margin-bottom: 12px">
+            <!-- text input -->
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2">
+              <label class="add-member-label required">Upload Doc:</label>
+            </div>
+            <div class="col-sm-8">
+              <div class="col-sm-6">
+                <input
+                  class="form-control name"
+                  placeholder="No file chosen"
+                  type="file"
+                  value=""
+                />
+              </div>
+              <div class="col-sm-3">
+                <button
+                  mat-raised-button
+                  class="pull-right"
+                  (click)="close()"
+                  style="background-color: green; color: white"
+                >
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Creating Table  -->
+          <div class="col-sm-12">
+            <div class="table-responsive" style="margin-left: 30px">
+              <table id="example2" class="table table-bordered">
+                <thead class="tbl-head">
+                  <tr>
+                    <th>Document Title</th>
+                    <th class="text-center">Download</th>
+                    <th class="text-center">Actions</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor="let applicant of users">
+                    <td>{{ applicant.type }}</td>
+                    <td
+                      class="text-center"
+                      matTooltip="Download"
+                      style="color: blue; cursor: pointer"
+                    >
+                      <mat-icon>cloud_download</mat-icon>
+                    </td>
+                    <td class="text-center editDel">
+                      <a
+                        style="cursor: pointer; margin-right: 10px"
+                        matTooltip="Edit"
+                      >
+                        <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                      </a>
+                      <a
+                        ><i
+                          class="fa fa-trash red"
+                          matTooltip="Delete"
+                          style="cursor: pointer"
+                        ></i
+                      ></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <mat-paginator
+                [length]="totalSize"
+                [pageIndex]="currentPage"
+                [pageSizeOptions]="[5, 10, 25, 50, 100]"
+                showFirstLastButtons
+              >
+              </mat-paginator>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <mat-dialog-actions align="end">
+      <!-- <button matStepperNext mat-raised-button style="background-color: green; color: white;">Proceed</button> -->
+      <button
+        mat-raised-button
+        class="add-dark-hover btn-default"
+        style="background-color: gray; color: red"
+        (click)="close()"
+      >
+        Cancel
+      </button>
+    </mat-dialog-actions>
+  </mat-step>
+</mat-horizontal-stepper>

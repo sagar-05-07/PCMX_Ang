@@ -1,0 +1,58 @@
+<h1 style="font-weight: 300; margin-bottom: 10px !important;background-color:#3e3e3e;text-align: center;color: white;"
+    mat-dialog-title>
+    <span>Upload Documents(Provider: Memorial Hospitals)</span>
+
+</h1>
+<div class="col-sm-12 upload-container">
+    <div class="col-sm-6">
+        <h4>AUTH Form (Mandatory) <a
+                style="margin-left: 97px;color: blue;cursor: pointer;font-size: 17px;">View</a><mat-icon
+                style="margin-right: 6px;color: red;cursor: pointer;">delete</mat-icon></h4>
+        <div class="upload-box auth-form">
+
+
+            <div class="dropzone" (drop)="onDrop($event, 'auth')" (dragover)="onDragOver($event)"
+                (dragleave)="onDragLeave($event)">
+                <p>Drag and drop files here</p>
+                <input type="file" multiple (change)="onFileSelected($event, 'auth')" style="display: none;" #authInput>
+                <button type="button" class="btn btn-primary" (click)="authInput.click()">Browse Files</button>
+            </div>
+            <ul *ngIf="authFiles.length > 0">
+                <li *ngFor="let file of authFiles">{{ file.name }}</li>
+            </ul>
+        </div>
+    </div>
+    <!-- AUTH Form (Mandatory) -->
+
+    <div class="col-sm-6">
+        <h4>Affidavit Template (Optional) <a
+                style="margin-left: 73px;color: blue;cursor: pointer;font-size: 17px;">View</a><mat-icon
+                style="margin-right: 6px;color: red;cursor: pointer;">delete</mat-icon></h4>
+
+        <div class="upload-box affidavit-template">
+
+            <div class="actions">
+                <a href="#" *ngIf="affidavitFiles.length > 0">View</a>
+                <button *ngIf="affidavitFiles.length > 0" (click)="removeFiles('affidavit')">🗑️</button>
+            </div>
+            <div class="dropzone" (drop)="onDrop($event, 'affidavit')" (dragover)="onDragOver($event)"
+                (dragleave)="onDragLeave($event)">
+                <p>Drag and drop files here</p>
+                <input type="file" multiple (change)="onFileSelected($event, 'affidavit')" style="display: none;"
+                    #affidavitInput>
+                <button type="button" class="btn btn-primary" (click)="affidavitInput.click()">Browse Files</button>
+            </div>
+            <ul *ngIf="affidavitFiles.length > 0">
+                <li *ngFor="let file of affidavitFiles">{{ file.name }}</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Affidavit Template (Optional) -->
+
+</div>
+
+<!-- Footer buttons -->
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="close()">Close</button>
+    <button type="button" class="btn btn-primary" (click)="uploadFiles()">Upload</button>
+</div>
