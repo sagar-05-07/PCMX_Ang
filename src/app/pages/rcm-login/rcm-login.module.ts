@@ -59,6 +59,7 @@ import { PaymentsPerspectivesComponent } from './rcm-payments/payments-perspecti
 import { ReferralvsvisitsComponent } from './patients/referralvsvisits/referralvsvisits.component';
 import { VisitsvsclaimsComponent } from './patients/visitsvsclaims/visitsvsclaims.component';
 import { ClaimsvspaidComponent } from './patients/claimsvspaid/claimsvspaid.component';
+import { ReferralsfilterComponent } from './referrals/referralsfilter/referralsfilter.component';
 
 const routes: Routes = [
 
@@ -355,7 +356,8 @@ const routes: Routes = [
         PaymentsPerspectivesComponent,
         ReferralvsvisitsComponent,
         VisitsvsclaimsComponent,
-        ClaimsvspaidComponent
+        ClaimsvspaidComponent,
+        ReferralsfilterComponent
     ]
 })
 export class RcmLogInModule { }
