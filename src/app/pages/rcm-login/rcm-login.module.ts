@@ -191,10 +191,10 @@ const routes: Routes = [
         data: { breadcrumb: 'Payments', description: 'This page is used to respareas' }
     },
     {
-        path: 'documents',
+        path: 'document',
         component: RcmDocumentComponent,
         pathMatch: 'full',
-        data: { breadcrumb: 'Document', description: 'This page is used to respareas' }
+        data: { breadcrumb: 'Documents', description: 'This page is used to respareas' }
     },
     {
         path: 'settlement',
