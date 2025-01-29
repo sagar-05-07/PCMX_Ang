@@ -25,7 +25,7 @@ const routes: Routes = [
         path: 'autometed-eod',
         component: AutomaticAodReportComponent,
         pathMatch: 'full',
-        data: { breadcrumb: 'Automated EOD Report', description: 'Statistics, Charts and Metrics of activity, trend and distribution.' }
+        data: { breadcrumb: 'EOD Report', description: 'Statistics, Charts and Metrics of activity, trend and distribution.' }
     },
     {
         path: 'case-report',
