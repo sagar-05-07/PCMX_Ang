@@ -9,6 +9,7 @@ import { AddAodComponent } from './add-aod/add-aod.component';
   styleUrl: './automatic-aod-report.component.scss'
 })
 export class AutomaticAodReportComponent {
+  
 
 
   filterToggle2: boolean = false;
