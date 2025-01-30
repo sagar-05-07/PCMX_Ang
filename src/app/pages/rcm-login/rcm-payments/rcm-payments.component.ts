@@ -34,6 +34,62 @@ export class RcmPaymentsComponent {
 
   showCard: boolean;
 
+
+  selectedPatientType: string | null = null;
+  selectedCaseType: string = '';
+  selectedCategoryType: string = '';
+  selectedOrderType: string = '';
+  selectedRefferalType: string = '';
+  selectedPaymentMode: string = '';
+  selectedReferralFrom: string = '';
+  selectedReferralTo:string='';
+  selectedVisitStatus:string='';
+  selectedAttorney:string='';
+  selectedVisitType:string='';
+  //raj
+  eventTypes: string[] = ['Carol Davis', 'Bob Johnson	', 'Alice Smith', 'Jane Roe'];
+  filteredPatientTypes: string[] = [...this.eventTypes]; 
+   // raj
+   applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase(); // Safe casting to HTMLInputElement
+    this.filteredPatientTypes = this.eventTypes.filter(eventType => eventType.toLowerCase().includes(filterValue));
+  }
+
+
+
+    selectLawFirmType: string | null = null;
+    //raj
+    eventLawFirmTypes: string[] = ['Peterson & Associates', 'Mitchell Legal Group	', 'Carter & Bennett LLP', 'Greenfield Legal Solutions'];
+    filteredLawFirmType: string[] = [...this.eventLawFirmTypes]; 
+     // raj
+     applyFilter1(event: Event): void {
+      const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase(); // Safe casting to HTMLInputElement
+      this.filteredLawFirmType = this.eventTypes.filter(eventType => eventType.toLowerCase().includes(filterValue));
+    }
+    
+    selectedRefferalFrom: string | null = null;
+    eventRefferalFrom: string[] = ['Dr. Smith', 'Dr. Johnson', 'Dr. Williams', 'Dr. Brown', 'Dr. Davis'];
+
+    filteredRefferalFrom: string[] = [...this.eventRefferalFrom]; 
+    applyFilter3(event: Event): void {
+      const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase(); // Safe casting to HTMLInputElement
+      this.filteredRefferalFrom = this.eventRefferalFrom.filter(eventRefferalFrom => eventRefferalFrom.toLowerCase().includes(filterValue));
+    }
+
+
+    selectedRefferalTo: string | null = null;
+    eventRefferalTo: string[] = ['Dr. Miller', 'Dr. Wilson', 'Dr. Moore', 'Dr. Taylor', 'Dr. Anderson'];
+
+    filteredRefferalTo: string[] = [...this.eventRefferalTo]; 
+    applyFilter4(event: Event): void {
+      const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase(); // Safe casting to HTMLInputElement
+      this.filteredRefferalTo = this.eventRefferalFrom.filter(eventRefferalTo => eventRefferalTo.toLowerCase().includes(filterValue));
+    }
+
+
+
+
+
   toggleCard() {
 
     this.showCard = !this.showCard;

@@ -42,7 +42,7 @@ export class RcmDocumentComponent {
   }
 
 
-
+  saveFilters(){}
   dataSource = [
     { workList: 'Total Referrals', volume: 120201 },
     { workList: 'Pending Verification', volume: 1875 },

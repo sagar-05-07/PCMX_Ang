@@ -264,6 +264,17 @@
                 <mat-card class="filter">
                     <mat-card-content>
                         <!-- From Year -->
+
+                        <div class="col-sm-4 row">
+                            <div class="col-sm-4 mt-2">
+                                <b>Date Type :</b>
+                            </div>
+                            <div class="col-sm-8" style="margin-left: -20px;">
+                                <input type="date" class="form-control bac" placeholder="Select Year">
+                            </div>
+                        </div>
+
+
                         <div class="col-sm-4 row">
                             <div class="col-sm-4 mt-2">
                                 <b>From Date :</b>
@@ -282,61 +293,34 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-4 row">
-                            <div class="col-sm-4 mt-2">
-                                <b>Liaison :</b>
-                            </div>
-                            <div class="col-sm-8" style="margin-left: -20px;">
-                                <mat-select class="form-control bac" placeholder="Select Class">
-                                    <mat-option value="Medical">Medical</mat-option>
-                                    <mat-option value="Surgery/Procedures">Surgery/Procedures</mat-option>
-                                    <mat-option value="Imaging">Imaging</mat-option>
-                                    <mat-option value="Ancillary">Ancillary</mat-option>
-                                    <mat-option value="FSER">FSER</mat-option>
-                                </mat-select>
-                            </div>
-                        </div>
+                        
 
                         <div class="col-sm-4 mt-3 row">
                             <div class="col-sm-4 mt-2">
-                                <b>Law Firm :</b>
+                                <b>Keyword :</b>
                             </div>
                             <div class="col-sm-8" style="margin-left: -20px;">
-                                <mat-select class="form-control bac" placeholder="Select Class">
-                                    <mat-option [value]="'1'">Peterson & Associates</mat-option>
-                                    <mat-option [value]="'1'">Mitchell Legal Group</mat-option>
-                                    <mat-option [value]="'1'">Carter & Bennett LLP</mat-option>
-                                    <mat-option [value]="'1'">Sanders & Cooper Attorneys</mat-option>
-                                    <mat-option [value]="'1'">Richardson & Harris Law</mat-option>
-                                    <mat-option [value]="'1'">Adams & Thompson Law Offices</mat-option>
-                                    <mat-option [value]="'1'">Brooks & Stevenson LLP</mat-option>
-                                    <mat-option [value]="'1'">Greenfield Legal Solutions</mat-option>
-                                </mat-select>
+                                <input type="text" class="form-control bac" placeholder="Search By Keyword">
+                                
                             </div>
                         </div>
 
                         <div class="col-sm-4 row mt-3">
                             <div class="col-sm-4 mt-2">
-                                <b>Provider:</b>
+                                <b>Context:</b>
                             </div>
                             <div class="col-sm-8" style="margin-left: -20px;">
                                 <mat-select class="form-control bac" placeholder="Select Provider">
-                                    <mat-option value="MayoClinic">Mayo Clinic</mat-option>
-                                    <mat-option value="ClevelandClinic">Cleveland Clinic</mat-option>
-                                    <mat-option value="KaiserPermanente">Kaiser Permanente</mat-option>
-                                    <mat-option value="JohnsHopkins">Johns Hopkins Medicine</mat-option>
-                                    <mat-option value="Geisinger">Geisinger Health</mat-option>
-                                    <mat-option value="PartnersHealthcare">Partners HealthCare</mat-option>
-                                    <mat-option value="MountSinai">Mount Sinai Health System</mat-option>
-                                    <mat-option value="UCLAHealth">UCLA Health</mat-option>
-                                    <mat-option value="BannerHealth">Banner Health</mat-option>
-                                    <mat-option value="MedStarHealth">MedStar Health</mat-option>
+                                    <mat-option value="Patient">Patient</mat-option>
+                                    <mat-option value="Cases">Cases</mat-option>
+                                    <mat-option value="Claims">Claims</mat-option>
+                                    <mat-option value="Visits">Visits</mat-option>
                                 </mat-select>
                             </div>
                         </div>
 
                         <!-- Actions -->
-                        <div class="col-sm-4 mt-3" style="margin-left: -44px;">
+                        <!-- <div class="col-sm-4 mt-3" style="margin-left: -44px;">
                             <button mat-raised-button style="background-color: black; color: white;" class="pull-right">
                                 <mat-icon>clear</mat-icon> Clear
                             </button>
@@ -344,7 +328,41 @@
                                 class="pull-right margin-right-10">
                                 <mat-icon>search</mat-icon> Search
                             </button>
-                        </div>
+                        </div> -->
+
+
+                        <div class="col-sm-4 mt-3" style="margin-left: 41px;">
+                            <div class="row">
+                              <div class="col-sm-9 offset-sm-3">
+                                <a (click)="filterToggle = !filterToggle" matTooltip="Close" class="pull-right"
+                                  style="font-size: 20px; cursor: pointer; margin-left: 5px">
+                                  <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                                </a>
+                  
+                                <i class="material-icons pull-right" matTooltip="Clear"
+                                  style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                                  settings_backup_restore
+                                </i>
+                  
+                                <i class="fa fa-save pull-right" matTooltip="Save" (click)="saveFilters()" style="
+                                                  font-size: 20px;
+                                                  cursor: pointer;
+                                                  margin-left: 5px;
+                                                  color: green;
+                                                " aria-hidden="true">
+                                </i>
+                  
+                                <i class="fa fa-search pull-right" matTooltip="Search" style="
+                                                  font-size: 20px;
+                                                  cursor: pointer;
+                                                  margin-left: 5px;
+                                                  color: blue;
+                                                " aria-hidden="true">
+                                </i>
+                              </div>
+                            </div>
+                          </div>
+
                     </mat-card-content>
                 </mat-card>
             </form>
