@@ -672,109 +672,267 @@
   style="margin-bottom: 10px">
   <div fxFlex="100" class="flex-p w-100">
     <form>
+      <!-- [formGroup]="filterForm" -->
       <mat-card class="filter">
         <mat-card-content>
-          <div class="col-sm-12">
+          <div class="row pl-4">
             <div class="col-sm-4">
-              <div class="col-sm-4">
-                <label class="control-label mt-2">Keyword :</label>
-              </div>
-              <div class="col-sm-8">
-                <input type="text" class="form-control" placeholder="Serch by Keywords.." />
+              <div class="row">
+                <div class="col-sm-4">
+                  <b>Patient :</b>
+                </div>
+                <div class="col-sm-7">
+                  <mat-select placeholder="--Select Patient --" [(value)]="selectedPatientType" class="form-control"
+                    multiple>
+    
+                    <mat-select-trigger>
+                      {{selectedPatientType || '--Select Patient--'}}
+                    </mat-select-trigger>
+                    <mat-form-field *ngIf="eventTypes.length > 1" appearance="fill" style="width: 100%;">
+                      <input matInput (input)="applyFilter($event)" placeholder="Search">
+                    </mat-form-field>
+                    <mat-option *ngFor="let event of filteredPatientTypes" [value]="event">
+                      {{event}}
+                    </mat-option>
+                  </mat-select>
+                </div>
               </div>
             </div>
+    
+            <div class="col-sm-4 pl-4">
+              <div class="row">
+                <div class="col-sm-4">
+                  <b>Case Type:</b>
+                </div>
+                <div class="col-sm-7">
+                  <mat-select [(value)]="selectedCaseType" placeholder="--Select Case Type--" class="form-control">
+                    <mat-option [value]="'Sub Acute'">Sub Acute</mat-option>
+                    <mat-option [value]="'Insurance'">Insurance</mat-option>
+                    <mat-option [value]="'Worker Comp'">Worker Comp</mat-option>
+                    <mat-option [value]="'Self Pay'">Self Pay</mat-option>
+                  </mat-select>
+                </div>
+              </div>
+            </div>
+    
+    
+            <div class="col-sm-4 pl-4">
+              <div class="row">
+                <div class="col-sm-4">
+                  <b>Category:</b>
+                </div>
+                <div class="col-sm-7">
+                  <mat-select [(value)]="selectedCategoryType" placeholder="--Select Category--" class="form-control">
+                    <mat-option [value]="'Personal Injury'">Personal Injury</mat-option>
+                    <mat-option [value]="'Family Law'">Family Law</mat-option>
+                    <mat-option [value]="'Criminal Defense'">Criminal Defense</mat-option>
+                    <mat-option [value]="'Contract Disputes'">Contract Disputes</mat-option>
+                    <mat-option [value]="'Property Disputes'">Property Disputes</mat-option>
+                    <mat-option [value]="'Intellectual Property'">Intellectual Property</mat-option>
+                    <mat-option [value]="'Employment Law'">Employment Law</mat-option>
+                    <mat-option [value]="'Immigration Cases'">Immigration Cases</mat-option>
+                  </mat-select>
+                </div>
+              </div>
+            </div>
+    
+    
+          </div>
+    
+          <div class="row pt-4 pl-4">
             <div class="col-sm-4">
-              <div class="col-sm-4">
-                <label class="control-label mt-2">Patient Name :</label>
-              </div>
-              <div class="col-sm-8">
-                <mat-select placeholder="Filter by Patient Name" class="form-control">
-                  <mat-option value="1">John Doe</mat-option>
-                  <mat-option value="1">Jane Smith</mat-option>
-                  <mat-option value="1">Mike Johnson</mat-option>
-                  <mat-option value="1">John Doe</mat-option>
-                  <mat-option value="1">Jane Smith</mat-option>
-                  <mat-option value="1">Mike Johnson</mat-option>
-                </mat-select>
+              <div class="row">
+                <div class="col-sm-4">
+                  <b>Order Type:</b>
+                </div>
+                <div class="col-sm-7">
+                  <mat-select [(value)]="selectedOrderType" placeholder="--Select Order Type--" class="form-control">
+                    <mat-option [value]="'Personal Injury'">Clinical</mat-option>
+                    <mat-option [value]="'Family Law'">Legal</mat-option>
+                    <mat-option [value]="'Criminal Defense'">Insurance</mat-option>
+                    <mat-option [value]="'Contract Disputes'">Clinical</mat-option>
+                    <mat-option [value]="'Property Disputes'">Medical</mat-option>    
+                  </mat-select>
+                </div>
               </div>
             </div>
+
             <div class="col-sm-4">
-              <div class="col-sm-4">
-                <label class="control-label mt-2">City :</label>
-              </div>
-              <div class="col-sm-8">
-                <mat-select placeholder="Filter by City" class="form-control">
-                  <mat-option value="1">New York</mat-option>
-                  <mat-option value="1">Los Angeles</mat-option>
-                  <mat-option value="1">Chicago</mat-option>
-                  <mat-option value="1">Houston</mat-option>
-                  <mat-option value="1">Phoenix</mat-option>
-                  <mat-option value="1">San Diego</mat-option>
-                  <mat-option value="1">Dallas</mat-option>
-                  <mat-option value="1">Austin</mat-option>
-                  <mat-option value="1">Miami</mat-option>
-                  <mat-option value="1">Seattle</mat-option>
-                </mat-select>
-              </div>
-            </div>
-            <div class="col-sm-4 mt-3">
-              <div class="col-sm-4">
-                <label class="control-label mt-2">State :</label>
-              </div>
-              <div class="col-sm-8">
-                <mat-select placeholder="Filter by State" class="form-control">
-                  <mat-option value="1">New York</mat-option>
-                  <mat-option value="1">California</mat-option>
-                  <mat-option value="1">Illinois</mat-option>
-                  <mat-option value="1">Texas</mat-option>
-                  <mat-option value="1">Arizona</mat-option>
-                  <mat-option value="1">Florida</mat-option>
-                  <mat-option value="1">Washington</mat-option>
-                </mat-select>
+              <div class="row">
+                <div class="col-sm-4">
+                  <b>Law Firm:</b>
+                </div>
+                <div class="col-sm-7">
+                  <mat-select placeholder="--Select Law Firm--" [(value)]="selectLawFirmType" class="form-control" multiple >
+                    
+                    <mat-select-trigger>
+                      {{selectLawFirmType || '--Select City--'}}
+                    </mat-select-trigger>
+                    <mat-form-field *ngIf="eventLawFirmTypes.length > 1" appearance="fill" style="width: 100%;">
+                      <input matInput (input)="applyFilter1($event)" placeholder="Search">
+                    </mat-form-field>
+                    <mat-option *ngFor="let event of filteredLawFirmType" [value]="event">
+                      {{event}}
+                    </mat-option>
+                  </mat-select>
+                </div>
               </div>
             </div>
-            <div class="col-sm-4 mt-3">
-              <div class="col-sm-4">
-                <label class="control-label mt-2">Status :</label>
-              </div>
-              <div class="col-sm-8">
-                <mat-select placeholder="Filter by Status" class="form-control">
-                  <mat-option value="1">Active</mat-option>
-                  <mat-option value="1">Inactive</mat-option>
-                </mat-select>
+
+
+            <div class="col-sm-4">
+              <div class="row">
+                <div class="col-sm-4">
+                  <b>Referral Status:</b>
+                </div>
+                <div class="col-sm-7">
+                  <mat-select [(value)]="selectedRefferalType" placeholder="--Select Referral Status--" class="form-control">
+                    <mat-option [value]="'Pending Verificationn'">Pending Verification</mat-option>
+                    <mat-option [value]="'Pending Authorization'">Pending Authorization</mat-option>
+                    <mat-option [value]="'Verified'">Verified</mat-option>
+                    <mat-option [value]="'Authorized'">Denied</mat-option>
+                    <mat-option [value]="'Scheduling'">Scheduling</mat-option>
+                    <mat-option [value]="'Scheduled'">Scheduled</mat-option>
+                  </mat-select>
+                </div>
               </div>
             </div>
-            <div class="col-sm-4 mt-3">
-              <a (click)="filterToggle = !filterToggle" matTooltip="Close" class="pull-right"
-                style="font-size: 20px; cursor: pointer; margin-left: 5px">
-                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
-              </a>
 
-              <i class="material-icons pull-right" matTooltip="Clear"
-                style="font-size: 25px; cursor: pointer; margin-left: 5px">
-                settings_backup_restore
-              </i>
 
-              <i class="fa fa-save pull-right" matTooltip="Save" (click)="saveFilters()" style="
-                  font-size: 20px;
-                  cursor: pointer;
-                  margin-left: 5px;
-                  color: green;
-                " aria-hidden="true">
-              </i>
 
-              <i class="fa fa-search pull-right" matTooltip="Search" style="
-                  font-size: 20px;
-                  cursor: pointer;
-                  margin-left: 5px;
-                  color: blue;
-                " aria-hidden="true">
-              </i>
+          </div>
+
+          <div class="row pt-4 pl-4">
+            <div class="col-sm-4">
+              <div class="row">
+                <div class="col-sm-4">
+                  <b>Date Type:</b>
+                </div>
+                <div class="col-sm-7">
+                  <mat-select [(value)]="selectedDateType" placeholder="--Select Date Type--" class="form-control">
+                    <mat-option [value]="'Date Created'">Date Created</mat-option>
+                    <mat-option [value]="' Injury Date'"> Injury Date</mat-option>
+                       
+                  </mat-select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="row">
+                <div class="col-sm-4">
+                  <b>From Date:</b>
+                </div>
+                <div class="col-sm-7">
+                  <input type="date" class="form-control" maxlength="100"
+                  minlength="2" onDrag="return false" onDrop="return false" required>
+                </div>
+              </div>
+            </div>
+
+            
+
+            <div class="col-sm-4">
+              <div class="row">
+                <div class="col-sm-4">
+                  <b>To Date:</b>
+                </div>
+                <div class="col-sm-7">
+                  <input type="date" class="form-control" maxlength="100"
+                  minlength="2" onDrag="return false" onDrop="return false" required>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+    
+          <div class="row pt-4 pl-4">
+
+            <div class="col-sm-4">
+              <div class="row">
+                <div class="col-sm-4">
+                  <b>Referral From:</b>
+                </div>
+                <div class="col-sm-7">
+                  <mat-select placeholder="--Select Referral From: --" [(value)]="selectedRefferalFrom" class="form-control"
+                    multiple>
+    
+                    <mat-select-trigger>
+                      {{selectedRefferalFrom || '--Select Patient--'}}
+                    </mat-select-trigger>
+                    <mat-form-field *ngIf="eventRefferalFrom.length > 1" appearance="fill" style="width: 100%;">
+                      <input matInput (input)="applyFilter3($event)" placeholder="Search">
+                    </mat-form-field>
+                    <mat-option *ngFor="let event of filteredRefferalFrom" [value]="event">
+                      {{event}}
+                    </mat-option>
+                  </mat-select>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-sm-4">
+              <div class="row">
+                <div class="col-sm-4">
+                  <b>Referral To:</b>
+                </div>
+                <div class="col-sm-7">
+                  <mat-select placeholder="--Select Referral To: --" [(value)]="selectedRefferalTo" class="form-control"
+                    multiple>
+    
+                    <mat-select-trigger>
+                      {{selectedRefferalTo || '--Select Referral To--'}}
+                    </mat-select-trigger>
+                    <mat-form-field *ngIf="eventRefferalTo.length > 1" appearance="fill" style="width: 100%;">
+                      <input matInput (input)="applyFilter4($event)" placeholder="Search">
+                    </mat-form-field>
+                    <mat-option *ngFor="let event of filteredRefferalTo" [value]="event">
+                      {{event}}
+                    </mat-option>
+                  </mat-select>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-sm-4">
+              <div class="row">
+                <div class="col-sm-9 offset-sm-3">
+                  <a (click)="filterToggle = !filterToggle" matTooltip="Close" class="pull-right"
+                    style="font-size: 20px; cursor: pointer; margin-left: 5px">
+                    <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                  </a>
+    
+                  <i class="material-icons pull-right" matTooltip="Clear"
+                    style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                    settings_backup_restore
+                  </i>
+    
+                  <i class="fa fa-save pull-right" matTooltip="Save" (click)="saveFilters()" style="
+                        font-size: 20px;
+                        cursor: pointer;
+                        margin-left: 5px;
+                        color: green;
+                      " aria-hidden="true">
+                  </i>
+    
+                  <i class="fa fa-search pull-right" matTooltip="Search" style="
+                        font-size: 20px;
+                        cursor: pointer;
+                        margin-left: 5px;
+                        color: blue;
+                      " aria-hidden="true">
+                  </i>
+                </div>
+              </div>
             </div>
           </div>
         </mat-card-content>
       </mat-card>
     </form>
+
   </div>
 </div>
 

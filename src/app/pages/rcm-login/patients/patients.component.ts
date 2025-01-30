@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AddPatientsComponent } from './add-patients/add-patients.component';
 import { GridColumnComponent } from 'src/app/shared/grid-column/grid-column.component';
@@ -33,8 +33,36 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class PatientsComponent {
 
-
+  
+  filterToggle: boolean;
+ 
   showCard: boolean;
+  selectedMaritalStatus: string = '';
+  selectedCaseType: string = '';
+  selectedGender: string = '';
+  selectedEventType: string | null = null;
+  selectCityType:string | null = null;
+
+
+   // raj
+   eventTypes: string[] = ['California', 'New Jersey', 'Virginia', 'Washington'];
+   filteredEventTypes: string[] = [...this.eventTypes]; 
+   applyFilter(event: Event): void {
+     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase(); // Safe casting to HTMLInputElement
+     this.filteredEventTypes = this.eventTypes.filter(eventType => eventType.toLowerCase().includes(filterValue));
+   }
+ 
+   
+   cityTypes: string[] = ['Houston', 'Chicago', 'Los Angeles', 'New York'];
+   filteredCityTypes: string[] = [...this.cityTypes];  
+   applyFilter1(event: Event): void {
+     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase(); // Safe casting to HTMLInputElement
+     this.filteredCityTypes = this.cityTypes.filter(cityTypes => cityTypes.toLowerCase().includes(filterValue));
+   }
+ 
+ 
+
+
 
   toggleCard() {
 
@@ -48,6 +76,7 @@ export class PatientsComponent {
   }
 
 
+ 
 
   dataSource = [
     { workList: 'Total Referrals', volume: 120201 },
@@ -129,12 +158,9 @@ export class PatientsComponent {
   public currentPage = 0;
   public totalSize = 0;
   pageSize: 0;
-  filterForm: FormGroup;
-  filterToggle: boolean = false;
+
 
   constructor(public dialog: MatDialog) { }
-
-  ngOnInt() { }
 
   //Grid Column Manager
   headers = [
@@ -536,5 +562,14 @@ export class PatientsComponent {
     });
   }
 
+
+
+  searchFilters() {
+    
+  }
+
+  clearFilters() {
+   
+  }
   openpermissiondialog() { }
 }
