@@ -28,14 +28,14 @@ export class DocTypeComponent {
       id: 2,
       documentType: 'Medical Records',
       context: 'Post Visit',
-      category: 'Health',
+      category: 'Medical',
       IsActive: 'Inactive'
     },
     {
       id: 3,
       documentType: 'Letter of Protection',
       context: 'Post Visit',
-      category: 'Health',
+      category: 'Medical',
       IsActive: 'Active'
     },
     {
