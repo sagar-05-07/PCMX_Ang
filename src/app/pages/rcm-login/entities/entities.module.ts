@@ -45,7 +45,7 @@ const routes: Routes = [
         path: 'funding-partner',
         component: FundingPartnerComponent,
         pathMatch: 'full',
-        data: { breadcrumb: 'Funding Partners', description: 'Statistics, Charts and Metrics of activity, trend and distribution.' }
+        data: { breadcrumb: 'Lenders  ', description: 'Statistics, Charts and Metrics of activity, trend and distribution.' }
     },
 
     {

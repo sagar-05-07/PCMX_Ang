@@ -286,9 +286,18 @@ mat-card {
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-    margin-top: -2px;
+    margin-top: -24px;
     padding: 10px;
     width: 31%;
     position: absolute;
     z-index: 10;
   }
+
+  .nopen {
+    margin-top: 20px; /* Adjust this value based on your layout */
+  }
+  
+  .nclosed {
+    margin-top: 50px; /* Set the appropriate margin when nav is closed */
+  }
+  

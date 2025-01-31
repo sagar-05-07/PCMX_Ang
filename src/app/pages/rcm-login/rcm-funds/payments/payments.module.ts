@@ -16,13 +16,13 @@ const routes: Routes = [
         path: 'pending',
         component: PendingComponent,
         pathMatch: 'full',
-        data: { breadcrumb: 'Funding ( Pending )', description: 'Statistics, Charts and Metrics of activity, trend and distribution.' }
+        data: { breadcrumb: 'Funding', description: 'Statistics, Charts and Metrics of activity, trend and distribution.' }
     },
     {
         path: 'completed',
         component: CompletedComponent,
         pathMatch: 'full',
-        data: { breadcrumb: 'Funding ( Completed )', description: 'Statistics, Charts and Metrics of activity, trend and distribution.' }
+        data: { breadcrumb: 'Funding(Completed)', description: 'Statistics, Charts and Metrics of activity, trend and distribution.' }
     },
     {
         path: 'inner-invoice',

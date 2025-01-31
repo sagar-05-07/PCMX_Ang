@@ -5,6 +5,53 @@
     background-color: #e6e6e6 !important;
 }
 
+
+.arrow-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allow wrapping to the next row */
+    justify-content: space-between;
+    /* Distribute arrows evenly */
+    align-items: center;
+    gap: 15px;
+    /* Space between arrows */
+    padding: 15px;
+}
+
+
+.arrow-shape {
+    display: flex;
+    align-items: center;
+    /* Vertically aligns text and number */
+    justify-content: space-between;
+    /* Place text and number at opposite ends */
+    width: calc(33.33% - 20px);
+    /* Adjust width to fit three in a row with gap */
+    height: 60px;
+    background-color: #005f73;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 15px 10px;
+    clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+.arrow-text {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.arrow-number {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 60px;
+}
+
+
 .dropdown-content {
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
