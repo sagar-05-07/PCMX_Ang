@@ -13,28 +13,22 @@
                 <mat-card-content>
                     <div class="row col-sm-12">
                         <div class="col-sm-4">
-                            <div class="col-sm-3 newMarginClass">
+                            <div class="col-sm-4 newMarginClass">
                                 <b>Keyword:</b>
                             </div>
-                            <div class="col-sm-9">
+                            <div class="col-sm-8">
                                 <input type="text" onCopy="return false" onPaste="return false" class="form-control"
-                                    placeholder="Search by Name, Email, Role">
+                                    placeholder="Search by Keyword">
                             </div>
                         </div>
 
                         <div class="col-sm-4">
-                            <div class="col-sm-3 newMarginClass">
-                                <b>Role:</b>
+                            <div class="col-sm-4 newMarginClass">
+                                <b>Law Firms:</b>
                             </div>
                             <div class="col-sm-8">
-                                <select placeholder="Select Role" class="form-control">
-                                    <option [value]="1">
-                                        Admin
-                                    </option>
-                                    <option [value]="2">
-                                        Client
-                                    </option>
-                                </select>
+                                <input type="text" onCopy="return false" onPaste="return false" class="form-control"
+                                    placeholder="Search by Law Firm">
                             </div>
                         </div>
                         <div class="col-sm-4">
@@ -43,11 +37,18 @@
                                 style="font-size: 25px; cursor: pointer; margin-left: 5px">
                                 <i class="fa fa-angle-double-up" aria-hidden="true"></i>
                             </a>
-                            <button mat-raised-button color="primary" class="pull-right">
+                            <!-- <button mat-raised-button color="primary" class="pull-right">
                                 <mat-icon>youtube_searched_for</mat-icon> Search
                             </button>
                             <button mat-raised-button class="pull-right btn-default margin-right-10">
                                 <mat-icon>settings_backup_restore</mat-icon> Clear
+                            </button> -->
+                            <button mat-raised-button color="primary" class="pull-right" style="background-color: #007bff !important; color: white">
+                                Search
+                            </button>
+                            
+                            <button mat-raised-button class="pull-right btn-default margin-right-10">
+                                Clear
                             </button>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>

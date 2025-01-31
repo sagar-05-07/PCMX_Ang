@@ -269,4 +269,52 @@ export class FundingPartnerComponent {
     );
   }
 
+
+
+
+
+  eventTypes: string[] = [
+    'Hamilton',
+    'Beeville',
+    'Houston',
+    'Delete',
+    'Refugio',
+    'Winters',
+    'Sweeny',
+  ];
+  filteredEventTypes: string[] = [...this.eventTypes];
+  selectedEventType: string | null = null;
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value
+      .trim()
+      .toLowerCase(); // Safe casting to HTMLInputElement
+    this.filteredEventTypes = this.eventTypes.filter((eventType) =>
+      eventType.toLowerCase().includes(filterValue)
+    );
+  }
+
+
+  eventTypes3: string[] = [
+    'Texas',
+    'California',
+    'Florida',
+    'Virginia',
+    'Alaska',
+    'Hawaii',
+    'Ohio',
+  ];
+  filteredEventTypes3: string[] = [...this.eventTypes3];
+  selectedEventType3: string | null = null;
+  applyFilter3(event: Event): void {
+    const filterValue2 = (event.target as HTMLInputElement).value
+      .trim()
+      .toLowerCase(); // Safe casting to HTMLInputElement
+    this.filteredEventTypes3 = this.eventTypes3.filter((eventType3) =>
+      eventType3.toLowerCase().includes(filterValue2)
+    );
+  }
+
+  
+
+
 }

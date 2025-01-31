@@ -523,19 +523,19 @@
                             <mat-card-content>
                                 <div class="row col-sm-12">
                                     <div class="col-sm-4 row">
-                                        <div class="col-sm-3" style="margin-top: 6px">
+                                        <div class="col-sm-4" style="margin-top: 6px">
                                             <b>Keyword:</b>
                                         </div>
-                                        <div class="col-sm-9">
+                                        <div class="col-sm-8">
                                             <input type="text" placeholder="Search by Keyword" class="form-control" />
                                         </div>
                                     </div>
 
                                     <div class="col-sm-4 row">
-                                        <div class="col-sm-2" style="margin-top: 6px">
+                                        <div class="col-sm-4" style="margin-top: 6px">
                                             <b>State:</b>
                                         </div>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-8">
                                             <mat-select placeholder="--Select State--" class="form-control" multiple
                                                 [(value)]="selectedEventType3">
                                                 <mat-select-trigger>
@@ -552,11 +552,12 @@
                                             </mat-select>
                                         </div>
                                     </div>
+
                                     <div class="col-sm-4 row">
-                                        <div class="col-sm-2" style="margin-top: 6px">
+                                        <div class="col-sm-4" style="margin-top: 6px">
                                             <b>City:</b>
                                         </div>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-8">
                                             <mat-select placeholder="--Select City--" class="form-control" multiple
                                                 [(value)]="selectedEventType">
                                                 <mat-select-trigger>
@@ -577,28 +578,114 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
                                 </div>
                                 <div class="row col-sm-12" style="margin-top: 10px">
+
                                     <div class="col-sm-4 row">
-                                        <div class="col-sm-3" style="margin-top: 6px">
-                                            <b>Provider:</b>
+                                        <div class="col-sm-4" style="margin-top: 6px">
+                                            <b>Gender:</b>
                                         </div>
-                                        <div class="col-sm-9">
-                                            <mat-select placeholder="--Select Provider--" class="form-control" multiple
-                                                [(value)]="selectedEventType2">
-                                                <mat-select-trigger>
-                                                    {{ selectedEventType2 || "--Select Consultant--" }}
-                                                </mat-select-trigger>
-                                                <mat-form-field *ngIf="eventTypes2.length > 1" appearance="fill"
-                                                    style="width: 100%">
-                                                    <input matInput (input)="applyFilter2($event)"
-                                                        placeholder="Search" />
-                                                </mat-form-field>
-                                                <mat-option *ngFor="let event of filteredEventTypes2" [value]="event">
-                                                    {{ event }}
-                                                </mat-option>
+                                        <div class="col-sm-8">
+                                            <mat-select class="form-control bac" placeholder="Select Gender">
+                                                <mat-option [value]="'Male'">Male</mat-option>
+                                                <mat-option [value]="'Female'">Female</mat-option>
+                                                <mat-option [value]="'Other'">Other</mat-option>
+                                                <mat-option [value]="'Prefer not to say'"
+                                                  >Prefer not to say</mat-option
+                                                >
+                                              </mat-select>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-sm-4 row">
+                                        <div class="col-sm-4" style="margin-top: 6px">
+                                            <b>Marital Status:</b>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <mat-select class="form-control" placeholder="Select Marital Status">
+                                                <mat-option [value]="'Single'">Single</mat-option>
+                                                <mat-option [value]="'Married'">Married</mat-option>
+                                                <mat-option [value]="'Divorced'">Divorced</mat-option>
+                                                <mat-option [value]="'Widowed'">Widowed</mat-option>
+                                                <mat-option [value]="'Prefer not to say'">Prefer not to say</mat-option>
                                             </mat-select>
                                         </div>
                                     </div>
 
+                                    <div class="col-sm-4 row">
+                                        <div class="col-sm-4" style="margin-top: 6px">
+                                            <b>Language:</b>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <mat-select class="form-control" placeholder="Select Language">
+                                                <mat-option [value]="'English'">English</mat-option>
+                                                <mat-option [value]="'Spanish'">Spanish</mat-option>
+                                                <mat-option [value]="'French'">French</mat-option>
+                                                <mat-option [value]="'German'">German</mat-option>
+                                                <mat-option [value]="'Chinese'">Chinese</mat-option>
+                                                <mat-option [value]="'Hindi'">Hindi</mat-option>
+                                                <mat-option [value]="'Arabic'">Arabic</mat-option>
+                                                <mat-option [value]="'Russian'">Russian</mat-option>
+                                                <mat-option [value]="'Portuguese'">Portuguese</mat-option>
+                                                <mat-option [value]="'Japanese'">Japanese</mat-option>
+                                              </mat-select>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="row col-sm-12" style="margin-top: 10px">
+                                
+                                    <div class="col-sm-4 row">
+                                        <div class="col-sm-4" style="margin-top: 6px">
+                                            <b>Class:</b>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <mat-select class="form-control" placeholder="Select Class">
+                                                <mat-option [value]="'Medical'">Medical</mat-option>
+                                                <mat-option [value]="'Surgery/Procedures'">Surgery/Procedures</mat-option>
+                                                <mat-option [value]="'Imaging'">Imaging</mat-option>
+                                                <mat-option [value]="'Ancillary'">Ancillary</mat-option>
+                                                <mat-option [value]="'FSER'">FSER</mat-option>
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                
+                                
+                                    <div class="col-sm-4 row">
+                                        <div class="col-sm-4" style="margin-top: 6px">
+                                            <b>Specialty:</b>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <mat-select class="form-control" placeholder="Select Specialty">
+                                                <mat-option [value]="'Single'">Primary Care</mat-option>
+                                                <mat-option [value]="'Married'">Psychology</mat-option>
+                                                <mat-option [value]="'Divorced'">Specialist</mat-option>
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-sm-4 row">
+                                        <div class="col-sm-4" style="margin-top: 6px">
+                                            <b>Subspecialty:</b>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <mat-select class="form-control" placeholder="Select SubSpecialty">
+                                                <mat-option [value]="'Nephrology'">Nephrology</mat-option>
+                                                <mat-option [value]="'Neurology'">Neurology</mat-option>
+                                                <mat-option [value]="'Neuropsychology'">Neuropsychology</mat-option>
+                                                <mat-option [value]="'OBGYN'">OBGYN</mat-option>
+                                                <mat-option [value]="'Oncologist'">Oncologist</mat-option>
+                                                <mat-option [value]="'Opthalmology'">Opthalmology</mat-option>
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                
+                                
+                                </div>
+                                
+                                <div class="row col-sm-12" style="margin-top: 10px">
                                     <div class="col-sm-4 pull-right" style="margin-right: 75px">
                                         <a (click)="filterToggle = !filterToggle" class="pull-right"
                                             style="font-size: 25px; cursor: pointer; margin-left: 5px">

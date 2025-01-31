@@ -193,10 +193,27 @@
 
 
 <div class="col-sm-12">
-    <button mat-raised-button style="background-color: black; color:white;" class="pull-right"
-        (click)="filterToggle = !filterToggle">
-        <mat-icon>filter_list</mat-icon> Filter
-    </button>
+ 
+
+  <div class="col-sm-5 row pull-right">
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <input type="text" onCopy="return false" onPaste="return false" class="form-control input-style"
+        placeholder="Search by Keyword">
+      
+      <!-- Search Icon -->
+      <button matTooltip="Search" mat-icon-button class="icon-style">
+        <mat-icon class="icon-white">search</mat-icon>
+      </button>
+  
+      <!-- Refresh Button -->
+      <button matTooltip="Refresh" mat-icon-button class="icon-style">
+        <mat-icon class="icon-white">refresh</mat-icon>
+      </button>
+    </div>
+  </div>
+  
+  
+  
 </div>
 
 <!-- Filter -->
@@ -206,32 +223,18 @@
             <mat-card class="filter">
                 <mat-card-content>
                     <div class="row col-sm-12">
-                        <div class="col-sm-4">
+                        <div class="col-sm-5">
                             <div class="col-sm-3 newMarginClass">
                                 <b>Keyword:</b>
                             </div>
                             <div class="col-sm-9">
                                 <input type="text" onCopy="return false" onPaste="return false" class="form-control"
-                                    placeholder="Search by Name, Email, Role">
+                                    placeholder="Search by Keyword">
                             </div>
                         </div>
 
-                        <div class="col-sm-4">
-                            <div class="col-sm-3 newMarginClass">
-                                <b>Role:</b>
-                            </div>
-                            <div class="col-sm-8">
-                                <select placeholder="Select Role" class="form-control">
-                                    <option [value]="1">
-                                        Admin
-                                    </option>
-                                    <option [value]="2">
-                                        Client
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
+
+                        <div class="col-sm-7 pull-right">
 
                             <a (click)="filterToggle = !filterToggle" class="pull-right"
                                 style="font-size: 25px; cursor: pointer; margin-left: 5px">

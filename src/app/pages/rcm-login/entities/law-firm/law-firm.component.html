@@ -514,12 +514,13 @@
                     </div>
                 </div>
             </div>
+            
             <div fxLayout="row wrap" *ngIf="filterToggle" style="
-          margin-bottom: 10px;
-          flex-flow: wrap;
-          box-sizing: border-box;
-          display: flex;
-        ">
+                      margin-bottom: 10px;
+                      flex-flow: wrap;
+                      box-sizing: border-box;
+                      display: flex;
+                    ">
                 <div fxFlex="100" class="flex-p w-100 mt-3">
                     <form [formGroup]="filterForm">
                         <mat-card class="filter">
@@ -533,7 +534,7 @@
                                             <input type="text" placeholder="Search by Keyword" class="form-control" />
                                         </div>
                                     </div>
-
+            
                                     <div class="col-sm-4 row">
                                         <div class="col-sm-2" style="margin-top: 6px">
                                             <b>State:</b>
@@ -546,8 +547,7 @@
                                                 </mat-select-trigger>
                                                 <mat-form-field *ngIf="eventTypes3.length > 1" appearance="fill"
                                                     style="width: 100%">
-                                                    <input matInput (input)="applyFilter3($event)"
-                                                        placeholder="Search" />
+                                                    <input matInput (input)="applyFilter3($event)" placeholder="Search" />
                                                 </mat-form-field>
                                                 <mat-option *ngFor="let event of filteredEventTypes3" [value]="event">
                                                     {{ event }}
@@ -565,10 +565,8 @@
                                                 <mat-select-trigger>
                                                     {{ selectedEventType || "--Select City--" }}
                                                 </mat-select-trigger>
-                                                <mat-form-field *ngIf="eventTypes.length > 1" appearance="fill"
-                                                    style="width: 100%">
-                                                    <input matInput (input)="applyFilter($event)"
-                                                        placeholder="Search" />
+                                                <mat-form-field *ngIf="eventTypes.length > 1" appearance="fill" style="width: 100%">
+                                                    <input matInput (input)="applyFilter($event)" placeholder="Search" />
                                                 </mat-form-field>
                                                 <mat-option *ngFor="let event of filteredEventTypes" [value]="event">
                                                     {{ event }}
@@ -576,67 +574,33 @@
                                             </mat-select>
                                         </div>
                                     </div>
-
+            
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
                                 </div>
                                 <div class="row col-sm-12" style="margin-top: 10px">
-                                    <!-- <div class="col-sm-4 row">
-                    <div class="col-sm-2" style="margin-top: 6px">
-                      <b>Group:</b>
-                    </div>
-                    <div class="col-sm-10">
-                      <mat-select
-                        placeholder="--Select Group--"
-                        class="form-control"
-                        multiple
-                        [(value)]="selectedEventType1"
-                      >
-                        <mat-select-trigger>
-                          {{ selectedEventType1 || "--Select Group--" }}
-                        </mat-select-trigger>
-                        <mat-form-field
-                          *ngIf="eventTypes1.length > 1"
-                          appearance="fill"
-                          style="width: 100%"
-                        >
-                          <input
-                            matInput
-                            (input)="applyFilter1($event)"
-                            placeholder="Search"
-                          />
-                        </mat-form-field>
-                        <mat-option
-                          *ngFor="let event of filteredEventTypes1"
-                          [value]="event"
-                        >
-                          {{ event }}
-                        </mat-option>
-                      </mat-select>
-                    </div>
-                  </div> -->
+            
                                     <div class="col-sm-4 row">
                                         <div class="col-sm-3" style="margin-top: 6px">
-                                            <b style="white-space: nowrap">Law Firm:</b>
+                                            <b style="white-space: nowrap">Zip Code:</b>
                                         </div>
                                         <div class="col-sm-9">
-                                            <mat-select placeholder="--Select Law Firm--" class="form-control" multiple
-                                                [(value)]="selectedEventType2">
-                                                <mat-select-trigger>
-                                                    {{ selectedEventType2 || "--Select Consultant--" }}
-                                                </mat-select-trigger>
-                                                <mat-form-field *ngIf="eventTypes2.length > 1" appearance="fill"
-                                                    style="width: 100%">
-                                                    <input matInput (input)="applyFilter2($event)"
-                                                        placeholder="Search" />
-                                                </mat-form-field>
-                                                <mat-option *ngFor="let event of filteredEventTypes2" [value]="event">
-                                                    {{ event }}
-                                                </mat-option>
+                                            <input type="text" placeholder="Search by Keyword" class="form-control" />
+                                        </div>
+                                    </div>
+            
+                                    <div class="col-sm-4 row">
+                                        <div class="col-sm-2" style="margin-top: 6px">
+                                            <b>Status:</b>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <mat-select placeholder="--Select Marital Status--" class="form-control">
+                                                <mat-option [value]="'Active'">Active</mat-option>
+                                                <mat-option [value]="'Inactive'">Inactive</mat-option>
                                             </mat-select>
                                         </div>
                                     </div>
-
-                                    <div class="col-sm-4 pull-right" style="margin-right: 75px">
+            
+                                    <div class="col-sm-4 row pull-right" style="margin-right: 75px">
                                         <a (click)="filterToggle = !filterToggle" class="pull-right"
                                             style="font-size: 25px; cursor: pointer; margin-left: 5px">
                                             <i class="fa fa-angle-double-up" aria-hidden="true"></i>
@@ -645,12 +609,12 @@
                                             style="background-color: #007bff !important; color: white">
                                             Search
                                         </button>
-
+            
                                         <button mat-raised-button class="pull-right btn-default margin-right-10">
                                             Clear
                                         </button>
                                     </div>
-
+            
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
                                 </div>
                             </mat-card-content>
@@ -658,6 +622,8 @@
                     </form>
                 </div>
             </div>
+
+
             <div id="grid-table-container" class="table-responsive mt-3">
                 <table matSort class="table table-bordered table-hover" style="width: 100%">
                     <thead class="tbl-head">

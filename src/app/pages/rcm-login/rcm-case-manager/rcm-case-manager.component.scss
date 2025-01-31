@@ -8,3 +8,27 @@
     position: absolute;
     z-index: 10;
   }
+
+  .input-style {
+    flex: 1;
+    height: 48px; /* Increased height */
+    font-size: 16px; /* Optional: Increase font size for better visibility */
+  }
+  
+  .icon-style {
+    background-color: #2b2a2a; /* Black background */
+    border-radius: 5px;
+    padding: 8px; /* Increased padding for better spacing */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .icon-white {
+    color: white !important; /* Make icon color white */
+    font-weight: bold; /* Make icon bolder */
+    font-size: 22px; /* Increase size for better visibility */
+  }
+  
+  
+  
