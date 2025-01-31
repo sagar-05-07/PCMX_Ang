@@ -15,7 +15,7 @@ const routes: Routes = [
         path: 'pending',
         component: RePendingComponent,
         pathMatch: 'full',
-        data: { breadcrumb: 'Payback ( Pending ) ', description: 'Statistics, Charts and Metrics of activity, trend and distribution.' }
+        data: { breadcrumb: 'Payback', description: 'Statistics, Charts and Metrics of activity, trend and distribution.' }
     },
     {
         path: 'completed',

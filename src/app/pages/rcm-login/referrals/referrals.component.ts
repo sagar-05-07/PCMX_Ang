@@ -61,6 +61,7 @@ export class ReferralsComponent {
     { workList: 'AUTH NOT SCH', volume: 890 },
     { workList: 'SCH NOT Verified', volume: 1987 },
     { workList: 'Total SCH Visits', volume: 190234 },
+    { workList: 'Visits Per Referral', volume: 1.58 }
   ];
 
 
@@ -124,10 +125,10 @@ export class ReferralsComponent {
 
   ngOnInit() { }
 
-  isNavOpen = true; // Start with the navigation open
+  isNavOpen = true; 
 
   toggleNav() {
-    this.isNavOpen = !this.isNavOpen; // Toggle between open and closed states
+    this.isNavOpen = !this.isNavOpen;  
   }
 
   openMerge() {
@@ -153,11 +154,16 @@ export class ReferralsComponent {
 
 
   referralsFilter(event: MouseEvent): void {
+
+    this.showTable = false;
+    this.showTable1 = false;
+    this.showTable2 = false;
+
     const buttonRect = (event.target as HTMLElement).getBoundingClientRect();
-    const marginRight = -400; // Adjust this value as needed for the left margin
+    const marginRight = -400; 
     const dialogPosition = {
       top: `${buttonRect.bottom}px`,
-      left: `${buttonRect.left + marginRight}px`, // Add margin to the left
+      left: `${buttonRect.left + marginRight}px`, 
     };
 
     this.dialog.open(ReferralsfilterComponent, {

@@ -56,6 +56,7 @@ export class CasesComponent {
     { workList: 'AUTH NOT SCH', volume: 890 },
     { workList: 'SCH NOT Verified', volume: 1987 },
     { workList: 'Total SCH Visits', volume: 190234 },
+    { workList: 'Visits Per Referral', volume: 1.58 }
   ];
 
 
@@ -106,6 +107,11 @@ export class CasesComponent {
 
   
   referralsFilter(event: MouseEvent): void {
+
+    this.showTable = false;
+    this.showTable1 = false;
+    this.showTable2 = false;
+    
     const buttonRect = (event.target as HTMLElement).getBoundingClientRect();
     const marginRight = -400; // Adjust this value as needed for the left margin
     const dialogPosition = {

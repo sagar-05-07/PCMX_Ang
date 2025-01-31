@@ -12,7 +12,7 @@
       background-color: black;
       margin-top: -2.5%;
       margin-left: -30px;
-      margin-right: -10px;
+      margin-right: 15px;
     " *ngIf="showCard">
     <div fxLayout="row" fxLayoutAlign="start center"
       style="gap: 30px; padding: 0 10px; display: flex; align-items: center">
@@ -123,17 +123,18 @@
     <h4>Gap Analysis - Referral vs. Visits</h4>
     <table matSort class="table table-bordered table-hover">
       <tbody>
-        <tr *ngFor="let user of dataSource; let i = index">
+        <tr *ngFor="let user of dataSource; let i = index;let last = last">
           <td [ngStyle]="{
               'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
             }">
             {{ user.workList }}
           </td>
           <td [ngStyle]="{
-              'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
-            }" style="color: blue; cursor: pointer" [routerLink]="['/rcm-login/referrals']">
-            {{ user.volume }}
-          </td>
+            'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9',
+            'color': last ? 'black' : 'blue'
+          }" [routerLink]="last ? null : ['/rcm-login/referrals']" [style.cursor]="last ? 'default' : 'pointer'">
+          {{ user.volume }}
+        </td>
         </tr>
       </tbody>
     </table>
@@ -145,17 +146,18 @@
     <h4>Gap Analysis - Visits vs. Claims</h4>
     <table matSort class="table table-bordered table-hover">
       <tbody>
-        <tr *ngFor="let user of dataSource1; let i = index">
+        <tr *ngFor="let user of dataSource1; let i = index;let last = last">
           <td [ngStyle]="{
               'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
             }">
             {{ user.workList }}
           </td>
           <td [ngStyle]="{
-              'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
-            }" style="color: blue; cursor: pointer" [routerLink]="['/rcm-login/visits']">
-            {{ user.volume }}
-          </td>
+            'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9',
+            'color': last ? 'black' : 'blue'
+          }" [routerLink]="last ? null : ['/rcm-login/referrals']" [style.cursor]="last ? 'default' : 'pointer'">
+          {{ user.volume }}
+        </td>
         </tr>
       </tbody>
     </table>
@@ -167,17 +169,18 @@
     <h4>Gap Analysis - Claims vs. Paid</h4>
     <table matSort class="table table-bordered table-hover">
       <tbody>
-        <tr *ngFor="let user of dataSource2; let i = index">
+        <tr *ngFor="let user of dataSource2; let i = index;let last = last">
           <td [ngStyle]="{
               'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
             }">
             {{ user.workList }}
           </td>
           <td [ngStyle]="{
-              'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
-            }" style="color: blue; cursor: pointer" [routerLink]="['/rcm-login/claims']">
-            {{ user.volume }}
-          </td>
+            'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9',
+            'color': last ? 'black' : 'blue'
+          }" [routerLink]="last ? null : ['/rcm-login/referrals']" [style.cursor]="last ? 'default' : 'pointer'">
+          {{ user.volume }}
+        </td>
         </tr>
       </tbody>
     </table>

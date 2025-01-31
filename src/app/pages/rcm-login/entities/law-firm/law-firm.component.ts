@@ -111,6 +111,11 @@ export class LawFirmComponent {
 
   
   referralsFilter(event: MouseEvent): void {
+
+    this.showTable = false;
+    this.showTable1 = false;
+    this.showTable2 = false;
+    
     const buttonRect = (event.target as HTMLElement).getBoundingClientRect();
     const marginRight = -400; // Adjust this value as needed for the left margin
     const dialogPosition = {
