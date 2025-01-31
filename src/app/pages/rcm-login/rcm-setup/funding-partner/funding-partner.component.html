@@ -220,7 +220,7 @@
     </div>
 </div>
 <!-- Filter UI -->
-<div fxLayout="row wrap" *ngIf="filterToggle" style=" margin-bottom: 10px;">
+<!-- <div fxLayout="row wrap" *ngIf="filterToggle" style=" margin-bottom: 10px;">
     <div fxFlex="100" class="flex-p w-100">
         <form [formGroup]="filterForm">
             <mat-card class="filter">
@@ -236,18 +236,7 @@
                                     placeholder="Search by Name, Email, Role...">
                             </div>
                         </div>
-                        <!-- <div class="col-sm-4">
-                            <div class="col-sm-3">
-                                <b>Status:</b>
-                            </div>
-                            <div class="col-sm-9">
-                                <select placeholder="Select Status" class="form-control" formControlName="Status">
-                                    <option *ngFor="let option of Status" [value]="option.value">
-                                        {{option.name}}
-                                    </option>
-                                </select>
-                            </div>
-                        </div> -->
+                        
                         <div class="col-sm-8">
                             <a (click)="filterToggle = !filterToggle" class="pull-right"
                                 style="font-size: 25px; cursor: pointer; margin-left: 5px">
@@ -267,7 +256,118 @@
             </mat-card>
         </form>
     </div>
+</div> -->
+
+<div fxLayout="row wrap" *ngIf="filterToggle" style="
+                      margin-bottom: 10px;
+                      flex-flow: wrap;
+                      box-sizing: border-box;
+                      display: flex;
+                    ">
+    <div fxFlex="100" class="flex-p w-100 mt-3">
+        <form [formGroup]="filterForm">
+            <mat-card class="filter">
+                <mat-card-content>
+                    <div class="row col-sm-12">
+                        <div class="col-sm-4 row">
+                            <div class="col-sm-3" style="margin-top: 6px">
+                                <b>Keyword:</b>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" placeholder="Search by Keyword" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 row">
+                            <div class="col-sm-2" style="margin-top: 6px">
+                                <b>State:</b>
+                            </div>
+                            <div class="col-sm-10">
+                                <mat-select placeholder="--Select State--" class="form-control" multiple
+                                    [(value)]="selectedEventType3">
+                                    <mat-select-trigger>
+                                        {{ selectedEventType3 || "--Select State--" }}
+                                    </mat-select-trigger>
+                                    <mat-form-field *ngIf="eventTypes3.length > 1" appearance="fill"
+                                        style="width: 100%">
+                                        <input matInput (input)="applyFilter3($event)" placeholder="Search" />
+                                    </mat-form-field>
+                                    <mat-option *ngFor="let event of filteredEventTypes3" [value]="event">
+                                        {{ event }}
+                                    </mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 row">
+                            <div class="col-sm-2" style="margin-top: 6px">
+                                <b>City:</b>
+                            </div>
+                            <div class="col-sm-10">
+                                <mat-select placeholder="--Select City--" class="form-control" multiple
+                                    [(value)]="selectedEventType">
+                                    <mat-select-trigger>
+                                        {{ selectedEventType || "--Select City--" }}
+                                    </mat-select-trigger>
+                                    <mat-form-field *ngIf="eventTypes.length > 1" appearance="fill" style="width: 100%">
+                                        <input matInput (input)="applyFilter($event)" placeholder="Search" />
+                                    </mat-form-field>
+                                    <mat-option *ngFor="let event of filteredEventTypes" [value]="event">
+                                        {{ event }}
+                                    </mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                    </div>
+                    <div class="row col-sm-12" style="margin-top: 10px">
+
+                        <div class="col-sm-4 row">
+                            <div class="col-sm-3" style="margin-top: 6px">
+                                <b style="white-space: nowrap">Zip Code:</b>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" placeholder="Search by Keyword" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 row">
+                            <div class="col-sm-2" style="margin-top: 6px">
+                                <b>Status:</b>
+                            </div>
+                            <div class="col-sm-10">
+                                <mat-select placeholder="--Select Marital Status--" class="form-control">
+                                    <mat-option [value]="'Active'">Active</mat-option>
+                                    <mat-option [value]="'Inactive'">Inactive</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 row pull-right" style="margin-right: 75px">
+                            <a (click)="filterToggle = !filterToggle" class="pull-right"
+                                style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                            </a>
+                            <button mat-raised-button color="primary" class="pull-right"
+                                style="background-color: #007bff !important; color: white">
+                                Search
+                            </button>
+
+                            <button mat-raised-button class="pull-right btn-default margin-right-10">
+                                Clear
+                            </button>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </div>
 </div>
+
+
+
 <!-- Table -->
 <div class="col-sm-12">
     <div id="grid-table-container" class="table-responsive">

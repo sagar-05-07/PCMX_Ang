@@ -42,142 +42,66 @@
         <form>
             <mat-card class="filter">
                 <mat-card-content>
+                    <div class="col-sm-4 row">
+                        <div class="col-sm-4 mt-2">
+                            <b>Contract :</b>
+                        </div>
+                        <div class="col-sm-8" style="margin-left: -10px;">
+                            <input type="text" formControlName="Keyword" onCopy="return false" onPaste="return false" class="form-control"
+                            placeholder="Search by Keyword" value="PFD/2023/01">
+                        </div>
+                    </div>  
                     <!-- From Year -->
                     <div class="col-sm-4 row">
                         <div class="col-sm-4 mt-2">
-                            <b>From Year:</b>
+                            <b>From Date:</b>
                         </div>
                         <div class="col-sm-8" style="margin-left: -20px;">
-                            <mat-select class="form-control bac" placeholder="Select From Year">
-                                <mat-option value="2020">2020</mat-option>
-                                <mat-option value="2021">2021</mat-option>
-                                <mat-option value="2022">2022</mat-option>
-                                <mat-option value="2023">2023</mat-option>
-                                <mat-option value="2024">2024</mat-option>
-                                <mat-option value="2025">2025</mat-option>
-                            </mat-select>
+                            <input type="date" formControlName="Keyword" onCopy="return false" onPaste="return false" class="form-control"
+                                placeholder="Search by Keyword">
                         </div>
                     </div>
 
                     <!-- From Month -->
                     <div class="col-sm-4 row">
                         <div class="col-sm-4 mt-2">
-                            <b>From Month:</b>
+                            <b>To Date:</b>
+                        </div>
+                        <div class="col-sm-8" >
+                            <input type="date" formControlName="Keyword" onCopy="return false" onPaste="return false" class="form-control"
+                                placeholder="Search by Keyword">
+                        </div>
+                    </div>
+
+                    
+
+                    
+                    
+                    <div class="col-sm-4 row mt-2">
+                        <div class="col-sm-4 mt-2">
+                            <b>Status :</b>
                         </div>
                         <div class="col-sm-8" style="margin-left: -10px;">
-                            <mat-select class="form-control bac" placeholder="Select Month">
-                                <mat-option value="January">January</mat-option>
-                                <mat-option value="February">February</mat-option>
-                                <mat-option value="March">March</mat-option>
-                                <mat-option value="April">April</mat-option>
-                                <mat-option value="May">May</mat-option>
-                                <mat-option value="June">June</mat-option>
-                                <mat-option value="July">July</mat-option>
-                                <mat-option value="August">August</mat-option>
-                                <mat-option value="September">September</mat-option>
-                                <mat-option value="October">October</mat-option>
-                                <mat-option value="November">November</mat-option>
-                                <mat-option value="December">December</mat-option>
+                            <mat-select class="form-control bac" placeholder="Select Status ">
+                                <mat-option [value]="'Submitted'">Submitted</mat-option>
+                                <mat-option [value]="'Disbursed'">Disbursed</mat-option>
+                                
                             </mat-select>
                         </div>
                     </div>
 
-                    <div class="col-sm-4 row">
-                        <div class="col-sm-4 mt-2">
-                            <b>To Year:</b>
-                        </div>
-                        <div class="col-sm-8" style="margin-left: -20px;">
-                            <mat-select class="form-control bac" placeholder="Select To Year">
-                                <mat-option value="2020">2020</mat-option>
-                                <mat-option value="2021">2021</mat-option>
-                                <mat-option value="2022">2022</mat-option>
-                                <mat-option value="2023">2023</mat-option>
-                                <mat-option value="2024">2024</mat-option>
-                                <mat-option value="2025">2025</mat-option>
-                            </mat-select>
-                        </div>
-                    </div>
-
-                    <!-- From Month -->
                     <div class="col-sm-4 row mt-2">
                         <div class="col-sm-4 mt-2">
-                            <b>To Month:</b>
+                            <b>Lender :</b>
                         </div>
                         <div class="col-sm-8" style="margin-left: -20px;">
-                            <mat-select class="form-control bac" placeholder="Select To Month">
-                                <mat-option value="January">January</mat-option>
-                                <mat-option value="February">February</mat-option>
-                                <mat-option value="March">March</mat-option>
-                                <mat-option value="April">April</mat-option>
-                                <mat-option value="May">May</mat-option>
-                                <mat-option value="June">June</mat-option>
-                                <mat-option value="July">July</mat-option>
-                                <mat-option value="August">August</mat-option>
-                                <mat-option value="September">September</mat-option>
-                                <mat-option value="October">October</mat-option>
-                                <mat-option value="November">November</mat-option>
-                                <mat-option value="December">December</mat-option>
-                            </mat-select>
-                        </div>
-                    </div>
-
-                    <!-- Law Firm -->
-                    <div class="col-sm-4 row mt-2">
-                        <div class="col-sm-4 mt-2">
-                            <b>Law Firm:</b>
-                        </div>
-                        <div class="col-sm-8" style="margin-left: -10px;">
-                            <mat-select class="form-control bac" placeholder="Select Law Firm">
-                                <mat-option value="John Peterson">John Peterson</mat-option>
-                                <mat-option value="Sarah Mitchell">Sarah Mitchell</mat-option>
-                                <mat-option value="Emily Carter">Emily Carter</mat-option>
-                                <mat-option value="William Bennett">William Bennett</mat-option>
-                                <mat-option value="Olivia Sanders">Olivia Sanders</mat-option>
-                                <mat-option value="James Cooper">James Cooper</mat-option>
-                                <mat-option value="Ava Richardson">Ava Richardson</mat-option>
-                                <mat-option value="Michael Harris">Michael Harris</mat-option>
-                            </mat-select>
-                        </div>
-                    </div>
-
-                    <!-- Provider -->
-                    <div class="col-sm-4 row mt-2">
-                        <div class="col-sm-4 mt-2">
-                            <b>Provider:</b>
-                        </div>
-                        <div class="col-sm-8" style="margin-left: -20px;">
-                            <mat-select class="form-control bac" placeholder="Select Provider">
-                                <mat-option value="MayoClinic">Mayo Clinic</mat-option>
-                                <mat-option value="ClevelandClinic">Cleveland Clinic</mat-option>
-                                <mat-option value="KaiserPermanente">Kaiser Permanente</mat-option>
-                                <mat-option value="JohnsHopkins">Johns Hopkins Medicine</mat-option>
-                                <mat-option value="Geisinger">Geisinger Health</mat-option>
-                                <mat-option value="PartnersHealthcare">Partners HealthCare</mat-option>
-                                <mat-option value="MountSinai">Mount Sinai Health System</mat-option>
-                                <mat-option value="UCLAHealth">UCLA Health</mat-option>
-                                <mat-option value="BannerHealth">Banner Health</mat-option>
-                                <mat-option value="MedStarHealth">MedStar Health</mat-option>
-                            </mat-select>
-                        </div>
-                    </div>
-
-                    <!-- Patient -->
-                    <div class="col-sm-4 row mt-2">
-                        <div class="col-sm-4 mt-2">
-                            <b>Case Type:</b>
-                        </div>
-                        <div class="col-sm-8" style="margin-left: -20px;">
-                            <mat-select class="form-control bac" placeholder="Select Case Type">
-                                <mat-option [value]="'New York'">Subacute Trauma</mat-option>
-                                <mat-option [value]="'Los Angeles'">Self Pay</mat-option>
-                                <mat-option [value]="'Chicago'">Insurance</mat-option>
-                                <mat-option [value]="'Houston'">Workers Comp</mat-option>
-                            </mat-select>
+                            <input type="text" formControlName="Keyword" onCopy="return false" onPaste="return false" class="form-control"
+                                placeholder="Search by Lender">
                         </div>
                     </div>
 
                     <!-- Actions -->
-                    <div class="col-sm-8 mt-3" style="margin-left: -3%;">
+                    <div class="col-sm-4 row mt-2" style="margin-left: 15px;">
                         <a (click)="filterToggle = !filterToggle" class="pull-right"
                             style="font-size: 25px; cursor: pointer; margin-left: 5px;">
                             <i class="fa fa-angle-double-up" aria-hidden="true"></i>

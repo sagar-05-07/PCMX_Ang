@@ -11,51 +11,82 @@
 </div>
 
 <!-- Filter -->
-<div fxLayout="row wrap" *ngIf="filterToggle" class="col-sm-12 mb-4">
-    <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p">
-        <form [formGroup]="filterForm">
+<div fxLayout="row wrap" class="col-sm-12" *ngIf="filterToggle" style="margin-bottom: 10px;">
+    <div fxFlex="100" class="flex-p w-100">
+        <form>
             <mat-card class="filter">
                 <mat-card-content>
-                    <div class="row col-sm-12">
-                        <div class="col-sm-4">
-                            <div class="col-sm-3 newMarginClass">
-                                <b>Keyword:</b>
-                            </div>
-                            <div class="col-sm-9">
-                                <input type="text" onCopy="return false" onPaste="return false" class="form-control"
-                                    placeholder="Search by Name, Email, Role">
-                            </div>
+                    <div class="col-sm-4 row">
+                        <div class="col-sm-4 mt-2">
+                            <b>Keyword:</b>
                         </div>
+                        <div class="col-sm-8" style="margin-left: -10px;">
+                            <input type="text"  onCopy="return false" onPaste="return false" class="form-control"
+                            placeholder="Search by Keyword">
+                        </div>
+                    </div>  
+                    
+                    <div class="col-sm-4 row">
+                        <div class="col-sm-4 mt-2">
+                            <b>Context:</b>
+                        </div>
+                        <div class="col-sm-8" style="margin-left: -20px;">
+                            <mat-select class="form-control bac" placeholder="Select Context ">
+                                <mat-option [value]="'Post Visit'">Post Visit</mat-option>
+                                <mat-option [value]="'Pre Visit'">Pre Visit</mat-option>
+                                
+                            </mat-select>
+                        </div>
+                    </div>
 
-                        <div class="col-sm-4">
-                            <div class="col-sm-3 newMarginClass">
-                                <b>Role:</b>
-                            </div>
-                            <div class="col-sm-8">
-                                <select placeholder="Select Role" class="form-control">
-                                    <option [value]="1">
-                                        Admin
-                                    </option>
-                                    <option [value]="2">
-                                        Client
-                                    </option>
-                                </select>
-                            </div>
+             
+                    <div class="col-sm-4 row">
+                        <div class="col-sm-4 mt-2">
+                            <b>Category:</b>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-8" >
+                            <mat-select class="form-control bac" placeholder="Select Category ">
+                                <mat-option [value]="'Medical'">Medical</mat-option>
+                                <mat-option [value]="'Imaging'">Imaging</mat-option>
+                                <mat-option [value]="'Billing'">Billing</mat-option>
+                                
+                                
+                            </mat-select>
+                        </div>
+                    </div>
 
-                            <a (click)="filterToggle = !filterToggle" class="pull-right"
-                                style="font-size: 25px; cursor: pointer; margin-left: 5px">
-                                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
-                            </a>
-                            <button mat-raised-button color="primary" class="pull-right">
-                                <mat-icon>youtube_searched_for</mat-icon> Search
-                            </button>
-                            <button mat-raised-button class="pull-right btn-default margin-right-10">
-                                <mat-icon>settings_backup_restore</mat-icon> Clear
-                            </button>
+                    
+
+                    
+                    
+                    <div class="col-sm-4 row mt-2">
+                        <div class="col-sm-4 mt-2">
+                            <b>Status :</b>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                        <div class="col-sm-8" style="margin-left: -10px;">
+                            <mat-select class="form-control bac" placeholder="Select Status ">
+                                <mat-option [value]="'Active'">Active</mat-option>
+                                <mat-option [value]="'Inactive'">Inactive</mat-option>
+                                
+                            </mat-select>
+                        </div>
+                    </div>
+
+                    
+
+                    <!-- Actions -->
+                    <div class="col-sm-8 row mt-2">
+                        <a (click)="filterToggle = !filterToggle" class="pull-right"
+                            style="font-size: 25px; cursor: pointer; margin-left: 5px;">
+                            <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                        </a>
+                        <button mat-raised-button style="background-color: black; color: white;" class="pull-right">
+                            <mat-icon>clear</mat-icon> Clear
+                        </button>
+                        <button mat-raised-button style="background-color: blue; color: white;"
+                            class="pull-right margin-right-10">
+                            <mat-icon>search</mat-icon> Search
+                        </button>
                     </div>
                 </mat-card-content>
             </mat-card>

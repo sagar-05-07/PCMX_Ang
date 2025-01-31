@@ -131,7 +131,8 @@ export class LocationsComponent {
   pageSize: 0;
   filterForm: FormGroup;
   filterToggle: boolean = false;
-
+  selectedEventType3: string | null = null;
+  selectedEventType: string | null = null;
   constructor(public dialog: MatDialog,
     private router: Router
   ) { }
@@ -261,5 +262,46 @@ export class LocationsComponent {
       }
     }
   }
+
+
+  eventTypes: string[] = [
+    'Hamilton',
+    'Beeville',
+    'Houston',
+    'Delete',
+    'Refugio',
+    'Winters',
+    'Sweeny',
+  ];
+  filteredEventTypes: string[] = [...this.eventTypes];
+
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value
+      .trim()
+      .toLowerCase(); // Safe casting to HTMLInputElement
+    this.filteredEventTypes = this.eventTypes.filter((eventType) =>
+      eventType.toLowerCase().includes(filterValue)
+    );
+  }
+  eventTypes3: string[] = [
+    'Texas',
+    'California',
+    'Florida',
+    'Virginia',
+    'Alaska',
+    'Hawaii',
+    'Ohio',
+  ];
+  filteredEventTypes3: string[] = [...this.eventTypes3];
+
+  applyFilter3(event: Event): void {
+    const filterValue2 = (event.target as HTMLInputElement).value
+      .trim()
+      .toLowerCase(); // Safe casting to HTMLInputElement
+    this.filteredEventTypes3 = this.eventTypes3.filter((eventType3) =>
+      eventType3.toLowerCase().includes(filterValue2)
+    );
+  }
+
 
 }

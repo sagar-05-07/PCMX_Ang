@@ -1,4 +1,3 @@
-
 <!-- <div style="display: flex; align-items: center;margin-left: 15%; margin-top: -4.5%">
 
     <div class="col-sm-2" style="  cursor: pointer" (click)="toggleCard()">
@@ -193,115 +192,79 @@
 
 
 
-<div class="col-sm-12 mt-4">
-    <button mat-raised-button style="background-color: black; color:white;" class="pull-right"
-        (click)="filterToggle = !filterToggle">
-        <mat-icon>filter_list</mat-icon> Filter
-    </button>
-</div>
+<div class="col-sm-12">
 
-<!-- Filter -->
-<div fxLayout="row wrap" class="col-sm-12 mt-2 mb-2" *ngIf="filterToggle">
-    <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p">
-        <form [formGroup]="filterForm">
-            <mat-card class="filter">
-                <mat-card-content>
-                    <div class="row col-sm-12">
-                        <div class="col-sm-4">
-                            <div class="col-sm-3 newMarginClass">
-                                <b>Keyword:</b>
-                            </div>
-                            <div class="col-sm-9">
-                                <input type="text" onCopy="return false" onPaste="return false" class="form-control"
-                                    placeholder="Search by Name, Email, Role">
-                            </div>
-                        </div>
 
-                        <div class="col-sm-4">
-                            <div class="col-sm-3 newMarginClass">
-                                <b>Role:</b>
-                            </div>
-                            <div class="col-sm-8">
-                                <select placeholder="Select Role" class="form-control">
-                                    <option [value]="1">
-                                        Admin
-                                    </option>
-                                    <option [value]="2">
-                                        Client
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
+  <div class="col-sm-5 row pull-right">
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <input type="text" onCopy="return false" onPaste="return false" class="form-control input-style"
+        placeholder="Search by Keyword">
 
-                            <a (click)="filterToggle = !filterToggle" class="pull-right"
-                                style="font-size: 25px; cursor: pointer; margin-left: 5px">
-                                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
-                            </a>
-                            <button mat-raised-button color="primary" class="pull-right">
-                                <mat-icon>youtube_searched_for</mat-icon> Search
-                            </button>
-                            <button mat-raised-button class="pull-right btn-default margin-right-10">
-                                <mat-icon>settings_backup_restore</mat-icon> Clear
-                            </button>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
-                    </div>
-                </mat-card-content>
-            </mat-card>
-        </form>
+      <!-- Search Icon -->
+      <button matTooltip="Search" mat-icon-button class="icon-style">
+        <mat-icon class="icon-white">search</mat-icon>
+      </button>
+
+      <!-- Refresh Button -->
+      <button matTooltip="Refresh" mat-icon-button class="icon-style">
+        <mat-icon class="icon-white">refresh</mat-icon>
+      </button>
     </div>
+  </div>
+
+
+
 </div>
 
 <div class="table-responsive col-sm-12 mt-3">
-    <table id="example2" class="table table-bordered table-hover">
-        <thead class="tbl-head">
-            <tr class="tr-grid-header">
-                <th>Case Manager</th>
-                <th class="text-center">Liaisons</th>
-                <th style="text-align: center !important;">Law Firms</th>
-                <th class="text-center">Patients</th>
-                <th class="text-center">Cases</th>
-                <th class="text-center">Claims</th>
-                <th style="text-align: center !important;">Status</th>
-                <th style="text-align: center !important;">Created Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of roleDetails">
-                <td [routerLink]="['/rcm-login/case-manager-dashboard']"
-                    style="color: cornflowerblue; cursor: pointer;">{{item.RoleName}}
-                </td>
-                <td class="text-center">
-                    <a style="cursor: pointer; color: cornflowerblue;" (click)="locationPop(item);">{{item.NoofUsers}}
-                    </a>
-                </td>
-                <td [routerLink]="['/rcm-login/inner-law-firms']" class="text-center"
-                    style="color: cornflowerblue; cursor: pointer;">{{item.TotalUsers}}
-                </td>
-                <td [routerLink]="['/rcm-login/inner-patients']" class="text-center"
-                    style="color: cornflowerblue; cursor: pointer;">{{item.permissionCount}}
-                </td>
-                <td [routerLink]="['/rcm-login/inner-cases']" class="text-center"
-                    style="color: cornflowerblue; cursor: pointer;">{{item.totalPermissionCount}}
-                </td>
-                <td [routerLink]="['/rcm-login/inner-claims']" class="text-center"
-                    style="color: cornflowerblue; cursor: pointer;">{{item.permissionCount}}
-                </td>
-                <td class="text-center" style="text-align: center !important;">
-                    <a [ngStyle]="{'color':  item.IsActive? 'blue' : 'red','cursor':'pointer'}">
-                        <span *ngIf="!item.IsActive" style="color:red">Inactive</span>
-                        <span *ngIf=" item.IsActive">Active</span>
-                    </a>
-                </td>
-                <td class="text-center">
-                    14/12/2023
-                </td>
-            </tr>
-        </tbody>
+  <table id="example2" class="table table-bordered table-hover">
+    <thead class="tbl-head">
+      <tr class="tr-grid-header">
+        <th>Case Manager</th>
+        <th class="text-center">Liaisons</th>
+        <th style="text-align: center !important;">Law Firms</th>
+        <th class="text-center">Patients</th>
+        <th class="text-center">Cases</th>
+        <th class="text-center">Claims</th>
+        <th style="text-align: center !important;">Status</th>
+        <th style="text-align: center !important;">Created Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of roleDetails">
+        <td [routerLink]="['/rcm-login/case-manager-dashboard']" style="color: cornflowerblue; cursor: pointer;">
+          {{item.RoleName}}
+        </td>
+        <td class="text-center">
+          <a style="cursor: pointer; color: cornflowerblue;" (click)="locationPop(item);">{{item.NoofUsers}}
+          </a>
+        </td>
+        <td [routerLink]="['/rcm-login/inner-law-firms']" class="text-center"
+          style="color: cornflowerblue; cursor: pointer;">{{item.TotalUsers}}
+        </td>
+        <td [routerLink]="['/rcm-login/inner-patients']" class="text-center"
+          style="color: cornflowerblue; cursor: pointer;">{{item.permissionCount}}
+        </td>
+        <td [routerLink]="['/rcm-login/inner-cases']" class="text-center"
+          style="color: cornflowerblue; cursor: pointer;">{{item.totalPermissionCount}}
+        </td>
+        <td [routerLink]="['/rcm-login/inner-claims']" class="text-center"
+          style="color: cornflowerblue; cursor: pointer;">{{item.permissionCount}}
+        </td>
+        <td class="text-center" style="text-align: center !important;">
+          <a [ngStyle]="{'color':  item.IsActive? 'blue' : 'red','cursor':'pointer'}">
+            <span *ngIf="!item.IsActive" style="color:red">Inactive</span>
+            <span *ngIf=" item.IsActive">Active</span>
+          </a>
+        </td>
+        <td class="text-center">
+          14/12/2023
+        </td>
+      </tr>
+    </tbody>
 
-    </table>
-    <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSizeOptions]="[5, 10, 25, 50, 100]"
-        showFirstLastButtons>
-    </mat-paginator>
+  </table>
+  <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSizeOptions]="[5, 10, 25, 50, 100]"
+    showFirstLastButtons>
+  </mat-paginator>
 </div>
