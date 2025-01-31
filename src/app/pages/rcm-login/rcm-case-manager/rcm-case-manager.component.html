@@ -193,49 +193,27 @@
 
 
 <div class="col-sm-12">
-  <button mat-raised-button style="background-color: black; color:white;" class="pull-right"
-    (click)="filterToggle = !filterToggle">
-    <mat-icon>filter_list</mat-icon> Filter
-  </button>
-</div>
-
-<!-- Filter -->
-<div fxLayout="row wrap" class="col-sm-12 mt-2 mb-2" *ngIf="filterToggle">
-  <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p">
-    <form [formGroup]="filterForm">
-      <mat-card class="filter">
-        <mat-card-content>
-          <div class="row col-sm-12">
-            <div class="col-sm-5">
-              <div class="col-sm-3 newMarginClass">
-                <b>Keyword:</b>
-              </div>
-              <div class="col-sm-9">
-                <input type="text" onCopy="return false" onPaste="return false" class="form-control"
-                  placeholder="Search by Keyword">
-              </div>
-            </div>
 
 
-            <div class="col-sm-7 pull-right">
+  <div class="col-sm-5 row pull-right">
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <input type="text" onCopy="return false" onPaste="return false" class="form-control input-style"
+        placeholder="Search by Keyword">
 
-              <a (click)="filterToggle = !filterToggle" class="pull-right"
-                style="font-size: 25px; cursor: pointer; margin-left: 5px">
-                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
-              </a>
-              <button mat-raised-button color="primary" class="pull-right">
-                <mat-icon>youtube_searched_for</mat-icon> Search
-              </button>
-              <button mat-raised-button class="pull-right btn-default margin-right-10">
-                <mat-icon>settings_backup_restore</mat-icon> Clear
-              </button>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </form>
+      <!-- Search Icon -->
+      <button matTooltip="Search" mat-icon-button class="icon-style">
+        <mat-icon class="icon-white">search</mat-icon>
+      </button>
+
+      <!-- Refresh Button -->
+      <button matTooltip="Refresh" mat-icon-button class="icon-style">
+        <mat-icon class="icon-white">refresh</mat-icon>
+      </button>
+    </div>
   </div>
+
+
+
 </div>
 
 <div class="table-responsive col-sm-12 mt-3">

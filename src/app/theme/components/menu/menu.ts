@@ -26,24 +26,21 @@ export const horizontalMenuItems = [
 
 ]
 
-// For RCM Login ADH Project
 export const rcmLogInMenuItems = [
     new Menu(1, 'Dashboard', 'rcm-login/dashboard', null, 'dashboard', null, false, 0),
-    new Menu(2, 'Patients', 'rcm-login/patients', null, 'people', null, false, 0),
-    new Menu(4, 'Referrals', 'rcm-login/referrals', null, 'share', null, false, 0),
-    new Menu(5, 'Visits', 'rcm-login/visits', null, 'calendar_today', null, false, 0),
-    new Menu(6, 'Claims', 'rcm-login/claims', null, 'receipt', null, false, 0),
-    new Menu(3, 'Cases', 'rcm-login/cases', null, 'folder_open', null, false, 0),
-    new Menu(7, 'Payments', 'rcm-login/payments', null, 'monetization_on', null, false, 0),
-    new Menu(8, 'Funds', 'rcm-login/funds', null, 'account_balance', null, false, 0),
-    new Menu(9, 'Documents', 'rcm-login/document', null, 'insert_drive_file', null, false, 0),
-    new Menu(10, 'Entities', 'rcm-login/entity', null, 'insert_drive_file', null, false, 0),
-    // new Menu(9, 'Case Managers', 'rcm-login/rcm-case-manager', null, 'insert_drive_file', null, false, 0),
-    // new Menu(9, 'Liaisons', 'rcm-login/liaison', null, 'insert_drive_file', null, false, 0),
-    new Menu(10, 'Reports', 'rcm-login/reports', null, 'analytics', null, false, 0),
+    new Menu(2, 'Patients', 'rcm-login/patients', null, 'groups', null, false, 0),
+    new Menu(3, 'Cases', 'rcm-login/cases', null, 'assignment', null, false, 0),
+    new Menu(4, 'Referrals', 'rcm-login/referrals', null, 'send', null, false, 0),
+    new Menu(5, 'Visits', 'rcm-login/visits', null, 'event', null, false, 0),
+    new Menu(6, 'Claims', 'rcm-login/claims', null, 'request_quote', null, false, 0),
+    new Menu(7, 'Payments', 'rcm-login/payments', null, 'payments', null, false, 0),
+    new Menu(8, 'Funds', 'rcm-login/funds', null, 'account_balance_wallet', null, false, 0),
+    new Menu(9, 'Documents', 'rcm-login/document', null, 'description', null, false, 0),
+    new Menu(10, 'Entities', 'rcm-login/entity', null, 'corporate_fare', null, false, 0),
+    new Menu(10, 'Reports', 'rcm-login/reports', null, 'bar_chart', null, false, 0),
     new Menu(11, 'Setup', 'rcm-login/setup', null, 'settings', null, false, 0),
-    // new Menu(12, '', 'rcm-login/setups', null, '', null, false, 0),
 ];
+
 
 // For Admin Login ADH Project
 export const adminMenuItems = [
