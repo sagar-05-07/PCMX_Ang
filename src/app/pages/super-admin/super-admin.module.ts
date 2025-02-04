@@ -33,6 +33,7 @@ import { LawfirmAttysComponent } from './admin-law-firm/lawfirm-attys/lawfirm-at
 import { NetworkDialogComponent } from './admin-provider/network-dialog/network-dialog.component';
 import { ProviderDialogeboxComponent } from './rcm-accounts/provider-dialogebox/provider-dialogebox.component';
 import { AdmnProviderSpecialtyComponent } from './admin-provider/admn-provider-specialty/admn-provider-specialty.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: '', redirectTo: 'analytics', pathMatch: 'full' },
@@ -165,6 +166,7 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
+    HttpClientModule
   ],
   declarations: [
     RcmAccountsComponent,

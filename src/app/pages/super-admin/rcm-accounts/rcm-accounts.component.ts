@@ -659,8 +659,7 @@ export class RcmAccountsComponent {
   }
 
 
-  public openproviderdialog(id: any) {
-    console.log('jkhksbdjk');
+  openproviderdialog(id: any) {
     let dialogRef = this.dialog.open(NetworkdialogComponent, {
       data: id,
       height: 'auto',
