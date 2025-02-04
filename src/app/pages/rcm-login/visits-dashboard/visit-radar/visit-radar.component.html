@@ -6,7 +6,7 @@
             <th>Order Type</th>
             <th>Case Type</th>
             <th>Priority</th>
-            <th>Visit Status</th>
+            <th (click)="changeColor()" [ngStyle]="{'color': rectangleColor}">Tag as Delayed</th>
         </tr>
         <tr>
             <td style="padding-left: 8px;">
@@ -40,15 +40,7 @@
                 </mat-select>
             </td>
             <td>
-                <mat-select class="form-control bac" placeholder="Select Visit Status">
-                    <mat-option [value]="'Pending'">Scheduling</mat-option>
-                    <mat-option [value]="'In Progress'">Scheduled</mat-option>
-                    <mat-option [value]="'Completed'">Completed</mat-option>
-                    <mat-option [value]="'On Hold'">Processing</mat-option>
-                    <mat-option [value]="'Canceled'">Closed</mat-option>
-                    <mat-option [value]="'Failed'">No Show</mat-option>
-                    <mat-option [value]="'Approved'">Cancelled</mat-option>
-                </mat-select>
+                <button mat-raised-button class="rectangle" (click)="changeColor()" [ngStyle]="{'background-color': rectangleColor}"></button>
             </td>
         </tr>
     </table>
@@ -56,7 +48,10 @@
 
 <div>
     <button class="tab-button margin-right-10" [class.active]="selectedTab === 'overview'"
-        (click)="selectTab('overview')">Visit Info
+        (click)="selectTab('overview')">Overview
+    </button>
+    <button class="tab-button margin-right-10" [class.active]="selectedTab === 'diagnosis'"
+    (click)="selectTab('diagnosis')">Diagnosis
     </button>
     <button class="tab-button margin-right-10" [class.active]="selectedTab === 'moreInfo'"
         (click)="selectTab('moreInfo')">Legal
@@ -114,16 +109,51 @@
     </div>
     <div class="col-sm-6">
         <mat-card style="height: auto; background-color: #fffce4;">
-            <div style="padding: 15px;">
-                <label style="font-size: 17px;">Enter Diagnosis</label>
+            <div class="row d-flex flex-wrap justify-content-center " style="padding: 30px;">
+             
+
+                <button mat-raised-button style="width: 200px; height: 50px; margin: 10px;background-color: #2188bf;">Verified</button>
+                <button mat-raised-button style="width: 200px; height: 50px; margin: 10px;background-color: #2188bf;">Authorize</button>
+                <button mat-raised-button class="custom-btngray" [ngClass]="{'white-btngray': isClickedgray === 1}" (click)="toggleColorgray(1)">Scheduled</button>
+                <button mat-raised-button class="custom-btngray" [ngClass]="{'white-btngray': isClickedgray === 2}" (click)="toggleColorgray(2)">Medical Records</button>
+                <button mat-raised-button class="custom-btngray" [ngClass]="{'white-btngray': isClickedgray === 3}" (click)="toggleColorgray(3)">Claimed</button>
+                <button mat-raised-button class="custom-btn1" [ngClass]="{'white-btn1': isClicked1}" (click)="toggleColor1()">Funded</button>
+                <button mat-raised-button class="custom-btn" [ngClass]="{'white-btn': isClicked === 4}" (click)="toggleColor(4)">Settled</button>
+                <button mat-raised-button class="custom-btn" [ngClass]="{'white-btn': isClicked === 5}" (click)="toggleColor(5)">Paid</button>
+                
+
+                   <!-- <label style="font-size: 17px;">Enter Diagnosis</label>
                 <textarea name="" id="" class="form-control" placeholder="Enter Diagnosis"
                     style="height: 180px;"></textarea>
                 <button mat-raised-button class="pull-right mt-3" style="background-color: green; color: white;">
                     <mat-icon>save</mat-icon>Update
+                </button> -->
+
+                <!-- <button style="width: 200px; height: 50px; margin-inline: 10px;  display: inline-block; ">
+                    Verified
                 </button>
+                <button style="width: 200px; height: 50px; margin-inline: 10px;">
+                    Verified
+                </button> -->
+
             </div>
         </mat-card>
     </div>
+</div>
+
+
+
+<div class="col-sm-12 row mt-3" style="background-color: #fffce4;" *ngIf="selectedTab === 'diagnosis'">
+ 
+           <div class="p-5">
+                <label style="font-size: 17px;">Enter Diagnosis</label>
+                <textarea name="" id="" class="form-control" placeholder="Enter Diagnosis"
+                    style="height: 180px;"></textarea>
+                <button mat-raised-button class="pull-right mt-3" style="background-color: green; color: white; margin-bottom: 20px;">
+                    <mat-icon>save</mat-icon>Update
+                </button> 
+
+            </div>
 </div>
 
 

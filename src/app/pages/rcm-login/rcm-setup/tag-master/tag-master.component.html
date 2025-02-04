@@ -1,0 +1,171 @@
+<div class="col-sm-12 mb-4">
+    <button mat-raised-button class="pull-right" (click)="openAddEditDialog()"
+        style="background-color: blue; color: white;">
+        <mat-icon>person_add</mat-icon> Add Tag Master
+    </button>
+
+    <button mat-raised-button style="background-color: black; color:white;" class="pull-right margin-right-10"
+        (click)="filterToggle = !filterToggle">
+        <mat-icon>filter_list</mat-icon> Filter
+    </button>
+
+     <!-- Sort Button -->
+     <button mat-raised-button mat-button [matMenuTriggerFor]="sortMenu"
+     style="background-color: #37474f; color: white; height: 35px;" class="filters-hover pull-right margin-right-10">
+     <span (click)="toggleSort($event)" class="icon-text">
+       <mat-icon style="margin-top: 0px; margin-bottom: -6px;">
+         {{ isAscending ? 'arrow_drop_up' : 'arrow_drop_down' }}
+       </mat-icon>
+     </span>
+     <span class="icon-text">SORT</span>
+   </button>
+
+   <!-- Dropdown Menu -->
+   <mat-menu #sortMenu="matMenu">
+     <div class="scrollable-menu">
+       <button mat-menu-item (click)="onSortOptionSelected('Tag Name')">Tag Name</button>
+       <button mat-menu-item (click)="onSortOptionSelected('Liaisons')">Liaisons</button>
+       <button mat-menu-item (click)="onSortOptionSelected('Patients')">Patients</button>
+     </div>
+   </mat-menu>
+
+</div>
+
+<!-- Filter -->
+<div fxLayout="row wrap" class="col-sm-12" *ngIf="filterToggle" style="margin-bottom: 10px;">
+    <div fxFlex="100" class="flex-p w-100">
+        <form>
+            <mat-card class="filter">
+                <mat-card-content>
+                    <div class="col-sm-4 row">
+                        <div class="col-sm-4 mt-2">
+                            <b>Keyword:</b>
+                        </div>
+                        <div class="col-sm-8" style="margin-left: -10px;">
+                            <input type="text"  onCopy="return false" onPaste="return false" class="form-control"
+                            placeholder="Search by Keyword">
+                        </div>
+                    </div>  
+                    
+                    <div class="col-sm-4 row">
+                        <div class="col-sm-4 mt-2">
+                            <b>Context:</b>
+                        </div>
+                        <div class="col-sm-8" style="margin-left: -20px;">
+                            <mat-select class="form-control bac" placeholder="Select Context ">
+                                <mat-option [value]="'Post Visit'">Post Visit</mat-option>
+                                <mat-option [value]="'Pre Visit'">Pre Visit</mat-option>
+                                
+                            </mat-select>
+                        </div>
+                    </div>
+
+             
+                    <div class="col-sm-4 row">
+                        <div class="col-sm-4 mt-2">
+                            <b>Category:</b>
+                        </div>
+                        <div class="col-sm-8" >
+                            <mat-select class="form-control bac" placeholder="Select Category ">
+                                <mat-option [value]="'Medical'">Medical</mat-option>
+                                <mat-option [value]="'Imaging'">Imaging</mat-option>
+                                <mat-option [value]="'Billing'">Billing</mat-option>
+                                
+                                
+                            </mat-select>
+                        </div>
+                    </div>
+
+                    
+
+                    
+                    
+                    <div class="col-sm-4 row mt-2">
+                        <div class="col-sm-4 mt-2">
+                            <b>Status :</b>
+                        </div>
+                        <div class="col-sm-8" style="margin-left: -10px;">
+                            <mat-select class="form-control bac" placeholder="Select Status ">
+                                <mat-option [value]="'Active'">Active</mat-option>
+                                <mat-option [value]="'Inactive'">Inactive</mat-option>
+                                
+                            </mat-select>
+                        </div>
+                    </div>
+
+                    
+
+                    <!-- Actions -->
+                    <div class="col-sm-8 row mt-2">
+                        <a (click)="filterToggle = !filterToggle" class="pull-right"
+                            style="font-size: 25px; cursor: pointer; margin-left: 5px;">
+                            <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                        </a>
+                        <button mat-raised-button style="background-color: black; color: white;" class="pull-right">
+                            <mat-icon>clear</mat-icon> Clear
+                        </button>
+                        <button mat-raised-button style="background-color: blue; color: white;"
+                            class="pull-right margin-right-10">
+                            <mat-icon>search</mat-icon> Search
+                        </button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </div>
+</div>
+
+<!-- Creating Table -->
+<div class="col-sm-12">
+    <div fxLayout="row wrap">
+        <div class="w-100">
+            <div fxLayout="row wrap" style="margin-top:-3px;">
+                <div class="table-responsive w-100 flex-p" id="divTable">
+                    <table matSort id="example2" class="table table-bordered table-hover">
+                        <thead class="tbl-head">
+                            <tr>
+                                <th>Tag Name</th>
+                                <th class="text-center">Apperance</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of values1">
+                                <!-- <td>{{ item.documentType }}</td>
+                                <td>{{ item.context }}</td> -->
+                                <td>{{ item.tagname}}</td>
+                                <td class="text-center">
+                                    <button  mat-raised-button type="button"
+                                    class="mb-1" 
+                                    [ngStyle]="{'background-color': item.Appearence === 'Emergency' ? 'red' : item.Appearence === 'Expedite' ? 'green' : (item.Appearence === 'Delayed' ? 'yellow' : ''), 
+                                                'color': 'white',
+                                                'width': '70%'}">
+                                    {{ item.Appearence }}
+                                </button>
+                                </td>
+                                <td class="text-center" style="text-align: center !important;">
+                                    <a [ngStyle]="{'color':  item.IsActive? 'blue' : 'red','cursor':'pointer'}">
+                                        <span *ngIf="!item.IsActive" style="color:red">Inactive</span>
+                                        <span *ngIf=" item.IsActive">Active</span>
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    <a matTooltip="Edit Record" (click)="openAddEditDialog()"
+                                        class="fa fa-edit action-btn edit-btn" style="margin-right: 10px;">
+                                    </a>
+
+                                    <a matTooltip="Delete Record" class="fa fa-trash action-btn delete-btn">
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <mat-paginator class="col-sm-12" [length]="totalSize" [pageIndex]="currentPage" [pageSize]=""
+                    [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+            </div>
+        </div>
+    </div>
+</div>

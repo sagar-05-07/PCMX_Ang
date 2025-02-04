@@ -35,6 +35,7 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { ContactsupportComponent } from './theme/components/contactsupport/contactsupport.component';
 import { ForgotComponent } from './pages/login/forgot/forgot.component';
 import { MatSelectSearchModule } from 'mat-select-search';
+import { MatChipsModule } from '@angular/material/chips';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { MatSelectSearchModule } from 'mat-select-search';
     ReactiveFormsModule,
     MatIconModule,
     NgScrollbarModule,
+    MatChipsModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory

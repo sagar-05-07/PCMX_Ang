@@ -30,7 +30,6 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class InvoicesComponent {
 
-
   
   
     showCard: boolean;
@@ -56,6 +55,17 @@ export class InvoicesComponent {
     }
   
   
+    
+  isAscending: boolean = true;
+
+  toggleSort(event: Event) {
+    event.stopPropagation(); // Prevent menu from opening
+    this.isAscending = !this.isAscending; // Toggle sort order
+  }
+  
+  onSortOptionSelected(option: string) {
+    console.log('Selected sort option:', option);
+  }
   
       selectLawFirmType: string | null = null;
       //raj

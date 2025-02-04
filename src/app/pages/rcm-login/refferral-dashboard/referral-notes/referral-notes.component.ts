@@ -5,6 +5,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { Chat } from './chat.model';
 import { ChatService } from './chart.service';
 import { FileUploadComponent } from 'src/app/shared/file-upload/file-upload.component';
+import { MatTableDataSource } from '@angular/material/table';
+
+
 
 @Component({
   selector: 'app-referral-notes',
@@ -28,6 +31,8 @@ export class ReferralNotesComponent {
   button4Active: boolean = false;
   button5Active: boolean = false;
   taskResolved: boolean = false;
+
+
   toggleButton(buttonNumber: number) {
     switch (buttonNumber) {
       case 1:
@@ -131,4 +136,47 @@ export class ReferralNotesComponent {
       this.talks.length = 2;
   }
 
+
+
+
+  chatMessages: any[] = [
+
+    {
+      date: new Date(),
+      postedBy: 'Admin',
+      message: 'Hi, It is a long established fact that a reader will be distracted by the readable content of a page',
+      context: 'System Message',
+      tags: ['emergency','expedite']
+    },
+    {
+      date: new Date(),
+      postedBy: 'User',
+      message: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.',
+      context: 'General Chat',
+      tags: ['emergency','Deleyed']
+    },
+
+  
+  ];
+  message: string = '';
+  selectedTags: string[] = [];
+  displayedColumns: string[] = ['date', 'postedBy', 'message', 'context', 'tags'];
+
+  addMessage() {
+    if (!this.message.trim()) return;
+  
+    const newMessage = {
+      date: new Date(),
+      postedBy: 'User',
+      message: this.message,
+      context: 'Chat Context',
+      tags: [...this.selectedTags] 
+    };
+  
+    this.chatMessages = [...this.chatMessages, newMessage];
+    this.message = '';  
+    this.selectedTags = [];
+  }
+
 }
+

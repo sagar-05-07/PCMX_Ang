@@ -163,3 +163,20 @@
 
 
 /* Example CSS for label styles */
+
+
+
+.word-wrap {
+    white-space: normal !important;  /* Allows text to wrap */
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+}
+
+
+
+.tag-button {
+    color: white;
+    min-width: 120px;
+    text-align: center;
+    padding: 5px;
+}

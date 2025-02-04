@@ -546,6 +546,18 @@ export class PatientsComponent {
     },
   ];
 
+  
+  isAscending: boolean = true;
+
+  toggleSort(event: Event) {
+    event.stopPropagation();
+    this.isAscending = !this.isAscending; 
+  }
+  
+  onSortOptionSelected(option: string) {
+    console.log('Selected sort option:', option);
+  }
+
   scrollGrid(side: 'left' | 'right') {
     const ele = document.getElementById('grid-table-container');
     const scrollAmount = 210; // Adjust this value as needed

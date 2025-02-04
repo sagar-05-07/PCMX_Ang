@@ -14,6 +14,19 @@ import { SingleFileUploadComponent } from 'src/app/shared/single-file-upload/sin
 })
 export class FundingContractComponent {
 
+   
+  isAscending: boolean = true;
+
+  toggleSort(event: Event) {
+    event.stopPropagation(); // Prevent menu from opening
+    this.isAscending = !this.isAscending; // Toggle sort order
+  }
+  
+  onSortOptionSelected(option: string) {
+    console.log('Selected sort option:', option);
+  }
+
+
 
   access = {
     btCreate: false,

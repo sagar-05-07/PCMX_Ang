@@ -3,10 +3,16 @@
         *ngIf="!account">Add</span><span *ngIf="account">Edit</span> Intake
 </h1>
 
-<div class="col-sm-12 mt-4 mb-5">
+<div class="col-sm-12 mt-4 mb-5 ">
+    <div *ngIf="activeSection === 'insurance'" style="margin-left: 20px;" >
+        <p>Please note that this section applies only to commercial insurance and workers compensation.</p>
+      </div>
+      <div  *ngIf="activeSection === 'legal'" class="insurance-message" style="margin-left: 20px;">
+        <p> Please note that this section applies only to sub-acute case.</p>
+      </div>
     <div class="col-sm-2 mb-4">
         <button mat-raised-button class="mt-3 size" [ngClass]="{'active-btn': activeSection === 'patient'}"
-            (click)="setActiveSection('patient')">Patient Info
+            (click)="setActiveSection('patient')">Overview
         </button>
         <button mat-raised-button class="mt-3 size" [ngClass]="{'active-btn': activeSection === 'emergency'}"
             (click)="setActiveSection('emergency')">Emergency
@@ -363,6 +369,10 @@
         </mat-dialog-actions>
     </div>
 
+
+
+    
+
     <div class="col-sm-10 mt-2" *ngIf="activeSection === 'insurance'">
         <form class="form-horizontal">
             <div class="col-sm-6">
@@ -498,6 +508,10 @@
             </button>
         </mat-dialog-actions>
     </div>
+
+
+
+
 
     <div class="col-sm-10 mt-2" *ngIf="activeSection === 'legal'">
         <form class="form-horizontal">

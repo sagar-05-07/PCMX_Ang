@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LiaisonsPopComponent } from '../rcm-setup/case-managers/liaisons-pop/liaisons-pop.component';
 import { ReferralsfilterComponent } from '../referrals/referralsfilter/referralsfilter.component';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { LiaisionpopComponent } from '../liaisionpop/liaisionpop.component';
 
 
 
@@ -26,112 +27,15 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 export class RcmLiaisonComponent {
 
 
- 
-  showCard: boolean;
-
-  toggleCard() {
-
-    this.showCard = !this.showCard;
-
-    if (!this.showCard) {
-      this.showTable = false;
-      this.showTable1 = false;
-      this.showTable2 = false;
-    }
-  }
-
-
-
-  dataSource = [
-    { workList: 'Total Referrals', volume: 120201 },
-    { workList: 'Pending Verification', volume: 1875 },
-    { workList: 'Pending Authorization', volume: 3790 },
-    { workList: 'Delayed', volume: 9078 },
-    { workList: 'Denied', volume: 908 },
-    { workList: 'Verified NOT AUTH', volume: 8900 },
-    { workList: 'AUTH NOT SCH', volume: 890 },
-    { workList: 'SCH NOT Verified', volume: 1987 },
-    { workList: 'Total SCH Visits', volume: 190234 },
-  ];
-
-
-  dataSource1 = [
-    { workList: 'Total SCH Visits', volume: 190234 },
-    { workList: 'No Show', volume: 20200 },
-    { workList: 'Cancelled', volume: 9201 },
-    { workList: 'COM Insurance', volume: 12001 },
-    { workList: 'Workers Comp', volume: 2908 },
-    { workList: 'Self Pay', volume: 7780 },
-    { workList: 'Total Claims', volume: 130001 },
-    { workList: 'Claims Per SCH Visits', volume: 0.68 },
-  ];
-
-  dataSource2 = [
-    { workList: 'Total Claims', volume: 130001 },
-    { workList: 'Claims Closed', volume: 110000 },
-    { workList: 'Claims Dropped', volume: 12800 },
-    { workList: 'Deposit Received', volume: 23902 },
-    { workList: 'Claims Settled', volume: 95001 },
-    { workList: 'Claims Paid', volume: 80001 },
-    { workList: 'Value of Claims', volume: 2902091 },
-    { workList: 'Payment Received', volume: 1098121 },
-    { workList: 'Fraction Paid By Volume', volume: 0.61 },
-    { workList: 'Fraction Paid By Value', volume: 0.38 },
-  ];
-
-  showTable: boolean = false;
-  showTable1: boolean = false;
-  showTable2: boolean = false;
-
-  toggleTable(table: string) {
-    if (table === 'table') {
-      this.showTable = !this.showTable; // Toggle the state
-      this.showTable1 = false; // Ensure other tables are closed
-      this.showTable2 = false;
-    } else if (table === 'table1') {
-      this.showTable1 = !this.showTable1; // Toggle the state
-      this.showTable = false;
-      this.showTable2 = false;
-    } else if (table === 'table2') {
-      this.showTable2 = !this.showTable2; // Toggle the state
-      this.showTable = false;
-      this.showTable1 = false;
-    }
-  }
-
-
-  
-  referralsFilter(event: MouseEvent): void {
-
-    this.showTable = false;
-    this.showTable1 = false;
-    this.showTable2 = false;
-    
-    const buttonRect = (event.target as HTMLElement).getBoundingClientRect();
-    const marginRight = -400; // Adjust this value as needed for the left margin
-    const dialogPosition = {
-      top: `${buttonRect.bottom}px`,
-      left: `${buttonRect.left + marginRight}px`, // Add margin to the left
-    };
-
-    this.dialog.open(ReferralsfilterComponent, {
-      height: 'auto',
-      width: '450px',
-      position: dialogPosition,
-    });
-  }
-
-
-
   filterForm: FormGroup;
   filterToggle: boolean = false;
   currentPage: number = 0;
   totalSize: number = 0;
 
   roleDetails: Array<any> = [
-    { IsActive: true, RoleName: 'Jone Smith', NoofUsers: 'James Bond', TotalUsers: '159', permissionCount: '8959', totalPermissionCount: '5899' },
-    { IsActive: true, RoleName: 'John Doe', NoofUsers: 'Sarah Mitchell', TotalUsers: '529', permissionCount: '9059', totalPermissionCount: '5990' },
-    { IsActive: false, RoleName: 'James Bond', NoofUsers: 'Emily Certer', TotalUsers: '519', permissionCount: '5099', totalPermissionCount: '1259' },
+    { IsActive: true, RoleName: 'Jone Smith', NoofUsers: '11', TotalUsers: '159', permissionCount: '8959', totalPermissionCount: '5899' },
+    { IsActive: true, RoleName: 'John Doe', NoofUsers: '12', TotalUsers: '529', permissionCount: '9059', totalPermissionCount: '5990' },
+    { IsActive: false, RoleName: 'James Bond', NoofUsers: '13', TotalUsers: '519', permissionCount: '5099', totalPermissionCount: '1259' },
   ];
 
   constructor(
@@ -141,8 +45,20 @@ export class RcmLiaisonComponent {
 
   ngOnInit(): void { }
 
+  
+  isAscending: boolean = true;
+
+  toggleSort(event: Event) {
+    event.stopPropagation(); // Prevent menu from opening
+    this.isAscending = !this.isAscending; // Toggle sort order
+  }
+  
+  onSortOptionSelected(option: string) {
+    console.log('Selected sort option:', option);
+  }
+
   locationPop(item: any): void {
-    this.dialog.open(LiaisonsPopComponent, {
+    this.dialog.open(LiaisionpopComponent, {
       data: item,
       width: '800px',
       height: 'auto'
