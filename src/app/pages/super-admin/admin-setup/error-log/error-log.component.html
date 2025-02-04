@@ -17,6 +17,31 @@
                   " (click)="filterToggle1 = !filterToggle1" class="filter-hover pull-right">
                   <mat-icon style="margin-left: 10px">filter_list</mat-icon>Filter
                 </button>
+
+                <!-- Sort Button -->
+                <button mat-raised-button mat-button [matMenuTriggerFor]="sortMenu" style="background-color: #37474f; color: white" class="filters-hover pull-right margin-right-10">
+                  <span (click)="toggleSort($event)" class="icon-text">
+                  <mat-icon style="margin-top: 0px; margin-bottom: -6px;">
+                      {{ isAscending ? 'arrow_drop_up' : 'arrow_drop_down' }}
+                  </mat-icon>
+                  </span>
+                  <span class="icon-text">SORT</span>
+              </button>
+              
+              <!-- Dropdown Menu -->
+              <mat-menu #sortMenu="matMenu">
+                  <div class="scrollable-menu">
+                  <button mat-menu-item (click)="onSortOptionSelected('Event Type')">Event Type </button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Date & Time')">Date & Time </button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Module')">Module </button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Description')">Description</button>
+
+                  </div>
+              </mat-menu>
+
+
+
+
               </div>
             </div>
           </div>
@@ -128,6 +153,66 @@
             </form>
           </div> -->
         <!-- </div> -->
+
+        <div fxLayout="row wrap" *ngIf="filterToggle1" style=" margin-bottom: 10px;margin-left: 33px;">
+          <div fxFlex="90" class="flex-p w-50">
+              <form [formGroup]="filterForm">
+                  <mat-card class="filter">
+                      <mat-card-content>
+                          <div class="row col-sm-12">
+                              <div class="col-sm-4 row">
+                                  <div class="col-sm-4 newMarginClass">
+                                      <b>Keyword:</b>
+                                  </div>
+                                  <div class="col-sm-8">
+                                      <input type="text" formControlName="Keyword" onCopy="return false"
+                                          onPaste="return false" class="form-control"
+                                          placeholder="Search by Keyword">
+                                  </div>
+                              </div>
+                              
+                              
+      
+                              <div class="col-sm-8">
+                                  <div class="row">
+                                    <div class="col-sm-12 offset-sm-3">
+                                      <a (click)="filterToggle1 = !filterToggle1" matTooltip="Close" class="pull-right"
+                                        style="font-size: 20px; cursor: pointer; margin-left: 5px">
+                                        <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                                      </a>
+                        
+                                      <i class="material-icons pull-right" matTooltip="Clear"
+                                        style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                                        settings_backup_restore
+                                      </i>
+                        
+                                      <i class="fa fa-save pull-right" matTooltip="Save"  style="
+                                                        font-size: 20px;
+                                                        cursor: pointer;
+                                                        margin-left: 5px;
+                                                        color: green;
+                                                      " aria-hidden="true">
+                                      </i>
+                        
+                                      <i class="fa fa-search pull-right" matTooltip="Search" style="
+                                                        font-size: 20px;
+                                                        cursor: pointer;
+                                                        margin-left: 5px;
+                                                        color: blue;
+                                                      " aria-hidden="true">
+                                      </i>
+                                    </div>
+                                  </div>
+                                </div>
+      
+                          </div>
+                      </mat-card-content>
+                  </mat-card>
+              </form>
+          </div>
+      </div>
+
+
         <div fxLayout="row wrap" style="padding: 20px">
           <div class="w-100">
             <div fxLayout="row wrap">

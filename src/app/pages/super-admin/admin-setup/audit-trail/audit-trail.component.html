@@ -25,6 +25,34 @@
                   <mat-icon style="margin-left: 10px">filter_list</mat-icon
                   >Filter
                 </button>
+
+
+                <!-- Sort Button -->
+                <button mat-raised-button mat-button [matMenuTriggerFor]="sortMenu" style="background-color: #37474f; color: white" class="filters-hover pull-right margin-right-10">
+                  <span (click)="toggleSort($event)" class="icon-text">
+                  <mat-icon style="margin-top: 0px; margin-bottom: -6px;">
+                      {{ isAscending ? 'arrow_drop_up' : 'arrow_drop_down' }}
+                  </mat-icon>
+                  </span>
+                  <span class="icon-text">SORT</span>
+              </button>
+              
+              <!-- Dropdown Menu -->
+              <mat-menu #sortMenu="matMenu">
+                  <div class="scrollable-menu">
+                  <button mat-menu-item (click)="onSortOptionSelected('User Name')">User Name</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('User Type')">User Type</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Event Type')">Event Type</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Date & Time')">Date & Time</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Event Name')">Event Name</button>
+                  
+                  </div>
+              </mat-menu>
+
+
+
+
+
               </div>
             </div>
           </div>
@@ -45,10 +73,10 @@
                 <mat-card-content>
                   <div class="row col-sm-12">
                     <div class="col-sm-4 row">
-                      <div class="col-sm-3" style="margin-top: 6px">
+                      <div class="col-sm-4" style="margin-top: 6px">
                         <b>Keyword:</b>
                       </div>
-                      <div class="col-sm-9">
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           placeholder="Search by Keyword"
@@ -57,20 +85,15 @@
                       </div>
                     </div>
                     <div class="col-sm-4 row">
-                      <div class="col-sm-3" style="margin-top: 6px">
+                      <div class="col-sm-4" style="margin-top: 6px">
                         <b style="white-space: nowrap">Date Range:</b>
                       </div>
-                      <div class="col-sm-9">
+                      <div class="col-sm-8">
+                        
                         <input
-                          style="
-                            margin-left: 15px;
-                            margin-top: 5px;
-                            height: 30px;
-                          "
-                          type="date"
-                          id="datepick"
-                          name="mybirthday"
+                          type="text"
                           placeholder="Birthdate(MM/DD/YYYY)"
+                          class="form-control"
                         />
                       </div>
                     </div>
@@ -89,17 +112,17 @@
                         </select>
                       </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                    
                   </div>
                   <div class="row col-sm-12" style="margin-top: 10px">
                     <div class="col-sm-4">
                       <div
-                        class="col-sm-3 newMarginClass"
+                        class="col-sm-4 newMarginClass"
                         style="margin-left: -15px; margin-top: 6px"
                       >
                         <b style="white-space: nowrap">User Type:</b>
                       </div>
-                      <div class="col-sm-9">
+                      <div class="col-sm-8">
                         <select
                           placeholder="Select Status"
                           formControlName="Role"
@@ -111,37 +134,37 @@
                         </select>
                       </div>
                     </div>
-
-                    <div class="col-sm-4 pull-right" style="margin-right: 70px">
-                      <a
-                        (click)="filterToggle1 = !filterToggle1"
-                        class="pull-right"
-                        style="
-                          font-size: 25px;
-                          cursor: pointer;
-                          margin-left: 5px;
-                        "
-                      >
-                        <i class="fa fa-angle-double-up" aria-hidden="true"></i>
-                      </a>
-                      <button
-                        mat-raised-button
-                        color="primary"
-                        class="pull-right"
-                        style="
-                          background-color: #007bff !important;
-                          color: white;
-                        "
-                      >
-                        Search
-                      </button>
-
-                      <button
-                        mat-raised-button
-                        class="pull-right btn-default margin-right-10"
-                      >
-                        Clear
-                      </button>
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
+                      <div class="row">
+                        <div class="col-sm-8 offset-sm-3">
+                          <a (click)="filterToggle = !filterToggle" matTooltip="Close" class="pull-right"
+                            style="font-size: 20px; cursor: pointer; margin-left: 5px">
+                            <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                          </a>
+            
+                          <i class="material-icons pull-right" matTooltip="Clear"
+                            style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                            settings_backup_restore
+                          </i>
+            
+                          <i class="fa fa-save pull-right" matTooltip="Save"  style="
+                                            font-size: 20px;
+                                            cursor: pointer;
+                                            margin-left: 5px;
+                                            color: green;
+                                          " aria-hidden="true">
+                          </i>
+            
+                          <i class="fa fa-search pull-right" matTooltip="Search" style="
+                                            font-size: 20px;
+                                            cursor: pointer;
+                                            margin-left: 5px;
+                                            color: blue;
+                                          " aria-hidden="true">
+                          </i>
+                        </div>
+                      </div>
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>

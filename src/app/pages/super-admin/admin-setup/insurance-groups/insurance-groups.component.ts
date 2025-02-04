@@ -11,7 +11,7 @@ import { AddInsuranceComponent } from './add-insurance/add-insurance.component';
 export class InsuranceGroupsComponent {
 
 
-
+  filterToggle:boolean=false
   eventDetails: Array<any> = [
     {
       insuranceCompany: 'Nationwide Insurance',
@@ -106,6 +106,17 @@ applyFilter(event: Event): void {
   );
 }
 
+
+isAscending: boolean = true;
+
+toggleSort(event: Event) {
+  event.stopPropagation(); // Prevent menu from opening
+  this.isAscending = !this.isAscending; // Toggle sort order
+}
+
+onSortOptionSelected(option: string) {
+  console.log('Selected sort option:', option);
+}
 
 eventTypes2: string[] = [
   'Tenet Healthcare	',

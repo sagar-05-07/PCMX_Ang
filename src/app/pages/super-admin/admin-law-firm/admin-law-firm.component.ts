@@ -721,4 +721,38 @@ export class AdminLawFirmComponent {
   opencases() {
     this.router.navigate(['super-admin/rcm-accounts/cases']);
   }
+
+
+  eventTypes5: string[] = [
+    'Tenet Healthcare	',
+    'CHRISTUS Health	',
+    'Nutex Health	',
+    'Oceans Healthcare	',
+  ];
+  filteredEventTypes5: string[] = [...this.eventTypes5];
+  selectedEventType5: string | null = null;
+  applyFilter5(event: Event): void {
+    const filterValue5 = (event.target as HTMLInputElement).value
+      .trim()
+      .toLowerCase(); // Safe casting to HTMLInputElement
+    this.filteredEventTypes5 = this.eventTypes5.filter((eventType5) =>
+      eventType5.toLowerCase().includes(filterValue5)
+    );
+  }
+
+
+  
+  isAscending: boolean = true;
+
+  toggleSort(event: Event) {
+    event.stopPropagation(); // Prevent menu from opening
+    this.isAscending = !this.isAscending; // Toggle sort order
+  }
+  
+  onSortOptionSelected(option: string) {
+    console.log('Selected sort option:', option);
+  }
+
+
+
 }

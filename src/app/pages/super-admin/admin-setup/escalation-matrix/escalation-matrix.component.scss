@@ -4,3 +4,14 @@
   height: 100vh;
   overflow-y: auto;
 }
+
+::ng-deep .mat-menu-panel {
+  max-height: 250px !important; 
+}
+
+::ng-deep .scrollable-menu {
+  max-height: 200px; 
+  overflow-y: auto; 
+  display: flex;
+  flex-direction: column;
+}

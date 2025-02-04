@@ -23,6 +23,29 @@
               >
                 <mat-icon style="margin-left: 10px">filter_list</mat-icon>Filter
               </button>
+
+              <!-- Sort Button -->
+<button mat-raised-button mat-button [matMenuTriggerFor]="sortMenu" style="background-color: #37474f; color: white" class="filters-hover pull-right margin-right-10">
+  <span (click)="toggleSort($event)" class="icon-text">
+    <mat-icon style="margin-top: 0px; margin-bottom: -6px;">
+      {{ isAscending ? 'arrow_drop_up' : 'arrow_drop_down' }}
+    </mat-icon>
+  </span>
+  <span class="icon-text">SORT</span>
+</button>
+
+<!-- Dropdown Menu -->
+<mat-menu #sortMenu="matMenu">
+  <div class="scrollable-menu">
+    <button mat-menu-item (click)="onSortOptionSelected('User Type')">User Type</button>
+    <button mat-menu-item (click)="onSortOptionSelected('Description')">Description</button>
+    <button mat-menu-item (click)="onSortOptionSelected('User Name')">User Name</button>
+    <button mat-menu-item (click)="onSortOptionSelected('Alert Type')">Alert Type</button>
+    <button mat-menu-item (click)="onSortOptionSelected('Priority')">Priority</button>
+
+  </div>
+</mat-menu>
+
             </div>
           </div>
         </div>
@@ -75,36 +98,39 @@
                     </div>
                   </div>
 
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
-                </div>
-                <div class="row col-sm-12">
-                  <div class="col-sm-4 pull-right" style="margin-top: -35px">
-                    <a
-                      (click)="filterToggle = !filterToggle"
-                      class="pull-right"
-                      style="font-size: 25px; cursor: pointer; margin-left: 5px"
-                    >
-                      <i class="fa fa-angle-double-up" aria-hidden="true"></i>
-                    </a>
-                    <button
-                      mat-raised-button
-                      color="primary"
-                      class="pull-right"
-                      style="background-color: #007bff !important; color: white"
-                    >
-                      Search
-                    </button>
-
-                    <button
-                      mat-raised-button
-                      class="pull-right btn-default margin-right-10"
-                    >
-                      Clear
-                    </button>
+                  <div class="col-sm-4">
+                    <div class="row">
+                      <div class="col-sm-12 offset-sm-3">
+                        <a (click)="filterToggle = !filterToggle" matTooltip="Close" class="pull-right"
+                          style="font-size: 20px; cursor: pointer; margin-left: 5px">
+                          <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                        </a>
+          
+                        <i class="material-icons pull-right" matTooltip="Clear"
+                          style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                          settings_backup_restore
+                        </i>
+          
+                        <i class="fa fa-save pull-right" matTooltip="Save"  style="
+                                          font-size: 20px;
+                                          cursor: pointer;
+                                          margin-left: 5px;
+                                          color: green;
+                                        " aria-hidden="true">
+                        </i>
+          
+                        <i class="fa fa-search pull-right" matTooltip="Search" style="
+                                          font-size: 20px;
+                                          cursor: pointer;
+                                          margin-left: 5px;
+                                          color: blue;
+                                        " aria-hidden="true">
+                        </i>
+                      </div>
+                    </div>
                   </div>
-
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
                 </div>
+                
               </mat-card-content>
             </mat-card>
           </form>
