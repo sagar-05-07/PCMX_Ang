@@ -16,6 +16,10 @@ import { LookupDialogComponent } from './lookup-options/lookup-dialog/lookup-dia
 import { InsuranceGroupsComponent } from './insurance-groups/insurance-groups.component';
 import { AddInsuranceComponent } from './insurance-groups/add-insurance/add-insurance.component';
 import { StaffUsersComponent } from './staff-users/staff-users.component';
+import { StatesComponent } from './states/states.component';
+import { AddStatesComponent } from './states/add-states/add-states.component';
+import { CitiesComponent } from './cities/cities.component';
+import { AddCitiesComponent } from './cities/add-cities/add-cities.component';
 
 // import { ManageUsersComponent } from './manage-users.component';
 
@@ -111,6 +115,26 @@ const routes: Routes = [
       description: 'This page is used to manage Roles',
     },
   },
+  {
+    path: 'State',
+    component: StatesComponent,
+    pathMatch: 'full',
+    data: {
+      breadcrumb: 'States',
+      description: 'This page is used to manage Roles',
+    },
+  },
+
+  {
+    path: 'Cities',
+    component: CitiesComponent,
+    pathMatch: 'full',
+    data: {
+      breadcrumb: 'Cities',
+      description: 'This page is used to manage Roles',
+    },
+  },
+
 ];
 @NgModule({
   declarations: [
@@ -127,6 +151,10 @@ const routes: Routes = [
     InsuranceGroupsComponent,
     AddInsuranceComponent,
     StaffUsersComponent,
+    StatesComponent,
+    AddStatesComponent,
+    CitiesComponent,
+    AddCitiesComponent,
   ],
   imports: [
     CommonModule,

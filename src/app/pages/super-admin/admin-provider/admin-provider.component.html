@@ -29,15 +29,15 @@
 
             <button mat-raised-button matTooltip="Add Provider" class="pull-right center-icon"
               style="background-color: #007bff !important;color: white;" (click)="openproviderdialog(null)">
-              <mat-icon class="mat-margin-top">add</mat-icon>
+              <mat-icon class="mat-margin-top">add</mat-icon>Add Provider
             </button>
 
             
             
-            <button mat-raised-button matTooltip="Filter" style="background-color: black; color: white"
-              class="pull-right filter-hover margin-right-10 center-icon" (click)="filterToggle = !filterToggle">
-              <mat-icon class="mt-2">filter_list</mat-icon>
-            </button>
+            <button mat-raised-button style="background-color: black; color: white"
+                class="pull-right filter-hover margin-right-10" (click)="filterToggle = !filterToggle">
+                <mat-icon class="mt-2">filter_list</mat-icon> Filter
+              </button>
 
             <!-- Sort Button -->
           <button mat-raised-button mat-button [matMenuTriggerFor]="sortMenu" style="background-color: #000000; color: white" class="filters-hover pull-right margin-right-10 ">
@@ -63,25 +63,37 @@
           </mat-menu>
 
 
-            <button mat-raised-button matTooltip="Download CSV" class="pull-right center-icon"
-              style="background-color: #50636d !important;color: white;margin-right: 8px;">
-              <mat-icon class="mt-2">get_app</mat-icon>
-            </button>
+          <button mat-raised-button class="pull-right" style="
+          background-color: #50636d !important;
+          color: white;
+          margin-right: 8px;
+        ">
+        <mat-icon class="mt-2">get_app</mat-icon> Download CSV
+      </button>
 
-            <button mat-raised-button matTooltip="Upload CSV" class="pull-right center-icon"
-              style="background-color: #007bff !important;color: white;margin-right: 8px;">
-              <mat-icon class="mt-2">cloud_upload</mat-icon>
-            </button>
-            <button mat-raised-button matTooltip="Grid Columns" class="pull-right center-icon"
-              style="background-color: #50636d !important;color: white;margin-right: 8px;"
-              (click)="openproviderdialoge(null)">
-              <mat-icon class="mt-2">grid_on</mat-icon>
-            </button>
-            <button mat-raised-button matTooltip="Download Template" class="pull-right center-icon"
-              style="background-color: #50636d !important;color: white;margin-right: 8px;">
-              <mat-icon class="mt-2">get_app</mat-icon>
-            </button>
+      <button mat-raised-button class="pull-right" style="
+          background-color: #007bff !important;
+          color: white;
+          margin-right: 8px;
+        ">
+        <mat-icon class="mt-2">cloud_upload</mat-icon> Upload CSV
+      </button>
 
+      <button mat-raised-button class="pull-right" style="
+          background-color: #50636d !important;
+          color: white;
+          margin-right: 8px;
+        " (click)="openproviderdialoge(null)">
+        <mat-icon class="mt-2">grid_on</mat-icon> Grid Columns
+      </button>
+
+      <button mat-raised-button class="pull-right" style="
+          background-color: #50636d !important;
+          color: white;
+          margin-right: 8px;
+        ">
+        <mat-icon class="mt-2">get_app</mat-icon> Download Template
+      </button>
             
           
 
