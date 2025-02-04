@@ -108,15 +108,15 @@
         </div>
     </div>
     <div class="col-sm-6">
-        <mat-card style="height: auto; background-color: #fffce4;">
+        <mat-card style="height: auto; background-color: #ededed;">
             <div class="row d-flex flex-wrap justify-content-center " style="padding: 30px;">
              
 
-                <button mat-raised-button style="width: 200px; height: 50px; margin: 10px;background-color: #2188bf;">Verified</button>
-                <button mat-raised-button style="width: 200px; height: 50px; margin: 10px;background-color: #2188bf;">Authorize</button>
-                <button mat-raised-button class="custom-btngray" [ngClass]="{'white-btngray': isClickedgray === 1}" (click)="toggleColorgray(1)">Scheduled</button>
-                <button mat-raised-button class="custom-btngray" [ngClass]="{'white-btngray': isClickedgray === 2}" (click)="toggleColorgray(2)">Medical Records</button>
-                <button mat-raised-button class="custom-btngray" [ngClass]="{'white-btngray': isClickedgray === 3}" (click)="toggleColorgray(3)">Claimed</button>
+                <button mat-raised-button disabled style="width: 200px; height: 50px; margin: 10px;background-color: #ffffff;">Verified</button>
+                <button mat-raised-button disabled style="width: 200px; height: 50px; margin: 10px;background-color: #ffffff;">Authorize</button>
+                <button mat-raised-button class="custom-btngray"  >Scheduled</button>
+                <button mat-raised-button class="custom-btngray" >Medical Records</button>
+                <button mat-raised-button class="custom-btngray" >Claimed</button>
                 <button mat-raised-button class="custom-btn1" [ngClass]="{'white-btn1': isClicked1}" (click)="toggleColor1()">Funded</button>
                 <button mat-raised-button class="custom-btn" [ngClass]="{'white-btn': isClicked === 4}" (click)="toggleColor(4)">Settled</button>
                 <button mat-raised-button class="custom-btn" [ngClass]="{'white-btn': isClicked === 5}" (click)="toggleColor(5)">Paid</button>
