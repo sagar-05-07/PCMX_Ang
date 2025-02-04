@@ -122,6 +122,20 @@ export class EscalationMatrixComponent {
     }
     console.log('Saved item:', item);
   }
+
+  
+  isAscending: boolean = true;
+
+  toggleSort(event: Event) {
+    event.stopPropagation(); // Prevent menu from opening
+    this.isAscending = !this.isAscending; // Toggle sort order
+  }
+  
+  onSortOptionSelected(option: string) {
+    console.log('Selected sort option:', option);
+  }
+
+
 }
 function openproviderdialog(id: any, any: any) {
   throw new Error('Function not implemented.');

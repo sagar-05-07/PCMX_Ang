@@ -1,4 +1,26 @@
 <div class="col-sm-12">
+  <div class="arrow-container">
+    <div class="arrow-shape" style="background-color: #D9D9D9; color: black;">
+      <span class="arrow-text">Total Providers</span>
+      <span class="arrow-number">2400</span>
+    </div>
+  
+    <div class="arrow-shape" style="background-color: #FFD2B2; color: black;">
+      <span class="arrow-text">Added This Year</span>
+      <span class="arrow-number">1290</span>
+    </div>
+  
+    <div class="arrow-shape" style="background-color: #A8E5C1; color: black;">
+      <span class="arrow-text">Added This Quarter</span>
+      <span class="arrow-number">80</span>
+    </div>
+  
+
+  </div>
+</div>
+
+
+<div class="col-sm-12">
   <div fxLayout="row wrap">
     <div class="w-100">
       <div class="flex-p">
@@ -10,10 +32,36 @@
               <mat-icon class="mat-margin-top">add</mat-icon>
             </button>
 
+            
+            
             <button mat-raised-button matTooltip="Filter" style="background-color: black; color: white"
               class="pull-right filter-hover margin-right-10 center-icon" (click)="filterToggle = !filterToggle">
               <mat-icon class="mt-2">filter_list</mat-icon>
             </button>
+
+            <!-- Sort Button -->
+          <button mat-raised-button mat-button [matMenuTriggerFor]="sortMenu" style="background-color: #000000; color: white" class="filters-hover pull-right margin-right-10 ">
+            <span (click)="toggleSort($event)" class="icon-text">
+              <mat-icon style="margin-top: 0px; margin-bottom: -6px;">
+                {{ isAscending ? 'arrow_drop_up' : 'arrow_drop_down' }}
+              </mat-icon>
+            </span>
+            <span class="icon-text">SORT</span>
+          </button>
+
+          <!-- Dropdown Menu -->
+          <mat-menu #sortMenu="matMenu">
+            <div class="scrollable-menu">
+              <button mat-menu-item (click)="onSortOptionSelected('Provider')">Provider</button>
+              <button mat-menu-item (click)="onSortOptionSelected('Networks')">Networks</button>
+              <button mat-menu-item (click)="onSortOptionSelected('Phone')">Phone</button>
+              <button mat-menu-item (click)="onSortOptionSelected('Email')">Email</button>
+              <button mat-menu-item (click)="onSortOptionSelected('State')">State</button>
+              <button mat-menu-item (click)="onSortOptionSelected('City')">City</button>
+              
+            </div>
+          </mat-menu>
+
 
             <button mat-raised-button matTooltip="Download CSV" class="pull-right center-icon"
               style="background-color: #50636d !important;color: white;margin-right: 8px;">
@@ -33,6 +81,19 @@
               style="background-color: #50636d !important;color: white;margin-right: 8px;">
               <mat-icon class="mt-2">get_app</mat-icon>
             </button>
+
+            
+          
+
+
+    
+
+              
+
+
+
+
+
           </div>
         </div>
       </div>
@@ -54,10 +115,10 @@
                   </div>
 
                   <div class="col-sm-4 row">
-                    <div class="col-sm-2" style="margin-top: 6px">
+                    <div class="col-sm-3" style="margin-top: 6px">
                       <b>State:</b>
                     </div>
-                    <div class="col-sm-10">
+                    <div class="col-sm-9">
                       <mat-select placeholder="--Select State--" class="form-control" multiple
                         [(value)]="selectedEventType3">
                         <mat-select-trigger>
@@ -73,10 +134,10 @@
                     </div>
                   </div>
                   <div class="col-sm-4 row">
-                    <div class="col-sm-2" style="margin-top: 6px">
+                    <div class="col-sm-3" style="margin-top: 6px">
                       <b>City:</b>
                     </div>
-                    <div class="col-sm-10">
+                    <div class="col-sm-9">
                       <mat-select placeholder="--Select City--" class="form-control" multiple
                         [(value)]="selectedEventType">
                         <mat-select-trigger>
@@ -95,40 +156,7 @@
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
                 </div>
                 <div class="row col-sm-12" style="margin-top: 10px">
-                  <!-- <div class="col-sm-4 row">
-                    <div class="col-sm-2" style="margin-top: 6px">
-                      <b>Group:</b>
-                    </div>
-                    <div class="col-sm-10">
-                      <mat-select
-                        placeholder="--Select Group--"
-                        class="form-control"
-                        multiple
-                        [(value)]="selectedEventType1"
-                      >
-                        <mat-select-trigger>
-                          {{ selectedEventType1 || "--Select Group--" }}
-                        </mat-select-trigger>
-                        <mat-form-field
-                          *ngIf="eventTypes1.length > 1"
-                          appearance="fill"
-                          style="width: 100%"
-                        >
-                          <input
-                            matInput
-                            (input)="applyFilter1($event)"
-                            placeholder="Search"
-                          />
-                        </mat-form-field>
-                        <mat-option
-                          *ngFor="let event of filteredEventTypes1"
-                          [value]="event"
-                        >
-                          {{ event }}
-                        </mat-option>
-                      </mat-select>
-                    </div>
-                  </div> -->
+                  
                   <div class="col-sm-4 row">
                     <div class="col-sm-3" style="margin-top: 6px">
                       <b>Provider:</b>
@@ -149,19 +177,61 @@
                     </div>
                   </div>
 
-                  <div class="col-sm-4 pull-right" style="margin-right: 75px">
-                    <a (click)="filterToggle = !filterToggle" class="pull-right"
-                      style="font-size: 25px; cursor: pointer; margin-left: 5px">
-                      <i class="fa fa-angle-double-up" aria-hidden="true"></i>
-                    </a>
-                    <button mat-raised-button color="primary" class="pull-right"
-                      style="background-color: #007bff !important; color: white">
-                      Search
-                    </button>
+                  <div class="col-sm-4 row">
+                    <div class="col-sm-3" style="margin-top: 6px">
+                      <b>Networks:</b>
+                    </div>
+                    <div class="col-sm-9">
+                      <mat-select placeholder="--Select Networks--" class="form-control" multiple
+                        [(value)]="selectedEventType5">
+                        <mat-select-trigger>
+                          {{ selectedEventType5 || "--Select Networks--" }}
+                        </mat-select-trigger>
+                        <mat-form-field *ngIf="eventTypes5.length > 1" appearance="fill" style="width: 100%">
+                          <input matInput (input)="applyFilter5($event)" placeholder="Search" />
+                        </mat-form-field>
+                        <mat-option *ngFor="let event of filteredEventTypes5" [value]="event">
+                          {{ event }}
+                        </mat-option>
+                      </mat-select>
+                    </div>
+                  </div>
 
-                    <button mat-raised-button class="pull-right btn-default margin-right-10">
-                      Clear
-                    </button>
+
+
+                  <div class="col-sm-4">
+
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="row">
+                      <div class="col-sm-11 offset-sm-3">
+                        <a (click)="filterToggle = !filterToggle" matTooltip="Close" class="pull-right"
+                          style="font-size: 20px; cursor: pointer; margin-left: 5px">
+                          <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                        </a>
+          
+                        <i class="material-icons pull-right" matTooltip="Clear"
+                          style="font-size: 25px; cursor: pointer; margin-left: 5px">
+                          settings_backup_restore
+                        </i>
+          
+                        <i class="fa fa-save pull-right" matTooltip="Save"  style="
+                                          font-size: 20px;
+                                          cursor: pointer;
+                                          margin-left: 5px;
+                                          color: green;
+                                        " aria-hidden="true">
+                        </i>
+          
+                        <i class="fa fa-search pull-right" matTooltip="Search" style="
+                                          font-size: 20px;
+                                          cursor: pointer;
+                                          margin-left: 5px;
+                                          color: blue;
+                                        " aria-hidden="true">
+                        </i>
+                      </div>
+                    </div>
                   </div>
 
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
@@ -237,10 +307,10 @@
                                   ">
                 {{ item.name }}
               </td>
-              <td class="text-center" (click)="openNetworks(null)">
-                <a style="cursor: pointer">
-                  {{ item.networks }}
-                </a>
+              <td  class="text-left">
+                
+                  {{item.names}}
+                
               </td>
 
               <td class="text-left">

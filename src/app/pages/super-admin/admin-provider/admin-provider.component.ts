@@ -127,6 +127,7 @@ export class AdminProviderComponent {
       totalbilling: '$6100',
       currentbilling: '$5200',
       city: 'Austin',
+      names: 'WorkWell, TX'
     },
     {
       status: 'Active',
@@ -151,6 +152,7 @@ export class AdminProviderComponent {
       totalbilling: '$4500',
       currentbilling: '$3100',
       city: 'Dallas',
+      names: 'Liberty Health Care Network'
     },
     {
       status: 'Inactive',
@@ -175,6 +177,7 @@ export class AdminProviderComponent {
       totalbilling: '$1100',
       currentbilling: '$900',
       city: 'Houston',
+      names: 'GENEX Health Care Network'
     },
     {
       status: 'Active',
@@ -199,6 +202,7 @@ export class AdminProviderComponent {
       totalbilling: '$7500',
       currentbilling: '$5800',
       city: 'San Antonio',
+      names: 'First Health / CSS HCN'
     },
     {
       status: 'Active',
@@ -223,6 +227,7 @@ export class AdminProviderComponent {
       totalbilling: '$6100',
       currentbilling: '$5200',
       city: 'Austin',
+      names: 'Argus Provider Network'
     },
     {
       status: 'Inactive',
@@ -247,6 +252,7 @@ export class AdminProviderComponent {
       totalbilling: '$4500',
       currentbilling: '$3100',
       city: 'Dallas',
+      names: 'Caramor TX HCN'
     },
     {
       status: 'Active',
@@ -271,6 +277,7 @@ export class AdminProviderComponent {
       totalbilling: '$1100',
       currentbilling: '$900',
       city: 'Houston',
+      names: 'Texas Star Network'
     },
     {
       status: 'Active',
@@ -295,6 +302,7 @@ export class AdminProviderComponent {
       totalbilling: '$6100',
       currentbilling: '$5200',
       city: 'Austin',
+      names: 'The Lone Star Network'
     },
     {
       status: 'Active',
@@ -319,6 +327,7 @@ export class AdminProviderComponent {
       totalbilling: '$4500',
       currentbilling: '$3100',
       city: 'Dallas',
+      names: 'Texas Star Network'
     },
     {
       status: 'Active',
@@ -343,6 +352,7 @@ export class AdminProviderComponent {
       totalbilling: '$1100',
       currentbilling: '$900',
       city: 'Houston',
+      names: 'Baylor Scott & White Health'
     },
     {
       status: 'Active',
@@ -367,6 +377,7 @@ export class AdminProviderComponent {
       totalbilling: '$7500',
       currentbilling: '$5800',
       city: 'San Antonio',
+      names: 'Tenet Healthcare '
     },
     {
       status: 'Active',
@@ -391,6 +402,7 @@ export class AdminProviderComponent {
       totalbilling: '$6100',
       currentbilling: '$5200',
       city: 'Austin',
+      names: 'Argus Provider Network'
     },
     {
       status: 'Active',
@@ -415,6 +427,7 @@ export class AdminProviderComponent {
       totalbilling: '$4500',
       currentbilling: '$3100',
       city: 'Dallas',
+      names: 'Caramor TX HCN'
     },
     {
       status: 'Active',
@@ -439,6 +452,7 @@ export class AdminProviderComponent {
       totalbilling: '$1100',
       currentbilling: '$900',
       city: 'Houston',
+      names: 'GENEX Health Care Network'
     },
   ];
   public searchText: string;
@@ -493,6 +507,10 @@ export class AdminProviderComponent {
   ];
   statusOptions = ['Any', 'Active', 'Inactive'];
 
+
+
+
+
   // public opengridColDialog(lead: any) {
   //   let dialogRef = this.dialog.open(ContactsGridColDialogComponent, {
   //     data: lead,
@@ -529,6 +547,13 @@ export class AdminProviderComponent {
     console.log(event); //option value will be sent as event
   }
 
+
+  
+
+  
+
+
+  
   // public opencontactDialog(contact: any) {
   //   let dialogRef = this.dialog.open(ContactsDialogComponent, {
   //     data: contact,
@@ -719,6 +744,37 @@ export class AdminProviderComponent {
 
   openlocations() {
     this.router.navigate(['super-admin/rcm-accounts/locations']);
+  }
+
+
+
+  isAscending: boolean = true;
+
+  toggleSort(event: Event) {
+    event.stopPropagation(); // Prevent menu from opening
+    this.isAscending = !this.isAscending; // Toggle sort order
+  }
+  
+  onSortOptionSelected(option: string) {
+    console.log('Selected sort option:', option);
+  }
+
+
+  eventTypes5: string[] = [
+    'Tenet Healthcare	',
+    'CHRISTUS Health	',
+    'Nutex Health	',
+    'Oceans Healthcare	',
+  ];
+  filteredEventTypes5: string[] = [...this.eventTypes5];
+  selectedEventType5: string | null = null;
+  applyFilter5(event: Event): void {
+    const filterValue5 = (event.target as HTMLInputElement).value
+      .trim()
+      .toLowerCase(); // Safe casting to HTMLInputElement
+    this.filteredEventTypes5 = this.eventTypes5.filter((eventType5) =>
+      eventType5.toLowerCase().includes(filterValue5)
+    );
   }
 
 }

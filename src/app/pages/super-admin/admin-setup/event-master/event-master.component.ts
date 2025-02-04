@@ -78,4 +78,19 @@ throw new Error('Method not implemented.');
       lastInstace: '02-26-2024',
     },
   ];
+
+
+  
+  isAscending: boolean = true;
+
+  toggleSort(event: Event) {
+    event.stopPropagation(); // Prevent menu from opening
+    this.isAscending = !this.isAscending; // Toggle sort order
+  }
+  
+  onSortOptionSelected(option: string) {
+    console.log('Selected sort option:', option);
+  }
+
+
 }
