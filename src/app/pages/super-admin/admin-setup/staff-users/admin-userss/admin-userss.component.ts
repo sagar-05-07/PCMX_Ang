@@ -55,6 +55,17 @@ export class AdminUserssComponent {
     // this.titleService.setTitle(newTitle);
   }
 
+  isAscending: boolean = true;
+
+  toggleSort(event: Event) {
+    event.stopPropagation(); // Prevent menu from opening
+    this.isAscending = !this.isAscending; // Toggle sort order
+  }
+
+  onSortOptionSelected(option: string) {
+    console.log('Selected sort option:', option);
+  }
+
   users: Array<any> = [
     { Department: "Design", UserName: "Admin", UserEmail: "Admin@optionmatrix.com", UserPhone: "9834578945", RoleName: "	Admin", rolescreens: "10", totalscreens: "56", splperm: "5", totalspl: "16", IsActive: 'true', vedor: 'true', vedor11: 'true', vedor12: 'true', vedor13: 'true' },
     { Department: "Testing", UserName: "Test Pavan", UserEmail: "Pavan@optionmatrix.com", UserPhone: "9584672150", RoleName: "	Tester", rolescreens: "21", totalscreens: "56", splperm: "8", totalspl: "16", vedor1: 'true' },
