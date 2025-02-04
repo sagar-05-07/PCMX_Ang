@@ -52,4 +52,16 @@ export class VisitRadarComponent {
   ];
 
 
+  isVerifiedActive = false;
+  isAuthorizeActive = false;
+  isAuthorizeClaimed = false;
+
+  toggleButton(buttonType: string) {
+    this.isVerifiedActive = buttonType === 'verified';
+    this.isAuthorizeActive = buttonType === 'authorize';
+    this.isAuthorizeClaimed = buttonType === 'claimed';
+  }
+
+
+
 }

@@ -74,3 +74,27 @@
     border: 2px solid black;
   }
 
+
+
+
+
+  button {
+    width: 200px;
+    height: 50px;
+    margin: 10px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .active-btn {
+    background-color: #2188bf !important;
+    color: white;
+  }
+  
+  .inactive-btn {
+    // background-color: #d7d7d7 !important;
+    background-color: gray !important;
+    color: black;
+  }
+  

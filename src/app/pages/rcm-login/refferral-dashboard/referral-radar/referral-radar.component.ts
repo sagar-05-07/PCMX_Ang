@@ -59,6 +59,17 @@ export class ReferralRadarComponent {
     { category: 'Medical', specialty: 'Primary Care', subSpecialty: 'OBGYN' },
     { category: 'Surgery/Procedures', specialty: 'General', subSpecialty: '' }
   ];
+  isVerifiedActive = false;
+  isAuthorizeActive = false;
 
+  toggleButton(buttonType: string) {
+    if (buttonType === 'verified') {
+      this.isVerifiedActive = true;
+      this.isAuthorizeActive = false;
+    } else if (buttonType === 'authorize') {
+      this.isAuthorizeActive = true;
+      this.isVerifiedActive = false;
+    }
+  }
 
 }

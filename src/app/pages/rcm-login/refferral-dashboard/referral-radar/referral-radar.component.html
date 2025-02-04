@@ -117,18 +117,34 @@
         </div>
     </div>
     <div class="col-sm-6">
-        <mat-card style="height: auto; background-color: #d1d1d1;">
+        <mat-card style="height: auto; background-color: #d7d7d7;">
             <div class="row d-flex flex-wrap justify-content-center " style="padding: 30px;">
              
 
-                <button mat-raised-button disabled class="custom-btn " style="background-color: #ffffff;">Scheduled</button>
-                <button mat-raised-button disabled class="custom-btn" style="background-color: #ffffff;">Medical Records</button>
-                <button mat-raised-button disabled class="custom-btn " style="background-color: #ffffff;">Scheduled</button>
-                <button mat-raised-button disabled class="custom-btn" style="background-color: #ffffff;">Medical Records</button>
-                <button mat-raised-button disabled class="custom-btn " style="background-color: #ffffff;">Claimed</button>
-                <button mat-raised-button disabled class="custom-btn " style="background-color: #ffffff;">Funded</button>
-                <button mat-raised-button disabled class="custom-btn " style="background-color: #ffffff;">Settled</button>
-                <button mat-raised-button disabled class="custom-btn " style="background-color: #ffffff;">Paid</button>
+                <button mat-raised-button [ngClass]="{ 'active-btn': isVerifiedActive, 'inactive-btn': !isVerifiedActive }"
+                    (click)="toggleButton('verified')">
+                    Verified
+                </button>
+                
+                <button mat-raised-button [ngClass]="{ 'active-btn': isAuthorizeActive, 'inactive-btn': !isAuthorizeActive }"
+                    (click)="toggleButton('authorize')">
+                    Authorized
+                </button>
+
+                <!-- background-color: #2188bf; -->
+                
+                <button mat-raised-button disabled class="custom-btn" 
+                    >Scheduled</button>
+                <button mat-raised-button disabled class="custom-btn" 
+                    >Medical Records</button>
+                <button mat-raised-button disabled class="custom-btn" 
+                    >Claimed</button>
+                <button mat-raised-button disabled class="custom-btn1" 
+                    >Funded</button>
+                <button mat-raised-button disabled class="custom-btn" 
+                    >Settled</button>
+                <button mat-raised-button disabled class="custom-btn" 
+                    >Paid</button>
 
 
 
