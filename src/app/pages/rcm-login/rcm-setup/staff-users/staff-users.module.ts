@@ -10,6 +10,7 @@ import { AddRoleComponent } from './roles/add-role/add-role.component';
 import { AddUsersComponent } from './rcm-users/add-users/add-users.component';
 import { PermissionComponent } from './roles/permission/permission.component';
 import { SpecialPermissionComponent } from './roles/special-permission/special-permission.component';
+import { StatusupdateComponent } from './roles/statusupdate/statusupdate.component';
 
 const routes: Routes = [
 
@@ -56,7 +57,8 @@ const routes: Routes = [
         AddRoleComponent,
         AddUsersComponent,
         PermissionComponent,
-        SpecialPermissionComponent
+        SpecialPermissionComponent,
+        StatusupdateComponent
     ]
 })
 export class StaffUsersModule { }

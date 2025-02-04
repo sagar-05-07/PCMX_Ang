@@ -60,6 +60,7 @@ import { ReferralvsvisitsComponent } from './patients/referralvsvisits/referralv
 import { VisitsvsclaimsComponent } from './patients/visitsvsclaims/visitsvsclaims.component';
 import { ClaimsvspaidComponent } from './patients/claimsvspaid/claimsvspaid.component';
 import { ReferralsfilterComponent } from './referrals/referralsfilter/referralsfilter.component';
+import { LiaisionpopComponent } from './liaisionpop/liaisionpop.component';
 
 const routes: Routes = [
 
@@ -357,7 +358,8 @@ const routes: Routes = [
         ReferralvsvisitsComponent,
         VisitsvsclaimsComponent,
         ClaimsvspaidComponent,
-        ReferralsfilterComponent
+        ReferralsfilterComponent,
+        LiaisionpopComponent
     ]
 })
 export class RcmLogInModule { }

@@ -8,6 +8,29 @@
         (click)="filterToggle = !filterToggle">
         <mat-icon>filter_list</mat-icon> Filter
     </button>
+
+     <!-- Sort Button -->
+     <button mat-raised-button mat-button [matMenuTriggerFor]="sortMenu"
+     style="background-color: #37474f; color: white; height: 35px;" class="filters-hover pull-right margin-right-10">
+     <span (click)="toggleSort($event)" class="icon-text">
+       <mat-icon style="margin-top: 0px; margin-bottom: -6px;">
+         {{ isAscending ? 'arrow_drop_up' : 'arrow_drop_down' }}
+       </mat-icon>
+     </span>
+     <span class="icon-text">SORT</span>
+   </button>
+
+   <!-- Dropdown Menu -->
+   <mat-menu #sortMenu="matMenu">
+     <div class="scrollable-menu">
+       <button mat-menu-item (click)="onSortOptionSelected('Case Manager')">Case Manager</button>
+       <button mat-menu-item (click)="onSortOptionSelected('Liaisons')">Liaisons</button>
+       <button mat-menu-item (click)="onSortOptionSelected('Patients')">Patients</button>
+       <button mat-menu-item (click)="onSortOptionSelected('Claims')">Claims</button>
+       <button mat-menu-item (click)="onSortOptionSelected('Created Date')">Created Date</button>
+       <button mat-menu-item (click)="onSortOptionSelected('Law Firms')">Law Firms</button>
+     </div>
+   </mat-menu>
 </div>
 
 <!-- Filter -->

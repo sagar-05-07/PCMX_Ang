@@ -22,10 +22,24 @@
 
                     <div class="row " style="margin-bottom: 12px;">
                         <div class="col-sm-4 add-mem">
-                            <label class="control-label add-member-label required">Patient ID :</label>
+                            <label class="control-label add-member-label required">Patient Name :</label>
                         </div>
                         <div class="col-sm-7">
-                            <mat-select class="form-control bac" placeholder="Select Patient ID">
+
+
+                            <mat-select placeholder="--Select Patient Name :--" [(value)]="selectLawFirmType" class="form-control bac" multiple >
+                                <mat-select-trigger>
+                                  {{selectLawFirmType || '--Select City--'}}
+                                </mat-select-trigger>
+                                <mat-form-field *ngIf="eventLawFirmTypes.length > 1" appearance="fill" style="width: 100%;">
+                                  <input matInput (input)="applyFilter1($event)" placeholder="Search">
+                                </mat-form-field>
+                                <mat-option *ngFor="let event of filteredLawFirmType" [value]="event">
+                                  {{event}}
+                                </mat-option>
+                              </mat-select>
+
+                            <!-- <mat-select class="form-control bac" placeholder="Select Patient ID">
                                 <mat-option [value]="'New York'">10025423</mat-option>
                                 <mat-option [value]="'Los Angeles'">10025424</mat-option>
                                 <mat-option [value]="'Chicago'">10025425</mat-option>
@@ -34,7 +48,7 @@
                                 <mat-option [value]="'Philadelphia'">10025428</mat-option>
                                 <mat-option [value]="'San Antonio'">10025429</mat-option>
                                 <mat-option [value]="'San Diego'">10025430</mat-option>
-                            </mat-select>
+                            </mat-select> -->
                         </div>
                     </div>
                     <div class="row " style="margin-bottom: 12px;">
@@ -162,6 +176,24 @@
                         </div>
                         <div class="col-sm-7">
                             <mat-select class="form-control bac" placeholder="Select Lawyer">
+                                <mat-option [value]="'John Peterson'">John Peterson</mat-option>
+                                <mat-option [value]="'Sarah Mitchell'">Sarah Mitchell</mat-option>
+                                <mat-option [value]="'Emily Carter'">Emily Carter</mat-option>
+                                <mat-option [value]="'William Bennett'">William Bennett</mat-option>
+                                <mat-option [value]="'Olivia Sanders'">Olivia Sanders</mat-option>
+                                <mat-option [value]="'James Cooper'">James Cooper</mat-option>
+                                <mat-option [value]="'Ava Richardson'">Ava Richardson</mat-option>
+                                <mat-option [value]="'Michael Harris'">Michael Harris</mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-bottom: 12px;">
+                        <div class="col-sm-4 add-mem">
+                            <label class="control-label add-member-label required">Select Liaison :</label>
+                        </div>
+                        <div class="col-sm-7">
+                            <mat-select class="form-control bac" placeholder="Select Liaison">
                                 <mat-option [value]="'John Peterson'">John Peterson</mat-option>
                                 <mat-option [value]="'Sarah Mitchell'">Sarah Mitchell</mat-option>
                                 <mat-option [value]="'Emily Carter'">Emily Carter</mat-option>

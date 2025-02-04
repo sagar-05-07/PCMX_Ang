@@ -53,6 +53,15 @@
                 </a>
             </li>
 
+            
+            <li routerLinkActive="active" (click)="openAddPaitent(null);">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Activity">timeline</mat-icon>
+                    <span *ngIf="isNavOpen">Patient Intake</span>
+                </a>
+            </li>
+
+
             <!-- <li routerLinkActive="active" (click)="openAddPaitent(null);">
                 <a style="margin-top: 10px;">
                     <mat-icon *ngIf="!isNavOpen" matTooltip="Intake Update">save</mat-icon>

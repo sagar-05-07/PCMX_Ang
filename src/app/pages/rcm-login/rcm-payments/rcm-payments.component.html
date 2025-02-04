@@ -626,6 +626,28 @@
                 <mat-icon class="mat-margin-top">filter_list</mat-icon> Filter
             </button>
 
+         <!-- Sort Button -->
+<button mat-raised-button mat-button [matMenuTriggerFor]="sortMenu" style="background-color: #37474f; color: white" class="filters-hover margin-right-10">
+  <span (click)="toggleSort($event)" class="icon-text">
+    <mat-icon style="margin-top: 0px; margin-bottom: -6px;">
+      {{ isAscending ? 'arrow_drop_up' : 'arrow_drop_down' }}
+    </mat-icon>
+  </span>
+  <span class="icon-text">SORT</span>
+</button>
+
+<!-- Dropdown Menu -->
+<mat-menu #sortMenu="matMenu">
+  <div class="scrollable-menu">
+    <button mat-menu-item (click)="onSortOptionSelected('Payment Date')">Payment Date</button>
+    <button mat-menu-item (click)="onSortOptionSelected('Amount')">Amount</button>
+    <button mat-menu-item (click)="onSortOptionSelected('Payment Mode')">Payment Mode</button>
+    <button mat-menu-item (click)="onSortOptionSelected('Payment Ref')">Payment Ref</button>
+    <button mat-menu-item (click)="onSortOptionSelected('Patient ID')">Patient ID</button>
+    <button mat-menu-item (click)="onSortOptionSelected('Case ID')">Case ID</button>
+
+  </div>
+</mat-menu>
             <button mat-raised-button matTooltip="Download CSV" class="center-icon"
                 style="background-color: black; color: white; margin-right: 8px">
                 <mat-icon>get_app</mat-icon>

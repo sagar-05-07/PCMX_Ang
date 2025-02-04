@@ -1,0 +1,46 @@
+<div class="NewHeader">
+    <h3>Assign Case Managers</h3>
+</div>
+
+<div mat-dialog-content class="col-sm-12" style="margin-left: 40px;">
+    <div fxLayout="row wrap">
+
+        <div class="col-sm-12 text-center">
+            <h3 class="assign-title">Link the case managers to a Specific liaison.</h3>
+        </div>
+
+        <div class="col-sm-4">
+            <select multiple class="form-control">
+                <option *ngFor="let item of leftBoxItems">{{ item }}</option>
+            </select>
+        </div>
+
+        <div class="col-sm-2 action-buttons">
+            <div class="button-container">
+                <button mat-raised-button color="primary" style="width: 120px;" (click)="moveRight()">
+                    <mat-icon>arrow_right_alt</mat-icon> Add
+                </button>
+                <button mat-stroked-button color="warn" style="width: 120px;" class="mt-2" (click)="moveLeft()">
+                    <mat-icon>delete</mat-icon> Remove
+                </button>
+
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <select multiple [(ngModel)]="rightBoxItems" class="form-control">
+                <option *ngFor="let item of rightBoxItems">{{ item }}</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="col-sm-12 button-group" align="end">
+    <mat-dialog-actions>
+        <button (click)="saveLead()" mat-raised-button style="background-color: green; color: white;">
+            <mat-icon>save</mat-icon>Save
+        </button>
+        <button mat-raised-button style=" color: red;" (click)="close()">
+            <mat-icon>cancel</mat-icon>
+            Cancel</button>
+    </mat-dialog-actions>
+</div>

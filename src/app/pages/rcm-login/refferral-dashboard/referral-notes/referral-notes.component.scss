@@ -161,5 +161,19 @@
     /* Adjust margin as needed */
 }
 
+.word-wrap {
+    white-space: normal !important;  /* Allows text to wrap */
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+}
 
-/* Example CSS for label styles */
+
+
+.tag-button {
+    color: white;
+    min-width: 120px;
+    text-align: center;
+    padding: 5px;
+}
+
+

@@ -18,6 +18,7 @@ import { LiaisonsPopComponent } from './case-managers/liaisons-pop/liaisons-pop.
 import { AddLocationComponent } from './locations/add-location/add-location.component';
 import { DocTypeComponent } from './doc-type/doc-type.component';
 import { AddDocTypeComponent } from './doc-type/add-doc-type/add-doc-type.component';
+import { TagMasterComponent } from './tag-master/tag-master.component';
 
 const routes: Routes = [
 
@@ -83,6 +84,12 @@ const routes: Routes = [
         pathMatch: 'full',
         data: { breadcrumb: 'Doc Type', description: 'Statistics, Charts and Metrics of activity, trend and distribution.' }
     },
+    {
+        path: 'tagmaster',
+        component: TagMasterComponent,
+        pathMatch: 'full',
+        data: { breadcrumb: 'Tag Master', description: 'Statistics, Charts and Metrics of activity, trend and distribution.' }
+    },
 
 
 
@@ -112,6 +119,7 @@ const routes: Routes = [
         AddLocationComponent,
         DocTypeComponent,
         AddDocTypeComponent,
+        TagMasterComponent,
     ]
 })
 export class RcmSetupModule { }

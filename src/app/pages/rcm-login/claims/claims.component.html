@@ -80,35 +80,35 @@
 </div>
 
 <div [ngClass]="{ 'full-width': !isNavOpen }" class="col-sm-10 container-fluid"
-  style="margin-bottom: 10px; padding-right: 25px">
-  <!-- Rainbow images  -->
+    style="margin-bottom: 10px; padding-right: 25px">
+    <!-- Rainbow images  -->
 
-  <div *ngIf="isNavOpen" style="display: flex; align-items: center; margin-top: -4.5%">
-    <!-- Image Container -->
-    <div class="col-sm-2" style="margin-left: 14%;  cursor: pointer" (click)="toggleCard()">
-      <img src="../../../../assets/rbg.png" class="top-left-image"
-        style="width: 35px; height: 35px; margin-top: -18%; margin-left: 40px" />
-    </div>
+    <div *ngIf="isNavOpen" style="display: flex; align-items: center; margin-top: -4.5%">
+        <!-- Image Container -->
+        <div class="col-sm-2" style="margin-left: 14%;  cursor: pointer" (click)="toggleCard()">
+            <img src="../../../../assets/rbg.png" class="top-left-image"
+                style="width: 35px; height: 35px; margin-top: -18%; margin-left: 40px" />
+        </div>
 
 
-    <mat-card class="col-sm-10 pull-right" style="
+        <mat-card class="col-sm-10 pull-right" style="
         height: 35px;
         background-color: black;
         margin-top: -2.5%;
         margin-left: -30px;
         margin-right: -17px;
       " *ngIf="showCard">
-      <div fxLayout="row" fxLayoutAlign="start center"
-        style="gap: 30px; padding: 0 10px; display: flex; align-items: center">
-        <div style="display: flex; align-items: center; gap: 10px">
-          <span style="color: white; line-height: 35px; gap: 30px">Referrals</span>
-          <span style="
+            <div fxLayout="row" fxLayoutAlign="start center"
+                style="gap: 30px; padding: 0 10px; display: flex; align-items: center">
+                <div style="display: flex; align-items: center; gap: 10px">
+                    <span style="color: white; line-height: 35px; gap: 30px">Referrals</span>
+                    <span style="
               color: white;
               line-height: 35px;
               gap: 30px;
               margin-right: 10px;
             ">120,000</span>
-          <mat-icon style="
+                    <mat-icon style="
               cursor: pointer;
               margin-right: 10px;
               background-color: lightgray;
@@ -119,19 +119,19 @@
               height: 35px;
               padding: 18px 15px 12px 15px;
             " (click)="toggleTable('table')">
-            {{ showTable ? "expand_less" : "add" }}
-          </mat-icon>
-        </div>
+                        {{ showTable ? "expand_less" : "add" }}
+                    </mat-icon>
+                </div>
 
-        <div style="display: flex; align-items: center; gap: 10px">
-          <span style="color: white; line-height: 35px">Visits </span>
-          <span style="
+                <div style="display: flex; align-items: center; gap: 10px">
+                    <span style="color: white; line-height: 35px">Visits </span>
+                    <span style="
               color: white;
               line-height: 35px;
               gap: 30px;
               margin-right: 10px;
             ">105,991</span>
-          <mat-icon style="
+                    <mat-icon style="
               cursor: pointer;
               margin-right: 10px;
               background-color: lightgray;
@@ -142,18 +142,18 @@
               height: 35px;
               padding: 18px 15px 12px 15px;
             " (click)="toggleTable('table1')">
-            {{ showTable1 ? "expand_less" : "add" }}
-          </mat-icon>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px">
-          <span style="color: white; line-height: 35px">Claims </span>
-          <span style="
+                        {{ showTable1 ? "expand_less" : "add" }}
+                    </mat-icon>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px">
+                    <span style="color: white; line-height: 35px">Claims </span>
+                    <span style="
               color: white;
               line-height: 35px;
               gap: 30px;
               margin-right: 10px;
             ">65,001</span>
-          <mat-icon style="
+                    <mat-icon style="
               cursor: pointer;
               margin-right: 10px;
               background-color: lightgray;
@@ -164,22 +164,22 @@
               height: 35px;
               padding: 18px 15px 12px 15px;
             " (click)="toggleTable('table2')">
-            {{ showTable2 ? "expand_less" : "add" }}
-          </mat-icon>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px">
-          <span style="color: white; line-height: 35px">Paid</span>
-          <span style="
+                        {{ showTable2 ? "expand_less" : "add" }}
+                    </mat-icon>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px">
+                    <span style="color: white; line-height: 35px">Paid</span>
+                    <span style="
               color: white;
               line-height: 35px;
               gap: 30px;
               margin-right: 10px;
             ">45,962</span>
-        </div>
+                </div>
 
-        <div style="display: flex; align-items: center; gap: 7px">
+                <div style="display: flex; align-items: center; gap: 7px">
 
-          <mat-icon style="
+                    <mat-icon style="
               cursor: pointer;
               margin-right: 7px;
               background-color: lightgray;
@@ -189,44 +189,42 @@
               width: 35px;
               height: 35px;
               padding: 18px 15px 12px 15px;
-            "
-            (click)="referralsFilter($event)"
-            >
-            filter_list
-          </mat-icon>
-        </div>
+            " (click)="referralsFilter($event)">
+                        filter_list
+                    </mat-icon>
+                </div>
 
-      </div>
-    </mat-card>
+            </div>
+        </mat-card>
 
-  </div>
-
-  <div *ngIf="!isNavOpen" style="display: flex; align-items: center; margin-top: -4.5%">
-    <!-- Image Container -->
-    <div class="col-sm-2" style="margin-left: 14%;  cursor: pointer" (click)="toggleCard()">
-      <img src="../../../../assets/rbg.png" class="top-left-image"
-        style="width: 35px; height: 35px; margin-top: -9%; margin-left: 40px" />
     </div>
 
+    <div *ngIf="!isNavOpen" style="display: flex; align-items: center; margin-top: -4.5%">
+        <!-- Image Container -->
+        <div class="col-sm-2" style="margin-left: 14%;  cursor: pointer" (click)="toggleCard()">
+            <img src="../../../../assets/rbg.png" class="top-left-image"
+                style="width: 35px; height: 35px; margin-top: -9%; margin-left: 40px" />
+        </div>
 
-    <mat-card class="col-sm-10 pull-right" style="
+
+        <mat-card class="col-sm-10 pull-right" style="
         height: 35px;
         background-color: black;
         margin-top: -1.5%;
         margin-left: -30px;
         margin-right: -17px;
       " *ngIf="showCard">
-      <div fxLayout="row" fxLayoutAlign="start center"
-        style="gap: 30px; padding: 0 10px; display: flex; align-items: center">
-        <div style="display: flex; align-items: center; gap: 10px">
-          <span style="color: white; line-height: 35px; gap: 30px">Referrals</span>
-          <span style="
+            <div fxLayout="row" fxLayoutAlign="start center"
+                style="gap: 30px; padding: 0 10px; display: flex; align-items: center">
+                <div style="display: flex; align-items: center; gap: 10px">
+                    <span style="color: white; line-height: 35px; gap: 30px">Referrals</span>
+                    <span style="
               color: white;
               line-height: 35px;
               gap: 30px;
               margin-right: 10px;
             ">120,000</span>
-          <mat-icon style="
+                    <mat-icon style="
               cursor: pointer;
               margin-right: 10px;
               background-color: lightgray;
@@ -237,19 +235,19 @@
               height: 35px;
               padding: 18px 15px 12px 15px;
             " (click)="toggleTable('table')">
-            {{ showTable ? "expand_less" : "add" }}
-          </mat-icon>
-        </div>
+                        {{ showTable ? "expand_less" : "add" }}
+                    </mat-icon>
+                </div>
 
-        <div style="display: flex; align-items: center; gap: 10px">
-          <span style="color: white; line-height: 35px">Visits </span>
-          <span style="
+                <div style="display: flex; align-items: center; gap: 10px">
+                    <span style="color: white; line-height: 35px">Visits </span>
+                    <span style="
               color: white;
               line-height: 35px;
               gap: 30px;
               margin-right: 10px;
             ">105,991</span>
-          <mat-icon style="
+                    <mat-icon style="
               cursor: pointer;
               margin-right: 10px;
               background-color: lightgray;
@@ -260,18 +258,18 @@
               height: 35px;
               padding: 18px 15px 12px 15px;
             " (click)="toggleTable('table1')">
-            {{ showTable1 ? "expand_less" : "add" }}
-          </mat-icon>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px">
-          <span style="color: white; line-height: 35px">Claims </span>
-          <span style="
+                        {{ showTable1 ? "expand_less" : "add" }}
+                    </mat-icon>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px">
+                    <span style="color: white; line-height: 35px">Claims </span>
+                    <span style="
               color: white;
               line-height: 35px;
               gap: 30px;
               margin-right: 10px;
             ">65,001</span>
-          <mat-icon style="
+                    <mat-icon style="
               cursor: pointer;
               margin-right: 10px;
               background-color: lightgray;
@@ -282,22 +280,22 @@
               height: 35px;
               padding: 18px 15px 12px 15px;
             " (click)="toggleTable('table2')">
-            {{ showTable2 ? "expand_less" : "add" }}
-          </mat-icon>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px">
-          <span style="color: white; line-height: 35px">Paid</span>
-          <span style="
+                        {{ showTable2 ? "expand_less" : "add" }}
+                    </mat-icon>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px">
+                    <span style="color: white; line-height: 35px">Paid</span>
+                    <span style="
               color: white;
               line-height: 35px;
               gap: 30px;
               margin-right: 10px;
             ">45,962</span>
-        </div>
+                </div>
 
-        <div style="display: flex; align-items: center; gap: 7px">
+                <div style="display: flex; align-items: center; gap: 7px">
 
-          <mat-icon style="
+                    <mat-icon style="
               cursor: pointer;
               margin-right: 7px;
               background-color: lightgray;
@@ -307,87 +305,85 @@
               width: 35px;
               height: 35px;
               padding: 18px 15px 12px 15px;
-            "
-            (click)="referralsFilter($event)"
-            >
-            filter_list
-          </mat-icon>
+            " (click)="referralsFilter($event)">
+                        filter_list
+                    </mat-icon>
+                </div>
+
+            </div>
+        </mat-card>
+
+    </div>
+
+
+    <div *ngIf="showTable" @slideIn style="margin-left: 25.4%" class="dropdown-content">
+        <div id="grid-table-container" class="table-responsive">
+            <h4>Gap Analysis - Referral vs. Visits</h4>
+            <table matSort class="table table-bordered table-hover">
+                <tbody>
+                    <tr *ngFor="let user of dataSource; let i = index; let last = last">
+                        <td [ngStyle]="{
+                'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
+              }">
+                            {{ user.workList }}
+                        </td>
+                        <td [ngStyle]="{
+                'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9',
+                'color': last ? 'black' : 'blue'  
+              }" [routerLink]="last ? null : ['/rcm-login/referrals']" [style.cursor]="last ? 'default' : 'pointer'">
+                            {{ user.volume }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+    </div>
 
-      </div>
-    </mat-card>
-
-  </div>
-
-
-  <div *ngIf="showTable" @slideIn style="margin-left: 25.4%" class="dropdown-content">
-    <div id="grid-table-container" class="table-responsive">
-      <h4>Gap Analysis - Referral vs. Visits</h4>
-      <table matSort class="table table-bordered table-hover">
-        <tbody>
-          <tr *ngFor="let user of dataSource; let i = index; let last = last">
-            <td [ngStyle]="{
+    <div *ngIf="showTable1" @slideIn style="margin-left: 45%" class="dropdown-content">
+        <div id="grid-table-container" class="table-responsive">
+            <h4>Gap Analysis - Visits vs. Claims</h4>
+            <table matSort class="table table-bordered table-hover">
+                <tbody>
+                    <tr *ngFor="let user of dataSource1; let i = index;let last = last">
+                        <td [ngStyle]="{
                 'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
               }">
-              {{ user.workList }}
-            </td>
-            <td [ngStyle]="{
+                            {{ user.workList }}
+                        </td>
+                        <td [ngStyle]="{
                 'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9',
                 'color': last ? 'black' : 'blue'  
               }" [routerLink]="last ? null : ['/rcm-login/referrals']" [style.cursor]="last ? 'default' : 'pointer'">
-              {{ user.volume }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+                            {{ user.volume }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-  </div>
 
-  <div *ngIf="showTable1" @slideIn style="margin-left: 45%" class="dropdown-content">
-    <div id="grid-table-container" class="table-responsive">
-      <h4>Gap Analysis - Visits vs. Claims</h4>
-      <table matSort class="table table-bordered table-hover">
-        <tbody>
-          <tr *ngFor="let user of dataSource1; let i = index;let last = last">
-            <td [ngStyle]="{
+    <div *ngIf="showTable2" @slideIn style="margin-left: 67%" class="dropdown-content">
+        <div id="grid-table-container" class="table-responsive">
+            <h4>Gap Analysis - Claims vs. Paid</h4>
+            <table matSort class="table table-bordered table-hover">
+                <tbody>
+                    <tr *ngFor="let user of dataSource2; let i = index; let last = last">
+                        <td [ngStyle]="{
                 'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
               }">
-              {{ user.workList }}
-            </td>
-            <td [ngStyle]="{
-                'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9',
-                'color': last ? 'black' : 'blue'  
-              }" [routerLink]="last ? null : ['/rcm-login/referrals']" [style.cursor]="last ? 'default' : 'pointer'">
-              {{ user.volume }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div *ngIf="showTable2" @slideIn style="margin-left: 67%" class="dropdown-content">
-    <div id="grid-table-container" class="table-responsive">
-      <h4>Gap Analysis - Claims vs. Paid</h4>
-      <table matSort class="table table-bordered table-hover">
-        <tbody>
-          <tr *ngFor="let user of dataSource2; let i = index; let last = last">
-            <td [ngStyle]="{
-                'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
-              }">
-              {{ user.workList }}
-            </td>
-            <td [ngStyle]="{
+                            {{ user.workList }}
+                        </td>
+                        <td [ngStyle]="{
                 'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9',
                 'color': last ? 'black' : 'blue'
               }" [routerLink]="last ? null : ['/rcm-login/referrals']" [style.cursor]="last ? 'default' : 'pointer'">
-              {{ user.volume }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+                            {{ user.volume }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-  </div>
 
 
 
@@ -669,10 +665,52 @@
                 class="filters-hover margin-right-10">
                 <mat-icon>merge_type</mat-icon> Merge
             </button>
-            <button mat-raised-button style="background-color: black; color: white" class="margin-right-10"
-                (click)="filterToggle = !filterToggle">
-                <mat-icon class="mat-margin-top">filter_list</mat-icon> Filter
+            <!-- Sort Button -->
+            <button mat-raised-button mat-button [matMenuTriggerFor]="sortMenu"
+                style="background-color: #37474f; color: white" class="filters-hover margin-right-10">
+                <span (click)="toggleSort($event)" class="icon-text">
+                    <mat-icon style="margin-top: 0px; margin-bottom: -6px;">
+                        {{ isAscending ? 'arrow_drop_up' : 'arrow_drop_down' }}
+                    </mat-icon>
+                </span>
+                <span class="icon-text">SORT</span>
             </button>
+
+            <!-- Dropdown Menu -->
+            <mat-menu #sortMenu="matMenu">
+                <div class="scrollable-menu">
+                    <button mat-menu-item (click)="onSortOptionSelected('Actions')">Actions</button>
+                    <button mat-menu-item (click)="onSortOptionSelected('Claims ID')">Claims ID</button>
+                    <button mat-menu-item (click)="onSortOptionSelected('Patient ID')">Patient ID</button>
+                    <button mat-menu-item (click)="onSortOptionSelected('Referral ID')">Referral ID</button>
+                    <button mat-menu-item (click)="onSortOptionSelected('Visit ID')">Visit ID</button>
+                    <button mat-menu-item (click)="onSortOptionSelected('Location ID')">Location ID</button>
+                    <button mat-menu-item (click)="onSortOptionSelected('Location Name')">Location Name</button>
+                    <button mat-menu-item (click)="onSortOptionSelected('Patient Name')">Patient Name</button>
+                    <button mat-menu-item (click)="onSortOptionSelected('Patient Name')">Finance</button>
+                    <button mat-menu-item (click)="onSortOptionSelected('Patient Name')">Estimate</button>
+                    <button mat-menu-item (click)="onSortOptionSelected('Patient Name')">Deposit</button>
+                    <button mat-menu-item (click)="onSortOptionSelected('Patient Name')">Negotiated Amount</button>
+                    <button mat-menu-item (click)="onSortOptionSelected('Patient Name')">Negotiation Date</button>
+                    <button mat-menu-item (click)="onSortOptionSelected('Claim Date')">Claim Date</button>
+                    <button mat-menu-item (click)="onSortOptionSelected('Last Payment Date')">Last Payment Date</button>
+                    <button mat-menu-item (click)="onSortOptionSelected('Settlement Date')">Settlement Date</button>
+                    <button mat-menu-item (click)="onSortOptionSelected('Service')">Service</button>
+                    <button mat-menu-item (click)="onSortOptionSelected('Service Date')">Service Date</button>
+                    <button mat-menu-item (click)="onSortOptionSelected('Date of Injury')">Date of Injury</button>
+                    <button mat-menu-item (click)="onSortOptionSelected('Due Date')">Due Date</button>
+
+
+
+
+                </div>
+            </mat-menu>
+
+            <button mat-raised-button style="background-color: black; color: white" class="margin-right-10 center-icon"
+                (click)="filterToggle = !filterToggle">
+                <mat-icon class="mat-margin-top">filter_list</mat-icon>
+            </button>
+
             <!-- Grid Columns Button -->
             <button mat-raised-button matTooltip="Grid Columns" style="background-color: black; color: white"
                 class="margin-right-10 center-icon">
@@ -698,9 +736,9 @@
             </button>
 
             <!-- Add Account Button -->
-            <button mat-raised-button color="primary" class="btn-primary margin-right-5"
+            <button mat-raised-button color="primary" class="btn-primary margin-right-5 center-icon"
                 (click)="openEditDialog(null);">
-                <mat-icon class="mat-margin-top">add</mat-icon> Add Claim
+                <mat-icon class="mat-margin-top">add</mat-icon>
             </button>
         </div>
     </div>
@@ -716,7 +754,7 @@
             <mat-card class="filter">
                 <mat-card-content>
                     <div class="row pl-4">
-        
+
                         <div class="col-sm-4">
                             <div class="row">
                                 <div class="col-sm-4">
@@ -728,8 +766,8 @@
                                 </div>
                             </div>
                         </div>
-        
-        
+
+
                         <div class="col-sm-4">
                             <div class="row">
                                 <div class="col-sm-4">
@@ -738,11 +776,12 @@
                                 <div class="col-sm-7">
                                     <mat-select placeholder="--Select Patient --" [(value)]="selectedPatientType"
                                         class="form-control" multiple>
-        
+
                                         <mat-select-trigger>
                                             {{selectedPatientType || '--Select Patient--'}}
                                         </mat-select-trigger>
-                                        <mat-form-field *ngIf="eventTypes.length > 1" appearance="fill" style="width: 100%;">
+                                        <mat-form-field *ngIf="eventTypes.length > 1" appearance="fill"
+                                            style="width: 100%;">
                                             <input matInput (input)="applyFilter($event)" placeholder="Search">
                                         </mat-form-field>
                                         <mat-option *ngFor="let event of filteredPatientTypes" [value]="event">
@@ -752,10 +791,10 @@
                                 </div>
                             </div>
                         </div>
-        
-        
-        
-        
+
+
+
+
                         <div class="col-sm-4">
                             <div class="row">
                                 <div class="col-sm-4">
@@ -764,7 +803,7 @@
                                 <div class="col-sm-7">
                                     <mat-select placeholder="--Select Law Firm--" [(value)]="selectLawFirmType"
                                         class="form-control" multiple>
-        
+
                                         <mat-select-trigger>
                                             {{selectLawFirmType || '--Select City--'}}
                                         </mat-select-trigger>
@@ -779,15 +818,15 @@
                                 </div>
                             </div>
                         </div>
-        
-        
-        
-        
+
+
+
+
                     </div>
-        
-        
+
+
                     <div class="row pt-4 pl-4">
-        
+
                         <div class="col-sm-4">
                             <div class="row">
                                 <div class="col-sm-4">
@@ -804,8 +843,8 @@
                                 </div>
                             </div>
                         </div>
-        
-        
+
+
                         <div class="col-sm-4">
                             <div class="row">
                                 <div class="col-sm-4">
@@ -826,7 +865,7 @@
                                 </div>
                             </div>
                         </div>
-        
+
                         <div class="col-sm-4">
                             <div class="row">
                                 <div class="col-sm-4">
@@ -844,13 +883,13 @@
                                 </div>
                             </div>
                         </div>
-        
+
                     </div>
-        
-        
+
+
                     <div class="row pt-4 pl-4">
-        
-        
+
+
                         <!-- raj -->
                         <div class="col-sm-4">
                             <div class="row">
@@ -868,49 +907,49 @@
                                 </div>
                             </div>
                         </div>
-        
+
                         <div class="col-sm-4">
                             <div class="row">
                                 <div class="col-sm-4">
                                     <b>From Date:</b>
                                 </div>
                                 <div class="col-sm-7">
-                                    <input type="date" class="form-control" maxlength="100" minlength="2" onDrag="return false"
-                                        onDrop="return false" required>
+                                    <input type="date" class="form-control" maxlength="100" minlength="2"
+                                        onDrag="return false" onDrop="return false" required>
                                 </div>
                             </div>
                         </div>
-        
-        
-        
+
+
+
                         <div class="col-sm-4">
                             <div class="row">
                                 <div class="col-sm-4">
                                     <b>To Date:</b>
                                 </div>
                                 <div class="col-sm-7">
-                                    <input type="date" class="form-control" maxlength="100" minlength="2" onDrag="return false"
-                                        onDrop="return false" required>
+                                    <input type="date" class="form-control" maxlength="100" minlength="2"
+                                        onDrag="return false" onDrop="return false" required>
                                 </div>
                             </div>
                         </div>
-        
-        
-        
+
+
+
                     </div>
-        
+
                     <div class="row pt-4 pl-4">
-        
-        
+
+
                         <div class="col-sm-4">
                             <div class="row">
                                 <div class="col-sm-4">
                                     <b>Referral From:</b>
                                 </div>
                                 <div class="col-sm-7">
-                                    <mat-select placeholder="--Select Referral From: --" [(value)]="selectedRefferalFrom"
-                                        class="form-control" multiple>
-        
+                                    <mat-select placeholder="--Select Referral From: --"
+                                        [(value)]="selectedRefferalFrom" class="form-control" multiple>
+
                                         <mat-select-trigger>
                                             {{selectedRefferalFrom || '--Select Patient--'}}
                                         </mat-select-trigger>
@@ -925,8 +964,8 @@
                                 </div>
                             </div>
                         </div>
-        
-        
+
+
                         <div class="col-sm-4">
                             <div class="row">
                                 <div class="col-sm-4">
@@ -935,7 +974,7 @@
                                 <div class="col-sm-7">
                                     <mat-select placeholder="--Select Referral To: --" [(value)]="selectedRefferalTo"
                                         class="form-control" multiple>
-        
+
                                         <mat-select-trigger>
                                             {{selectedRefferalTo || '--Select Referral To--'}}
                                         </mat-select-trigger>
@@ -950,8 +989,8 @@
                                 </div>
                             </div>
                         </div>
-        
-        
+
+
                         <div class="col-sm-4">
                             <div class="row">
                                 <div class="col-sm-4">
@@ -969,14 +1008,14 @@
                                 </div>
                             </div>
                         </div>
-        
+
                     </div>
-        
-        
-        
-        
+
+
+
+
                     <div class="row pt-4 pl-4">
-        
+
                         <div class="col-sm-4">
                             <div class="row">
                                 <div class="col-sm-4">
@@ -994,7 +1033,7 @@
                                 </div>
                             </div>
                         </div>
-        
+
                         <div class="col-sm-4">
                             <div class="row">
                                 <div class="col-sm-4">
@@ -1009,9 +1048,9 @@
                                 </div>
                             </div>
                         </div>
-        
-        
-        
+
+
+
                         <div class="col-sm-4">
                             <div class="row">
                                 <div class="col-sm-9 offset-sm-3">
@@ -1019,12 +1058,12 @@
                                         style="font-size: 20px; cursor: pointer; margin-left: 5px">
                                         <i class="fa fa-angle-double-up" aria-hidden="true"></i>
                                     </a>
-        
+
                                     <i class="material-icons pull-right" matTooltip="Clear"
                                         style="font-size: 25px; cursor: pointer; margin-left: 5px">
                                         settings_backup_restore
                                     </i>
-        
+
                                     <i class="fa fa-save pull-right" matTooltip="Save" (click)="saveFilters()" style="
                                       font-size: 20px;
                                       cursor: pointer;
@@ -1032,7 +1071,7 @@
                                       color: green;
                                     " aria-hidden="true">
                                     </i>
-        
+
                                     <i class="fa fa-search pull-right" matTooltip="Search" style="
                                       font-size: 20px;
                                       cursor: pointer;

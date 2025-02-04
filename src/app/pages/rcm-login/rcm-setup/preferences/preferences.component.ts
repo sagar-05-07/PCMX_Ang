@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class PreferencesComponent {
 
+  
+
   constructor(
     // private alertService: AlertService,
     //private titleService: Title

@@ -88,6 +88,36 @@
             <button mat-raised-button style="background-color: green; color: white; margin-right: 8px">
                 <mat-icon>publish</mat-icon> Publish
             </button>
+
+            <button mat-raised-button mat-button [matMenuTriggerFor]="sortMenu" style="background-color: #37474f; color: white" class="filters-hover margin-right-10">
+                <span (click)="toggleSort($event)" class="icon-text">
+                  <mat-icon style="margin-top: 0px; margin-bottom: -6px;">
+                    {{ isAscending ? 'arrow_drop_up' : 'arrow_drop_down' }}
+                  </mat-icon>
+                </span>
+                <span class="icon-text">SORT</span>
+              </button>
+              
+              <!-- Dropdown Menu -->
+              <mat-menu #sortMenu="matMenu">
+                <div class="scrollable-menu">
+                  <button mat-menu-item (click)="onSortOptionSelected('Invoice ID')">Invoice ID</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('	Case ID')">	Case ID</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Claim ID')">Claim ID</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Visit ID')">Visit ID</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Referral ID')">Referral ID</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Patient ID')">Patient ID</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Location ID')">Location ID</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Claim Amount')">Claim Amount</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Patient Name')">Patient Name</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Payback Date')">Payback Date</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('DoB')">DoB</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Provider')">Provider</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Created Date')">Created Date</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Funded Date')">Funded Date</button>
+                </div>
+              </mat-menu>
+
             <!-- Grid Columns Button -->
             <button mat-raised-button style="background-color: black; color: white;"
                 class="filters-hover margin-right-10">

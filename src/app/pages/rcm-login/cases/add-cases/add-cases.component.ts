@@ -12,6 +12,20 @@ export class AddCasesComponent {
   public totalSize = 0;
   // close() { }
 
+  eventTypes: string[] = ['Carol Davis', 'Bob Johnson	', 'Alice Smith', 'Jane Roe'];
+  filteredPatientTypes: string[] = [...this.eventTypes]; 
+
+  selectLawFirmType: string | null = null;
+  //vineeth
+  eventLawFirmTypes: string[] = ['Carol Davis', 'Bob Johnson	', 'Alice Smith','Alice Smith','Carol Davis'];
+  filteredLawFirmType: string[] = [...this.eventLawFirmTypes];
+
+  applyFilter1(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase(); // Safe casting to HTMLInputElement
+    this.filteredLawFirmType = this.eventTypes.filter(eventType => eventType.toLowerCase().includes(filterValue));
+  }
+
+
   users = [{ type: "Document check", subject: "" }, { type: "Document check 2", subject: "" }]
 
   constructor(
