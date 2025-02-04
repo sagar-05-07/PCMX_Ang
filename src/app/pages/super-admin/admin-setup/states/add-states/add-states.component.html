@@ -1,0 +1,53 @@
+<h1 style="font-weight: 300; margin-bottom: 10px !important;background-color: #7a838a;text-align: center;color: white;"
+    mat-dialog-title>
+    <span>Add / Update</span>
+    Record
+</h1>
+<form [formGroup]="ContactForm" class="form-horizontal" (ngSubmit)="onSubmitContactForm(ContactForm.value)"
+    #ContactUpsertForm="ngForm">
+    <div mat-dialog-content class="row">
+        <div class="col-sm-12 no-padding">
+            <div class="form-group">
+                <label class="control-label col-sm-4" [ngClass]="{'add-member-label':!data}">Name: </label>
+                <div class="col-sm-8">
+                    <div style="padding-left: 0px !important">
+                        <input type="text" [attr.disabled]="isClientTobeDisabled?'disabled':null"
+                            formControlName="autoClientName" class="form-control" placeholder="Enter Name">
+
+
+                        <mat-error
+                            *ngIf="(ContactForm.controls.clientId.errors?.required && ContactForm.controls.clientId.touched) || (ContactForm.controls.autoClientName.errors?.required && ContactForm.controls.autoClientName.touched)">
+                            Please enter name</mat-error>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+    <mat-dialog-actions align="center" class="pull-right" style="padding-right: 19px !important;">
+        <button mat-raised-button class="btn-success" type="submit" *ngIf="!data && !isFormsubmitted"
+            style="background: #286ba5 !important;">
+            <mat-icon>send</mat-icon>&nbsp;Save
+        </button>
+        <button mat-raised-button class="btn-success" type="submit" *ngIf="data && !isFormsubmitted"
+            style="background: #286ba5 !important;">
+            <mat-icon>update</mat-icon>&nbsp;Update
+        </button>
+
+        <button mat-raised-button class="btn-success" disabled *ngIf="!data && isFormsubmitted"
+            style="background: #286ba5 !important;">
+            <mat-icon>send</mat-icon>&nbsp;Saving...
+        </button>
+        <button mat-raised-button class="btn-success" disabled *ngIf="data && isFormsubmitted"
+            style="background: #286ba5 !important;">
+            <mat-icon>update</mat-icon>&nbsp;Updating...
+        </button>
+        <button mat-raised-button class="add-dark-hover btn-default" type="button" (click)="close()">
+            <mat-icon>cancel</mat-icon>&nbsp;Cancel
+        </button>
+    </mat-dialog-actions>
+</form>

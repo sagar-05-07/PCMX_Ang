@@ -1,0 +1,136 @@
+<div  style="width: 100%;" fxLayout="row wrap"
+style="width: 92.5%;margin-left: 11px;flex-flow: wrap;box-sizing: border-box;display: flex;">
+    <div class="table-responsive">
+        <button mat-raised-button style="margin-top: 10px;margin-left: 10px;margin-bottom: 10px;"
+            class="filter-hover btn-success pull-right" (click)="openstateDialog(null)">
+            Add
+            State
+        </button>
+
+        <button mat-raised-button style="background-color: #50636d !important; margin-top: 10px; color: white"
+            (click)="filterToggle = !filterToggle" class="filter-hover pull-right margin-right-5">
+            <mat-icon style="margin-left: 10px">filter_list</mat-icon>Filter
+        </button>
+
+        <!-- Sort Button -->
+        <button mat-raised-button mat-button [matMenuTriggerFor]="sortMenu" style="background-color: #37474f; margin-top: 10px; color: white" class="filters-hover pull-right margin-right-10">
+            <span (click)="toggleSort($event)" class="icon-text">
+            <mat-icon style="margin-top: 0px; margin-bottom: -6px;">
+                {{ isAscending ? 'arrow_drop_up' : 'arrow_drop_down' }}
+            </mat-icon>
+            </span>
+            <span class="icon-text">SORT</span>
+        </button>
+  
+  <!-- Dropdown Menu -->
+  <mat-menu #sortMenu="matMenu">
+    <div class="scrollable-menu">
+      <button mat-menu-item (click)="onSortOptionSelected('State Name')">State Name</button>
+      <button mat-menu-item (click)="onSortOptionSelected('State Code')">State Code</button>
+      <button mat-menu-item (click)="onSortOptionSelected('Cities')">Cities</button>
+      <button mat-menu-item (click)="onSortOptionSelected('Status')">Status</button>
+      
+    </div>
+  </mat-menu>
+
+        <div style="margin-left: 0px; width: 100%; margin-top: 10px;" class="row wrap col-sm-12" *ngIf="filterToggle">
+
+            <mat-card style="background-color: rgb(236, 236, 236);margin-bottom: 15px;">
+                <form >
+                    <mat-card-content>
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-sm-4">
+                                <div class="col-sm-3" style="
+    margin-top: 5px;
+">
+                                    <label> Keyword: </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input type="text" placeholder="Enter Keyword" 
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="col-sm-3" style="
+    margin-top: 5px;
+">
+                                    <label> Status: </label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <mat-select placeholder="Select Status" 
+                                        class='form-control'>
+                                        <mat-option class='option' value=true>Active</mat-option>
+                                        <mat-option class='option' value=false>Inactive</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <a (click)="filterToggle = !filterToggle" class="pull-right"
+                                    style="font-size: 25px; cursor: pointer; margin-left: 5px;">
+                                    <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                                </a>
+                                <button mat-raised-button color="primary" class="pull-right" style="margin-left: 10px;"
+                                    >
+                                    <mat-icon>youtube_searched_for</mat-icon> Search
+                                </button>
+                                <button mat-raised-button class="pull-right btn-default"
+                                    >
+                                    <mat-icon>settings_backup_restore</mat-icon> Clear
+                                </button>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </form>
+            </mat-card>
+        </div>
+
+
+        <table id="example2" class="table table-bordered table-hover" style="
+                margin-top: 15px;
+                margin-left: 9px;
+                
+            ">
+            <thead class="tbl-head">
+                <tr class="tr-grid-header">
+                    <th>State Name</th>
+                    <th>State Code</th>
+                    <th>Cities</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="states == null || states.length == 0">
+                    <td colspan="10">No records found</td>
+                </tr>
+                <tr *ngFor="let applicant of feesetup">
+                    <td>{{applicant.name}}</td>
+                    <td>{{applicant.code}}</td>
+                    <td style="cursor:pointer"><a>{{applicant.cities}}</a></td>
+                    <td class="text-left" *ngIf="applicant.name === 'Texas'"
+                        style="color:blue">
+                        Active
+                    </td>
+                    <td class="text-left" *ngIf="applicant.name != 'Texas'"
+                        style="color:red">
+                        InActive
+                    </td>
+                    <td>
+                        <a matTooltip="Edit User"
+                            (click)="openstateDialog(applicant)"
+                            style="margin-right: 10px; cursor: pointer; color: cornflowerblue;">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a>
+                            <i style="cursor: pointer;" matTooltip="Delete User"
+                                class="fa fa-trash red"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <mat-paginator [length]="totalSize" [pageIndex]="currentPage"
+            [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons>
+        </mat-paginator>
+    </div>
+</div>

@@ -1,0 +1,342 @@
+body,
+html {
+  margin: 0;
+  height: 100%;
+}
+
+.nav-container {
+  padding: 20px;
+  width: 14%;
+  position: fixed;
+  right: 0;
+  top: 56px;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: #f0f0f0;
+}
+
+.nav-links ul {
+  font-size: 17px;
+  padding-top: 18px;
+  list-style-type: none;
+  // padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
+  margin: 10px 0;
+  cursor: pointer;
+  color: grey;
+}
+
+.nav-links li.active {
+  color: #007bff;
+  font-weight: bold;
+  //  text-decoration: underline;
+}
+
+.nav-links li:hover {
+  color: #007bff;
+}
+
+.content-container {
+
+  width: 85%;
+  margin-right: 20%;
+  /* Ensure content starts at the left */
+  height: 100vh;
+  /* Ensure content fills the full height of the viewport */
+  overflow-y: auto;
+}
+
+.content {
+  margin-right: 15px;
+  margin-top: 50px;
+
+  height: 100%;
+}
+
+.spacer {
+  width: 100%;
+  height: 200px;
+}
+
+.para {
+  margin-left: 10px;
+}
+
+.user-form {
+  .form-field-outer {
+    width: 280px;
+  }
+
+  .mat-radio-button {
+    margin-right: 12px;
+  }
+}
+
+.rating {
+  display: flex;
+  gap: 5px;
+}
+
+.rating mat-icon {
+  cursor: pointer;
+  font-size: 24px;
+  color: grey;
+}
+
+.rating mat-icon.filled {
+  color: gold;
+}
+
+.form-controlfeed {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.bac {
+  background-color: rgb(254, 254, 196);
+}
+
+.required-asterisk {
+  color: red;
+}
+
+.width {
+  width: 150px;
+}
+
+.workflow-list {
+  padding-right: 24px;
+  list-style-type: none;
+  padding-left: 20px;
+}
+
+.workflow-step {
+  color: black;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.workflow-step::before {
+  content: '•';
+  margin-right: 11px;
+  /* Adjust the space as needed */
+}
+
+.workflow-step2::before {
+  content: '•';
+  margin-right: 11px;
+  /* Adjust the space as needed */
+}
+
+.step1 {
+  background-color: #D0E8F2;
+  /* Very Light Blue */
+}
+
+.step2 {
+  background-color: #B3D7E8;
+  /* Light Blue */
+}
+
+.step3 {
+  background-color: #A2C4EC;
+  /* Pale Blue */
+}
+
+.step4 {
+  background-color: #8ABCE6;
+  /* Lighter Blue */
+}
+
+.step5 {
+  background-color: #7DB4E6;
+  /* Light Sky Blue */
+}
+
+.NewHeader {
+  text-align: center;
+  color: black;
+  background: gray;
+
+  padding-top: 11px;
+  padding-bottom: 1px;
+  margin-bottom: 20px;
+}
+
+.selected-step {
+  background-color: gray;
+  /* Change this to the color you want */
+  color: white;
+  /* Change this to the text color for better visibility */
+}
+
+.form-group {
+  margin-bottom: 2.0rem;
+  /* Adjust as needed */
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  /* Adjust as needed */
+  display: block;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  margin-bottom: 0.5rem;
+  color: #898888 !important;
+  /* Adjust as needed */
+}
+
+.col {
+  color: #898888 !important;
+}
+
+.label-thin {
+  font-weight: normal;
+}
+
+.add-dark-hover {
+  margin-left: 10px;
+}
+
+.table-responsive::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  /* Remove scrollbar space */
+  background: transparent;
+  /* Optional: just make scrollbar invisible */
+}
+
+.card-container {
+  margin-top: 20px;
+  /* Optional: Adjust container margins */
+}
+
+.custom-card {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  height: 321px;
+}
+
+.card-heading1 {
+  margin-top: -5px;
+  padding-top: 10px;
+  font-size: 1.5rem;
+  margin-bottom: 21px;
+  text-align: center;
+  background-color: #c0bdbd;
+  padding-bottom: 10px;
+}
+
+.card-heading {
+  margin-top: -5px;
+  padding-top: 10px;
+  font-size: 1.5rem;
+  margin-bottom: 21px;
+  text-align: center;
+  background-color: #c3e0ec;
+  padding-bottom: 10px;
+}
+
+.card-details {
+  font-size: 1rem;
+  // line-height: 1.6;
+}
+
+.navigation-row {
+  display: flex;
+  margin-top: 60px;
+  align-items: center;
+}
+
+.navigation-row mat-icon {
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+#paragraph-container {
+  margin-bottom: 10px;
+}
+
+.parconf {
+  font-size: 13px;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+  background-color: #f0f0f0;
+  /* Adjust the color as per your design */
+  border: 1px solid #ccc;
+  /* Optional: Add border for better visibility */
+  padding: 8px;
+  /* Optional: Adjust padding for better spacing */
+}
+
+.active-state {
+  background-color: #50636d !important;
+  color: white !important;
+}
+
+
+.back-button {
+  margin-top: 1px;
+  margin-bottom: 20px;
+  /* Adjust this value as needed */
+}
+
+.form-container {
+  padding-top: 16px;
+  padding-left: 11px;
+  /* Adjust this value as needed */
+}
+
+.custom-quill-editor .ql-editor {
+  min-height: 300px;
+  /* Adjust this value as needed */
+}
+
+.containercheck {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.description-label {
+  margin-right: 10px;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  /* Pushes the checkbox to the right */
+}
+
+.checkbox-input {
+  margin-right: 5px;
+}
+
+::ng-deep .mat-menu-panel {
+    max-height: 250px !important; 
+  }
+  
+  ::ng-deep .scrollable-menu {
+    max-height: 200px; 
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
+  }
