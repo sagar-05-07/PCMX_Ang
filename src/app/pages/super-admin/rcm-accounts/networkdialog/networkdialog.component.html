@@ -1,30 +1,18 @@
-<!--This page is used to add or edit accounts-->
 <h1 style="background-color: rgb(73, 128, 150); color: white; text-align: center" mat-dialog-title>
-  <span *ngIf="!account">Add</span><span *ngIf="account">Edit</span> Network
+  <span *ngIf="!data">Add</span><span *ngIf="data">Edit</span> Network
 </h1>
 
 <div mat-dialog-content>
-  <form class="form-horizontal" novalidate>
-    <!-- Centered Overview Heading -->
-    <div style="text-align: center; margin-bottom: 16px">
-      <!-- <h2 style="font-size: 20px">Overview</h2> -->
-    </div>
-
-    <div class="row">
+  <form [formGroup]="networkAccounts">
+    <div class="row mt-4">
       <div class="col-sm-6">
         <div class="row" style="margin-bottom: 12px">
           <div class="col-sm-4 add-mem">
             <label class="control-label add-member-label required" style="margin-left: 30px">Network :</label>
           </div>
           <div class="col-sm-7">
-            <mat-select class="form-control bac" placeholder="Select Network">
-              <mat-option [value]="'Tenet Healthcare'">Tenet Healthcare</mat-option>
-              <mat-option [value]="'Baylor Scott & White Health'">Baylor Scott & White Health</mat-option>
-              <mat-option [value]="'Steward Health Care System'">Steward Health Care System</mat-option>
-              <mat-option [value]="'CHRISTUS Health'">CHRISTUS Health</mat-option>
-              <mat-option [value]="'Oceans Healthcare'">Oceans Healthcare</mat-option>
-              <mat-option [value]="'Nutex Health'">Nutex Health</mat-option>
-            </mat-select>
+            <input type="text" formControlName="NetworkAccountName" class="form-control"
+              placeholder="Enter Network Name" required />
           </div>
         </div>
 
@@ -72,21 +60,20 @@
       <div class="col-sm-6">
         <div class="row" style="margin-bottom: 12px">
           <div class="col-sm-4 add-mem">
-            <label class="control-label add-member-label required">Zip Code :</label>
+            <label class="control-label add-member-label required">Email :</label>
           </div>
           <div class="col-sm-7">
-            <input type="number" class="form-control bac" placeholder="Enter Zip Code" maxlength="100" minlength="2"
-              ondrag="return false" ondrop="return false" required />
+            <input type="email" formControlName="NetworkAccountEmail" class="form-control" placeholder="Enter E-mail"
+              required />
           </div>
         </div>
-
         <div class="row" style="margin-bottom: 12px">
           <div class="col-sm-4 add-mem">
             <label class="control-label add-member-label required">Cell Phone :</label>
           </div>
           <div class="col-sm-7">
-            <input type="number" class="form-control bac" placeholder="Enter Cell Phone Number" maxlength="100"
-              minlength="2" ondrag="return false" ondrop="return false" required />
+            <input type="number" formControlName="NetworkAccountPhone" class="form-control bac"
+              placeholder="Enter Cell Phone Number" required />
           </div>
         </div>
       </div>
@@ -96,8 +83,8 @@
 
 <mat-dialog-actions align="end">
   <div style="margin-right: 50px; margin-top: -10px">
-    <button mat-raised-button style="background-color: green; color: white">
-      Proceed
+    <button mat-raised-button (click)="fnUpsertCityMaster()" style="background-color: green; color: white">
+      Save
     </button>
     <button mat-raised-button class="add-dark-hover btn-default" style="background-color: gray; color: red"
       (click)="close()">

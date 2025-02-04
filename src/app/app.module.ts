@@ -36,6 +36,7 @@ import { ContactsupportComponent } from './theme/components/contactsupport/conta
 import { ForgotComponent } from './pages/login/forgot/forgot.component';
 import { MatSelectSearchModule } from 'mat-select-search';
 import { MatChipsModule } from '@angular/material/chips';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { MatChipsModule } from '@angular/material/chips';
       provide: DateAdapter,
       useFactory: adapterFactory
     }),
+    HttpClientModule,
 
     PipesModule,
     AppRoutingModule,
