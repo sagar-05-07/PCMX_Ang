@@ -6,7 +6,6 @@ import { Sort } from '@angular/material/sort';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BreadcrumbService } from '../../breadcrumb.service';
 import { UserService } from '../../login/user.service';
-import { ProviderdialogComponent } from '../admin-provider/providerdialog/providerdialog.component';
 import { NetworkdialogComponent } from './networkdialog/networkdialog.component';
 import { GridNetworkComponent } from './grid-network/grid-network.component';
 import { InsuranceDialogComponent } from './insurance-dialog/insurance-dialog.component';
@@ -106,30 +105,7 @@ export class RcmAccountsComponent {
   // public allContacts = [];
   allContacts = [
     {
-      cases: '920',
-      locations: '300',
-      status: 'Active',
-      paitents: '1231',
-      referrals: '600',
-      visits: '925',
-      category: '2',
-      speciality: '8',
-      subSpecialty: '18',
-      networks: 'Tenet Healthcare',
-      insurances: '10',
-      group: 'AdvanceDiagnosticsGroup 1',
-      name: '5',
-      Phone: '(555) 123-4567',
-      Email: 'admin@tenet.com',
-      Firm: '25',
-      requests: '75',
-      overdue: '2',
-      wip: '12',
-      pending: '1',
-      completed: '61',
-      totalbilling: '$6100',
-      currentbilling: '$5200',
-      city: 'Austin',
+      cases: '920', locations: '300', status: 'Active', paitents: '1231', referrals: '600', visits: '925', category: '2', speciality: '8', subSpecialty: '18', networks: 'Tenet Healthcare', insurances: '10', group: 'AdvanceDiagnosticsGroup 1', name: '5', Phone: '(555) 123-4567', Email: 'admin@tenet.com', Firm: '25', requests: '75', overdue: '2', wip: '12', pending: '1', completed: '61', totalbilling: '$6100', currentbilling: '$5200', city: 'Austin',
     },
     {
       cases: '650',
@@ -661,7 +637,7 @@ export class RcmAccountsComponent {
     });
     dialogRef.afterClosed().subscribe((data) => { });
   }
-  
+
   public openlawfirmdialog(id: any) {
     console.log('jkhksbdjk');
     let dialogRef = this.dialog.open(AdminLawfirmDialogComponent, {
@@ -671,7 +647,7 @@ export class RcmAccountsComponent {
     });
     dialogRef.afterClosed().subscribe((data) => { });
   }
-  
+
   public openproviders(id: any) {
     console.log('jkhksbdjk');
     let dialogRef = this.dialog.open(ProviderDialogeboxComponent, {
@@ -681,7 +657,7 @@ export class RcmAccountsComponent {
     });
     dialogRef.afterClosed().subscribe((data) => { });
   }
-  
+
 
   public openproviderdialog(id: any) {
     console.log('jkhksbdjk');
@@ -761,14 +737,14 @@ export class RcmAccountsComponent {
   }
 
 
-  
+
   isAscending: boolean = true;
 
   toggleSort(event: Event) {
     event.stopPropagation(); // Prevent menu from opening
     this.isAscending = !this.isAscending; // Toggle sort order
   }
-  
+
   onSortOptionSelected(option: string) {
     console.log('Selected sort option:', option);
   }
