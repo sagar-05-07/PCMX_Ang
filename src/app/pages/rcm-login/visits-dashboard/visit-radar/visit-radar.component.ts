@@ -7,8 +7,38 @@ import { Component } from '@angular/core';
 })
 export class VisitRadarComponent {
 
-  selectedTab: 'overview' | 'moreInfo' | 'resolve' | 'specialties' = 'overview';
-  selectTab(tab: 'overview' | 'moreInfo' | 'resolve' | 'specialties') {
+  rectangleColor = 'red';
+
+  changeColor() {
+    this.rectangleColor = this.rectangleColor === 'red' ? 'gray' : 'red'; 
+  }
+
+
+  isClicked: number | null = null;
+
+  toggleColor(index: number) {
+    this.isClicked = this.isClicked === index ? null : index; // If the same button is clicked again, it unclicks it.
+  }
+
+  isClicked1 =false
+
+  toggleColor1(){
+    this.isClicked1 = !this.isClicked1;
+  }
+
+  
+  isClickedgray: number | null = null;
+
+  toggleColorgray(index: number) {
+    this.isClickedgray = this.isClickedgray === index ? null : index; // If the same button is clicked again, it unclicks it.
+  }
+
+
+
+
+
+  selectedTab: 'overview' |'diagnosis' | 'moreInfo' | 'resolve' | 'specialties' = 'overview';
+  selectTab(tab: 'overview' | 'diagnosis' | 'moreInfo' | 'resolve' | 'specialties') {
     this.selectedTab = tab;
   }
 

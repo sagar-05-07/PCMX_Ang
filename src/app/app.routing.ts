@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+    import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { PagesComponent } from './pages/pages.component';
 import { BrowserModule } from '@angular/platform-browser';

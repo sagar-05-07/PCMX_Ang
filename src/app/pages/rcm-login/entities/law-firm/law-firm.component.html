@@ -1,193 +1,3 @@
-<!-- 
-<div style="display: flex; align-items: center;margin-left: 13%; margin-top: -4.5%">
-   
-    <div class="col-sm-2" style="  cursor: pointer" (click)="toggleCard()">
-      <img src="../../../../assets/rbg.png" class="top-left-image"
-        style="width: 35px; height: 35px; margin-top: -20%; margin-left: 40px" />
-    </div>
-  
-  
-    <mat-card class="col-sm-10 pull-right" style="
-        height: 35px;
-        background-color: black;
-        margin-top: -2.5%;
-        margin-left: -30px;
-        margin-right: -10px;
-      " *ngIf="showCard">
-      <div fxLayout="row" fxLayoutAlign="start center"
-        style="gap: 30px; padding: 0 10px; display: flex; align-items: center">
-        <div style="display: flex; align-items: center; gap: 10px">
-          <span style="color: white; line-height: 35px; gap: 30px">Referrals</span>
-          <span style="
-              color: white;
-              line-height: 35px;
-              gap: 30px;
-              margin-right: 4px;
-            ">120,000</span>
-          <mat-icon style="
-              cursor: pointer;
-              margin-right: -1px;
-              background-color: lightgray;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              width: 35px;
-              height: 35px;
-              padding: 18px 15px 12px 15px;
-            " (click)="toggleTable('table')">
-            {{ showTable ? "expand_less" : "add" }}
-          </mat-icon>
-        </div>
-  
-        <div style="display: flex; align-items: center; gap: 10px">
-          <span style="color: white; line-height: 35px">Visits </span>
-          <span style="
-              color: white;
-              line-height: 35px;
-              gap: 30px;
-              margin-right: 10px;
-            ">105,991</span>
-          <mat-icon style="
-              cursor: pointer;
-              margin-right: 5px;
-              background-color: lightgray;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              width: 35px;
-              height: 35px;
-              padding: 18px 15px 12px 15px;
-            " (click)="toggleTable('table1')">
-            {{ showTable1 ? "expand_less" : "add" }}
-          </mat-icon>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px">
-          <span style="color: white; line-height: 35px">Claims </span>
-          <span style="
-              color: white;
-              line-height: 35px;
-              gap: 30px;
-              margin-right: 10px;
-            ">65,001</span>
-          <mat-icon style="
-              cursor: pointer;
-              margin-right: 6px;
-              background-color: lightgray;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              width: 35px;
-              height: 35px;
-              padding: 18px 15px 12px 15px;
-            " (click)="toggleTable('table2')">
-            {{ showTable2 ? "expand_less" : "add" }}
-          </mat-icon>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px">
-          <span style="color: white; line-height: 35px">Paid</span>
-          <span style="
-              color: white;
-              line-height: 35px;
-              gap: 30px;
-              margin-right: 2px;
-            ">45,962</span>
-        </div>
-  
-        <div style="display: flex; align-items: center; gap: 7px">
-  
-          <mat-icon style="
-              cursor: pointer;
-              margin-right: 7px;
-              background-color: lightgray;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              width: 35px;
-              height: 35px;
-              padding: 18px 15px 12px 15px;
-            "
-            (click)="referralsFilter($event)"
-            >
-            filter_list
-          </mat-icon>
-        </div>
-  
-      </div>
-    </mat-card>
-  
-  </div>
-  
-  
-  <div *ngIf="showTable" @slideIn style="margin-left: 24%" class="dropdown-content">
-    <div id="grid-table-container" class="table-responsive">
-      <h4>Gap Analysis - Referral vs. Visits</h4>
-      <table matSort class="table table-bordered table-hover">
-        <tbody>
-          <tr *ngFor="let user of dataSource; let i = index">
-            <td [ngStyle]="{
-                'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
-              }">
-              {{ user.workList }}
-            </td>
-            <td [ngStyle]="{
-                'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
-              }" style="color: blue; cursor: pointer" [routerLink]="['/rcm-login/referrals']">
-              {{ user.volume }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  
-  <div *ngIf="showTable1" @slideIn style="margin-left: 45%" class="dropdown-content">
-    <div id="grid-table-container" class="table-responsive">
-      <h4>Gap Analysis - Visits vs. Claims</h4>
-      <table matSort class="table table-bordered table-hover">
-        <tbody>
-          <tr *ngFor="let user of dataSource1; let i = index">
-            <td [ngStyle]="{
-                'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
-              }">
-              {{ user.workList }}
-            </td>
-            <td [ngStyle]="{
-                'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
-              }" style="color: blue; cursor: pointer" [routerLink]="['/rcm-login/visits']">
-              {{ user.volume }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  
-  <div *ngIf="showTable2" @slideIn style="margin-left: 63.8%" class="dropdown-content">
-    <div id="grid-table-container" class="table-responsive">
-      <h4>Gap Analysis - Claims vs. Paid</h4>
-      <table matSort class="table table-bordered table-hover">
-        <tbody>
-          <tr *ngFor="let user of dataSource2; let i = index">
-            <td [ngStyle]="{
-                'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
-              }">
-              {{ user.workList }}
-            </td>
-            <td [ngStyle]="{
-                'background-color': i % 2 === 0 ? 'lightgray' : '#f1f8e9'
-              }" style="color: blue; cursor: pointer" [routerLink]="['/rcm-login/claims']">
-              {{ user.volume }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div> -->
-
-
-
-
-
 <div class="col-sm-12 mb-3 mt-4">
     <div class="col-sm-3"></div>
     <div class="col-sm-4" style="text-align: right;">
@@ -360,12 +170,12 @@
         <span class="arrow-number">12</span>
     </div>
     <div class="arrow-shape" style="background-color: #D9D9D9; color: black;">
-        <span class="arrow-text"></span>
-        <span class="arrow-number"></span>
+        <span class="arrow-text">Cases Overdue</span>
+        <span class="arrow-number">48</span>
     </div>
     <div class="arrow-shape" style="background-color: #D9D9D9; color: black;">
-        <span class="arrow-text"></span>
-        <span class="arrow-number"></span>
+        <span class="arrow-text">Cases Settled Not Paid</span>
+        <span class="arrow-number">23</span>
     </div>
     <!-- <div class="arrow-shape" style="background-color: #B3E3F6; color: black;">
       <span class="arrow-text">Pending Authorization</span>
@@ -391,18 +201,6 @@
         <span class="arrow-number">32</span>
     </div>
 
-    <div class="arrow-shape" style="background-color: #D9D9D9; color: black;">
-        <span class="arrow-text">Cases Denied</span>
-        <span class="arrow-number">98</span>
-    </div>
-    <div class="arrow-shape" style="background-color: #D9D9D9; color: black;">
-        <span class="arrow-text"></span>
-        <span class="arrow-number"></span>
-    </div>
-    <div class="arrow-shape" style="background-color: #D9D9D9; color: black;">
-        <span class="arrow-text"></span>
-        <span class="arrow-number"></span>
-    </div>
     <!--   
     <div class="arrow-shape" style="background-color: #FFD2B2; color: black;">
       <span class="arrow-text">Authorized & Pending SCH</span>
@@ -495,12 +293,12 @@
         <span class="arrow-number">74</span>
     </div>
     <div class="arrow-shape" style="background-color: #A8E5C1; color: black;">
-        <span class="arrow-text"></span>
-        <span class="arrow-number"></span>
+        <span class="arrow-text">Cases Overdue</span>
+        <span class="arrow-number">48</span>
     </div>
     <div class="arrow-shape" style="background-color: #A8E5C1; color: black;">
-        <span class="arrow-text"></span>
-        <span class="arrow-number"></span>
+        <span class="arrow-text">Cases Settled Not Paid</span>
+        <span class="arrow-number">23</span>
     </div>
 
 </div>
@@ -659,7 +457,7 @@
                         <button mat-raised-button class="pull-right center-icon" matTooltip="Add Law Firm"
                             style="background-color: #007bff !important; color: white"
                             (click)="openproviderdialog(null)">
-                            <mat-icon class="mat-margin-top">add</mat-icon> Add Law Firm
+                            <mat-icon class="mat-margin-top">add</mat-icon>
                         </button>
 
                         <button mat-raised-button style="background-color: black; color: white"
@@ -689,6 +487,37 @@
                             <mat-icon class="mt-2">get_app</mat-icon>
                         </button>
 
+                        <!-- Sort Button -->
+                        <button mat-raised-button mat-button [matMenuTriggerFor]="sortMenu"
+                            style="background-color: #37474f; color: white"
+                            class="filters-hover pull-right margin-right-10">
+                            <span (click)="toggleSort($event)" class="icon-text">
+                                <mat-icon style="margin-top: 0px; margin-bottom: -6px;">
+                                    {{ isAscending ? 'arrow_drop_up' : 'arrow_drop_down' }}
+                                </mat-icon>
+                            </span>
+                            <span class="icon-text">SORT</span>
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <mat-menu #sortMenu="matMenu">
+                            <div class="scrollable-menu">
+                                <button mat-menu-item (click)="onSortOptionSelected('Law Firm ID')">Law Firm ID</button>
+                                <button mat-menu-item (click)="onSortOptionSelected('Law Firms')">Law Firms</button>
+                                <button mat-menu-item (click)="onSortOptionSelected('Paitents')">Paitents</button>
+                                <button mat-menu-item (click)="onSortOptionSelected('Referrals')">Referrals</button>
+                                <button mat-menu-item (click)="onSortOptionSelected('Visits')">Visits</button>
+                                <button mat-menu-item (click)="onSortOptionSelected('Claims')">Claims</button>
+                                <button mat-menu-item (click)="onSortOptionSelected('Providers')">Providers</button>
+                                <button mat-menu-item (click)="onSortOptionSelected('Phone')">Phone</button>
+                                <button mat-menu-item (click)="onSortOptionSelected('Email')">Email</button>
+                                <button mat-menu-item (click)="onSortOptionSelected('State')">State</button>
+                                <button mat-menu-item (click)="onSortOptionSelected('City')">City</button>
+
+
+                            </div>
+                        </mat-menu>
+
                         <label class="control-label margin-right-10">Apply Save Search :</label>
                         <mat-select class="form-control margin-right-10" style="width: 200px;"
                             placeholder="Select Subject">
@@ -704,7 +533,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div fxLayout="row wrap" *ngIf="filterToggle" style="
                       margin-bottom: 10px;
                       flex-flow: wrap;
@@ -724,7 +553,7 @@
                                             <input type="text" placeholder="Search by Keyword" class="form-control" />
                                         </div>
                                     </div>
-            
+
                                     <div class="col-sm-4 row">
                                         <div class="col-sm-2" style="margin-top: 6px">
                                             <b>State:</b>
@@ -737,7 +566,8 @@
                                                 </mat-select-trigger>
                                                 <mat-form-field *ngIf="eventTypes3.length > 1" appearance="fill"
                                                     style="width: 100%">
-                                                    <input matInput (input)="applyFilter3($event)" placeholder="Search" />
+                                                    <input matInput (input)="applyFilter3($event)"
+                                                        placeholder="Search" />
                                                 </mat-form-field>
                                                 <mat-option *ngFor="let event of filteredEventTypes3" [value]="event">
                                                     {{ event }}
@@ -755,8 +585,10 @@
                                                 <mat-select-trigger>
                                                     {{ selectedEventType || "--Select City--" }}
                                                 </mat-select-trigger>
-                                                <mat-form-field *ngIf="eventTypes.length > 1" appearance="fill" style="width: 100%">
-                                                    <input matInput (input)="applyFilter($event)" placeholder="Search" />
+                                                <mat-form-field *ngIf="eventTypes.length > 1" appearance="fill"
+                                                    style="width: 100%">
+                                                    <input matInput (input)="applyFilter($event)"
+                                                        placeholder="Search" />
                                                 </mat-form-field>
                                                 <mat-option *ngFor="let event of filteredEventTypes" [value]="event">
                                                     {{ event }}
@@ -764,11 +596,11 @@
                                             </mat-select>
                                         </div>
                                     </div>
-            
+
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
                                 </div>
                                 <div class="row col-sm-12" style="margin-top: 10px">
-            
+
                                     <div class="col-sm-4 row">
                                         <div class="col-sm-3" style="margin-top: 6px">
                                             <b style="white-space: nowrap">Zip Code:</b>
@@ -777,7 +609,7 @@
                                             <input type="text" placeholder="Search by Keyword" class="form-control" />
                                         </div>
                                     </div>
-            
+
                                     <div class="col-sm-4 row">
                                         <div class="col-sm-2" style="margin-top: 6px">
                                             <b>Status:</b>
@@ -789,7 +621,7 @@
                                             </mat-select>
                                         </div>
                                     </div>
-            
+
                                     <div class="col-sm-4 row pull-right" style="margin-right: 75px">
                                         <a (click)="filterToggle = !filterToggle" class="pull-right"
                                             style="font-size: 25px; cursor: pointer; margin-left: 5px">
@@ -799,12 +631,12 @@
                                             style="background-color: #007bff !important; color: white">
                                             Search
                                         </button>
-            
+
                                         <button mat-raised-button class="pull-right btn-default margin-right-10">
                                             Clear
                                         </button>
                                     </div>
-            
+
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
                                 </div>
                             </mat-card-content>

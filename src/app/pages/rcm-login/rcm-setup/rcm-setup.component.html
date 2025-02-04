@@ -22,6 +22,15 @@
                     <span *ngIf="isNavOpen">Case Managers</span>
                 </a>
             </li> -->
+
+            <li routerLinkActive="active" [routerLink]="['tagmaster']">
+                <a style="margin-top: 10px;">
+                    <mat-icon *ngIf="!isNavOpen" matTooltip="Tag Master">person</mat-icon>
+                    <span *ngIf="isNavOpen">Tag Master</span>
+                </a>
+            </li>
+
+
             <li routerLinkActive="active" [routerLink]="['doc-types']">
                 <a style="margin-top: 10px;">
                     <mat-icon *ngIf="!isNavOpen" matTooltip="Doc Type">library_books</mat-icon>

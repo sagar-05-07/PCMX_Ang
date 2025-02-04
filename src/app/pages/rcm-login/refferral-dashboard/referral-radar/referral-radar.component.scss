@@ -11,3 +11,48 @@
     background-color: #50636d;
     color: white;
 }
+
+
+.rectangle {
+    width: 50px;
+    height: 30px;
+    margin-left: 15px;
+    display: inline-block; /* Keeps it inline */
+}
+
+.custom-btn {
+    width: 200px;
+    height: 50px;
+    margin: 10px;
+    background-color: white;
+    color: black;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .custom-btn.white-btn {
+    background-color: black;
+    color: white;
+    border: 2px solid black;
+  }
+
+  
+  .custom-btn1 {
+    width: 200px;
+    height: 50px;
+    margin: 10px;
+    background-color: white;
+    color: black;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .custom-btn1.white-btn1 {
+    background-color: gray;
+    color: white;
+    border: 2px solid gray;
+  }
+  
+

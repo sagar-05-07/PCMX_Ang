@@ -2,86 +2,23 @@
     <div fxFlex="90" class="p-2" style="width: 80%; max-width: 80% !important">
         <mat-card class="p-0 chat" style="margin-left: -5px;">
             <mat-sidenav-container>
-                <div>
-                    <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
-                        <div fxLayout="row" fxLayoutAlign="start center">
-
-                            <mat-list *ngIf="currentChat" class="p-0">
-                                <mat-list-item>
-                                    <img matListItemAvatar [src]="currentChat.image">
-                                </mat-list-item>
-                            </mat-list>
-                            <span *ngIf="currentChat" class="author-name">{{currentChat.author}} (Patient Liam
-                                Dawson,Request ID 6667-8425)</span>
-
-                        </div>
-                        <button mat-icon-button [matMenuTriggerFor]="personMenu" #personMenuTrigger="matMenuTrigger">
-                            <mat-icon>more_vert</mat-icon>
-                        </button>
-                    </mat-toolbar>
-                    <mat-menu #personMenu="matMenu" xPosition="before" overlapTrigger="true">
-                        <span (mouseleave)="personMenuTrigger.closeMenu()">
-                            <button mat-menu-item>
-                                <mat-icon>account_circle</mat-icon>
-                                <span>Contact info</span>
-                            </button>
-                            <button mat-menu-item>
-                                <mat-icon>volume_mute</mat-icon>
-                                <span>Mute</span>
-                            </button>
-                            <button mat-menu-item>
-                                <mat-icon>delete_forever</mat-icon>
-                                <span>Clear chat</span>
-                            </button>
-                        </span>
-                    </mat-menu>
-                    <div class="chat-content">
-                        <ng-scrollbar pointerEventsMethod="scrollbar">
-                            <mat-list *ngIf="talks" class="p-0">
-                                <mat-list-item *ngFor="let talk of talks" class="talk-item">
-                                    <img matListItemAvatar [src]="talk.image">
-                                    <p class="message">
-                                        <span [ngClass]="{'message-mine': talk.my, 'message-other': !talk.my}">
-                                            {{ talk.text }}
-
-                                        </span>
-                                        <small class="error-tag"
-                                            *ngIf="talk.text == 'Hi, Welcome to Chart X, How may i help you ?'">Errors</small>
-                                        <small class="error-tag1"
-                                            *ngIf="talk.text == 'Hi, It is a long established fact that a reader will be distracted by the readable content of a page'">Resolved</small>
-                                        <small
-                                            *ngIf="talk.text == 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.'"></small>
-                                    </p>
-                                    <p class="message-date">
-                                        <small>{{ talk.date | date:"dd MMMM, yyyy 'at' HH:mm"}}</small>
-                                        <a href="../../../assets/sample.pdf" class="attach-link"
-                                            *ngIf="talk.text == 'Hi, Welcome to Chart X, How may i help you ?'">
-                                            <mat-icon style="padding-top: 1px;">attach_file</mat-icon> case_details.pdf
-                                        </a>
-                                        <input *ngIf="talk.text == 'Hi, Welcome to Chart X, How may i help you ?'"
-                                            style="margin-right: 10px;margin-left: 10px;" type="checkbox">
-                                        <label *ngIf="talk.text == 'Hi, Welcome to Chart X, How may i help you ?'">Mark
-                                            as Resolved</label>
-                                    </p>
-                                </mat-list-item>
-                            </mat-list>
-
-                            <div *ngIf="!talks" fxLayout="column" fxLayoutAlign="center center" class="h-100 empty">
-                                <mat-icon>chat</mat-icon>
-                                <p>Select a interlocutor for talk</p>
-                            </div>
-                        </ng-scrollbar>
-                    </div>
-                    <mat-divider></mat-divider>
+                <div class="d-flex">
                     <mat-card class="chat-actions">
                         <div fxLayout="row" fxLayoutAlign="space-between start">
-                            <!-- Checkbox with label "Task as Resolved" -->
 
+                            <!-- Select Tags -->
+                            <mat-form-field class="w-20" style="margin-right:10px">
+                                <mat-label>Select Tag</mat-label>
+                                <mat-select placeholder="Select a tag" multiple [(ngModel)]="selectedTags">
+                                    <mat-option value="emergency">Emergency</mat-option>
+                                    <mat-option value="expedite">Expedite</mat-option>
+                                    <mat-option value="delayed">Delayed</mat-option>
+                                </mat-select>
+                            </mat-form-field>
 
                             <!-- Input field for text message -->
                             <mat-form-field class="w-100">
-                                <input matInput placeholder="Enter your text..." (keyup)="sendMessage($event)"
-                                    [(ngModel)]="newMessage">
+                                <input matInput placeholder="Enter your text..." [(ngModel)]="message">
                             </mat-form-field>
 
                             <!-- Buttons for attachment and send -->
@@ -89,15 +26,89 @@
                                 <button mat-icon-button type="button" class="mx-2" (click)="openfileupload(null)">
                                     <mat-icon>attach_file</mat-icon>
                                 </button>
-                                <button mat-mini-fab color="primary" type="button" (click)="sendMessage($event)">
+                                <button mat-mini-fab color="primary" type="button" (click)="addMessage()">
                                     <mat-icon>send</mat-icon>
                                 </button>
                             </div>
                         </div>
                     </mat-card>
 
-                </div>
+                    <!-- Filter & Sort Buttons -->
+                    <div class="w-100 row">
+                        <button mat-raised-button style="background-color: black; color: white; float: right;"
+                            class="margin-right-10 mt-3">
+                            <mat-icon class="mat-margin-top">filter_list</mat-icon> Filter
+                        </button>
 
+                        <button mat-raised-button style="background-color: black; color: white; float: right;"
+                            class="margin-right-10 mt-3">
+                            <mat-icon class="mat-margin-top">sort</mat-icon> Sort
+                        </button>
+                    </div>
+
+                    <!-- Chat Messages Table -->
+                    <div class="w-100 mt-4">
+                        <div id="grid-table-container" class="table-responsive">
+                            <div style="max-height: 400px; overflow-y: auto; border: 1px solid #ddd;">
+                                <table mat-table [dataSource]="chatMessages" class="table table-bordered">
+
+                                    <!-- Date Column -->
+                                    <ng-container matColumnDef="date">
+                                        <th mat-header-cell *matHeaderCellDef class="sticky-header"
+                                            style="width: 13%; background-color: gray;">Date</th>
+                                        <td mat-cell *matCellDef="let msg"><strong>{{ msg.date | date:'dd MMM yyyy ;
+                                                HH:mm' }}</strong>
+                                        </td>
+                                    </ng-container>
+
+                                    <!-- Posted By Column -->
+                                    <ng-container matColumnDef="postedBy">
+                                        <th mat-header-cell *matHeaderCellDef class="sticky-header"
+                                            style="width: 10%; background-color: gray;">Posted By</th>
+                                        <td mat-cell *matCellDef="let msg"><strong>{{ msg.postedBy }}</strong></td>
+                                    </ng-container>
+
+                                    <!-- Message Column -->
+                                    <ng-container matColumnDef="message">
+                                        <th mat-header-cell *matHeaderCellDef class="sticky-header"
+                                            style="width: 40%; background-color: gray;">Message</th>
+                                        <td mat-cell *matCellDef="let msg" class="word-wrap"
+                                            style="width: 30%; word-break: break-word;">
+                                            {{ msg.message }}
+                                        </td>
+                                    </ng-container>
+
+                                    <!-- Context Column -->
+                                    <ng-container matColumnDef="context">
+                                        <th mat-header-cell *matHeaderCellDef class="sticky-header"
+                                            style="width: 13%; background-color: gray;">Context</th>
+                                        <td mat-cell *matCellDef="let msg"> {{ msg.context }} </td>
+                                    </ng-container>
+
+                                    <!-- Tags Column -->
+                                    <ng-container matColumnDef="tags">
+                                        <th mat-header-cell *matHeaderCellDef class="sticky-header"
+                                            style="width: 13%; background-color: gray;">Tags</th>
+                                        <td mat-cell *matCellDef="let msg">
+                                            <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+
+                                                <button *ngFor="let tag of msg.tags" mat-raised-button type="button"
+                                                    class="mb-1 tag-button" [ngStyle]="{'background-color': tag === 'emergency' ? 'red' : (tag === 'expedite' ? 'green' : '#b1ca40'), 
+                                                    'color': 'white'}">
+                                                    {{ tag }}
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </ng-container>
+
+                                    <!-- Header and Row Definitions -->
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </mat-sidenav-container>
         </mat-card>
     </div>

@@ -293,11 +293,28 @@ mat-card {
     z-index: 10;
   }
 
-  .nopen {
-    margin-top: 20px; /* Adjust this value based on your layout */
+  
+
+  .center-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em 1em;
+}
+
+.center-icon mat-icon {
+    vertical-align: middle;
+    margin: 0;
+}
+  
+
+::ng-deep .mat-menu-panel {
+    max-height: 250px !important; 
   }
   
-  .nclosed {
-    margin-top: 50px; /* Set the appropriate margin when nav is closed */
+  ::ng-deep .scrollable-menu {
+    max-height: 200px;
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
   }
-  

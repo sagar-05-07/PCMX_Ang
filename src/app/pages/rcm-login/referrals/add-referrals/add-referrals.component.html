@@ -110,7 +110,7 @@
     <mat-step>
         <div mat-dialog-content>
             <form class="form-horizontal" novalidate>
-                <ng-template matStepLabel>Legal</ng-template>
+                <ng-template matStepLabel>Overview</ng-template>
 
                 <div class="col-sm-6">
                     <div class="row" style="margin-bottom: 12px;">
@@ -241,23 +241,6 @@
 
                     <div class="row" style="margin-bottom: 12px;">
                         <div class="col-sm-4 add-mem">
-                            <label class="control-label add-member-label required">Case Manager :</label>
-                        </div>
-                        <div class="col-sm-7">
-                            <mat-select class="form-control bac" placeholder="Select Case Manager">
-                                <mat-option [value]="'John Peterson'">John Peterson</mat-option>
-                                <mat-option [value]="'Sarah Mitchell'">Sarah Mitchell</mat-option>
-                                <mat-option [value]="'Emily Carter'">Emily Carter</mat-option>
-                                <mat-option [value]="'William Bennett'">William Bennett</mat-option>
-                                <mat-option [value]="'Olivia Sanders'">Olivia Sanders</mat-option>
-                                <mat-option [value]="'James Cooper'">James Cooper</mat-option>
-                                <mat-option [value]="'Ava Richardson'">Ava Richardson</mat-option>
-                                <mat-option [value]="'Michael Harris'">Michael Harris</mat-option>
-                            </mat-select>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 12px;">
-                        <div class="col-sm-4 add-mem">
                             <label class="control-label add-member-label required">Law Firm :</label>
                         </div>
                         <div class="col-sm-7">
@@ -278,6 +261,26 @@
                             </mat-select>
                         </div>
                     </div>
+
+                    <div class="row" style="margin-bottom: 12px;">
+                        <div class="col-sm-4 add-mem">
+                            <label class="control-label add-member-label required">Liaisons :</label>
+                        </div>
+                        <div class="col-sm-7">
+                            <mat-select class="form-control bac" placeholder="Select Liaisons">
+                                <mat-option [value]="'John Peterson'">John Peterson</mat-option>
+                                <mat-option [value]="'Sarah Mitchell'">Sarah Mitchell</mat-option>
+                                <mat-option [value]="'Emily Carter'">Emily Carter</mat-option>
+                                <mat-option [value]="'William Bennett'">William Bennett</mat-option>
+                                <mat-option [value]="'Olivia Sanders'">Olivia Sanders</mat-option>
+                                <mat-option [value]="'James Cooper'">James Cooper</mat-option>
+                                <mat-option [value]="'Ava Richardson'">Ava Richardson</mat-option>
+                                <mat-option [value]="'Michael Harris'">Michael Harris</mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+
+                  
 
                     <div class="row" style="margin-bottom: 12px;">
                         <div class="col-sm-4 add-mem">

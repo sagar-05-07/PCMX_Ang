@@ -1,11 +1,32 @@
 <div class="col-sm-6 mt-4" style="margin-left: -20px;">
+
+    <button mat-raised-button mat-button [matMenuTriggerFor]="sortMenu" style="background-color: #37474f; color: white" class="filters-hover margin-right-10">
+        <span (click)="toggleSort($event)" class="icon-text">
+          <mat-icon style="margin-top: 0px; margin-bottom: -6px;">
+            {{ isAscending ? 'arrow_drop_up' : 'arrow_drop_down' }}
+          </mat-icon>
+        </span>
+        <span class="icon-text">SORT</span>
+      </button>
+      
+      <!-- Dropdown Menu -->
+      <mat-menu #sortMenu="matMenu">
+        <div class="scrollable-menu">
+          <button mat-menu-item (click)="onSortOptionSelected('Batch Code')">Batch Code</button>
+          <button mat-menu-item (click)="onSortOptionSelected('Submission Date')">Submission Date</button>
+          <button mat-menu-item (click)="onSortOptionSelected('Requested Funds')">Requested Funds</button>
+          <button mat-menu-item (click)="onSortOptionSelected('Invoice Count')">Invoice Count</button>
+         
+        </div>
+      </mat-menu>
+
     <!-- Download CSV Button -->
     <button mat-raised-button style="background-color: black; color: white; margin-right: 8px">
         <mat-icon>get_app</mat-icon> Download CSV
     </button>
 
-    <button mat-raised-button style="background-color: black; color: white; margin-right: 8px">
-        <mat-icon>get_app</mat-icon> Download Template
+    <button mat-raised-button  style="background-color: black; color: white; margin-right: 8px">
+        <mat-icon>get_app</mat-icon> 
     </button>
 
     <!-- Upload CSV Button -->

@@ -294,7 +294,7 @@
   </div>
 
   <div class="arrow-shape" style="background-color: #FFD2B2; color: black;">
-    <span class="arrow-text">Action this quarter</span>
+    <span class="arrow-text">Active this quarter</span>
     <span class="arrow-number">98</span>
   </div>
 
@@ -551,14 +551,38 @@
         <mat-icon>grid_on</mat-icon> Grid Columns
       </button>
 
+     <!-- Sort Button -->
+<button mat-raised-button mat-button [matMenuTriggerFor]="sortMenu" style="background-color: #37474f; color: white" class="filters-hover margin-right-10">
+  <span (click)="toggleSort($event)" class="icon-text">
+    <mat-icon style="margin-top: 0px; margin-bottom: -6px;">
+      {{ isAscending ? 'arrow_drop_up' : 'arrow_drop_down' }}
+    </mat-icon>
+  </span>
+  <span class="icon-text">SORT</span>
+</button>
+
+<!-- Dropdown Menu -->
+<mat-menu #sortMenu="matMenu">
+  <div class="scrollable-menu">
+    <button mat-menu-item (click)="onSortOptionSelected('option1')">Option 1</button>
+    <button mat-menu-item (click)="onSortOptionSelected('option2')">Option 2</button>
+    <button mat-menu-item (click)="onSortOptionSelected('option3')">Option 3</button>
+    <button mat-menu-item (click)="onSortOptionSelected('option4')">Option 4</button>
+    <button mat-menu-item (click)="onSortOptionSelected('option5')">Option 5</button>
+    <button mat-menu-item (click)="onSortOptionSelected('option6')">Option 6</button>
+    <button mat-menu-item (click)="onSortOptionSelected('option7')">Option 7</button>
+    <button mat-menu-item (click)="onSortOptionSelected('option8')">Option 8</button>
+  </div>
+</mat-menu>
+
       <!-- Download CSV Button -->
-      <button mat-raised-button style="background-color: black; color: white; margin-right: 8px">
-        <mat-icon>get_app</mat-icon> Download CSV
+      <button mat-raised-button class="center-icon" style="background-color: black; color: white;  margin-right: 8px">
+        <mat-icon>get_app</mat-icon>
       </button>
 
       <!-- Upload CSV Button -->
-      <button mat-raised-button style="background-color: black; color: white; margin-right: 8px">
-        <mat-icon>backup</mat-icon> Upload CSV
+      <button mat-raised-button class="center-icon" style="background-color: black; color: white; margin-right: 8px">
+        <mat-icon>backup</mat-icon>
       </button>
 
       <!-- Filter Button -->

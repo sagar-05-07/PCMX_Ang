@@ -13,6 +13,18 @@ import { AddUsersComponent } from './add-users/add-users.component';
 export class RcmUsersComponent {
   
 
+   
+  isAscending: boolean = true;
+
+  toggleSort(event: Event) {
+    event.stopPropagation(); // Prevent menu from opening
+    this.isAscending = !this.isAscending; // Toggle sort order
+  }
+  
+  onSortOptionSelected(option: string) {
+    console.log('Selected sort option:', option);
+  }
+
 
   access = {
     btCreate: false,

@@ -8,6 +8,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class AddPatientsComponent {
 
+  
   activeSection: string = 'patient';
   public currentPage = 0;
   public totalSize = 0;

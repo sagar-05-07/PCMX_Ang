@@ -738,18 +738,50 @@
         <mat-icon>merge_type</mat-icon> Merge
       </button>
 
+     <!-- Sort Button -->
+<button mat-raised-button mat-button [matMenuTriggerFor]="sortMenu" style="background-color: #37474f; color: white" class="filters-hover margin-right-10">
+  <span (click)="toggleSort($event)" class="icon-text">
+    <mat-icon style="margin-top: 0px; margin-bottom: -6px;">
+      {{ isAscending ? 'arrow_drop_up' : 'arrow_drop_down' }}
+    </mat-icon>
+  </span>
+  <span class="icon-text">SORT</span>
+</button>
+
+<!-- Dropdown Menu -->
+<mat-menu #sortMenu="matMenu">
+  <div class="scrollable-menu">
+    <button mat-menu-item (click)="onSortOptionSelected('Actions')">Actions</button>
+    <button mat-menu-item (click)="onSortOptionSelected('Select')">Select</button>
+    <button mat-menu-item (click)="onSortOptionSelected('Date')">Date</button>
+    <button mat-menu-item (click)="onSortOptionSelected('Visit ID')">Visit ID</button>
+    <button mat-menu-item (click)="onSortOptionSelected('Patient ID')">Patient ID</button>
+    <button mat-menu-item (click)="onSortOptionSelected('	Referral ID')">	Referral ID</button>
+    <button mat-menu-item (click)="onSortOptionSelected('Case ID')">Case ID</button>
+    <button mat-menu-item (click)="onSortOptionSelected('Location ID')">Location ID</button>
+    <button mat-menu-item (click)="onSortOptionSelected('Provider ID')">Provider ID</button>
+    <button mat-menu-item (click)="onSortOptionSelected('Patient Name')">Patient Name</button>
+    <button mat-menu-item (click)="onSortOptionSelected('Provider')">Provider</button>
+    <button mat-menu-item (click)="onSortOptionSelected('Location')">Location</button>
+    <button mat-menu-item (click)="onSortOptionSelected('Referral From')">Referral From</button>
+
+  
+    
+  </div>
+</mat-menu>
+
       <button mat-raised-button style="background-color: black; color: white" class="margin-right-10"
         (click)="filterToggle = !filterToggle">
         <mat-icon class="mat-margin-top">filter_list</mat-icon> Filter
       </button>
 
-      <button mat-raised-button style="background-color: black; color: white; margin-right: 8px">
-        <mat-icon>get_app</mat-icon> Download CSV
+      <button mat-raised-button class="center-icon" style="background-color: black; color: white; margin-right: 8px">
+        <mat-icon>get_app</mat-icon> 
       </button>
 
       <!-- Upload CSV Button -->
-      <button mat-raised-button style="background-color: black; color: white; margin-right: 8px">
-        <mat-icon>backup</mat-icon> Upload CSV
+      <button mat-raised-button class="center-icon" style="background-color: black; color: white; margin-right: 8px">
+        <mat-icon>backup</mat-icon> 
       </button>
 
       <!-- Add Account Button -->

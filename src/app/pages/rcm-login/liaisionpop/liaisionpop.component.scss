@@ -1,0 +1,66 @@
+/* Ensures the dialog content does not exceed the set width */
+mat-dialog-content {
+    width: 800px;
+    // padding: 20px;
+}
+
+/* Center align the title and give some spacing */
+.assign-title {
+    font-size: 18px;
+    font-weight: bold;
+    // margin-bottom: 20px;
+    color: #333;
+}
+
+/* Container for the select boxes and buttons */
+.fxLayout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Adjust the widths of the select boxes */
+.col-sm-4 {
+    width: 35%;
+    /* Decreased from 5 to 4 */
+    padding: 10px;
+}
+
+
+/* Styling for the select boxes */
+select.form-control {
+    width: 100%;
+    height: 150px;
+    /* Adjust the height of the select elements for better visibility */
+}
+
+/* Center the action buttons */
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.button-container button {
+    width: 120px;
+    margin: 10px 0;
+}
+
+.button-group {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Styling for the dialog action buttons */
+// mat-dialog-actions button {
+//     margin: 0 10px;
+// }
+
+mat-icon {
+    margin-right: 5px;
+}

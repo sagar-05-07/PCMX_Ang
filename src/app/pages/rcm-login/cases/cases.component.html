@@ -725,6 +725,39 @@
         <mat-icon class="mat-margin-top">filter_list</mat-icon> Filter
       </button>
 
+      <button mat-raised-button mat-button [matMenuTriggerFor]="sortMenu"
+      style="background-color: #37474f; color: white" class="filters-hover margin-right-10">
+      <span (click)="toggleSort($event)" class="icon-text">
+        <mat-icon style="margin-top: 0px; margin-bottom: -6px;">
+          {{ isAscending ? 'arrow_drop_up' : 'arrow_drop_down' }}
+        </mat-icon>
+      </span>
+      <span class="icon-text">SORT</span>
+    </button>
+
+    <!-- Dropdown Menu -->
+    <mat-menu #sortMenu="matMenu">
+      <div class="scrollable-menu">
+        <button mat-menu-item (click)="onSortOptionSelected('Actions')">Actions</button>
+        <button mat-menu-item (click)="onSortOptionSelected('Status')">Status</button>
+        <button mat-menu-item (click)="onSortOptionSelected('Referral ID')">Referral ID</button>
+        <button mat-menu-item (click)="onSortOptionSelected('Select')">Select</button>
+        <button mat-menu-item (click)="onSortOptionSelected('Visits')">Visits</button>
+        <button mat-menu-item (click)="onSortOptionSelected('Claims')">Claims</button>
+        <button mat-menu-item (click)="onSortOptionSelected('Patient ID')">Patient ID</button>
+        <button mat-menu-item (click)="onSortOptionSelected('Patient Name')">Patient Name</button>
+        <button mat-menu-item (click)="onSortOptionSelected('	Referral From')"> Referral From</button>
+        <button mat-menu-item (click)="onSortOptionSelected('Referral To')">Referral To</button>
+        <button mat-menu-item (click)="onSortOptionSelected('Specialty')">Specialty</button>
+        <button mat-menu-item (click)="onSortOptionSelected('Case ID')">Case ID</button>
+        <button mat-menu-item (click)="onSortOptionSelected('Case Type')">Case Type</button>
+        <button mat-menu-item (click)="onSortOptionSelected('Order Type')">Order Type</button>
+        <button mat-menu-item (click)="onSortOptionSelected('Last Updated')">Last Updated</button>
+        <button mat-menu-item (click)="onSortOptionSelected('Created')">Created</button>
+      </div>
+    </mat-menu>
+
+
       <button mat-raised-button matTooltip="Download CSV" class="center-icon"
         style="background-color: black; color: white; margin-right: 8px">
         <mat-icon>get_app</mat-icon>
@@ -741,8 +774,8 @@
       </button>
 
       <!-- Add Account Button -->
-      <button mat-raised-button color="primary" class="btn-primary margin-right-5" (click)="openEditDialog(null)">
-        <mat-icon class="mat-margin-top">add</mat-icon> Add Case
+      <button mat-raised-button color="primary" class="btn-primary margin-right-5 center-icon" (click)="openEditDialog(null)">
+        <mat-icon class="mat-margin-top">add</mat-icon>
       </button>
     </div>
   </div>
