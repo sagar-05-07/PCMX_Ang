@@ -36,14 +36,9 @@
               <!-- Dropdown Menu -->
               <mat-menu #sortMenu="matMenu">
                   <div class="scrollable-menu">
-                  <button mat-menu-item (click)="onSortOptionSelected('option1')">Option 1</button>
-                  <button mat-menu-item (click)="onSortOptionSelected('option2')">Option 2</button>
-                  <button mat-menu-item (click)="onSortOptionSelected('option3')">Option 3</button>
-                  <button mat-menu-item (click)="onSortOptionSelected('option4')">Option 4</button>
-                  <button mat-menu-item (click)="onSortOptionSelected('option5')">Option 5</button>
-                  <button mat-menu-item (click)="onSortOptionSelected('option6')">Option 6</button>
-                  <button mat-menu-item (click)="onSortOptionSelected('option7')">Option 7</button>
-                  <button mat-menu-item (click)="onSortOptionSelected('option8')">Option 8</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Insurance Company')">Insurance Company</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Providers')">Providers</button>
+                  
                   </div>
               </mat-menu>
 
@@ -89,23 +84,23 @@
 
         <div fxLayout="row wrap" *ngIf="filterToggle" style=" margin-bottom: 10px;margin-left: 33px;">
           <div fxFlex="63" class="flex-p w-50">
-            <form [formGroup]="filterForm">
+            <form >
               <mat-card class="filter">
                 <mat-card-content>
                   <div class="row col-sm-12">
-                    <div class="col-sm-4 row">
-                      <div class="col-sm-4 newMarginClass">
+                    <div class="col-sm-6 ">
+                      <div class="col-sm-4 newMarginClass" style="margin-top: 6px;">
                         <b>Keyword:</b>
                       </div>
                       <div class="col-sm-8">
-                        <input type="text" formControlName="Keyword" onCopy="return false" onPaste="return false"
+                        <input type="text" onCopy="return false" onPaste="return false"
                           class="form-control" placeholder="Search by Keyword">
                       </div>
                     </div>
         
         
         
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                       <div class="row">
                         <div class="col-sm-12 offset-sm-3">
                           <a (click)="filterToggle = !filterToggle" matTooltip="Close" class="pull-right"

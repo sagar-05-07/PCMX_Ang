@@ -47,14 +47,10 @@
               <!-- Dropdown Menu -->
               <mat-menu #sortMenu="matMenu">
                   <div class="scrollable-menu">
-                  <button mat-menu-item (click)="onSortOptionSelected('option1')">Option 1</button>
-                  <button mat-menu-item (click)="onSortOptionSelected('option2')">Option 2</button>
-                  <button mat-menu-item (click)="onSortOptionSelected('option3')">Option 3</button>
-                  <button mat-menu-item (click)="onSortOptionSelected('option4')">Option 4</button>
-                  <button mat-menu-item (click)="onSortOptionSelected('option5')">Option 5</button>
-                  <button mat-menu-item (click)="onSortOptionSelected('option6')">Option 6</button>
-                  <button mat-menu-item (click)="onSortOptionSelected('option7')">Option 7</button>
-                  <button mat-menu-item (click)="onSortOptionSelected('option8')">Option 8</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Level')">Level</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Recipient')">Recipient</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Remarks')">Remarks</button>
+                  
                   </div>
               </mat-menu>
 
@@ -80,7 +76,7 @@
                 <mat-card-content>
                   <div class="row col-sm-12">
                     <div class="col-sm-4 row">
-                      <div class="col-sm-3" style="margin-top: 6px">
+                      <div class="col-sm-3" style="margin-top: 6px;padding-left: 2px;">
                         <b>Keyword:</b>
                       </div>
                       <div class="col-sm-9">

@@ -66,6 +66,21 @@
           <span *ngIf="isNavOpen">Insurance Groups</span>
         </a>
       </li>
+      <li routerLinkActive="active" [routerLink]="['State']">
+        <a style="margin-top: 10px;">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="State">State</mat-icon>
+          <span *ngIf="isNavOpen">States</span>
+        </a>
+      </li>
+
+
+      <li routerLinkActive="active" [routerLink]="['Cities']">
+        <a style="margin-top: 10px;">
+          <mat-icon *ngIf="!isNavOpen" matTooltip="State">Cities</mat-icon>
+          <span *ngIf="isNavOpen">Cities</span>
+        </a>
+      </li>
+
     </ul>
   </nav>
 </div>
