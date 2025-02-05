@@ -12,7 +12,7 @@
             "
           >
             <div
-              class="col-sm-8 pull-right"
+              class="col-sm-10 pull-right"
               style="padding: 0 0 0 0 !important; margin-right: -5px"
             >
               <button
@@ -25,26 +25,60 @@
               </button>
 
               <!-- Sort Button -->
-<button mat-raised-button mat-button [matMenuTriggerFor]="sortMenu" style="background-color: #37474f; color: white" class="filters-hover pull-right margin-right-10">
-  <span (click)="toggleSort($event)" class="icon-text">
-    <mat-icon style="margin-top: 0px; margin-bottom: -6px;">
-      {{ isAscending ? 'arrow_drop_up' : 'arrow_drop_down' }}
-    </mat-icon>
-  </span>
-  <span class="icon-text">SORT</span>
-</button>
+              <button mat-raised-button mat-button [matMenuTriggerFor]="sortMenu" style="background-color: #37474f; color: white" class="filters-hover pull-right margin-right-10">
+                <span (click)="toggleSort($event)" class="icon-text">
+                  <mat-icon style="margin-top: 0px; margin-bottom: -6px;">
+                    {{ isAscending ? 'arrow_drop_up' : 'arrow_drop_down' }}
+                  </mat-icon>
+                </span>
+                <span class="icon-text">SORT</span>
+              </button>
 
-<!-- Dropdown Menu -->
-<mat-menu #sortMenu="matMenu">
-  <div class="scrollable-menu">
-    <button mat-menu-item (click)="onSortOptionSelected('User Type')">User Type</button>
-    <button mat-menu-item (click)="onSortOptionSelected('Description')">Description</button>
-    <button mat-menu-item (click)="onSortOptionSelected('User Name')">User Name</button>
-    <button mat-menu-item (click)="onSortOptionSelected('Alert Type')">Alert Type</button>
-    <button mat-menu-item (click)="onSortOptionSelected('Priority')">Priority</button>
+              <!-- Dropdown Menu -->
+              <mat-menu #sortMenu="matMenu">
+                <div class="scrollable-menu">
+                  <button mat-menu-item (click)="onSortOptionSelected('User Type')">User Type</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Description')">Description</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('User Name')">User Name</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Alert Type')">Alert Type</button>
+                  <button mat-menu-item (click)="onSortOptionSelected('Priority')">Priority</button>
 
-  </div>
-</mat-menu>
+                </div>
+              </mat-menu>
+
+              <button mat-raised-button matTooltip="Download CSV" class="center-icon pull-right"
+                style="background-color: black; color: white; margin-right: 8px">
+                <mat-icon>save_alt</mat-icon>
+              </button>
+              
+              <button mat-raised-button matTooltip="Download Template" class="center-icon pull-right"
+                style="background-color: black; color: white; margin-right: 8px">
+                <mat-icon>get_app</mat-icon>
+              </button>
+              
+              <button mat-raised-button matTooltip="Upload CSV" class="center-icon pull-right"
+                style="background-color: black; color: white; margin-right: 8px">
+                <mat-icon>backup</mat-icon>
+              </button>
+              
+              <button mat-raised-button matTooltip="Upload CSV" class="center-icon pull-right"
+                style="background-color: black; color: white; margin-right: 8px">
+                <mat-icon>grid_on</mat-icon>
+              </button>
+              
+              <button mat-raised-button class="pull-right" matTooltip="Save"
+                style="background-color: green; color: white; margin-right: 8px">
+                Go
+              </button>
+              <mat-select class="form-control margin-right-10 pull-right" style="width: 180px;" placeholder="Select Subject">
+                <mat-option [value]="'New York'">Pending Verification</mat-option>
+                <mat-option [value]="'Los Angeles'">SCH & Pending AUTH</mat-option>
+                <mat-option [value]="'Chicago'">Referrals this week</mat-option>
+                <mat-option [value]="'Houston'">Authorized this week</mat-option>
+              </mat-select>
+              <label class="control-label mt-2 margin-right-10 pull-right">Apply Saved Search :</label>
+
+
 
             </div>
           </div>
@@ -111,7 +145,7 @@
                           settings_backup_restore
                         </i>
           
-                        <i class="fa fa-save pull-right" matTooltip="Save"  style="
+                        <i class="fa fa-save pull-right" matTooltip="Save" (click)="saveFilters()"  style="
                                           font-size: 20px;
                                           cursor: pointer;
                                           margin-left: 5px;

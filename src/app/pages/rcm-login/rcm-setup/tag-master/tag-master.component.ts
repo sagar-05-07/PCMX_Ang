@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AddDocTypeComponent } from '../doc-type/add-doc-type/add-doc-type.component';
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { TagmasterdialogComponent } from './tagmasterdialog/tagmasterdialog.component';
 
 @Component({
   selector: 'app-tag-master',
@@ -55,7 +56,7 @@ export class TagMasterComponent {
     ) { }
   
     openAddEditDialog() {
-      this.dialog.open(AddDocTypeComponent,
+      this.dialog.open(TagmasterdialogComponent,
         {
           width: '700px',
           height: 'auto'

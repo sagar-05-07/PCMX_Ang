@@ -10,6 +10,7 @@ import { NetworkdialogComponent } from '../rcm-accounts/networkdialog/networkdia
 import { AddLawfirmComponent } from './add-lawfirm/add-lawfirm.component';
 import { GridLawfirmComponent } from './grid-lawfirm/grid-lawfirm.component';
 import { LawfirmAttysComponent } from './lawfirm-attys/lawfirm-attys.component';
+import { FilterSaveComponent } from 'src/app/shared/filter-save/filter-save.component';
 
 @Component({
   selector: 'app-admin-law-firm',
@@ -753,6 +754,13 @@ export class AdminLawFirmComponent {
     console.log('Selected sort option:', option);
   }
 
+
+  saveFilters() {
+    this.dialog.open(FilterSaveComponent, {
+      height: 'auto',
+      width: '450px'
+    });
+  }
 
 
 }

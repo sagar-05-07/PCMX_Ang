@@ -1,0 +1,39 @@
+<h1 style="background-color: rgb(73, 128, 150); color: white; text-align: center;" mat-dialog-title><span
+    *ngIf="!data">Add</span><span *ngIf="data">Edit</span> Tag Master </h1>
+
+<div class="col-sm-12" style="padding: 30px !important;">
+
+    <div class="row " style="margin-bottom: 12px;">
+        <div class="col-sm-4">
+            <label class="control-label add-member-label required mt-2">Tag Name :</label>
+        </div>
+        <div class="col-sm-8">
+            <mat-select class="form-control bac" placeholder="Select Tag Master">
+                <mat-option [value]="'UnitedHealth Group'">Emergency</mat-option>
+                <mat-option [value]="'Anthem Inc.'">Delayed</mat-option>
+                <mat-option [value]="'Cigna'">Expedite</mat-option>
+
+            </mat-select>
+        </div>
+    </div>
+
+    <div class="row " style="margin-bottom: 12px;">
+        <div class="col-sm-4">
+            <label class="control-label add-member-label required mt-2">Tag Color :</label>
+        </div>
+        <div class="col-sm-8">
+            <input type="color" class="form-control bac">
+        </div>
+    </div>
+
+
+</div>
+
+<mat-dialog-actions align="end">
+<div style="margin-right: 15px;" class="mb-4">
+    <button mat-raised-button style="background-color: green; color: white;"> <mat-icon>save</mat-icon>
+        <span>{{ data ? 'Update' : 'Save'}}</span></button>
+    <button mat-raised-button style="background-color: lightgray; color: red;" class="add-dark-hover btn-default"
+        (click)="close()"><mat-icon>cancel</mat-icon>Close</button>
+</div>
+</mat-dialog-actions>
