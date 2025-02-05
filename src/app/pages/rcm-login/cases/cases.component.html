@@ -705,7 +705,7 @@
   <div class="w-100 mt-4">
     <div class="row" style="display: flex; justify-content: flex-end; align-items: center">
 
-      <label class="control-label mt-2 margin-right-10">Apply Save Search :</label>
+      <label class="control-label mt-2 margin-right-10">Apply Saved Search :</label>
       <mat-select class="form-control margin-right-10" style="width: 180px;" placeholder="Select Subject">
         <mat-option [value]="'New York'">Pending Verification</mat-option>
         <mat-option [value]="'Los Angeles'">SCH & Pending AUTH</mat-option>
@@ -760,7 +760,7 @@
 
       <button mat-raised-button matTooltip="Download CSV" class="center-icon"
         style="background-color: black; color: white; margin-right: 8px">
-        <mat-icon>get_app</mat-icon>
+        <mat-icon>save_alt</mat-icon>
       </button>
 
       <button mat-raised-button matTooltip="Download Template" class="center-icon"
@@ -1117,53 +1117,7 @@
   </div>
 </div>
 
-<!-- <div fxLayout="row wrap" *ngIf="filterToggle" style="margin-bottom: 10px">
-    <div fxFlex="100" class="flex-p w-100">
-        <form [formGroup]="filterForm">
-            <mat-card class="filter">
-                <mat-card-content>
-                    <div class="row col-sm-12">
-                        <div class="col-sm-4 row">
-                            <div class="col-sm-4">
-                                <b>Industry:</b>
-                            </div>
-                            <div class="col-sm-7">
-                                <select placeholder="Select Industry" class="form-control" formControlName="Status">
-                                    <option></option>
-                                </select>
-                            </div>
-                        </div>
 
-                        <div class="col-sm-4 row">
-                            <div class="col-sm-2">
-                                <b>Select Status:</b>
-                            </div>
-                            <div class="col-sm-10">
-                                <select placeholder="Select Status" class="form-control" formControlName="Status">
-                                    <option></option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <a (click)="filterToggle = !filterToggle" class="pull-right"
-                                style="font-size: 25px; cursor: pointer; margin-left: 5px">
-                                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
-                            </a>
-                            <button mat-raised-button color="primary" class="pull-right">
-                                Search
-                            </button>
-
-                            <button mat-raised-button class="pull-right btn-default margin-right-10">
-                                Clear
-                            </button>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
-                    </div>
-                </mat-card-content>
-            </mat-card>
-        </form>
-    </div>
-</div> -->
 
 <!-- Table -->
 <div [ngClass]="{ 'full-width': !isNavOpen }" class="col-sm-10">

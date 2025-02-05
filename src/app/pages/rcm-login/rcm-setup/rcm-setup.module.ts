@@ -19,6 +19,7 @@ import { AddLocationComponent } from './locations/add-location/add-location.comp
 import { DocTypeComponent } from './doc-type/doc-type.component';
 import { AddDocTypeComponent } from './doc-type/add-doc-type/add-doc-type.component';
 import { TagMasterComponent } from './tag-master/tag-master.component';
+import { TagmasterdialogComponent } from './tag-master/tagmasterdialog/tagmasterdialog.component';
 
 const routes: Routes = [
 
@@ -120,6 +121,7 @@ const routes: Routes = [
         DocTypeComponent,
         AddDocTypeComponent,
         TagMasterComponent,
+        TagmasterdialogComponent,
     ]
 })
 export class RcmSetupModule { }

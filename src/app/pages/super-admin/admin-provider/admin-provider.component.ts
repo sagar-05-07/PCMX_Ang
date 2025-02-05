@@ -11,6 +11,7 @@ import { GridProviderComponent } from './grid-provider/grid-provider.component';
 import { InsuranceDialogComponent } from '../rcm-accounts/insurance-dialog/insurance-dialog.component';
 import { NetworkDialogComponent } from './network-dialog/network-dialog.component';
 import { AdmnProviderSpecialtyComponent } from './admn-provider-specialty/admn-provider-specialty.component';
+import { FilterSaveComponent } from 'src/app/shared/filter-save/filter-save.component';
 
 @Component({
   selector: 'app-admin-provider',
@@ -775,6 +776,14 @@ export class AdminProviderComponent {
     this.filteredEventTypes5 = this.eventTypes5.filter((eventType5) =>
       eventType5.toLowerCase().includes(filterValue5)
     );
+  }
+
+
+  saveFilters() {
+    this.dialog.open(FilterSaveComponent, {
+      height: 'auto',
+      width: '450px'
+    });
   }
 
 }

@@ -77,3 +77,33 @@
     color: rgb(255, 255, 255);
   }
   
+
+
+
+  .tab-container {
+    display: flex;
+    flex-wrap: nowrap;  // Prevent wrapping to next line
+    gap: 10px;  // Spacing between buttons
+    overflow-x: auto;  // Scroll if the screen is too small
+    white-space: nowrap;  // Keep buttons in one row
+}
+
+.tab-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background-color: #d7d7d7;
+    color: black;
+    transition: background 0.3s;
+    flex-shrink: 0;  // Prevent buttons from shrinking
+}
+
+.tab-button.active {
+    background-color: #2188bf;
+    color: white;
+}
+
+.tab-button:hover {
+    background-color: #b0b0b0;
+}

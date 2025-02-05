@@ -30,6 +30,41 @@
 
         </div>
     </mat-menu>
+
+
+    <button mat-raised-button matTooltip="Download CSV" class="center-icon pull-right"
+    style="background-color: black; color: white; margin-right: 8px">
+    <mat-icon>save_alt</mat-icon>
+  </button>
+  
+  <button mat-raised-button matTooltip="Download Template" class="center-icon pull-right"
+    style="background-color: black; color: white; margin-right: 8px">
+    <mat-icon>get_app</mat-icon>
+  </button>
+  
+  <button mat-raised-button matTooltip="Upload CSV" class="center-icon pull-right"
+    style="background-color: black; color: white; margin-right: 8px">
+    <mat-icon>backup</mat-icon>
+  </button>
+
+  <button mat-raised-button matTooltip="Upload CSV" class="center-icon pull-right"
+    style="background-color: black; color: white; margin-right: 8px">
+    <mat-icon>grid_on</mat-icon>
+  </button>
+
+      <button mat-raised-button class="pull-right" matTooltip="Save" style="background-color: green; color: white; margin-right: 8px">
+        Go
+      </button>      
+      <mat-select class="form-control margin-right-10 pull-right" style="width: 180px;" placeholder="Select Subject">
+        <mat-option [value]="'New York'">Pending Verification</mat-option>
+        <mat-option [value]="'Los Angeles'">SCH & Pending AUTH</mat-option>
+        <mat-option [value]="'Chicago'">Referrals this week</mat-option>
+        <mat-option [value]="'Houston'">Authorized this week</mat-option>
+      </mat-select>
+      <label class="control-label mt-2 margin-right-10 pull-right">Apply Save Search :</label>
+
+
+
 </div>
 <!-- Filter UI -->
 <div fxLayout="row wrap" class="col-sm-12 mt-3" *ngIf="filterToggle">
@@ -64,7 +99,7 @@
                                         settings_backup_restore
                                     </i>
 
-                                    <i class="fa fa-save pull-right" matTooltip="Save" style="
+                                    <i class="fa fa-save pull-right" (click)="saveFilters()" matTooltip="Save" style="
                                                   font-size: 20px;
                                                   cursor: pointer;
                                                   margin-left: 5px;
