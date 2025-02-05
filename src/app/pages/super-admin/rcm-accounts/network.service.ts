@@ -16,4 +16,20 @@ export class NetworkService {
   UpsertNetworkAccount(data: any) {
     return this.http.post(environment.apiUrl + "api/upsert-network-account", data);
   }
+
+  DeleteNetworkAccount(data: any) {
+    return this.http.post(environment.apiUrl + "api/delete-network-account", data);
+  }
+
+  ChangeNetworkAccountStatus(data: any) {
+    return this.http.post(environment.apiUrl + "api/change-network-status", data);
+  }
+
+  GetStateDD() {
+    return this.http.get(environment.apiUrl + "api/get-state-dd");
+  }
+
+  GetCityDD(data: any) {
+    return this.http.post(environment.apiUrl + "api/get-city-dd", data);
+  }
 }

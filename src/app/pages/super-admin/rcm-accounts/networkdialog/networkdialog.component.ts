@@ -21,21 +21,44 @@ export class NetworkdialogComponent {
   ) { }
 
   ngOnInit() {
+    console.log(this.data, "data")
+    this.fnGetStateDD();
     if (this.data) {
       this.formInit(this.data);
+      this.fnGetCityDD(this.data.StateId);
     }
     else {
       this.formInit(null);
     }
   }
 
-  fnUpsertCityMaster() {
+  fnUpsertNetworkAccount() {
     console.log('.......................')
     this._networkServices.UpsertNetworkAccount(this.networkAccounts.value).subscribe((data: any) => {
       if (data.Success) {
         this.dialogRef.close("Update");
       }
     });
+  }
+
+  states: any[];
+  fnGetStateDD() {
+    this._networkServices.GetStateDD().subscribe((data: any) => {
+      if (data.Success) {
+        this.states = data['Data'];
+        console.log(this.states, "this.states");
+      }
+    })
+  }
+
+  cities: any[];
+  fnGetCityDD(StateId: number) {
+    this._networkServices.GetCityDD({ StateId: StateId }).subscribe((data: any) => {
+      if (data.Success) {
+        this.cities = data['Data'];
+        console.log(this.cities, "this.cities");
+      }
+    })
   }
 
   formInit(data: any) {
