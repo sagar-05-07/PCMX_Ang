@@ -57,9 +57,13 @@ export class VisitRadarComponent {
   isAuthorizeClaimed = false;
 
   toggleButton(buttonType: string) {
-    this.isVerifiedActive = buttonType === 'verified';
-    this.isAuthorizeActive = buttonType === 'authorize';
-    this.isAuthorizeClaimed = buttonType === 'claimed';
+    if (buttonType === 'verified') {
+      this.isVerifiedActive = !this.isVerifiedActive; // Toggle state
+    } else if (buttonType === 'authorize') {
+      this.isAuthorizeActive = !this.isAuthorizeActive; // Toggle state
+    } else if (buttonType === 'claimed') {
+      this.isAuthorizeClaimed = !this.isAuthorizeClaimed; // Toggle state
+    }
   }
 
 
