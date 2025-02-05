@@ -1,16 +1,19 @@
 import { DatePipe } from '@angular/common';
-import { ChangeDetectorRef, Component } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Sort } from '@angular/material/sort';
-import { Router, ActivatedRoute } from '@angular/router';
-import { BreadcrumbService } from '../../breadcrumb.service';
-import { UserService } from '../../login/user.service';
+import { Router } from '@angular/router';
 import { NetworkdialogComponent } from './networkdialog/networkdialog.component';
 import { GridNetworkComponent } from './grid-network/grid-network.component';
 import { InsuranceDialogComponent } from './insurance-dialog/insurance-dialog.component';
 import { AdminLawfirmDialogComponent } from './admin-lawfirm-dialog/admin-lawfirm-dialog.component';
 import { ProviderDialogeboxComponent } from './provider-dialogebox/provider-dialogebox.component';
+import { NetworkService } from './network.service';
+import { ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/confirmation-dialog.component';
+import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { FilterSaveComponent } from 'src/app/shared/filter-save/filter-save.component';
 
 @Component({
   selector: 'app-rcm-accounts',
@@ -18,18 +21,27 @@ import { ProviderDialogeboxComponent } from './provider-dialogebox/provider-dial
   styleUrl: './rcm-accounts.component.scss',
 })
 export class RcmAccountsComponent {
-  session: any;
-  gridColumns = [];
-  email: any;
-  muncipalityOptions = [];
-  permissions: Permissions;
-  permissionsClient: Permissions;
-  filterToggle: boolean = false;
-  id: string;
+
   filterForm: FormGroup;
-  public currentPage = 0;
-  public totalSize = 0;
-  public everyContacts = [];
+  filterToggle: boolean = false;
+
+  // Pagination Values 
+  currentPage: number = 0;
+  pageSize: number = parseInt(localStorage.getItem('settings') ?? '10', 10);
+  totalSize: number;
+  fromIndex: number = 0;
+  toIndex: number = parseInt(localStorage.getItem('settings') ?? '10', 10);
+
+
+  // Function to safely get the page size from localStorage
+  getPageSize(): number {
+    const settings = localStorage.getItem('settings');
+    return settings ? parseInt(settings, 10) || 10 : 10;
+  }
+
+  networks: any[] = [];
+  tableList: any[] = [];
+
   eventTypes: string[] = [
     'Hamilton',
     'Beeville',
@@ -446,43 +458,92 @@ export class RcmAccountsComponent {
       city: 'Houston',
     },
   ];
-  public searchText: string;
-  clientName: string = '';
+
   constructor(
     public router: Router,
-    private userService: UserService,
-    private _breadcrumbService: BreadcrumbService,
     public dialog: MatDialog,
-    private ref: ChangeDetectorRef,
     private _fb: FormBuilder,
-    public helpdialogRef: MatDialog,
     public datePipe: DatePipe,
-    private route: ActivatedRoute
+    private _networkServices: NetworkService,
   ) {
-    this.filterForm = this._fb.group({
-      contactMunicipalityID: [null],
-      contactbtStatus: [null],
-      contactDateType: [null],
-      fromDate: [null],
-      toDate: [null],
-      keyword: [null],
-      contactPrimary: [null],
-      contactBilling: [null],
-    });
-    // this.session = JSON.parse(localStorage.getItem("userloginsession"));
-    // this.permissions = this._globalMethods.checkPermissions('Manage contacts', 'Manage');
-    // this.permissionsClient = this._globalMethods.checkPermissions('Manage clients', 'Manage');
+
   }
   ngOnInit() {
-    //this.id = this.route.snapshot.paramMap.get('id');
-    // this.GetMuncipalities();
-    this.filterForm.controls['contactDateType'].setValue(1);
-    //this.changedatetype(1);
-    //this.getcontacts(this.id);
-    //this.getcontacts(1, this.pageSize);
-    this.getGridColumns();
+    this.formInit();
+    this.fnGetNetworkAccount();
+  }
 
-    // this.getleads();
+  fnGetNetworkAccount(): void {
+    this._networkServices.GetNetworkAccount(this.filterForm.value).subscribe((data: any) => {
+      if (data['Success']) {
+        this.networks = data['Data']['Data'];
+        this.totalSize = data['Data']['ToatalRecords'];// Assigning total Count
+        this.tableList = this.networks.slice(this.fromIndex, this.toIndex);// Slicing data for paginating table
+      }
+    });
+  }
+
+
+  // delete pop-up
+  deleteConfirmation(item: any) {
+    let dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: 'auto',
+      data: { NetworkAccountId: item.NetworkAccountId, title: 'Delete Confirmation', content: 'Are you sure you want to Delete?', isConfirmation: true }
+    });
+    dialogRef.afterClosed().subscribe((data: any) => {
+      if (data) {
+        this._networkServices.DeleteNetworkAccount({ NetworkAccountId: data.NetworkAccountId }).subscribe((data: any) => {
+          if (data['Success']) {
+            this.fnGetNetworkAccount();
+          }
+        });
+      }
+    });
+  }
+
+  // Active/InActive Status
+  Confirmation(item: any) {
+    let dialogRef = this.dialog.open(DialogComponent, {
+      width: 'auto',
+      data: { NetworkAccountId: item.NetworkAccountId, title: 'Change Status', content: 'Are you sure you want to Change the Status ?', isConfirmation: true }
+    });
+    dialogRef.afterClosed().subscribe((data: any) => {
+      if (data) {
+        this._networkServices.ChangeNetworkAccountStatus({ NetworkAccountId: data.NetworkAccountId }).subscribe((data: any) => {
+          if (data['Success']) {
+            this.fnGetNetworkAccount();
+          }
+        });
+      }
+    });
+  }
+
+
+
+  // Function to handle the page change events 
+  fnHandlePage(event: any) {
+    this.currentPage = event.pageIndex;
+    this.pageSize = event.pageSize;
+
+    if (this.filterForm) {
+      this.filterForm.patchValue({
+        StartIndex: this.currentPage,
+        GridSize: this.pageSize
+      });
+    }
+
+    // Call API after pagination change
+    this.fnGetNetworkAccount();
+  }
+
+  formInit() {
+    this.filterForm = this._fb.group({
+      Keyword: new FormControl(null),
+      Status: new FormControl(null),
+      StartIndex: new FormControl(0),
+      GridSize: new FormControl(10),
+      IsArchived: new FormControl(null)
+    });
   }
   redirect() {
     this.router.navigate(['/edit_provider_request']);
@@ -498,35 +559,7 @@ export class RcmAccountsComponent {
   ];
   statusOptions = ['Any', 'Active', 'Inactive'];
 
-  // public opengridColDialog(lead: any) {
-  //   let dialogRef = this.dialog.open(ContactsGridColDialogComponent, {
-  //     data: lead,
-  //     height: 'auto',
-  //     width: '600px',
-  //   });
 
-  //   dialogRef.afterClosed().subscribe(lead => {
-  //     this.getGridColumns();
-  //   });
-  // }
-
-  GetMuncipalities() {
-    // this.manageService.GetMuncipalities().subscribe(
-    //   data => {
-    //     this.muncipalityOptions = data['Data'];
-    //   }
-    // );
-  }
-
-  public openHelpVideo(id: any) {
-    // let dialogRef = this.helpdialogRef.open(HelpVideoDialogComponent, {
-    //   data: id,
-    //   height: 'auto',
-    //   width: '850px'
-    // });
-    // dialogRef.afterClosed().subscribe(data => {
-    // });
-  }
   colorOptions = ['Green', 'Blue', 'Gray', 'Red'];
   colorOptionSelected: any;
 
@@ -534,28 +567,7 @@ export class RcmAccountsComponent {
     console.log(event); //option value will be sent as event
   }
 
-  // public opencontactDialog(contact: any) {
-  //   let dialogRef = this.dialog.open(ContactsDialogComponent, {
-  //     data: contact,
-  //     height: 'auto',
-  //     width: '950px',
-  //   });
-  //   dialogRef.afterClosed().subscribe(data => {
-  //     //this.getcontacts(this.id);
-  //     // this.getcontacts((this.currentPage * this.pageSize) + 1, (this.currentPage * this.pageSize) + this.pageSize);
-  //   });
-  // }
 
-  public handlePage(e: any) {
-    this.currentPage = e.pageIndex;
-    // this.pageSize = e.pageSize;
-    //  this.getcontacts((this.currentPage * this.pageSize) + 1, (this.currentPage * this.pageSize) + this.pageSize);
-    //this.allContacts = this.everyContacts.slice(this.currentPage * this.pageSize, (this.currentPage * this.pageSize) + this.pageSize);
-  }
-  filterData: any = new Object();
-  filterBy(filter: any) {
-    this.filterData = filter;
-  }
 
   sortData(sort: Sort) {
     const data = this.allContacts.slice();
@@ -565,93 +577,28 @@ export class RcmAccountsComponent {
     }
   }
 
-  public compare(a: number | string, b: number | string, isAsc: boolean) {
-    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
-  }
 
-  ResetContacts() {
-    this.filterForm.reset();
-    this.filterData = new Object();
-  }
-  public getcontacts(startIndex: number, endIndex: any) {
-    this.filterData['StartIndex'] = startIndex;
-    this.filterData['EndIndex'] = endIndex;
-    this.filterData['clientId'] = this.id;
-    this.filterData['contactbtStatus'] =
-      this.filterData['contactbtStatus'] == 0
-        ? null
-        : this.filterData['contactbtStatus'] == 1
-          ? true
-          : this.filterData['contactbtStatus'] == 2
-            ? false
-            : this.filterData['contactbtStatus'];
-  }
-
-  changeContactStatus(data: any) {
-    data.contactbtStatus = !data.contactbtStatus;
-    data.modifiedBy = this.session['UserDetails'].int_user_id;
-  }
-
-  deleteModalToggle(value: any) { }
-  getGridColumns() { }
-
-  scrollTable(side: any) {
-    var table = document.getElementById('divTable');
-  }
-
-  public openAddClientDialog(oppurtunity: any) {
-    // let dialogRef = this.dialog.open(ClientsDialogComponent, {
-    //   data: oppurtunity,
-    //   height: 'auto',
-    //   width: '850px',
-    // });
-    // dialogRef.afterClosed().subscribe((oppurtunity: any) => {
-    //   if (oppurtunity) {
-    //     // (campaign.id) ? this.updateCampaign(campaign) : this.addCampaign(campaign);
-    //   }
-    // });
-  }
-
-  excelData: any[];
-  exportAsExcel() {
-    console.log(this.allContacts, 'Whole Data');
-    this.excelData = [];
-  }
-
-  // public openConfirmDialog(action: any, value: any, name: any) {
-  //   let dialogRef = this.dialog.open(ContactsDialogComponent, {
-  //     data: { 'action': action, 'value': value, 'name': name },
-  //   });
-
-  //   dialogRef.afterClosed().subscribe(account => {
-  //     this.dialog.closeAll();
-  //     return account;
-  //   });
-  // }
-  public openinsurancedialog(id: any) {
-    console.log('jkhksbdjk');
+  openinsurancedialog(value: any) {
     let dialogRef = this.dialog.open(InsuranceDialogComponent, {
-      data: id,
+      data: value,
       height: 'auto',
       width: '900px',
     });
     dialogRef.afterClosed().subscribe((data) => { });
   }
 
-  public openlawfirmdialog(id: any) {
-    console.log('jkhksbdjk');
+  openlawfirmdialog(value: any) {
     let dialogRef = this.dialog.open(AdminLawfirmDialogComponent, {
-      data: id,
+      data: value,
       height: 'auto',
       width: '900px',
     });
     dialogRef.afterClosed().subscribe((data) => { });
   }
 
-  public openproviders(id: any) {
-    console.log('jkhksbdjk');
+  public openproviders(value: any) {
     let dialogRef = this.dialog.open(ProviderDialogeboxComponent, {
-      data: id,
+      data: value,
       height: 'auto',
       width: '900px',
     });
@@ -659,47 +606,47 @@ export class RcmAccountsComponent {
   }
 
 
-  openproviderdialog(id: any) {
+  openproviderdialog(value: any) {
     let dialogRef = this.dialog.open(NetworkdialogComponent, {
-      data: id,
+      data: value,
       height: 'auto',
       width: '900px',
     });
-    dialogRef.afterClosed().subscribe((data) => { });
+    dialogRef.afterClosed().subscribe(data => {
+      if (data) {
+        this.fnGetNetworkAccount();
+      }
+    })
   }
 
-  public openproviderdialoge(id: any) {
-    console.log('jkhksbdjk');
+  openRestPassword(value: any) {
+    let dialogRef = this.dialog.open(ResetPasswordComponent, {
+      data: value,
+      height: 'auto',
+      width: '600px',
+    });
+    dialogRef.afterClosed().subscribe(data => {
+      if (data) {
+        this.fnGetNetworkAccount();
+      }
+    })
+  }
+
+  openproviderdialoge(value: any) {
     let dialogRef = this.dialog.open(GridNetworkComponent, {
-      data: id,
+      data: value,
       height: 'auto',
       width: '900px',
     });
     dialogRef.afterClosed().subscribe((data) => { });
   }
 
-  options: string[] = [
-    'Aetna',
-    'Cigna',
-    'UnitedHealthCare',
-    'Cigna Health Spring',
-  ];
-  filteredOptions: string[] = [...this.options];
-  selectedOption: string | null = null;
 
-  applyFilters(event: Event): void {
-    const filterValue = (event.target as HTMLInputElement).value.toLowerCase();
-    this.filteredOptions = this.options.filter((option) =>
-      option.toLowerCase().includes(filterValue)
-    );
-  }
 
   scrollGrid(side: 'left' | 'right') {
     const ele = document.getElementById('grid-table-container');
     const scrollAmount = 210; // Adjust this value as needed
-
     if (ele) {
-      // Check if ele is not null
       if (side === 'right') {
         ele.scrollBy({ left: scrollAmount, behavior: 'smooth' });
       } else {
@@ -707,15 +654,10 @@ export class RcmAccountsComponent {
       }
     }
   }
-
-
-  // locations
-
   openlocations() {
     this.router.navigate(['super-admin/rcm-accounts/locations']);
   }
 
-  // patients
 
   openPatients() {
     this.router.navigate(['super-admin/rcm-accounts/patients']);
@@ -743,9 +685,15 @@ export class RcmAccountsComponent {
     event.stopPropagation(); // Prevent menu from opening
     this.isAscending = !this.isAscending; // Toggle sort order
   }
-
   onSortOptionSelected(option: string) {
     console.log('Selected sort option:', option);
+  }
+
+  saveFilters() {
+    this.dialog.open(FilterSaveComponent, {
+      height: 'auto',
+      width: '450px'
+    });
   }
 
 

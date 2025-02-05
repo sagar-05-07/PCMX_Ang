@@ -7,7 +7,7 @@
     <div class="row mt-4">
       <div class="col-sm-6">
         <div class="row" style="margin-bottom: 12px">
-          <div class="col-sm-4 add-mem">
+          <div class="col-sm-4">
             <label class="control-label add-member-label required" style="margin-left: 30px">Network :</label>
           </div>
           <div class="col-sm-7">
@@ -15,43 +15,32 @@
               placeholder="Enter Network Name" required />
           </div>
         </div>
-
         <div class="row" style="margin-bottom: 12px">
-          <div class="col-sm-4 add-mem">
-            <label class="control-label add-member-label required" style="margin-left: 30px">City :</label>
-          </div>
-          <div class="col-sm-7">
-            <mat-select class="form-control bac" placeholder="Select City">
-              <mat-option [value]="'New York'">New York</mat-option>
-              <mat-option [value]="'Los Angeles'">Los Angeles</mat-option>
-              <mat-option [value]="'Chicago'">Chicago</mat-option>
-              <mat-option [value]="'Houston'">Houston</mat-option>
-              <mat-option [value]="'Phoenix'">Phoenix</mat-option>
-              <mat-option [value]="'Philadelphia'">Philadelphia</mat-option>
-              <mat-option [value]="'San Antonio'">San Antonio</mat-option>
-              <mat-option [value]="'San Diego'">San Diego</mat-option>
-              <mat-option [value]="'Dallas'">Dallas</mat-option>
-              <mat-option [value]="'San Jose'">San Jose</mat-option>
-            </mat-select>
-          </div>
-        </div>
-
-        <div class="row" style="margin-bottom: 12px">
-          <div class="col-sm-4 add-mem">
+          <div class="col-sm-4">
             <label class="control-label add-member-label required" style="margin-left: 30px">State :</label>
           </div>
           <div class="col-sm-7">
-            <mat-select class="form-control bac" placeholder="Select State">
-              <mat-option [value]="'California'">California</mat-option>
-              <mat-option [value]="'Texas'">Texas</mat-option>
-              <mat-option [value]="'Florida'">Florida</mat-option>
-              <mat-option [value]="'New York'">New York</mat-option>
-              <mat-option [value]="'Illinois'">Illinois</mat-option>
-              <mat-option [value]="'Pennsylvania'">Pennsylvania</mat-option>
-              <mat-option [value]="'Ohio'">Ohio</mat-option>
-              <mat-option [value]="'Georgia'">Georgia</mat-option>
-              <mat-option [value]="'North Carolina'">North Carolina</mat-option>
-              <mat-option [value]="'Michigan'">Michigan</mat-option>
+            <mat-select class="form-control" (selectionChange)="fnGetCityDD($event.value)" formControlName="StateId"
+              placeholder="Select State Name">
+              <ng-container *ngFor="let item of states">
+                <mat-option [value]="item.StateId">
+                  {{item.StateName}}
+                </mat-option>
+              </ng-container>
+            </mat-select>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 12px">
+          <div class="col-sm-4">
+            <label class="control-label add-member-label required" style="margin-left: 30px">City :</label>
+          </div>
+          <div class="col-sm-7">
+            <mat-select class="form-control" formControlName="CityId" placeholder="Select State Name">
+              <ng-container *ngFor="let item of cities">
+                <mat-option [value]="item.CityId">
+                  {{item.CityName}}
+                </mat-option>
+              </ng-container>
             </mat-select>
           </div>
         </div>
@@ -59,7 +48,7 @@
 
       <div class="col-sm-6">
         <div class="row" style="margin-bottom: 12px">
-          <div class="col-sm-4 add-mem">
+          <div class="col-sm-4">
             <label class="control-label add-member-label required">Email :</label>
           </div>
           <div class="col-sm-7">
@@ -68,7 +57,7 @@
           </div>
         </div>
         <div class="row" style="margin-bottom: 12px">
-          <div class="col-sm-4 add-mem">
+          <div class="col-sm-4">
             <label class="control-label add-member-label required">Cell Phone :</label>
           </div>
           <div class="col-sm-7">
@@ -83,11 +72,12 @@
 
 <mat-dialog-actions align="end">
   <div style="margin-right: 50px; margin-top: -10px">
-    <button mat-raised-button (click)="fnUpsertCityMaster()" style="background-color: green; color: white">
-      Save
+    <button mat-raised-button (click)="fnUpsertNetworkAccount()" style="background-color: green; color: white">
+      <mat-icon>save</mat-icon>Save
     </button>
     <button mat-raised-button class="add-dark-hover btn-default" style="background-color: gray; color: red"
       (click)="close()">
+      <mat-icon>cancel</mat-icon>
       Cancel
     </button>
   </div>

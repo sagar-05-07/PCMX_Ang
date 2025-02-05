@@ -38,6 +38,8 @@ import { SingleFileUploadComponent } from './single-file-upload/single-file-uplo
 import { FilterSaveComponent } from './filter-save/filter-save.component';
 import { MatSelectSearchModule } from 'mat-select-search';
 import { PerspectivesComponent } from './perspectives/perspectives.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   imports: [
@@ -116,7 +118,9 @@ import { PerspectivesComponent } from './perspectives/perspectives.component';
     FileUploadComponent,
     SingleFileUploadComponent,
     FilterSaveComponent,
-    PerspectivesComponent
+    PerspectivesComponent,
+    ConfirmationDialogComponent,
+    DialogComponent,
   ]
 })
 export class SharedModule { }

@@ -62,25 +62,39 @@
     </div>
   </mat-menu>
 
-  <button mat-raised-button class="pull-right"
-    style="background-color: #50636d !important; color: white; margin-right: 8px;">
-    <mat-icon class="mt-2">get_app</mat-icon> Download CSV
+  <button mat-raised-button matTooltip="Download CSV" class="center-icon pull-right"
+    style="background-color: black; color: white; margin-right: 8px">
+    <mat-icon>save_alt</mat-icon>
   </button>
 
-  <button mat-raised-button class="pull-right"
-    style="background-color: #007bff !important; color: white; margin-right: 8px;">
-    <mat-icon class="mt-2">cloud_upload</mat-icon> Upload CSV
+  <button mat-raised-button matTooltip="Download Template" class="center-icon pull-right"
+    style="background-color: black; color: white; margin-right: 8px">
+    <mat-icon>get_app</mat-icon>
   </button>
 
-  <button mat-raised-button class="pull-right"
-    style="background-color: #50636d !important; color: white; margin-right: 8px;" (click)="openproviderdialoge(null)">
-    <mat-icon class="mt-2">grid_on</mat-icon> Grid Columns
+  <button mat-raised-button matTooltip="Upload CSV" class="center-icon pull-right"
+    style="background-color: black; color: white; margin-right: 8px">
+    <mat-icon>backup</mat-icon>
   </button>
 
-  <button mat-raised-button class="pull-right"
-    style="background-color: #50636d !important; color: white; margin-right: 8px;">
-    <mat-icon class="mt-2">get_app</mat-icon> Download Template
+  <button mat-raised-button matTooltip="Grid Columns" class="center-icon pull-right"
+    style="background-color: black; color: white; margin-right: 8px">
+    <mat-icon>grid_on</mat-icon>
   </button>
+
+  <button mat-raised-button class="pull-right" matTooltip="Save"
+    style="background-color: green; color: white; margin-right: 8px">
+    Go
+  </button>
+  <mat-select class="form-control margin-right-10 pull-right" style="width: 180px;" placeholder="Select Subject">
+    <mat-option [value]="'New York'">Pending Verification</mat-option>
+    <mat-option [value]="'Los Angeles'">SCH & Pending AUTH</mat-option>
+    <mat-option [value]="'Chicago'">Referrals this week</mat-option>
+    <mat-option [value]="'Houston'">Authorized this week</mat-option>
+  </mat-select>
+  <label class="control-label mt-2 margin-right-10 pull-right">Apply Saved Search :</label>
+
+
 </div>
 
 <!-- Filters -->
@@ -188,7 +202,8 @@
                   </i>
 
                   <i class="fa fa-save pull-right" matTooltip="Save"
-                    style="font-size: 20px; cursor: pointer; margin-left: 5px; color: green; " aria-hidden="true">
+                    style="font-size: 20px; cursor: pointer; margin-left: 5px; color: green; " (click)="saveFilters();"
+                    aria-hidden="true">
                   </i>
 
                   <i class="fa fa-search pull-right" matTooltip="Search"
@@ -212,40 +227,39 @@
     <table matSort class="table table-bordered table-hover" style="width: 100%">
       <thead class="tbl-head">
         <tr class="tr-grid-header">
-          <th>Actions</th>
-          <th>Reset</th>
-          <th>Sync</th>
-          <th>REG</th>
+          <th class="text-center">Actions</th>
+          <th class="text-center">2F</th>
+          <th class="text-center">Status</th>
+          <th class="text-center">Reset</th>
+          <th class="text-center">Sync</th>
           <th>Network</th>
-          <th>Phone</th>
+          <th class="text-center">Phone</th>
           <th>Insurance</th>
           <th>Email</th>
           <th>Locations</th>
           <th>State</th>
           <th>City</th>
-          <th>Paitents</th>
-          <th>Referrals</th>
-          <th>Visits</th>
-          <th>Cases</th>
+          <th class="text-center">Paitents</th>
+          <th class="text-center">Referrals</th>
+          <th class="text-center">Visits</th>
+          <th class="text-center">Cases</th>
           <th class="text-center">
             Law Firms
           </th>
           <th>Providers</th>
-          <th>2F</th>
-          <th>Status</th>
         </tr>
       </thead>
-      <tbody *ngIf="allContacts.length > 0">
-        <tr *ngFor="let item of allContacts">
-          <td class="text-left">
+      <tbody>
+        <tr *ngFor="let item of tableList">
+          <td>
             <div>
               <a style="cursor: pointer" matTooltip="Shadow Login">
                 <i class="fa fa-arrow-right"></i>
               </a>
-              <a style="cursor: pointer" matTooltip="Edit" (click)="openproviderdialog(null)">
+              <a style="cursor: pointer" matTooltip="Edit" (click)="openproviderdialog(item)">
                 <i class="fa fa-edit"></i>
               </a>
-              <a style="cursor: pointer" matTooltip="Delete">
+              <a style="cursor: pointer" (click)="deleteConfirmation(item);" matTooltip="Delete">
                 <i class="fa fa-trash red"></i>
               </a>
               <a style="cursor: pointer" matTooltip="Message">
@@ -253,77 +267,80 @@
               </a>
             </div>
           </td>
-          <td class="pad-left inner-screen text-left" style="text-align: center !important">
-            <a style="cursor: pointer; text-decoration: none" matTooltip="Reset">
+          <td class="text-center">
+            <mat-checkbox></mat-checkbox>
+          </td>
+          <td class="text-center">
+            <a style="cursor:pointer">
+              <span *ngIf="!item.isActive" (click)="Confirmation(item)" class="clr-red">Inactive</span>
+              <span *ngIf="item.isActive" (click)="Confirmation(item)" class="clr-blue">Active</span>
+            </a>
+          </td>
+          <td class="text-center">
+            <a style="cursor: pointer;" (click)="openRestPassword(item)" matTooltip="Reset Password">
               <mat-icon>sync</mat-icon>
             </a>
           </td>
           <td class="text-center">
             <mat-icon style="color: #007bff">settings</mat-icon>
           </td>
-          <td class="text-center"><input type="checkbox" /></td>
+          <!-- <td class="text-center"><input type="checkbox" /></td> -->
 
           <td class="text-left" style="white-space: nowrap">
-            {{ item.networks }}
+            {{ item.NetworkAccountName }}
           </td>
 
           <td class="text-left">
-            {{ item.Phone }}
+            {{ item.NetworkAccountPhone }}
           </td>
 
           <!-- insurance -->
           <td class="text-center">
             <a (click)="openinsurancedialog(null)" style="cursor: pointer">
-
-              {{ item.insurances }}
+              -
             </a>
           </td>
           <td class="text-left">
-            {{ item.Email }}
+            {{ item.NetworkAccountEmail }}
           </td>
           <td class="text-center" (click)="openlocations()">
             <a style="cursor: pointer">
-              {{ item.locations }}
+              -
             </a>
           </td>
-          <td class="text-left">Texas</td>
+          <td class="text-left">{{ item.StateName }}</td>
           <td class="text-left" style="white-space: nowrap">
-            {{ item.city }}
+            {{ item.CityName }}
           </td>
           <td class="text-center" (click)="openPatients()">
             <a style="cursor: pointer">
-              {{ item.paitents }}
+              -
             </a>
           </td>
           <td class="text-center" style="cursor: pointer" (click)="openReferreals()">
             <a style="cursor: pointer">
-              {{ item.referrals }}
+              -
             </a>
           </td>
           <td class="text-center" style="cursor: pointer" (click)="openVisits()">
             <a style="cursor: pointer">
-              {{ item.visits }}
+              -
             </a>
           </td>
           <td class="text-center" style="cursor: pointer" (click)="opencases()">
             <a style="cursor: pointer">
-              {{ item.cases }}
+              -
             </a>
           </td>
           <td (click)="openlawfirmdialog(null)" class="text-center" style="white-space: nowrap">
             <a style="cursor: pointer">
-              {{ item.Firm }}
+              -
             </a>
           </td>
           <td class="text-center" style="white-space: nowrap" (click)="openproviders(null)">
             <a style="cursor: pointer">
-              {{ item.name }}
+              -
             </a>
-          </td>
-
-          <td class="text-center"><input type="checkbox" /></td>
-          <td [ngStyle]="{color: item.status === 'Active' ? 'blue' : 'red'}">
-            {{ item.status }}
           </td>
         </tr>
       </tbody>
@@ -342,6 +359,8 @@
       <mat-icon style="color: #37474f">fast_rewind</mat-icon>
     </button>
   </div>
-  <mat-paginator class="col-sm-12" [length]="totalSize" [pageIndex]="currentPage" [pageSize]=""
-    [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="handlePage($event)" showFirstLastButtons></mat-paginator>
+  <!-- PAGINATION CONTENT  ------------------------------------------------------>
+  <mat-paginator class="col-sm-12" [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+    [pageSizeOptions]="[5, 10, 20, 50, 100]" (page)="fnHandlePage($event)" showFirstLastButtons>
+  </mat-paginator>
 </div>

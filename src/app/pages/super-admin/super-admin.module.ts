@@ -34,6 +34,7 @@ import { NetworkDialogComponent } from './admin-provider/network-dialog/network-
 import { ProviderDialogeboxComponent } from './rcm-accounts/provider-dialogebox/provider-dialogebox.component';
 import { AdmnProviderSpecialtyComponent } from './admin-provider/admn-provider-specialty/admn-provider-specialty.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ResetPasswordComponent } from './rcm-accounts/reset-password/reset-password.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'analytics', pathMatch: 'full' },
@@ -197,7 +198,8 @@ const routes: Routes = [
     LawfirmAttysComponent,
     NetworkDialogComponent,
     ProviderDialogeboxComponent,
-    AdmnProviderSpecialtyComponent
+    AdmnProviderSpecialtyComponent,
+    ResetPasswordComponent
   ],
 })
 export class SuperAdminModule { }
