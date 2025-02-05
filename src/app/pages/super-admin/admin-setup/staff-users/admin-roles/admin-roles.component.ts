@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AdminSpecialPermissionsComponent } from './admin-special-permissions/admin-special-permissions.component';
+import { FilterSaveComponent } from 'src/app/shared/filter-save/filter-save.component';
 
 @Component({
   selector: 'app-admin-roles',
@@ -150,6 +151,14 @@ export class AdminRolesComponent {
   // delete pop-up
   deleteConfirmation() {
 
+  }
+
+
+  saveFilters() {
+    this.dialog.open(FilterSaveComponent, {
+      height: 'auto',
+      width: '450px'
+    });
   }
 
 }

@@ -118,7 +118,7 @@
                 <button mat-raised-button class="custom-btngray" [ngClass]="{'white-btngray': isClickedgray === 2}" (click)="toggleColorgray(2)">Medical Records</button>
                 <button mat-raised-button class="custom-btngray" [ngClass]="{'white-btngray': isClickedgray === 3}" (click)="toggleColorgray(3)">Claimed</button> -->
 
-                <button
+                <button style="color: white;"
                 mat-raised-button
                 [ngClass]="{ 'active-btn': isVerifiedActive, 'inactive-btn': !isVerifiedActive }"
                 (click)="toggleButton('verified')"
@@ -126,7 +126,7 @@
                 Scheduled
               </button>
               
-              <button
+              <button style="color: white;"
                 mat-raised-button
                 [ngClass]="{ 'active-btn': isAuthorizeActive, 'inactive-btn': !isAuthorizeActive }"
                 (click)="toggleButton('authorize')"
@@ -134,7 +134,7 @@
                 Medical Records
               </button>
               
-              <button
+              <button style="color: white;"
                 mat-raised-button
                 [ngClass]="{ 'active-btn': isAuthorizeClaimed, 'inactive-btn': !isAuthorizeClaimed }"
                 (click)="toggleButton('claimed')"

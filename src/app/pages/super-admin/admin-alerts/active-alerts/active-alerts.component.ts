@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { FilterSaveComponent } from 'src/app/shared/filter-save/filter-save.component';
 
 @Component({
   selector: 'app-active-alerts',
@@ -189,6 +190,14 @@ export class ActiveAlertsComponent {
   
   onSortOptionSelected(option: string) {
     console.log('Selected sort option:', option);
+  }
+
+
+  saveFilters() {
+    this.dialog.open(FilterSaveComponent, {
+      height: 'auto',
+      width: '450px'
+    });
   }
 
 

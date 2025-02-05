@@ -4,6 +4,7 @@ import { AdminAddUserComponent } from './admin-add-user/admin-add-user.component
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { FilterSaveComponent } from 'src/app/shared/filter-save/filter-save.component';
 
 @Component({
   selector: 'app-admin-userss',
@@ -186,6 +187,16 @@ export class AdminUserssComponent {
       }
     );
   }
+
+
+
+  saveFilters() {
+    this.dialog.open(FilterSaveComponent, {
+      height: 'auto',
+      width: '450px'
+    });
+  }
+
 
 }
 
